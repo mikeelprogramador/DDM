@@ -8,7 +8,7 @@ class Login {
     public static function registrar($nombre,$apellido,$email,$password){
         $salida = 0;
         include("bd-conect/inclucion-bd.php");
-        include("cajon/bootstrap/bootstrap.php");
+        require_once("cajon/bootstrap/bootstrap.php");
         $estilo = new estilo($password);
         $newPwd = $estilo->imprimir();
         $conexion = mysqli_connect($url,$user,$clave,$bd);
@@ -29,7 +29,7 @@ class Login {
     public static function inicio($email,$password){
         $salida = 0;
         include("bd-conect/inclucion-bd.php");
-        include("cajon/bootstrap/bootstrap.php");
+        require_once("cajon/bootstrap/bootstrap.php");
         $estilo = new estilo($password);
         $newPwd = Login::pwd($email);
         if($estilo->texto($password,$newPwd)){

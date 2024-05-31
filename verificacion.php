@@ -1,5 +1,5 @@
 <?php
-include("metodos/clas-login.php");
+include_once("metodos/clas-login.php");
 $ban = $_GET['log'];
 $email = $_POST['email'];
 $password = $_POST['clave'];
