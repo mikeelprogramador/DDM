@@ -29,7 +29,7 @@ class estilo{
 // $guardar = $miEstilo->imprimir();
 // $conexion = mysqli_connect("localhost","root","","u");
 // //   $sql = "INSERT INTO tb_u(texto) VALUE('$guardar')";
-// //   $consulta = $conexion->query($sql);
+// //   $consulta = $conexion->query($sql); 
 // //   if($consulta){
     
 // //   }

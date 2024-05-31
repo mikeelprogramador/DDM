@@ -42,7 +42,7 @@ class Login {
                 $salida += 0;
             }
         }else{
-            echo "Clave incorrecta";
+            // echo "Clave incorrecta";
         }
         return $salida;
     }
