@@ -1,0 +1,1 @@
+document.body.innerHTML = "<div class='message'> <h3>Felicidades tu registro fue exitoso</h3> <a href='viwer/ddm.php'><input type='button' value='Seguir'></a></div>"
