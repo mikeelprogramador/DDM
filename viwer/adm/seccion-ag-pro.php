@@ -1,3 +1,40 @@
-<div class="agr">
-    <p>hola aqui se agrega un producto</p>
+<!-- Codigo bootstrap de la card donde se previsualisan los los articulos -->
+<center>
+<div class="home">
+    <div class="card" style="width: 18rem;">
+        <img src="../../img/img-paciente0.avif" id="card-img" class="card-img-top" alt="Erro al cargar la imagen">
+        <div class="card-body">
+            <h5 class="card-title" id="card-title">Card title</h5>
+            <p class="card-text" id="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
 </div>
+</center>
+
+
+
+
+<div class="agr">
+<form class="container mt-4" action="">
+    <div class="mb-3">
+        <label for="name-pro" class="form-label">Nombre del producto</label>
+        <input type="text" class="form-control" id="name-pro" name="name-pro" placeholder="Nombre del producto" oninput="cardstring(event,'title')">
+    </div>
+    <div class="mb-3">
+        <label for="descrip-pro" class="form-label">Descripción del producto</label>
+        <textarea class="form-control" id="descrip-pro" name="descrip-pro" placeholder="Descripción del producto" oninput="cardstring(event,'text')"></textarea>
+    </div>
+    <div class="mb-3">
+        <label for="card-img" class="form-label">Imagen</label>
+        <input class="form-control" type="file" id="card-img" name="card-img" placeholder="Imagen" onchange="preview(event,'#card-img')">
+    </div>
+    <div class="mb-3">
+        <label for="card-img" class="form-label">Seguir editando</label>
+        <input class="" type="radio" name="proceso">Si
+        <input class="" type="radio" name="proceso">No
+    </div>
+    <button type="submit" class="btn btn-primary">Enviar</button>
+</form>
+</div>
+
