@@ -21,3 +21,39 @@ function cardstring(event,param) {
 
     $imgPreView.src = objectURL;
 }
+
+function upcolor(text){
+    let opc = text
+    botones();
+    var param =  {
+        'search': opc
+    }
+
+    $.ajax
+    ({
+        date: param,
+        url: '../consultas.php',
+        dateType: 'html',
+        type: 'get',
+        beforeSend: function (){
+            console.log("Cargando la conexion");
+        },
+        success: function ( error ){
+            jQuery("#text-color").html(error)
+        },
+        error: function(xhr, status, error){
+            console.log("Este es el erro: ", error);
+        }
+    })
+
+}
+function botones(){
+    var div = document.getElementById("div-color");
+    var input = document.createElement("input");
+    input.type = 'text';
+    input.id = 'color-new';
+    input.placeholder = 'Ktuo14';
+    
+    // Agregar el input al final del div
+    div.appendChild(input);
+}
