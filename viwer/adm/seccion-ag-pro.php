@@ -1,6 +1,7 @@
 <!-- Codigo bootstrap de la card donde se previsualisan los los articulos -->
 <br>
 <center>
+    <h3>Vista previa del producto</h3><br>
 <div class="home">
     <div class="card" style="width: 18rem;">
         <img src="../../img/img-paciente0.avif" id="card-img" class="card-img-top" alt="Erro al cargar la imagen">
@@ -17,7 +18,7 @@
 
 
 <div class="agr">
-<form class="container mt-4" action="admin.php?seccion=seccion-ag-pro-cont" method="post">
+<form class="container mt-4" action="admin.php?&" method="get">
     <div class="mb-3">
         <label for="name-pro" class="form-label">Nombre del producto</label>
         <input type="text" class="form-control" id="name-pro" name="name-pro" placeholder="Nombre del producto" oninput="cardstring(event,'title')">
@@ -30,7 +31,11 @@
         <label for="card-img" class="form-label">Imagen</label>
         <input class="form-control" type="file" id="card-img" name="card-img" placeholder="Imagen" onchange="preview(event,'#card-img')">
     </div>
-        <button type="submit" class="btn btn-primary">Continuar</button>
+        <button type="button" class="btn btn-primary" onclick="continuar()">Continuar</button><br><br>
+       
+    <div class="mb-3" id="parte2">
+        
+    </div>
 </form>
 </div>
 <br>

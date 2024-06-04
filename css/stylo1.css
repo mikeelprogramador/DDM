@@ -1,25 +1,8 @@
 .bg-gris-oscuro{
     background-color: #9AD58E;
-   
+    margin-top: 1%;
 
 }
 .body{
     background-color: white; 
-}
-.offer {
-    display: none;
-   
-}
-.offer.active {
-    display: block;
-}
-.productos{
-   margin-top: 3%;
-   margin-left: 12%;
-   margin-right: 12%;
-   
-   border: 1px solid black;
-}
-.texto{
-    margin: 2%;
 }
