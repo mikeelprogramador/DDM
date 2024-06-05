@@ -4,7 +4,7 @@ $ban = $_GET['log'];
 $email = $_POST['email'];
 $password = $_POST['clave'];
 if($ban == 1){
-    $veri = ( Login::inicio($email,$password) == 1 ) ? header("location: viwer/ddm.php") : "El usuario o la contraseña son incorrectas";
+    $veri = ( Login::inicio($email,$password) == 1 ) ? header("location: view/user/ddm.php") : "El usuario o la contraseña son incorrectas";
     echo $veri;
 }
 if($ban == 0){

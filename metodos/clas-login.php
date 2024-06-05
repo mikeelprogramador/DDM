@@ -11,7 +11,6 @@ class Login {
         require_once("cajon/bootstrap/bootstrap.php");
         $estilo = new estilo($password);
         $newPwd = $estilo->imprimir();
-        $conexion = mysqli_connect($url,$user,$clave,$bd);
         $parche = Login::inicio($email,$password);
         if($parche == 0){
             $sql = "INSERT INTO tb_usuarios(nombre,apellido,email,pasword)VALUES('$nombre','$apellido','$email','$newPwd')";
@@ -33,7 +32,6 @@ class Login {
         $estilo = new estilo($password);
         $newPwd = Login::pwd($email);
         if($estilo->texto($password,$newPwd)){
-            $conexion = mysqli_connect($url,$user,$clave,$bd);
             $sql = "select * from tb_usuarios where email='$email' and pasword='$newPwd'";
             $consulta = $conexion->query($sql);
             if($conexion->affected_rows > 0){
@@ -50,7 +48,6 @@ class Login {
     private static function pwd($email){
         $salida = "";
         include("bd-conect/inclucion-bd.php");
-        $conexion = mysqli_connect($url,$user,$clave,$bd);
         $sql = "select * from tb_usuarios where email='$email'";
         $consulta = $conexion->query($sql);
         while($fila= $consulta->fetch_array()){
