@@ -13,6 +13,7 @@ class cargarProducto {
             $consulta = $conexion->query($sql);
             if($consulta){
                 $salida .= "El producto se ha cardo exitosamente";
+                header("location: ../../adm/admin.php?seccion=seccion1");
             }else{
                 $salida .= "Hubo un error al subir el archivo";
             }
@@ -32,6 +33,23 @@ class cargarProducto {
             $salida +=0;
         }
         $conexion->close();
+        return $salida;
+    }
+
+    public static function img($img){
+        $salida = "";
+        $file = $img;
+        $nombre = $file["name"];
+        $tipo = pathinfo($nombre, PATHINFO_EXTENSION); 
+        $ruta_provicional = $file["tmp_name"];
+        $carpeta = "../../fotos/";    
+        if($tipo != 'jpg' && $tipo != 'png' && $tipo != 'JPG'){
+            echo "Error, el archivo tiene que ser jpg o png";
+        }else{
+            $src = $carpeta.$nombre;
+            move_uploaded_file($ruta_provicional,$src);
+            $salida .= "../../fotos/".$nombre;
+        }
         return $salida;
     }
 }

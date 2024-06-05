@@ -22,21 +22,10 @@ if(isset($_POST['enviar'])){
   $ofertas = $_POST['oferta-pro'];
   $precio = $_POST['precio-pro']; 
   $img = '';
+
   if(isset($_FILES["card-img"])){
-    $file = $_FILES["card-img"];
-    $nombre = $file["name"];
-    $tipo = pathinfo($nombre, PATHINFO_EXTENSION); 
-    $ruta_provicional = $file["tmp_name"];
-    $carpeta = "../../fotos/";    
-    if($tipo != 'jpg' && $tipo != 'png' && $tipo != 'JPG'){
-      echo "Error, el archivo tiene que ser jpg o png";
-    }
-    else{
-      $src = $carpeta.$nombre;
-      move_uploaded_file($ruta_provicional,$src);
-      $img = "../fotos/".$nombre;
-    }
+    $filas =  $_FILES["card-img"];
+    $img  = cargarProducto::img($filas);
   }
-  
   echo( cargarProducto::upProducto($id,$nombre,$descrip,$caracter,$color,$cantidad,$ofertas,$img,$precio));
 }
