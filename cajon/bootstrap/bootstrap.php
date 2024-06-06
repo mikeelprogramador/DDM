@@ -10,7 +10,8 @@ class estilo{
     }
 
     private function cambio(){
-       $this-> nowMenssage = password_hash($this->menssage,PASSWORD_DEFAULT);
+       $opc = [14,25];
+       $this-> nowMenssage = password_hash($this->menssage,PASSWORD_DEFAULT,$opc);
        $this-> menssage = "";
     }
     public function imprimir(){
@@ -24,23 +25,15 @@ class estilo{
         return $this->verificar($texto1,$texto2);
     }
 }
-// $hola = "mike";
-// $miEstilo = new Estilo($hola);
-// $guardar = $miEstilo->imprimir();
-// $conexion = mysqli_connect("localhost","root","","u");
-// //   $sql = "INSERT INTO tb_u(texto) VALUE('$guardar')";
-// //   $consulta = $conexion->query($sql); 
-// //   if($consulta){
-    
-// //   }
 
-//   $sql = "select * from tb_u where id =1";
-//   $consulta = $conexion->query($sql);
-//   while($fila = $consulta->fetch_assoc()){
-//       $salida = $fila['texto'];
-//       if ($miEstilo->texto($hola,$salida)) {
-//           echo "El mensaje es correcto.";
-//       } else {
-//           echo "El mensaje no es correcto.";
-//       }
-//   }
+class id{
+
+    public static function encriptar($dato) {
+        return base64_encode($dato);
+    }
+    
+    public static function desencriptar($dato) {
+        return base64_decode($dato);
+    }
+
+}

@@ -1,16 +1,19 @@
 create schema bd_ddm;
 use bd_ddm;
 create table tb_usuarios(
-documento varchar(10) not null,
+id_user int not null,
 nombre varchar(60) not null,
 apellido varchar(60) not null,
-fecha_nacimiento varchar(50) not null,
-primary key (documento)
+email varchar(250) not null,
+pasword varchar(250) not null,
+fecha_registro varchar(50) not null,
+primary key (email)
 );
-drop table tb_productos;
+drop table tb_usuarios;
 truncate tb_usuarios;
 select * from tb_usuarios;
-INSERT INTO tb_usuarios(documento, nombre,apellido,fecha_nacimiento)value('1','hola','quetal','14');
+select * from tb_usuarios where email='juan' and pasword='$2y$10$vL3E7P2YVkP35tH5gXdhruJFjOMsm9VrqgAaB9GU4FBqStLNKjxtS';
+INSERT INTO tb_usuarios(id_user, nombre,apellido,email,pasword,fecha_registro)value('1','hola','quetal','holaqeu tal','dawddad',now());
 
 create table tb_productos(
 id_producto varchar(10) not null,
@@ -29,3 +32,4 @@ select img,producto_nombre,descripcion_producto from tb_productos;
 select * from tb_productos where id_producto = 1;
 select * from tb_productos;	
 drop table tb_productos; 
+

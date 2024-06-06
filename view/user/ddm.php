@@ -17,7 +17,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>DDM</title>
-    <link rel="stylesheet" href="../../css/stylo1.css">
+    <link rel="stylesheet" href="../css/stylo1.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     
   </head>
@@ -45,7 +45,7 @@
             <li><a class="dropdown-item" href="#">Perfil</a></li>
             <li><a class="dropdown-item" href="#"> Compras</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="../../login.php">Cerrar sesión</a></li>
+            <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
           </ul>
         </li>
         <li class="nav-item">
@@ -70,6 +70,10 @@
         </li>
       </ul>
 
+
+      
+
+
       <form class="d-flex" role="search">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
@@ -83,21 +87,16 @@
   </div>
 </nav>
 
-<center><div id="offers">
-        <div class="offer active"><img src="../../img/oferta2.png" alt="" height="300px" width="100%" ></div>
-        <div class="offer"><img src="../../img/oferta1.png" alt="" height="300px" width="100%"></div>
-        <div class="offer"><img src="../../img/oferta3.png" alt="" height="300px" width="100%"></div>
-        </div>
-</center>
+<div class="container">
 
-    <center>
-    <div class="productos">
-      <p class="texto">Aquí van todos los productos, con sus imágenes, sus ofertas y sus descuentos, la descripción y todo.</p> 
-    </div>
-    </center>
+  <?php
+    include( $seccion.".php");
+  ?>
+
+
+</div>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="../../js/barra_oferta.js"></script>
   </body>
 </html>

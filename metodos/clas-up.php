@@ -43,7 +43,7 @@ class cargarProducto {
         $tipo = pathinfo($nombre, PATHINFO_EXTENSION); 
         $ruta_provicional = $file["tmp_name"];
         $carpeta = "../../fotos/";    
-        if($tipo != 'jpg' && $tipo != 'png' && $tipo != 'JPG'){
+        if($tipo != 'jpg' && $tipo != 'png' && $tipo != 'gif' && $tipo != 'jfif' && $tipo != 'eps' && $tipo != 'svg'){
             echo "Error, el archivo tiene que ser jpg o png";
         }else{
             $src = $carpeta.$nombre;

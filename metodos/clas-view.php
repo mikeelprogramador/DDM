@@ -14,7 +14,7 @@ class Vista{
             $salida .= '<div class="card-body">';
             $salida .= '<h5 class="card-title">'.$fila['producto_nombre'].'</h5>';
             $salida .= '<p class="card-text">'.$fila['descripcion_producto'].'</p>';
-            $salida .= '<a href="#" class="btn btn-primary">Comprar</a>';
+            $salida .= '<a href="admin.php?seccion=seccion-cont&conts='.$fila['id_producto'].'" class="btn btn-primary">Comprar</a>';
             $salida .= '</div>';
             $salida .= '</div>';
             $salida .= '</div>';
