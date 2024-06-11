@@ -48,8 +48,34 @@ class Model {
     public static function sqlMostrarProductos($search = null){
         include("bd-conect/inclucion-bd.php"); 
         $sql = "select * from tb_productos ";
-        $search != null? $sql .= " where producto_nombre like '%$search%' or descripcion_producto like '%$search%' ": "" ;
-        return $resulatdo = $conexion->query($sql);
+        $palabra = explode(" ",$search);
+        var_dump($palabra);
+        if( $search != null ){
+            $sql .= "where ";
+            for($i = 0; $i<count($palabra); $i++){
+                echo $palabra[$i];
+                $sql .= "producto_nombre like '%".$palabra[$i]."%' or descripcion_producto like '%".$palabra[$i]."%'";
+                if($i == count($palabra)){
+                    echo "1";
+                }else{
+                    echo "2";
+                }
+            }
+        }
+       
+        // if($search != null){
+        //     $sql .= "where ";
+        //     $contador = 0; 
+        //     $i = 0;
+        //     while($i < count($palabra) || $contador<10000){
+        //         $sql .= "producto_nombre like '%".$palabra[$i]."%' or descripcion_producto like '%".$palabra[$i]."%' or";
+        //         $i ++;
+        //         $contador ++;
+                
+        //     }
+        // }
+        echo $sql; 
+        //return $resulatdo = $conexion->query($sql);
     }
 
 }
