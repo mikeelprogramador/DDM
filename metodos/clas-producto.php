@@ -50,8 +50,4 @@ class cargarProducto {
         }
         return $salida;
     }
-
-    public static function buscarProducto($text = null){
-        
-    }
 }
