@@ -16,7 +16,7 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>DDM</title>
+    <title><?php echo $seccion; ?></title>
     <link rel="stylesheet" href="../../css/stylo1.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     
@@ -25,7 +25,7 @@
 
   <nav class="navbar navbar-expand-lg bg-gris-oscuro" id="nav">
   <div class="container-fluid">
-    <img src="../../img/logo.png" alt="" width="5%">
+    <a class="navbar-brand" href="#">LOGO</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -73,7 +73,7 @@
       <form class="d-flex" role="search">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="#"><img src="../../img/carro.png" alt=""></a>
+          <a class="nav-link active" aria-current="page" href="#">Carrito</a>
         </li> </ul>
         <input class="form-control me-2" type="search" placeholder="Buscar productos" aria-label="Search">
         <button class="btn btn-outline-success " type="submit">Buscar</button>
