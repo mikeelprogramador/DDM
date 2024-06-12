@@ -1,6 +1,6 @@
-
-<input type="text" placeholder="Buscar producto...." name="search" oninput="busqueda(event)">
-<input type="button" value="Buscar" >
+<label for="">Buscar</label>
+<input type="text" placeholder="Buscar producto...." name="search" oninput="busquedaAdm(event)">
+<link rel="stylesheet" href="../../css/stylo4.css">
 
 
 <div class="search" id="search">

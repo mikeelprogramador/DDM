@@ -39,7 +39,7 @@ class cargarProducto {
         $tipo = pathinfo($nombre, PATHINFO_EXTENSION); 
         $ruta_provicional = $file["tmp_name"];
         $carpeta = "../../fotos/";    
-        if($tipo != 'jpg' && $tipo != 'png' && $tipo != 'gif'&& $tipo != 'tiff' && $tipo != 'webp'&& $tipo != 'bmp'&& $tipo != 'jpeg' && $tipo != 'jfif'){
+        if($tipo != 'jpg' && $tipo != 'png' && $tipo != 'gif'&& $tipo != 'tiff' && $tipo != 'webp' && $tipo != 'bmp'&& $tipo != 'jpeg' && $tipo != 'jfif'){
             $salida = "0";
         }else if($tamaño > 3*1024*1024){
             $salida = "1";
