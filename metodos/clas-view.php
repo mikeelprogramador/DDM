@@ -32,11 +32,12 @@ class Vista{
         $salida .= "<th scope='col'>ID</th>";
         $salida .= "<th scope='col'>Nombre</th>";
         $salida .= "<th scope='col'>Descripción</th>";
+        $salida .= "<th scope='col'>Caracteristicas</th>";
         $salida .= "<th scope='col'>Precio</th>";
-        $salida .= "<th scope='col'>Categoría</th>";
         $salida .= "<th scope='col'>Cantidad</th>";
         $salida .= "<th scope='col'>Imagen</th>";
         $salida .= "<th scope='col'>Editar</th>";
+        $salida .= "<th scope='col'>Eliminar</th>";
         $salida .= "</tr></thead><tbody>"; // Encabezado de la tabla con clase 'thead-dark'
     
         $consulta = Model::sqlMostrarProductos($text);
@@ -48,11 +49,11 @@ class Vista{
             $salida .= "<td>{$fila[3]}</td>";
             $salida .= "<td>{$fila[4]}</td>";
             $salida .= "<td>{$fila[5]}</td>";
-            $salida .= "<td><img src='{$fila[7]}' alt='Imagen del producto' class='img-fluid img-thumbnail' style='max-width: 100px; height: auto;'></td>"; // Imagen con clases de Bootstrap y estilos personalizados
+            $salida .= "<td><img src='{$fila[6]}' alt='Imagen del producto' class='img-fluid img-thumbnail' style='max-width: 100px; height: auto;'></td>"; // Imagen con clases de Bootstrap y estilos personalizados
             $salida .= "<td><button type='button'>Editar</button></td>"; // Botón de edición con clase de Bootstrap
+            $salida .= "<td><button type='button' onclick='decision($fila[0])'>Eliminar</button></td>"; 
             $salida .= "</tr>";
         }
-    
         $salida .= "</tbody></table>";
         $salida .= "</div>"; // Cierra el contenedor de tabla responsiva
         return $salida;

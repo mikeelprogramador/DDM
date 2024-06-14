@@ -1,13 +1,13 @@
 <?php
 class cargarProducto {
 
-    public static function cargarProducto($id,$nombre,$descrip,$caracter,$color,$cantidad,$oferta,$img,$precio){
+    public static function cargarProducto($id,$nombre,$descrip,$caracter,$cantidad,$oferta,$img,$precio,$color){
         $salida = 0;
        include_once("modelo.php");
        if(cargarProducto::verificarProducto($id) == 1){
            $salida += 0;
        }else{
-            $consulta = Model::sqlCargarProducto($id,$nombre,$descrip,$caracter,$color,$cantidad,$oferta,$img,$precio);
+            $consulta = Model::sqlCargarProducto($id,$nombre,$descrip,$caracter,$cantidad,$oferta,$img,$precio,$color);
             if($consulta){
                 $salida += 1;
             }else{
@@ -49,5 +49,17 @@ class cargarProducto {
             $salida .= "../../fotos/".$nombre;
         }
         return $salida;
+    }
+
+    public static function eliminarProducto($id){
+        include_once("modelo.php");
+        $salida = 0;
+        $consulta = Model::sqlEliminarProducto($id);
+        if( $consulta ){
+            $salida += 1; //si se elimino correctamnete
+        }else{
+            $salida += 0;
+        }
+        return $salida; 
     }
 }
