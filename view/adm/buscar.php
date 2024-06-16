@@ -36,16 +36,18 @@ if(isset($_POST['enviar'])){
         header("location: admin.php?men=img".$img."&seccion=seccion-ag-pro");
       }
     }
-    if( $img == "0" || $img =="1" ){
-  
-    }else{
-      $nowProducto = cargarProducto::cargarProducto($id,$nombre,$descrip,$caracter,$cantidad,$ofertas,$img,$precio,$color);
-      if( $nowProducto == 0 ){
-        header("location: admin.php?men=".$nowProducto."&seccion=seccion-ag-pro");
-      }if( $nowProducto == 1 ){
-        header("location: admin.php?men=".$nowProducto."&seccion=seccion-ag-pro");
-      }if( $nowProducto == 2 ){
-        header("location: admin.php?men=".$nowProducto."&seccion=seccion-ag-pro");
+    if( $img != "0" || $img !="1" ){
+      if( $id != "" && $nombre != "" && $_FILES["card-img"] != "" ){
+        $nowProducto = cargarProducto::cargarProducto($id,$nombre,$descrip,$caracter,$cantidad,$ofertas,$img,$precio,$color);
+        if( $nowProducto == 0 ){
+          header("location: admin.php?men=".$nowProducto."&seccion=seccion-ag-pro");
+        }if( $nowProducto == 1 ){
+          header("location: admin.php?men=".$nowProducto."&seccion=seccion-ag-pro");
+        }if( $nowProducto == 2 ){
+          header("location: admin.php?men=".$nowProducto."&seccion=seccion-ag-pro");
+        }
+      }else {
+        header("location: admin.php?men=2&seccion=seccion-ag-pro");
       }
-  }
+    } 
   }
