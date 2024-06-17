@@ -38,10 +38,19 @@ class Model {
         $sql.= "VALUE('$id','$nombre','$descrip','$caracter','$cantidad','$oferta','$img','$precio','$color')";
         return $resulatdo = $conexion->query($sql);
     }
-
-    public static function sqlverificarProducto($id){
+    /**
+     * Metodo para verificar si un producto y para mostrar un producto 
+     * param @palabra la palabra clave para buscar o mostrar
+     */
+    public static function sqlverificarProducto($id,$palabra){
         include("bd-conect/inclucion-bd.php");
-        $sql = "select count(*) from tb_productos where id_producto = '$id'";
+        if( $palabra == "mostrar" ){
+            $sql = "select * ";
+        }
+        if( $palabra == "buscar" ){
+            $sql = "select count(*) ";
+        }
+        $sql .= "from tb_productos where id_producto = '$id'";
         return $resulatdo = $conexion->query($sql);
     }
 
@@ -73,6 +82,13 @@ class Model {
         include("bd-conect/inclucion-bd.php"); 
         $sql = "DELETE FROM tb_categoriasProducto WHERE id_producto =  '$id'";
         $resultado = $conexion->query($sql);
+    }
+
+    public static function sqlComentarios($comentario,$id_producto,$id_usuario){
+        include("bd-conect/inclucion-bd.php"); 
+        $sql = "INSERT INTO tb_comentarios(comentario,fechaComentario,id_producto,id_usuario)";
+        $sql .= "value('$comentario',now(),'$id_producto','$id_usuario')";
+        $resulatdo = $conexion->query($sql);
     }
 
 }
