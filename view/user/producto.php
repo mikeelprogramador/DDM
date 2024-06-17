@@ -9,7 +9,7 @@ echo Vista::ContenidoProducto($id);
 
 <br><br>
 <form action="consultas.php?data=<?php echo $_GET['data'];  ?>&name=en" method="post">
-<textarea name="comentario" id=""></textarea>
+<textarea name="comentario" id="" onclick="aparece()"></textarea>
 <input type="submit">
 </form>
 
