@@ -24,20 +24,20 @@ if(isset($_POST['enviar'])){
     $color = $_POST['color-pro'];
     $cantidad = $_POST['cantidad-pro'];
     $ofertas = $_POST['oferta-pro'];
-    $precio = $_POST['precio-pro']; 
+    (isset($_POST['precio']) ?$precio = number_format($_POST['precio-pro'], 2, ',', '.'): $precio = 0 );
     $img = '';
   
-    if(isset($_FILES["card-img"])){
-      $filas =  $_FILES["card-img"];
-      $img  = cargarProducto::img($filas);
+    if(isset($_FILES['card-img'])){
+      $files =  $_FILES['card-img'];
+      $img  = cargarProducto::img($files);
       if( $img == "0" ){
         header("location: admin.php?men=img".$img."&seccion=seccion-ag-pro");
       }if( $img == "1" ){
         header("location: admin.php?men=img".$img."&seccion=seccion-ag-pro");
       }
-    }
+    } 
     if( $img != "0" || $img !="1" ){
-      if( $id != "" && $nombre != "" && $_FILES["card-img"] != "" ){
+      if(  !empty($_FILES['card-img']) && $id != "" && $nombre != "" ){
         $nowProducto = cargarProducto::cargarProducto($id,$nombre,$descrip,$caracter,$cantidad,$ofertas,$img,$precio,$color);
         if( $nowProducto == 0 ){
           header("location: admin.php?men=".$nowProducto."&seccion=seccion-ag-pro");
