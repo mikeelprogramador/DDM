@@ -84,4 +84,17 @@ class Vista{
         }
         return $salida;
     }
+
+    public static function viewComentarios($id){
+        include_once("modelo.php");
+        $salida = "";
+        $consulta = Model::sqlViewComentarios($id);
+        while($fila = $consulta->fetch_array()){
+            $salida .= $fila[0]."<br>";
+            $salida .= $fila[1]."<br>";
+            $salida .= $fila[2]."<br>";
+        }
+        return $salida;
+    }
+
 }    

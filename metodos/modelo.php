@@ -74,6 +74,7 @@ class Model {
     public static function sqlEliminarProducto($id){
         include("bd-conect/inclucion-bd.php"); 
         Model::sqlEliminarProductoCategoria($id);
+        Model::sqlEliminarComentario($id);
         $sql = "DELETE FROM tb_productos WHERE id_producto = '$id'";
         return $resultado = $conexion->query($sql);
     }
@@ -84,11 +85,26 @@ class Model {
         $resultado = $conexion->query($sql);
     }
 
+    public static function sqlEliminarComentario($id){
+        include("bd-conect/inclucion-bd.php");
+        $sql = "DELETE FROM tb_comentarios where id_producto = '$id'";
+        $resultado = $conexion->query($sql);
+    }
+
     public static function sqlComentarios($comentario,$id_producto,$id_usuario){
         include("bd-conect/inclucion-bd.php"); 
         $sql = "INSERT INTO tb_comentarios(comentario,fechaComentario,id_producto,id_usuario)";
         $sql .= "value('$comentario',now(),'$id_producto','$id_usuario')";
         $resulatdo = $conexion->query($sql);
+    }
+
+    public static function sqlViewComentarios($id_pro){
+        include("bd-conect/inclucion-bd.php"); 
+        $sql = "select tb_usuarios.nombre,comentario,fechaComentario from tb_comentarios ";
+        $sql .= "inner join tb_usuarios on tb_comentarios.id_usuario = tb_usuarios.id ";
+        $sql .= "inner join tb_productos on tb_comentarios.id_producto = tb_productos.id_producto ";
+        $sql .= "where tb_productos.id_producto = '$id_pro' ";
+        return $resultado = $conexion->query($sql);
     }
 
 }

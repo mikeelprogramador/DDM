@@ -9,12 +9,18 @@ echo Vista::ContenidoProducto($id);
 
 <br><br>
 <form action="consultas.php?data=<?php echo $_GET['data'];  ?>&name=en" method="post">
-<textarea name="comentario" id="" onclick="aparece()"></textarea>
+<input type="text" name="comentario" id="" onclick="aparece()" >
 <input type="submit">
 </form>
 
 <hr>
 <div class="comentarios">
     <label for="">Cajas de comentarios</label>
-
+    <br><br>
+    <div class="coment">
+        <?php
+            include_once("../../metodos/clas-view.php");
+            echo Vista::viewComentarios($id);
+        ?>
+    </div>
 </div>
