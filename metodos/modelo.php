@@ -95,7 +95,7 @@ class Model {
         include("bd-conect/inclucion-bd.php"); 
         $sql = "INSERT INTO tb_comentarios(comentario,fechaComentario,id_producto,id_usuario)";
         $sql .= "value('$comentario',now(),'$id_producto','$id_usuario')";
-        $resulatdo = $conexion->query($sql);
+        return $resulatdo = $conexion->query($sql);
     }
 
     public static function sqlViewComentarios($id_pro){

@@ -5,8 +5,8 @@ class Productos{
         $salida = 0;
         $consulta = Model::sqlComentarios($comentario,$id_producto,$id_usuario);
         if($consulta){
-            $salida = 1; 
+            $salida = 1;
         }
-        return $salida;
+        return $salida; 
     }
 }

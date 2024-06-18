@@ -92,7 +92,7 @@ class Vista{
         while($fila = $consulta->fetch_array()){
             $salida .= $fila[0]."<br>";
             $salida .= $fila[1]."<br>";
-            $salida .= $fila[2]."<br>";
+            $salida .= $fila[2]."<br><br>";
         }
         return $salida;
     }

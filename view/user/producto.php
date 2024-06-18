@@ -8,9 +8,9 @@ echo Vista::ContenidoProducto($id);
 <a href="ddm.php"><button>Regresar</button></a>
 
 <br><br>
-<form action="consultas.php?data=<?php echo $_GET['data'];  ?>&name=en" method="post">
-<input type="text" name="comentario" id="" onclick="aparece()" >
-<input type="submit">
+<form>
+<input type="text" name="comentario" id="comentario"  >
+<input type="submit" onclick="apareceCometario(<?php echo $_GET['data'];  ?>)">
 </form>
 
 <hr>
