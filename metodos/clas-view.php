@@ -82,6 +82,9 @@ class Vista{
             $salida .= "<img src='{$fila[6]}'>"."<br>";
             $salida .= $fila[7]."<br>";
             $salida .= $fila[8]."<br>";
+            $salida .= "<input type='checkbox' name='agregar' id='like'>Agregar  <br> ";
+            $salida .= "<input type='checkbox' name='like' id='like' onclick='megusta(this)'>Like <br> ";
+            $salida .= "<input type='checkbox' name='like' id='dislike' onclick='megusta(this)'>Dislike <br><br>    ";
             
         }
         return $salida;

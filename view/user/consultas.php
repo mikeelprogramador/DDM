@@ -1,7 +1,7 @@
 <?php
 session_start();
 include_once("../../cajon/bootstrap/bootstrap.php");
-include_once("../../metodos/clas-user.php");
+include_once("../../metodos/clas-comentarios.php");
 include_once("../../metodos/clas-view.php");
 if( isset($_POST['agregarComentario']) && $_POST['agregarComentario'] == true ){
     $comentario = $_POST['comentario'];

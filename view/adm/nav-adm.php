@@ -64,6 +64,24 @@
         <li class="nav-item">
           <a class="nav-link disabled" aria-disabled="true">Bienvenido a DDM</a>
         </li>
+        <?php 
+          include_once("/metodos/clas-admin.php");
+          if( Adim::verificarPerfil($_SESSION['id']) == 0){
+            ?>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Super admin 
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Crear Ofertas</a></li>
+                <li><a class="dropdown-item" href="#">Actualizar Ofertas</a></li>
+                <li><a class="dropdown-item" href="#">Eliminar Ofertas</a></li>
+                <li><a class="dropdown-item" href="#">Buscar Ofertas</a></li>
+              </ul>
+            </li>
+            <?php
+          }
+        ?>
       </ul> 
     </div>
   </div>

@@ -4,7 +4,7 @@ class cargarProducto {
     public static function cargarProducto($id,$nombre,$descrip,$caracter,$cantidad,$oferta,$img,$precio,$color){
         $salida = 0;
        include_once("modelo.php");
-       if(cargarProducto::verificarProducto($id) == 1){
+       if(cargarProducto::verificarProducto($id) == 1 ){
            $salida += 0;
        }else{
             $consulta = Model::sqlCargarProducto($id,$nombre,$descrip,$caracter,$cantidad,$oferta,$img,$precio,$color);
@@ -15,6 +15,15 @@ class cargarProducto {
             }
         }
        return $salida;
+    }
+    public static function AgregarMegustaProducos($id){
+        include_once("modelo.php");
+        $salida = 0;
+        $consulta = Model::sqlAgregarMegustaProducos($id);
+        if($consulta){
+            $salida = 1;
+        }
+        return $salida;
     }
 
     public static function verificarProducto($id){

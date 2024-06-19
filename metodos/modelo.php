@@ -5,13 +5,13 @@ class Model {
     public static function sqlRegistarUsuario($id,$nombre,$apellido,$email,$newPwd){
         include("bd-conect/inclucion-bd.php");
         $sql = "INSERT INTO tb_usuarios(id,nombre,apellido,email,pasword,fecha_registro,cater_user) ";
-        $sql .= "VALUES($id,'$nombre','$apellido','$email','$newPwd',now(),'user1')";
+        $sql .= "VALUES($id,'$nombre','$apellido','$email','$newPwd',now(),'2')";
         return $resultado = $conexion->query($sql);
     }
 
     public static function sqlInicoSesion($email,$newPwd){
         include("bd-conect/inclucion-bd.php");
-        $sql = "select (select cater_user from tb_usuarios where email = '$email' and pasword = '$newPwd' ), count(*) from tb_usuarios";
+        $sql = "select (select id_cate_user from tb_usuarios where email = '$email' and pasword = '$newPwd' ), count(*) from tb_usuarios";
         return $resulatdo = $conexion->query($sql);
     }
 
@@ -73,15 +73,22 @@ class Model {
 
     public static function sqlEliminarProducto($id){
         include("bd-conect/inclucion-bd.php"); 
-        Model::sqlEliminarProductoCategoria($id);
+        Model::sqlEliminarFkProductos(1,$id);
+        Model::sqlEliminarFkProductos(2,$id);
         Model::sqlEliminarComentario($id);
+        
         $sql = "DELETE FROM tb_productos WHERE id_producto = '$id'";
         return $resultado = $conexion->query($sql);
     }
 
-    public static function sqlEliminarProductoCategoria($id){
+    public static function sqlEliminarFkProductos($put,$id){
         include("bd-conect/inclucion-bd.php"); 
-        $sql = "DELETE FROM tb_categoriasProducto WHERE id_producto =  '$id'";
+        if( $put == 1){
+            $tabla = "tb_categoriasProducto";
+        }if($put == 2){
+            $tabla = "tb_megusta";
+        }
+        $sql = "DELETE FROM $tabla WHERE id_producto =  '$id'";
         $resultado = $conexion->query($sql);
     }
     /**
@@ -120,5 +127,18 @@ class Model {
         return $resultado = $conexion->query($sql);
     }
 
+    public static function sqlAgregarMegustaProducos($id){
+        include("bd-conect/inclucion-bd.php"); 
+        $sql = "INSERT INTO  tb_megusta(id_producto)values('$id')";
+        return $resulatdo = $conexion->query($sql);
+
+    }
+
+    public static function sqlVerificarPerfil($id_user){
+        include("bd-conect/inclucion-bd.php"); 
+        $sql = "select id_cater_user from tb_personas where id = '$id_user'";
+        return $resulatdo = $conexion->query($sql);
+
+    }
 
 }

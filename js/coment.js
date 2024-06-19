@@ -34,11 +34,22 @@ function eliminarComentario(id_comen, id_pro){
         datatype: 'text',
         method: 'post',
         success: function (respuesta){
-            ( respuesta != "" ? $("#coment").html(respuesta): alert("No has ingresado ningun comentario"));
+           // ( respuesta != "" ? $("#coment").html(respuesta): alert("No has ingresado ningun comentario"));
             //console.log(respuesta);
+            $("#coment").html(respuesta)
         },
         error: function (xhr,status,error){
             console.log(error);
         }
     });
+}
+
+function megusta(checkbox){
+    var checkboxes = document.getElementsByName('like');
+      checkboxes.forEach(function(currentCheckbox) {
+        // Desmarcar el checkbox actual si no es el que ha sido seleccionado
+        if (currentCheckbox !== checkbox) {
+          currentCheckbox.checked = false;
+        }
+      });
 }

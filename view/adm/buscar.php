@@ -41,7 +41,9 @@ if(isset($_POST['enviar'])){
     } 
     if( $img != "0" || $img !="1" ){
       if(  !empty($_FILES['card-img']) && $id != "" && $nombre != "" ){
+        
         $nowProducto = cargarProducto::cargarProducto($id,$nombre,$descrip,$caracter,$cantidad,$ofertas,$img,$precio,$color);
+        cargarProducto::AgregarMegustaProducos($id);
         if( $nowProducto == 0 ){
           header("location: admin.php?men=".$nowProducto."&seccion=seccion-ag-pro");
         }if( $nowProducto == 1 ){

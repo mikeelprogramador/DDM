@@ -9,7 +9,8 @@ apellido varchar(60) not null,
 email varchar(260) not null,
 pasword varchar(100) not null,
 fecha_registro varchar(50) not null,
-cater_user varchar(10) not null,
+id_cate_user int not null,
+foreign key(id_cate_user) references tb_cate_user(id_cate_user),
 primary key (id)
 );
 
@@ -70,13 +71,48 @@ foreign key(id_usuario) references tb_usuarios(id)
 );
 
 
+/*Tbala de las valoraciones*/
+create table tb_valoracion(
+id_valoracion int not null,
+valoracion varchar(100) not null,
+primary key(id_valoracion)
+);
+
+create table tb_valoracionComentario(
+id_va_pro int auto_increment null,
+id_valoracion int not null,
+id_producto varchar(10) not null,
+id_usuario int not null,
+foreign key(id_valoracion) references tb_valoracion(id_valoracion),
+foreign key(id_producto) references tb_productos(id_producto),
+foreign key(id_usuario) references tb_usuarios(id),
+primary key(id_va_pro)
+);
+
+
+create table tb_cate_user(
+id_cate_user int not null,
+categoria varchar(100) not null,
+primary key(id_cate_user)
+);
+
+create table tb_permiso(
+id_permiso int not null,
+
+);
+
+
 
 /*Select*/
 select * from tb_usuarios ;		
 select * from tb_productos;
 select * from tb_categorias;
 select * from tb_categoriasProducto;
-select * from tb_comentarios;		
+select * from tb_comentarios;	
+select * from tb_valoracion;
+select * from tb_valoracionComentario;
+select * from tb_cate_user;
+	
 
 /*borrar datos de las tablas*/
 truncate tb_usuarios ;	
@@ -91,6 +127,7 @@ truncate tb_comentarios;
 #drop table tb_categoriasProducto; 
 #drop table tb_productos;
 #drop table tb_comentarios; 
+#drop table tb_valoracion; 
 
 /*Consultas */
 select *  
@@ -102,4 +139,16 @@ inner join tb_categorias as t3 on t1.id_categoria = t3.id_categoria;
 select (select cater_user from tb_usuarios where email = '' and pasword = '' ), count(*) from tb_usuarios;
 
 set sql_safe_updates = 1;
+
+select tb_usuarios.nombre,comentario,fechaComentario from tb_comentarios 
+inner join tb_usuarios on tb_comentarios.id_usuario = tb_usuarios.id
+where id_usuario = 'fku6';
+
+select tb_usuarios.nombre,comentario,fechaComentario from tb_comentarios
+inner join tb_usuarios on tb_comentarios.id_usuario = tb_usuarios.id
+inner join tb_productos on tb_comentarios.id_producto = tb_productos.id_producto
+where tb_productos.id_producto = 'FKT5' ;
+
+
+#insert into tb_megusta(id_producto)values('fku6');
 
