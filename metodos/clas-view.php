@@ -65,7 +65,9 @@ class Vista{
         $salida .= "</div>"; // Cierra el contenedor de tabla responsiva
         return $salida;
     }
-
+    /**
+     * Metodo para visualizar la lista de productos
+     */
     public static function ContenidoProducto($id){
         include_once("modelo.php");
         include_once("../../cajon/bootstrap/bootstrap.php");
@@ -85,14 +87,22 @@ class Vista{
         return $salida;
     }
 
-    public static function viewComentarios($id){
+    /**
+     * Metodo para visuarliza los comentarios
+     */
+    public static function viewComentarios($id_pro,$id_user){
         include_once("modelo.php");
         $salida = "";
-        $consulta = Model::sqlViewComentarios($id);
+        $consulta = Model::sqlViewComentarios($id_pro);
         while($fila = $consulta->fetch_array()){
             $salida .= $fila[0]."<br>";
             $salida .= $fila[1]."<br>";
-            $salida .= $fila[2]."<br><br>";
+            $salida .= $fila[2]."<br>";
+            if( $fila[3] == $id_user){
+                $salida.= "<a href='#'>Actailizar</a><br>";
+                $salida.= "<a href='#' onclick='eliminarComentario(\"$fila[4]\",\"$id_pro\")'>Eliminar</a><br>";
+            }
+            $salida .= "<a href='#'>Responder</a><br><br>";
         }
         return $salida;
     }

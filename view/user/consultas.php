@@ -3,18 +3,21 @@ session_start();
 include_once("../../cajon/bootstrap/bootstrap.php");
 include_once("../../metodos/clas-user.php");
 include_once("../../metodos/clas-view.php");
-if(isset($_GET['comentario'])){
-
+if( isset($_POST['agregarComentario']) && $_POST['agregarComentario'] == true ){
     $comentario = $_POST['comentario'];
-    if($_POST['comentario'] != ""){
-        $id = id::desencriptar($_GET['data']);
-        if( Productos::CrearComentarios($comentario,$id,$_SESSION['id']) == 1){
-            //header("location: ddm.php?seccion=producto&data=".$_GET['data']."");
-            echo Vista::viewComentarios($id);
+    if( $comentario != ""){
+        $id = id::desencriptar($_POST['data']);
+        if( Productos::crearComentarios($comentario,$id,$_SESSION['id']) == 1){
+            echo Vista::viewComentarios($id,$_SESSION['id']);
         }
-    }else{
-        //header("location: ddm.php?seccion=producto&data=".$_GET['data']."");
     }
 }
+if( isset($_POST['eliminarComentario']) && $_POST['eliminarComentario'] == true ){
+    $id_comen = $_POST['comen'];
+    $id = id::desencriptar($_POST['data']);
+    if( Productos::eliminarComentarios($id_comen,$_SESSION['id']) == 1){
+        echo Vista::viewComentarios($id,$_SESSION['id']);
+    }
 
+}
 
