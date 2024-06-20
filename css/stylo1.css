@@ -1,25 +1,92 @@
-.bg-gris-oscuro{
-    background-color: #9AD58E;
-   
 
+.bg-gris-oscuro{
+    background-color:#5E3D2A;
+   
+}
+.nav-link{
+    color: aliceblue;
 }
 .body{
-    background-color: white; 
+    background-color: white ; 
+    
 }
 .offer {
     display: none;
+  
    
 }
 .offer.active {
     display: block;
+    
 }
-.productos{
-   margin-top: 3%;
-   margin-left: 12%;
-   margin-right: 12%;
-   
-   border: 1px solid black;
+
+
+.custom-dropdown .dropdown-item {
+    background-color: #9C5B46;
+    color: black; 
+    background-color: transparent;
 }
-.texto{
-    margin: 2%;
+
+
+.custom-dropdown .dropdown-item:hover {
+    background-color: #9C5B46; 
+    color: black; 
 }
+#boton{
+    background-color: #B34F16; 
+    color: aliceblue;
+    border: 1px solid #9C5B46;
+}
+
+
+/* Estilos personalizados para la navegación */
+.custom-navbar .navbar-nav .nav-link {
+    color: #ffffff; /* Color del texto de los enlaces */
+}
+
+.custom-navbar .navbar-brand {
+    color: #ffffff; /* Color del texto del logo o marca */
+}
+
+/* Estilos para enlaces activos o con hover */
+.custom-navbar .navbar-nav .nav-link.active,
+.custom-navbar .navbar-nav .nav-link:hover {
+    color: #ffcc00; /* Color del texto al estar activo o en hover */
+}
+
+/* Estilos personalizados para el dropdown */
+.custom-navbar .dropdown-menu.custom-dropdown {
+    background-color: #9C5B46; /* Color de fondo del menú desplegable */
+    border-color: #9C5B46; /* Color del borde del menú desplegable */
+}
+
+.custom-navbar .dropdown-menu.custom-dropdown .dropdown-item {
+    color: #ffffff; /* Color del texto del elemento del menú */
+}
+
+.custom-navbar .dropdown-menu.custom-dropdown .dropdown-item:hover {
+    background-color: #5E3D2A; /* Fondo al pasar el ratón por encima */
+    color: #ffcc00; /* Color del texto al pasar el ratón por encima */
+}
+
+
+
+/* Estilos para los separadores */
+.custom-navbar .dropdown-menu.custom-dropdown .dropdown-divider {
+    border-top: 1px solid #666; /* Color del divisor */
+}
+
+/* Estilos para el botón de búsqueda */
+.custom-navbar .btn-outline-success {
+    color: #ffffff; /* Color del texto del botón */
+    border-color: #ffffff; /* Color del borde del botón */
+}
+
+.custom-navbar .btn-outline-success:hover {
+    background-color: #ffcc00; /* Fondo del botón al pasar el ratón por encima */
+    color: #333; /* Color del texto del botón al pasar el ratón por encima */
+    border-color: #ffcc00; 
+}
+
+
+
