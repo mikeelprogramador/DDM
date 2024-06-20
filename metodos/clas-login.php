@@ -37,7 +37,7 @@ class Login {
             while($fila= $consulta->fetch_array()){
                 if( $fila[1] > 0 ){
                     $salida = 1;
-                    if( $fila[0] == "0user"){
+                    if( $fila[0] == "0" || $fila[0] == "1"){
                         $salida = 2; 
                     }
                 }else{
@@ -90,5 +90,15 @@ class Login {
         return $salida;
     }
 
+    public static function actualizarEstadoUser($des,$id_user){
+        include_once("modelo.php");
+        $salida = 0;
+        $consulta = Model::sqlActualizarEstadoUser($des,$id_user);
+        if($consulta){
+            $salida = 1;
+        }
+        return $salida;
+
+    }
 
 }

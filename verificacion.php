@@ -14,6 +14,7 @@ if( isset($_GET['log'])){
         echo $login; 
         if( $login == 1){
             $_SESSION['id'] = $id;
+            Login::actualizarEstadoUser(1, $_SESSION['id']);
             header("location: view/user/ddm.php?");
         }
         if( $login == 0 ){
@@ -24,6 +25,7 @@ if( isset($_GET['log'])){
         }
         if( $login == 2 ){
             $_SESSION['id'] = $id;
+            Login::actualizarEstadoUser(1, $_SESSION['id']);
             header("location: view/adm/admin.php?");
         }
     }
@@ -34,6 +36,7 @@ if( isset($_GET['log'])){
         $registro = Login::registrar($nombre,$apellido,$email,$password);
         if( $registro == 1 ){
             $_SESSION['id'] = $id;
+            Login::actualizarEstadoUser(1, $_SESSION['id']);
             header("location: view/user/ddm.php?");
         }
         if( $registro == 0){

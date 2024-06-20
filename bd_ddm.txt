@@ -10,6 +10,7 @@ email varchar(260) not null,
 pasword varchar(100) not null,
 fecha_registro varchar(50) not null,
 id_cate_user int not null,
+status_user varchar(10) null,
 foreign key(id_cate_user) references tb_cate_user(id_cate_user),
 primary key (id)
 );
@@ -95,16 +96,11 @@ id_cate_user int not null,
 categoria varchar(100) not null,
 primary key(id_cate_user)
 );
-
-create table tb_permiso(
-id_permiso int not null,
-
-);
-
+ select nombre from tb_usuarios where id = '1';
 
 
 /*Select*/
-select * from tb_usuarios ;		
+select * from tb_usuarios ;
 select * from tb_productos;
 select * from tb_categorias;
 select * from tb_categoriasProducto;
@@ -151,4 +147,3 @@ where tb_productos.id_producto = 'FKT5' ;
 
 
 #insert into tb_megusta(id_producto)values('fku6');
-

@@ -51,29 +51,16 @@
             <li><a class="dropdown-item" href="#">Buscar Ofertas</a></li>
           </ul>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Perfil
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Mi perfil</a></li>
-            <li><a class="dropdown-item" href="#"> Acerca de los productos</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="admin.php?seccion=out">Cerrar sesion</a></li>
-          </ul>
-        <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Bienvenido a DDM</a>
-        </li>
         <?php 
-          include_once("/metodos/clas-admin.php");
-          if( Adim::verificarPerfil($_SESSION['id']) == 0){
+          include_once("../../metodos/clas-admin.php");
+          if( Adim::verificarPerfil(1,$_SESSION['id']) == 0){
             ?>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Super admin 
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Crear Ofertas</a></li>
+                <li><a class="dropdown-item" href="#">Seguimiento de Usuarios</a></li>
                 <li><a class="dropdown-item" href="#">Actualizar Ofertas</a></li>
                 <li><a class="dropdown-item" href="#">Eliminar Ofertas</a></li>
                 <li><a class="dropdown-item" href="#">Buscar Ofertas</a></li>
@@ -81,7 +68,21 @@
             </li>
             <?php
           }
-        ?>
+        ?><li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Perfil
+        </a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Mi perfil</a></li>
+          <li><a class="dropdown-item" href="#"> Acerca de los productos</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" href="admin.php?seccion=out">Cerrar sesion</a></li>
+        </ul>
+        <li class="nav-item">
+          <a class="nav-link disabled" aria-disabled="true">
+            Bienvenido SuperAdmin <?php echo Adim::verificarPerfil(2,$_SESSION['id']) ?>
+          </a>
+        </li>
       </ul> 
     </div>
   </div>

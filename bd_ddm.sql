@@ -1,4 +1,4 @@
--- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: bd_ddm
 -- ------------------------------------------------------
@@ -168,6 +168,7 @@ CREATE TABLE `tb_usuarios` (
   `pasword` varchar(100) NOT NULL,
   `fecha_registro` varchar(50) NOT NULL,
   `id_cate_user` int(11) DEFAULT NULL,
+  `status_user` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `id_cate_user` (`id_cate_user`),
   CONSTRAINT `tb_usuarios_ibfk_1` FOREIGN KEY (`id_cate_user`) REFERENCES `tb_cate_user` (`id_cate_user`)
@@ -180,7 +181,7 @@ CREATE TABLE `tb_usuarios` (
 
 LOCK TABLES `tb_usuarios` WRITE;
 /*!40000 ALTER TABLE `tb_usuarios` DISABLE KEYS */;
-INSERT INTO `tb_usuarios` VALUES (1,'mike','sanchez','mike','$2y$10$ft42yWuI8r6VqUuwUPyrQOENYdA0dfrPGuuz6p5h3xHbqWPgEdce2','2024-06-17 10:02:42',0),(2,'juan ','ramos','juan','$2y$10$xAZK8g9T40.wkETuqYoH5eIl43NL4EZpQsCnmSn98tNF/2o54457O','2024-06-17 10:03:05',1);
+INSERT INTO `tb_usuarios` VALUES (1,'mike','sanchez','mike','$2y$10$ft42yWuI8r6VqUuwUPyrQOENYdA0dfrPGuuz6p5h3xHbqWPgEdce2','2024-06-17 10:02:42',0,'Activo'),(2,'juan ','ramos','juan','$2y$10$xAZK8g9T40.wkETuqYoH5eIl43NL4EZpQsCnmSn98tNF/2o54457O','2024-06-17 10:03:05',1,'Activo'),(3,'pepito','sanchez','pepito','$2y$10$6haqpePruHDBf6PI4myMs.yf3v.C1pYytnvzg.XpYCtEPSqVGKMjC','2024-06-19 21:42:30',2,'Inactivo');
 /*!40000 ALTER TABLE `tb_usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -248,4 +249,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-19 12:47:19
+-- Dump completed on 2024-06-19 22:09:10

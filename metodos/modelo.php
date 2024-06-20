@@ -4,7 +4,7 @@ class Model {
 
     public static function sqlRegistarUsuario($id,$nombre,$apellido,$email,$newPwd){
         include("bd-conect/inclucion-bd.php");
-        $sql = "INSERT INTO tb_usuarios(id,nombre,apellido,email,pasword,fecha_registro,cater_user) ";
+        $sql = "INSERT INTO tb_usuarios(id,nombre,apellido,email,pasword,fecha_registro,id_cate_user) ";
         $sql .= "VALUES($id,'$nombre','$apellido','$email','$newPwd',now(),'2')";
         return $resultado = $conexion->query($sql);
     }
@@ -134,11 +134,28 @@ class Model {
 
     }
 
-    public static function sqlVerificarPerfil($id_user){
+    public static function sqlVerificarPerfil($des,$id_user){
         include("bd-conect/inclucion-bd.php"); 
-        $sql = "select id_cater_user from tb_personas where id = '$id_user'";
+        if($des == 1){
+            $dato = "id_cate_user";
+        }if($des == 2){
+            $dato = "nombre";
+        }
+        $sql = "select $dato from tb_usuarios where id = '$id_user'";
         return $resulatdo = $conexion->query($sql);
+    }
 
+    public static function sqlActualizarEstadoUser($des,$id_user){
+        include("bd-conect/inclucion-bd.php"); 
+        $salida = "";
+        if($des == 1){
+            $dato = "Activo";
+        }if($des == 2){
+            $dato = "Inactivo";
+        }
+        $sql = "update tb_usuarios set status_user = '$dato' where id= ('$id_user') ";
+        //echo $sql; 
+        return $resulatdo = $conexion->query($sql);
     }
 
 }
