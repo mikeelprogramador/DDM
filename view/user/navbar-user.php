@@ -23,9 +23,9 @@
   </head>
   <body class="body">
 
-  <nav class="navbar navbar-expand-lg bg-gris-oscuro" id="nav">
+  <nav class="navbar navbar-expand-lg bg-gris-oscuro custom-navbar" id="nav">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">LOGO</a>
+    <img src="../../img/logo.png" alt="">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -41,9 +41,9 @@
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Categorias
           </a>
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu custom-dropdown">
             <li><a class="dropdown-item" href="#">Categoria1</a></li>
-            <li><a class="dropdown-item" href="#"> Categoria2</a></li>
+            <li><a class="dropdown-item" href="#">Categoria2</a></li>
             <li><a class="dropdown-item" href="#">Categoria3</a></li>
             <li><a class="dropdown-item" href="#">Categoria4</a></li>
           </ul>
@@ -58,10 +58,9 @@
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Usuario
           </a>
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu custom-dropdown">
             <li><a class="dropdown-item" href="ddm.php?seccion=perfil">Perfil</a></li>
-            <li><a class="dropdown-item" href="#"> Compras</a></li>
-            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Compras</a></li>
             <li><a class="dropdown-item" href="ddm.php?seccion=out">Cerrar sesión</a></li>
           </ul>
         </li>
@@ -71,17 +70,18 @@
       </ul>
 
       <form class="d-flex" role="search">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Carrito</a>
-        </li> </ul>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#"><img src="../../img/carro.png" alt=""></a>
+          </li>
+        </ul>
         <input class="form-control me-2" type="search" placeholder="Buscar productos" aria-label="Search">
-        <button class="btn btn-outline-success " type="submit">Buscar</button>
+        <button class="btn btn-outline-success" id="boton" type="submit">Buscar</button>
       </form>
-      
     </div>
   </div>
 </nav>
+
 
   <div class="container">
 
