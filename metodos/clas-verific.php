@@ -31,7 +31,7 @@ class Verificaciones{
     public static function buscarIdUsuario($email){
         include_once("modelo.php");
         $salida = 0; 
-        $consulta = Model::sqlUsuario($email);
+        $consulta = Model::sqlUsuario(2,$email);
         while($fila=$consulta->fetch_array()){
             $salida += $fila['id'];
         }
