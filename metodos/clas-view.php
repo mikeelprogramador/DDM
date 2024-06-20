@@ -4,26 +4,29 @@ class Vista{
     /**
      * Funcion para buscar y moestar la flast card de los productos
      */
-    public static function mostrarProductos($text = null){
+    public static function mostrarProductos($text = null) {
         include_once("modelo.php");
         include_once("../../cajon/bootstrap/bootstrap.php");
-        $salida = "";
+        $salida = '<div class="container mt-4">'; 
+        $salida .= '<div class="row">';  
         $consulta = Model::sqlMostrarProductos($text);
-        while($fila = $consulta->fetch_assoc()){
+        while ($fila = $consulta->fetch_assoc()) {
             $id = id::encriptar($fila['id_producto']);
-            $salida .= '<div class="home">';
-            $salida .= '<div class="card" style="width: 18rem;">';
-            $salida .= '<img src="'.$fila['img'].'" class="card-img-top" alt="La imagen no ha sido ubicado">';
-            $salida .= '<div class="card-body">';
-            $salida .= '<h5 class="card-text">COP $ '.$fila['precio'].'</h5>';
+            $salida .= '<div class="col-sm-6 col-md-4 col-lg-3 mb-4">'; 
+            $salida .= '<div class="card h-100" style="width: 100%;">';  
+            $salida .= '<img src="'.$fila['img'].'" class="card-img-top" alt="La imagen no ha sido ubicada">';
+            $salida .= '<div class="card-body d-flex flex-column">';
             $salida .= '<h5 class="card-title">'.$fila['producto_nombre'].'</h5>';
+            $salida .= '<p class="card-text">COP $ '.$fila['precio'].'</p>';
             $salida .= '<p class="card-text">'.$fila['descripcion_producto'].'</p>';
-            $salida .= '<a href="../user/ddm.php?seccion=producto&data='.$id.'" class="btn btn-primary">Comprar</a>';
-            $salida .= '</h5>';
+            $salida .= '<a href="../user/ddm.php?seccion=producto&data='.$id.'" class="btn btn-primary mt-auto">Comprar</a>';  
             $salida .= '</div>';
             $salida .= '</div>';
-            $salida .= '<br><br>';
+            $salida .= '</div>';
         }
+        $salida .= '</div>'; 
+        $salida .= '</div>';  
+    
         return $salida;
     }
     /**
@@ -108,6 +111,32 @@ class Vista{
             $salida .= "<button>Responder</button><br><br>";
         }
         return $salida;
+    }
+
+    public static function perfil($id_user){
+        include_once("modelo.php");
+        $salida = "";
+        $consulta = Model::sqlUsuario(3,$id_user);
+        while($fila = $consulta->fetch_array()){
+            $salida .= "<div class='mb-3'>";
+            $salida .= "<label>Nombre</label>";
+            $salida .= "<input type=text id='edit_nombre' value='$fila[1]' disabled >";
+            $salida .= "</div>";
+            $salida .= "<div class='mb-3'>";
+            $salida .= "<label>Apellido</label>";
+            $salida .= "<input type=text id='edit_apellido' value='$fila[2]' disabled >";
+            $salida .= "</div>";
+            $salida .= "<div class='mb-3'>";
+            $salida .= "<label>Correo</label>";
+            $salida .= "<input type=text value='$fila[3]' disabled >";
+            $salida .= "</div>";
+            $salida .= "<div class='mb-3' id='boton'>";
+            $salida .= "<button onclick='editarDatos()'>Editar datos</button>";
+            $salida .= "<button id='boton_correo' >Cambir correo</button>";
+            $salida .= "<button id='boton_contraseña' >Cambiar contraseña</button>";
+            $salida .= "</div>";
+        }
+        return $salida; 
     }
 
 }    

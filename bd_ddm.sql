@@ -1,4 +1,4 @@
--- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: bd_ddm
 -- ------------------------------------------------------
@@ -35,7 +35,7 @@ CREATE TABLE `tb_cate_user` (
 
 LOCK TABLES `tb_cate_user` WRITE;
 /*!40000 ALTER TABLE `tb_cate_user` DISABLE KEYS */;
-INSERT INTO `tb_cate_user` VALUES (0,'superadmin'),(1,'admin'),(2,'usuario');
+INSERT INTO `tb_cate_user` VALUES (0,'superadmin'),(1,'admin'),(2,'cliente');
 /*!40000 ALTER TABLE `tb_cate_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -109,7 +109,7 @@ CREATE TABLE `tb_comentarios` (
   KEY `id_usuario` (`id_usuario`),
   CONSTRAINT `tb_comentarios_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `tb_productos` (`id_producto`),
   CONSTRAINT `tb_comentarios_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `tb_usuarios` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -118,7 +118,7 @@ CREATE TABLE `tb_comentarios` (
 
 LOCK TABLES `tb_comentarios` WRITE;
 /*!40000 ALTER TABLE `tb_comentarios` DISABLE KEYS */;
-INSERT INTO `tb_comentarios` VALUES (1,'soy un admin y yo comento ','2024-06-19 11:51:39','fk3',1),(2,'y yo soy un usuario y también comento','2024-06-19 11:52:48','fk3',2);
+INSERT INTO `tb_comentarios` VALUES (1,'soy un admin y yo comento ','2024-06-19 11:51:39','fk3',1);
 /*!40000 ALTER TABLE `tb_comentarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -169,6 +169,7 @@ CREATE TABLE `tb_usuarios` (
   `fecha_registro` varchar(50) NOT NULL,
   `id_cate_user` int(11) DEFAULT NULL,
   `status_user` varchar(10) DEFAULT NULL,
+  `foto_user` varchar(1000) DEFAULT 'null',
   PRIMARY KEY (`id`),
   KEY `id_cate_user` (`id_cate_user`),
   CONSTRAINT `tb_usuarios_ibfk_1` FOREIGN KEY (`id_cate_user`) REFERENCES `tb_cate_user` (`id_cate_user`)
@@ -181,7 +182,7 @@ CREATE TABLE `tb_usuarios` (
 
 LOCK TABLES `tb_usuarios` WRITE;
 /*!40000 ALTER TABLE `tb_usuarios` DISABLE KEYS */;
-INSERT INTO `tb_usuarios` VALUES (1,'mike','sanchez','mike','$2y$10$ft42yWuI8r6VqUuwUPyrQOENYdA0dfrPGuuz6p5h3xHbqWPgEdce2','2024-06-17 10:02:42',0,'Activo'),(2,'juan ','ramos','juan','$2y$10$xAZK8g9T40.wkETuqYoH5eIl43NL4EZpQsCnmSn98tNF/2o54457O','2024-06-17 10:03:05',1,'Activo'),(3,'pepito','sanchez','pepito','$2y$10$6haqpePruHDBf6PI4myMs.yf3v.C1pYytnvzg.XpYCtEPSqVGKMjC','2024-06-19 21:42:30',2,'Inactivo');
+INSERT INTO `tb_usuarios` VALUES (1,'mike','sanchez','mike','$2y$10$ft42yWuI8r6VqUuwUPyrQOENYdA0dfrPGuuz6p5h3xHbqWPgEdce2','2024-06-17 10:02:42',0,'Activo',''),(2,'juan ','ramos','juan','$2y$10$xAZK8g9T40.wkETuqYoH5eIl43NL4EZpQsCnmSn98tNF/2o54457O','2024-06-17 10:03:05',1,'Inactivo',''),(3,'pepito','sanchez','pepito','$2y$10$6haqpePruHDBf6PI4myMs.yf3v.C1pYytnvzg.XpYCtEPSqVGKMjC','2024-06-19 21:42:30',2,'Inactivo','');
 /*!40000 ALTER TABLE `tb_usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -208,37 +209,6 @@ LOCK TABLES `tb_valoracion` WRITE;
 INSERT INTO `tb_valoracion` VALUES (0,'add'),(1,'like'),(2,'not like');
 /*!40000 ALTER TABLE `tb_valoracion` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Table structure for table `tb_valoracioncomentario`
---
-
-DROP TABLE IF EXISTS `tb_valoracioncomentario`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tb_valoracioncomentario` (
-  `id_va_pro` int(11) NOT NULL AUTO_INCREMENT,
-  `id_valoracion` int(11) NOT NULL,
-  `id_producto` varchar(10) NOT NULL,
-  `id_usuario` int(11) NOT NULL,
-  PRIMARY KEY (`id_va_pro`),
-  KEY `id_valoracion` (`id_valoracion`),
-  KEY `id_producto` (`id_producto`),
-  KEY `id_usuario` (`id_usuario`),
-  CONSTRAINT `tb_valoracioncomentario_ibfk_1` FOREIGN KEY (`id_valoracion`) REFERENCES `tb_valoracion` (`id_valoracion`),
-  CONSTRAINT `tb_valoracioncomentario_ibfk_2` FOREIGN KEY (`id_producto`) REFERENCES `tb_productos` (`id_producto`),
-  CONSTRAINT `tb_valoracioncomentario_ibfk_3` FOREIGN KEY (`id_usuario`) REFERENCES `tb_usuarios` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tb_valoracioncomentario`
---
-
-LOCK TABLES `tb_valoracioncomentario` WRITE;
-/*!40000 ALTER TABLE `tb_valoracioncomentario` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tb_valoracioncomentario` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -249,4 +219,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-19 22:09:10
+-- Dump completed on 2024-06-20 12:23:26

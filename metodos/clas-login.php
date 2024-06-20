@@ -53,7 +53,7 @@ class Login {
     private static function obtenerPassword($email){
         include_once("modelo.php");
         $salida = "";
-        $consulta = Model::sqlUsuario($email);
+        $consulta = Model::sqlUsuario(2,$email);
         while($fila= $consulta->fetch_array()){
             $salida .= $fila[4];
         }
@@ -73,7 +73,7 @@ class Login {
     private static function encontarUsuario($email){
         include_once("modelo.php");
         $salida = 0;
-        $consulta = Model::sqlUsuario($email,"ven");
+        $consulta = Model::sqlUsuario(1,$email);
         while($fila= $consulta->fetch_array()){
             $salida .= $fila[0];
         }

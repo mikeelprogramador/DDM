@@ -1,6 +1,7 @@
 <?php
 include_once("../../metodos/clas-verific.php");
 include_once("../../metodos/clas-admin.php");
+include_once("../../metodos/clas-view.php");
   if(! isset($_SESSION)) session_start();
   if(! isset($_SESSION['id'])){
     header("location: ../../index.php");
@@ -12,7 +13,7 @@ include_once("../../metodos/clas-admin.php");
       header("location: ../user/ddm.php?");
     }
   }
-  $seccion = "seccion1"; //Sección por defecto.
+  $seccion = "admin_home"; //Sección por defecto.
   if( isset( $_GET[ 'seccion' ] ) ){
     $seccion = $_GET[ 'seccion' ];
   }

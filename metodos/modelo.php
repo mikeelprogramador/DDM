@@ -15,13 +15,19 @@ class Model {
         return $resulatdo = $conexion->query($sql);
     }
 
-    public static function sqlUsuario($email,$ban = null){
+    public static function sqlUsuario($des,$valor){
         include("bd-conect/inclucion-bd.php");
-        if( $ban == null )$sql = "select * ";
-        else{
-            $sql = "select count(*) ";
+        if( $des == 1 ){
+            $dato = "count(*)";
+            $busca = "email";
+        }if( $des == 2 ){
+            $dato = "*";
+            $busca = "email";
+        }if( $des == 3){
+            $dato = "*";
+            $busca = "id";
         }
-        $sql .= "from tb_usuarios where email='$email'";
+        $sql = "select $dato from tb_usuarios where $busca='$valor'";
         return $resulatdo = $conexion->query($sql);
     }
 
