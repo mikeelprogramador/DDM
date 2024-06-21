@@ -154,7 +154,6 @@ class Model {
 
     public static function sqlActualizarEstadoUser($des,$id_user){
         include("bd-conect/inclucion-bd.php"); 
-        $salida = "";
         if($des == 1){
             $dato = "Activo";
         }if($des == 2){
@@ -163,6 +162,21 @@ class Model {
         $sql = "update tb_usuarios set status_user = '$dato' where id= ('$id_user') ";
         //echo $sql; 
         return $resulatdo = $conexion->query($sql);
+    }
+
+    public static function sqlProductos($des,$id_pro){
+        include("bd-conect/inclucion-bd.php"); 
+        if($des == 1)$dato = "producto_nombre";
+        if($des == 2)$dato = "descripcion_producto";
+        if($des == 3)$dato = "caracteristicas_producto";
+        if($des == 4)$dato = "cantidades";
+        if($des == 5)$dato = "id_ofertas";
+        if($des == 6)$dato = "img";
+        if($des == 7)$dato = "precio";
+        if($des == 8)$dato = "color";
+        $sql = "SELECT $dato FROM tb_productos where id_producto = '$id_pro'";
+        return $resulatdo = $conexion->query($sql);
+
     }
 
 }

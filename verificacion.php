@@ -12,7 +12,6 @@ if( isset($_GET['log'])){
 
     if ( $_GET['log'] == 1){// Si log es 1 inicia session
         $login = Login::inicio($email,$password);
-        echo $login; 
         if( $login == 1){
             $_SESSION['id'] = $id;
             Verificaciones::actualizarEstadoUser(1, $_SESSION['id']);

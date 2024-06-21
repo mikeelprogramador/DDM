@@ -106,4 +106,14 @@ class Producto {
         }
         return $salida; 
     }
+
+    public static function productos($des,$id_pro){
+        include_once("modelo.php");
+        $salida = ""; 
+        $consulta = Model::sqlProductos($des,$id_pro);
+        while($fila = $consulta->fetch_array()){
+            $salida .= $fila[0];
+        }
+        return $salida; 
+    }
 }

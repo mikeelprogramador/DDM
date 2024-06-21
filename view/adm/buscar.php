@@ -51,3 +51,7 @@ if(isset($_POST['enviar'])){
       }
     } 
   }
+
+if(isset($_POST['actualizarProducto'])){
+  echo "hola";
+}
