@@ -5,7 +5,7 @@ function editarDatos(){
     //console.log("hola");
 }
 function crearBotonEdit(){
-    var div = document.getElementById("boton");
+    var div = document.getElementById("botones");
     var boton = document.createElement("button");
     boton.type = "button";
     boton.textContent = "Actualizar";

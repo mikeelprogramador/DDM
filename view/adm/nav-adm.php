@@ -26,7 +26,7 @@
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Productos
           </a>
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu custom-dropdown">
             <li><a class="dropdown-item" href="admin.php?seccion=seccion-ag-pro">Agregar productos</a></li>
             <li><a class="dropdown-item" href="admin.php?seccion=seccion-ac-pro"> Acerca de los productos</a></li>
           </ul>
@@ -34,7 +34,7 @@
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Estadisticas
           </a>
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu custom-dropdown">
             <li><a class="dropdown-item" href="#">Estadisticas de Ventas</a></li>
             <li><a class="dropdown-item" href="#">Satisfaccion</a></li>
             <li><a class="dropdown-item" href="#">Esatdisticas de Usuarios</a></li>
@@ -44,7 +44,7 @@
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Ofertas
           </a>
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu custom-dropdown">
             <li><a class="dropdown-item" href="#">Crear Ofertas</a></li>
             <li><a class="dropdown-item" href="#">Actualizar Ofertas</a></li>
             <li><a class="dropdown-item" href="#">Eliminar Ofertas</a></li>
@@ -59,7 +59,7 @@
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Super admin 
               </a>
-              <ul class="dropdown-menu">
+              <ul class="dropdown-menu custom-dropdown">
                 <li><a class="dropdown-item" href="admin.php?seccion=seguimiento_usuarios">Seguimiento de Usuarios</a></li>
                 <li><a class="dropdown-item" href="#">Actualizar Ofertas</a></li>
                 <li><a class="dropdown-item" href="#">Eliminar Ofertas</a></li>
@@ -72,10 +72,10 @@
         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           Perfil
         </a>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Mi perfil</a></li>
+        <ul class="dropdown-menu custom-dropdown">
+          <li><a class="dropdown-item" href="admin.php?seccion=perfil">Mi perfil</a></li>
           <li><a class="dropdown-item" href="#"> Acerca de los productos</a></li>
-          <li><hr class="dropdown-divider"></li>
+         
           <li><a class="dropdown-item" href="admin.php?seccion=out">Cerrar sesion</a></li>
         </ul>
         
@@ -114,6 +114,7 @@
     <script src="../../js/target.js"></script>
     <script src="../../js/productos.js"></script>
     <script src="../../js/alert.js"></script>
+    <script src="../../js/user.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>

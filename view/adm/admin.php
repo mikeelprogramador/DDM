@@ -1,6 +1,7 @@
 <?php
 include_once("../../metodos/clas-verific.php");
 include_once("../../metodos/clas-admin.php");
+include_once("../../metodos/clas-view.php");
   if(! isset($_SESSION)) session_start();
   if(! isset($_SESSION['id'])){
     header("location: ../../index.php");

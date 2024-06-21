@@ -1,6 +1,7 @@
 
 .bg-gris-oscuro{
     background-color:#5E3D2A;
+    max-width: 100%;
    
 }
 .nav-link{
@@ -37,6 +38,7 @@
     color: aliceblue;
     border: 1px solid #9C5B46;
 }
+
 
 
 /* Estilos personalizados para la navegación */
