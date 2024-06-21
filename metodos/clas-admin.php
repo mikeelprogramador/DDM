@@ -1,21 +1,38 @@
 <?php
-class Adim{
+class Admin {
 
-    public static function verUsuarios(){
+    public static function verUsuarios() {
         include_once("modelo.php");
-        $salida = "";
+        $salida = '<table class="user-table">';
+        $salida .= '<thead>';
+        $salida .= '<tr>';
+        $salida .= '<th>Nombre</th>';
+        $salida .= '<th>Email</th>';
+        $salida .= '<th>Fecha de Registro</th>';
+        $salida .= '<th>Rol</th>';
+        $salida .= '<th>Extra</th>';
+        $salida .= '</tr>';
+        $salida .= '</thead>';
+        $salida .= '<tbody>';
+        
         $consulta = Model::sqlCraerIdUsuario(2);
-        while($fila = $consulta->fetch_array()){
-            $salida .= "Nombre: ".$fila[1]."<br>";
-            $salida .= "Apellido: ".$fila[2]."<br>";
-            $salida .= "Email: ".$fila[3]."<br>";
-            $salida .= $fila[5]."<br>";
-            if( $fila[6] == 0) $salida .= "SuperAdmin"."<br>";
-            if( $fila[6] == 1) $salida .= "Admin"."<br>";
-            if( $fila[6] == 2) $salida .= "Cliente"."<br>";
-            $salida .= $fila[7]."<br><br>";
+        while($fila = $consulta->fetch_array()) {
+            $salida .= '<tr>'; 
+            $salida .= '<td>' . htmlspecialchars($fila[1]) . ' ' . htmlspecialchars($fila[2]) . '</td>';
+            $salida .= '<td>' . htmlspecialchars($fila[3]) . '</td>';
+            $salida .= '<td>' . htmlspecialchars($fila[5]) . '</td>';
+            $salida .= '<td>';
+            if($fila[6] == 0) $salida .= 'SuperAdmin';
+            if($fila[6] == 1) $salida .= 'Admin';
+            if($fila[6] == 2) $salida .= 'Cliente';
+            $salida .= '</td>';
+            $salida .= '<td>' . htmlspecialchars($fila[7]) . '</td>';
+            $salida .= '</tr>';
         }
-        return $salida; 
+
+        $salida .= '</tbody>';
+        $salida .= '</table>';
+        return $salida;
     }
 
 }

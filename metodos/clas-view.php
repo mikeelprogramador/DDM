@@ -1,5 +1,6 @@
 <?php
-
+if(! isset($_SESSION))session_start();
+if(! isset($_SESSION['token'])) $_SESSION['token'] = "";
 class Vista{
     /**
      * Funcion para buscar y moestar la flast card de los productos
@@ -9,6 +10,8 @@ class Vista{
         include_once("../../cajon/bootstrap/bootstrap.php");
         $salida = '<div class="container mt-4">'; 
         $salida .= '<div class="row">';  
+        $token = token::Obtener_token(64);
+        $_SESSION['token'] = $token; 
         $consulta = Model::sqlMostrarProductos($text);
         while ($fila = $consulta->fetch_assoc()) {
             $id = id::encriptar($fila['id_producto']);
@@ -19,14 +22,13 @@ class Vista{
             $salida .= '<h5 class="card-title">'.$fila['producto_nombre'].'</h5>';
             $salida .= '<p class="card-text">COP $ '.$fila['precio'].'</p>';
             $salida .= '<p class="card-text">'.$fila['descripcion_producto'].'</p>';
-            $salida .= '<a href="../user/ddm.php?seccion=producto&data='.$id.'" class="btn btn-primary mt-auto">Comprar</a>';  
+            $salida .= '<a href="../../descripcion/acerca_del_producto/product.php?http='.urlencode($token).'&data='.$id.'" class="btn btn-primary mt-auto">Comprar</a>';  
             $salida .= '</div>';
             $salida .= '</div>';
             $salida .= '</div>';
         }
         $salida .= '</div>'; 
         $salida .= '</div>';  
-    
         return $salida;
     }
     /**
@@ -87,7 +89,8 @@ class Vista{
             $salida .= $fila[8]."<br>";
             $salida .= "<input type='checkbox' name='agregar' id='like'>Agregar  <br> ";
             $salida .= "<input type='checkbox' name='like' id='like' onclick='megusta(this)'>Like <br> ";
-            $salida .= "<input type='checkbox' name='like' id='dislike' onclick='megusta(this)'>Dislike <br><br>    ";
+            $salida .= "<input type='checkbox' name='like' id='dislike' onclick='megusta(this)'>Dislike<br>    ";
+            $salida .= "<a href='#'>Comprar</a> <br><br>    ";
             
         }
         return $salida;
