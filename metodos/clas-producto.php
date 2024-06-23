@@ -116,4 +116,9 @@ class Producto {
         }
         return $salida; 
     }
+    
+    public static function agregarCategoria($categoria,$id_pro){
+        include_once("modelo.php");
+        $consulta = Model::sqlAgregarCategoria($categoria,$id_pro);
+    }
 }

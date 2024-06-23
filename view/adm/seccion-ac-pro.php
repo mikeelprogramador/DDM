@@ -6,6 +6,6 @@
 <div class="search" id="search">
      <?php
         include_once("../../metodos/clas-view.php");
-        echo Vista::buscarProducto();
+        echo Vista::buscarProducto('',1);
     ?> 
 </div>

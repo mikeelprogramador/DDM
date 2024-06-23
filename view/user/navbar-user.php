@@ -18,6 +18,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?php echo $seccion; ?></title>
     <link rel="stylesheet" href="../../css/stylo1.css">
+    <link rel="stylesheet" href="../../css/style-nav-usuario.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     
   </head>
@@ -42,10 +43,9 @@
             Categorias
           </a>
           <ul class="dropdown-menu custom-dropdown">
-            <li><a class="dropdown-item" href="#">Categoria1</a></li>
-            <li><a class="dropdown-item" href="#">Categoria2</a></li>
-            <li><a class="dropdown-item" href="#">Categoria3</a></li>
-            <li><a class="dropdown-item" href="#">Categoria4</a></li>
+            <?php
+                echo Vista::mostrarCategorias(1);
+            ?>
           </ul>
         </li>
         <li class="nav-item">
@@ -95,6 +95,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>  
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="../../js/barra_oferta.js"></script>
-    <script src="../../js/coment.js"></script>
+
   </body>
 </html>

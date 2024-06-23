@@ -14,32 +14,65 @@
 </div>
 </center>
 
-
-
-
-<div class="agr">
-<form class="container mt-4" action="buscar.php?" method="post" enctype="multipart/form-data">
-    <div class="mb-3">
-        <label for="name-pro" class="form-label">Nombre del producto</label>
-        <input type="text" class="form-control" id="name-pro" name="name-pro" placeholder="Nombre del producto" oninput="cardstring(event,'title')">
-    </div>
-    <div class="mb-3">
-        <label for="descrip-pro" class="form-label">Descripción del producto</label>
-        <textarea class="form-control" id="descrip-pro" name="descrip-pro" placeholder="Descripción del producto" oninput="cardstring(event,'text')"></textarea>
-    </div>
-    <div class="mb-3">
-        <label for="card-img" class="form-label">Imagen</label>
-        <input class="form-control" type="file" id="card-img" name="card-img" placeholder="Imagen" onchange="preview(event,'#card-img')">
-    </div>
-        <button type="button" class="btn btn-primary" onclick="continuar()">Continuar</button><br><br>
+<div class="container mt-4">
+    <form action="buscar.php" method="post" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="name-pro" class="form-label">Nombre del producto</label>
+            <input type="text" class="form-control" id="name-pro" name="name-pro" placeholder="Nombre del producto" oninput="cardstring(event,'title')">
+        </div>
+        <div class="mb-3">
+            <label for="descrip-pro" class="form-label">Descripción del producto</label>
+            <textarea class="form-control" id="descrip-pro" name="descrip-pro" placeholder="Descripción del producto" oninput="cardstring(event,'text')"></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="card-img" class="form-label">Imagen</label>
+            <input type="file" class="form-control" id="card-img" name="card-img" placeholder="Imagen" onchange="preview(event,'#card-img')">
+        </div>
+        <button type="button" class="btn btn-primary" id="boton_proagre" onclick="continuar()">Continuar</button><br><br>
        
-    <div class="mb-3" id="parte2">
+    <div class="mb-3" id="parte2">  
+        <h3>Contenido interno</h3>
+        <div class="mb-3">
+            <label for="color-pro" class="form-label">Codigo</label>
+            <input type="text" class="form-control" id="id-pro" name="id-pro" placeholder="Codigo del producto">
+        </div>
+        <div class="mb-3">
+            <label for="caracter-pro" class="form-label">Características</label>
+            <textarea class="form-control" id="caracter-pro" name="caracter-pro" placeholder="Características del producto"></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="color-pro" class="form-label">Colores</label>
+            <input type="text" class="form-control" id="color-pro" name="color-pro" placeholder="Ingresa un color">
+        </div>
+        <div class="mb-3">
+            <label for="cantidad-pro" class="form-label">Cantidad disponible</label>
+            <input type="number" class="form-control" id="cantidad-pro" name="cantidad-pro" placeholder="Cantidad de unidades">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Categorías</label><br>
+            <button type="button" class="btn btn-primary" id="select_cate" onclick="aparecerCategorias()">Seleccionar</button>
+            <button type="button" class="btn btn-primary" id="create_cate">Continuar</button>
+        </div>
+        <div id="catego">
+            <?php echo Vista::mostrarCategorias(2); ?>
+            <br>
+        </div>
         
-    </div>
-</form>
+        <div class="mb-3">
+            <label for="oferta-pro" class="form-label">Ofertas</label>
+            <input type="text" class="form-control" id="oferta-pro" name="oferta-pro" placeholder="Crea la oferta">
+        </div>
+        <div class="mb-3">
+            <label for="precio-pro" class="form-label">Valor del producto</label>
+            <input type="number" class="form-control" id="precio-pro" name="precio-pro" placeholder="Valor del producto">
+        </div>
+        <button type="submit" name="enviar" class="btn btn-primary">Enviar</button>
+    </div>     
+    </form>
 </div>
-<br>
 
+
+<br>
 <?php
     if( isset($_GET['men'])){
         if( $_GET['men'] == "2" || $_GET['men'] == "0" ){

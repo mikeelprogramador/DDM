@@ -50,3 +50,4 @@
     </div>
 </div>
 <br>
+<a href="admin.php?seccion=seccion-ac-pro">Regresar</a>

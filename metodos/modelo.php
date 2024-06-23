@@ -62,21 +62,42 @@ class Model {
         return $resulatdo = $conexion->query($sql);
     }
 
-    public static function sqlMostrarProductos($search = null){
+    public static function sqlMostrarProductos($search = null,$des = null,$categoria = null){
         include("bd-conect/inclucion-bd.php"); 
-        $sql = "select * from tb_productos ";
+        if($des == 1 ){
+            $sql = "select * from tb_productos ";
+        }
+        if( $des === 2){
+            $sql = "select * from tb_productos ";
+            if( $search != null )$sql .= Model::textoBuqueda($search);
+        }
+        if($des == 3 ){
+            $sql = "select t1.id_producto,img,producto_nombre,precio,descripcion_producto ";
+            $sql .= "from tb_productos as t1 ";
+            $sql .="inner join tb_categoriasProducto as t2 on t1.id_producto = t2.id_producto ";
+            $sql .= "inner join tb_categorias as t3 on t2.id_categoria = t3.id_Categoria ";
+            if( $search != null ){
+                $sql .= Model::textoBuqueda($search);
+                $sql .= " and t3.categoria = '$categoria' ";
+            }else{
+                $sql .= "where t3.categoria = '$categoria' ";
+            }
+        }
+       // echo $sql ;
+        return $resulatdo = $conexion->query($sql);
+    }
+
+    private static function textoBuqueda($search){
         $palabra = explode(" ",$search);
-        //var_dump($palabra);
-        if( $search != null ){
-            $sql .= "where ";
+        //var_dump($palabra);   
+            $sql = "where ";
             for($i = 0; $i < count($palabra); $i++){
                 $sql .= "(producto_nombre like '%".$palabra[$i]."%' or descripcion_producto like '%".$palabra[$i]."%' or id_producto like '%".$palabra[$i]."%')";       
                 if($i != count($palabra)-1){
                     $sql .= " and ";
                 }
             }
-        }
-        return $resulatdo = $conexion->query($sql);
+        return $sql;
     }
 
     public static function sqlEliminarProducto($id){
@@ -178,5 +199,23 @@ class Model {
         return $resulatdo = $conexion->query($sql);
 
     }
+
+    public static function sqlMostrarCategorias(){
+        include("bd-conect/inclucion-bd.php"); 
+        $sql = "select * from tb_categorias";
+        return $resulatdo = $conexion->query($sql);
+    }
+
+    public static function sqlAgregarCategoria($categorias,$id_pro){
+        include("bd-conect/inclucion-bd.php");
+        $sql ="";
+        for($i = 0; $i <count($categorias); $i ++){
+            $sql .= "INSERT INTO tb_categoriasProducto(id_producto,id_categoria)";
+            $sql .= "values('$id_pro','$categorias[$i]')";
+        }
+        echo $sql;
+        return $resulatdo = $conexion->query($sql);
+    }
+    
 
 }

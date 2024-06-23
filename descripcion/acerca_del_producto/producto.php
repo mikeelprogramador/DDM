@@ -5,7 +5,7 @@
     ?>
 </div>
 
-<a href="<?php echo (Verificaciones::verificarPerfil(1,$_SESSION['id']) == 2? '../../view/user/ddm.php':'../../view/adm/admin.php'); unset($_SESSION['token']); ?>"><button>Regresar</button></a>
+<a href="<?php echo (Verificaciones::verificarPerfil(1,$_SESSION['id']) == 2? '../../view/user/ddm.php':'../../view/adm/admin.php');  ?>"><button>Regresar</button></a>
 
 <br><br>
 <form onsubmit="apareceComentario(event,'<?php  echo $_GET['data'];   ?>')">
@@ -24,3 +24,5 @@
         ?>
     </div>
 </div>
+<script src="../../js/coment.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>  

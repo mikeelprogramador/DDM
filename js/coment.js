@@ -8,7 +8,7 @@ function apareceComentario(event,id){
 
     $.ajax({
         data: param, 
-        url: 'consultas.php',
+        url: 'comet_control.php',
         datatype: 'text',
         method: 'post',
         success: function (respuesta){
@@ -30,7 +30,7 @@ function eliminarComentario(id_comen, id_pro){
 
     $.ajax({
         data: param, 
-        url: 'consultas.php',
+        url: 'comet_control.php',
         datatype: 'text',
         method: 'post',
         success: function (respuesta){

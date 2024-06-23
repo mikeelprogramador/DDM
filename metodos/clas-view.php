@@ -5,14 +5,14 @@ class Vista{
     /**
      * Funcion para buscar y moestar la flast card de los productos
      */
-    public static function mostrarProductos($text = null) {
+    public static function mostrarProductos($text = null,$des = null,$cate = null) {
         include_once("modelo.php");
         include_once("../../cajon/bootstrap/bootstrap.php");
         $salida = '<div class="container mt-4">'; 
         $salida .= '<div class="row">';  
         $token = token::Obtener_token(64);
         $_SESSION['token'] = $token; 
-        $consulta = Model::sqlMostrarProductos($text);
+        $consulta = Model::sqlMostrarProductos($text,$des,$cate);
         while ($fila = $consulta->fetch_assoc()) {
             $id = id::encriptar($fila['id_producto']);
             $salida .= '<div class="col-sm-6 col-md-4 col-lg-3 mb-4">'; 
@@ -34,7 +34,7 @@ class Vista{
     /**
      * Funcion de peticion asincrona para busacr los productos en tiempo real
      */
-    public static function buscarProducto($text = null){
+    public static function buscarProducto($text = null, $des = null){
         include_once("modelo.php");
         include_once("../../cajon/bootstrap/bootstrap.php");
         $salida = "<div class='table-responsive'>"; // Añade un contenedor para la tabla responsiva
@@ -51,7 +51,7 @@ class Vista{
         $salida .= "<th scope='col'>Eliminar</th>";
         $salida .= "</tr></thead><tbody>"; // Encabezado de la tabla con clase 'thead-dark'
     
-        $consulta = Model::sqlMostrarProductos($text);
+        $consulta = Model::sqlMostrarProductos($text,$des);
         while($fila = $consulta->fetch_array()){
             $id = id::encriptar($fila[0]);
             $salida .= "<tr>";
@@ -141,5 +141,22 @@ class Vista{
         }
         return $salida; 
     }
+
+    public static function mostrarCategorias($des){
+        include_once("modelo.php");
+        $salida = "";
+        $consulta = Model::sqlMostrarCategorias();
+        while($fila = $consulta->fetch_array()){
+            if($des == 1){
+                $salida .= "<li><a class='dropdown-item' href='ddm.php?seccion=categorias&cate=$fila[1]'>$fila[1]</a></li>";
+            }
+            if($des == 2){
+                $salida .= "<input type=checkbox  name=categoria$fila[0] value=$fila[0] >$fila[1] <br>";
+            }
+        }
+        return $salida;
+    }
+
+    
 
 }    

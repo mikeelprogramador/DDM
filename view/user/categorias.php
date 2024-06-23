@@ -4,7 +4,7 @@
     <br>
 <div class="subContainer">
     <?php
-      echo Vista::mostrarProductos('',1);
+      echo Vista::mostrarProductos('',3,$_GET['cate']);
     ?>
 </div>
   </p> 

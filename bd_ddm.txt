@@ -1,4 +1,5 @@
 create schema bd_ddm;
+#drop schema bd_ddm;
 use bd_ddm;
 
 /*Tabla de los usuarios*/
@@ -147,3 +148,13 @@ where tb_productos.id_producto = 'FKT5' ;
 
 
 #insert into tb_megusta(id_producto)values('fku6');
+
+select t1.id_producto,img,producto_nombre,precio,descripcion_producto 
+from tb_productos as t1 
+inner join tb_categoriasProducto as t2 on t1.id_producto = t2.id_producto 
+inner join tb_categorias as t3 on t2.id_categoria = t3.id_Categoria
+ where t3.categoria = 'electrodomesticos';
+ 
+ select * from tb_categoriasProducto;
+ truncate  tb_categoriasProducto;
+ 

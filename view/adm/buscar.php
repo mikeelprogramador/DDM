@@ -3,18 +3,18 @@ include_once("../../metodos/clas-view.php");
 include_once("../../metodos/clas-producto.php");
 //Vista administrador de los productos
 if(isset($_GET['search'])){
-    echo Vista::buscarProducto($_GET['search']);
+    echo Vista::buscarProducto($_GET['search'],2);
 }
 //Vista general de los productos
 if(isset($_GET['busquedaGeneral'])){
-    echo Vista::mostrarProductos($_GET['busquedaGeneral']);
+    echo Vista::mostrarProductos($_GET['busquedaGeneral'],2);
 }
 //Desicion para eliminar un producto
 if( isset($_GET['id']) ){
     echo Producto::eliminarProducto($_GET['id']);
 }
 //Formulario para cargar productos
-if(isset($_POST['enviar'])){
+if(isset($_POST ['enviar'])){
   
     $id = $_POST['id-pro']; $nombre = $_POST['name-pro']; $descrip = $_POST['descrip-pro'];
     $caracter = $_POST['caracter-pro']; $color = $_POST['color-pro']; $cantidad = $_POST['cantidad-pro'];
@@ -24,12 +24,20 @@ if(isset($_POST['enviar'])){
     }else{
       $precio = 0;
     }
-  
+
+    $categorias = [];
+    for($i = 1; $i <=6; $i ++){
+      if(isset($_POST['categoria'.$i])  != ''){
+        $categorias[] = $_POST['categoria'.$i];
+        
+      }
+    }
+    
     if(isset($_FILES['card-img'])){
       $files =  $_FILES['card-img'];
       $img  = Producto::img($files);
       if( $img == "0" ){
-        header("location: admin.php?men=img".$img."&seccion=seccion-ag-pro");
+       header("location: admin.php?men=img".$img."&seccion=seccion-ag-pro");
       }if( $img == "1" ){
         header("location: admin.php?men=img".$img."&seccion=seccion-ag-pro");
       }
@@ -38,6 +46,9 @@ if(isset($_POST['enviar'])){
       if(  !empty($_FILES['card-img']) && $id != "" && $nombre != "" ){
         
         $nowProducto = Producto::cargarProducto($id,$nombre,$descrip,$caracter,$cantidad,$ofertas,$img,$precio,$color);
+        if( ! empty($categorias)){
+          Producto::agregarCategoria($categorias,$id);
+        }
         //Producto::AgregarMegustaProducos($id);/*modificar*/
         if( $nowProducto == 0 ){
           header("location: admin.php?men=".$nowProducto."&seccion=seccion-ag-pro");
@@ -51,7 +62,3 @@ if(isset($_POST['enviar'])){
       }
     } 
   }
-
-if(isset($_POST['actualizarProducto'])){
-  echo "hola";
-}

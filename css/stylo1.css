@@ -89,6 +89,11 @@
     color: #333; /* Color del texto del botón al pasar el ratón por encima */
     border-color: #ffcc00; 
 }
-
+#catego{
+    display: none;
+}
+#parte2{
+    display: none;
+}
 
 

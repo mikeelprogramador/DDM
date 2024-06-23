@@ -13,3 +13,4 @@ function crearBotonEdit(){
     document.getElementById("boton_correo").style.display= "none";
     div.appendChild(boton);
 }
+ 
