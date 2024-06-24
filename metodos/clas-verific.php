@@ -37,4 +37,9 @@ class Verificaciones{
         }
         return $salida;
     }
+
+    public static function cargarImagen($img,$id_user){
+        include_once("modelo.php");
+        $consulta = Model::sqlActualizarImagen($img,$id_user);
+    }
 }

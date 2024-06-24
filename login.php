@@ -41,6 +41,18 @@ gtag('config', 'G-05CZXNWMZE');
     <?php
         if( isset($_GET['men'])){
           if( $_GET['men'] == "error-1" || $_GET['men'] == "error-0" ){
+            if( !isset($_SESSION['stop']))  $_SESSION['stop'] = 0;
+            $_SESSION['stop'] += 1;
+            if($_SESSION['stop'] == 3){
+              ?><script> 
+              window.onload = function() {
+                document.getElementById("password").disabled = true;
+                <?php  $_SESSION['stop'] = 0; ?>
+
+              };
+              
+            </script><?php
+            }
             ?><script> 
               window.onload = function() {
                 verificacion('<?php echo $_GET['men']; ?>');

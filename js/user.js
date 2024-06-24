@@ -13,4 +13,39 @@ function crearBotonEdit(){
     document.getElementById("boton_correo").style.display= "none";
     div.appendChild(boton);
 }
+
+function cambiarFoto(img){
+    img.style.cursor = 'pointer';
+    img.addEventListener('click', function() {
+            var foto = document.getElementById('foto_perfil');
+            foto.click();
+    });
+    
+}
+function mostrarImagen(event) {
+    var formData = new FormData();
+    var archivo = event.target.files[0]; // Obtiene el archivo seleccionado
+
+    formData.append('foto_perfil', archivo);
+
+    $.ajax({
+        url: 'consultas.php',
+        type: 'POST', // Método HTTP correcto para enviar archivos
+        data: formData,
+        dataType: 'html',
+        contentType: false, // Importante: false cuando se usa FormData
+        processData: false, // Importante: false cuando se usa FormData
+        success: function(respuesta) {
+            document.getElementById("imagen_perfil").src = respuesta;
+           //console.log(respuesta);
+        },
+        error: function(xhr, status, error) {
+            console.log(error);
+        }
+    });
+}
+
+function eliminarFoto(){
+    console.log("hola mundo");
+}
  

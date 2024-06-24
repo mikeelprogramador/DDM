@@ -49,14 +49,16 @@ class Producto {
     /**
      * Cargar la imagen
      */
-    public static function img($img){
+    public static function img($des,$img){
         $salida = "";
         $file = $img;
         $tamaño = $file["size"];
         $nombre = $file["name"];
         $tipo = pathinfo($nombre, PATHINFO_EXTENSION); 
         $ruta_provicional = $file["tmp_name"];
-        $carpeta = "../../fotos/";    
+        if($des ==1)$carpeta = "../../fotos/"; 
+        if($des ==2)$carpeta = "../../img_user/"; 
+           
         if($tipo != 'jpg' && $tipo != 'png' && $tipo != 'gif'&& $tipo != 'tiff' && $tipo != 'webp' && $tipo != 'bmp'&& $tipo != 'jpeg' && $tipo != 'jfif'){
             $salida = "0";
         }else if($tamaño > 3*1024*1024){
@@ -64,7 +66,9 @@ class Producto {
         }else{
             $src = $carpeta.$nombre;
             move_uploaded_file($ruta_provicional,$src);
-            $salida .= "../../fotos/".$nombre;
+            if($des ==1)$carpeta = $salida .= "../../fotos/".$nombre;
+            if($des ==2)$carpeta = $salida .= "../../img_user/".$nombre;
+            
         }
         return $salida;
     }

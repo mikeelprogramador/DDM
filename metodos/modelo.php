@@ -223,6 +223,14 @@ class Model {
         return $resulatdo = $conexion->query($sql);
     }
 
+    public static function sqlActualizarImagen($img,$id_user){
+        include("bd-conect/inclucion-bd.php");
+        $sql = "UPDATE tb_usuarios ";
+        $sql .= "set foto_user = '$img' ";
+        $sql .= "where id = '$id_user'";
+        return $resulatdo = $conexion->query($sql);
+    }
+
     
 
 }

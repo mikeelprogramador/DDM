@@ -35,7 +35,7 @@ if(isset($_POST ['enviar'])){
 
     if(isset($_FILES['card-img'])){
       $files =  $_FILES['card-img'];
-      $img  = Producto::img($files);
+      $img  = Producto::img(1,$files);
       if( $img == "0" ){
        header("location: admin.php?men=img".$img."&seccion=seccion-ag-pro");
       }if( $img == "1" ){
