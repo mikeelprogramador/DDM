@@ -1,8 +1,9 @@
-<!-- Codigo bootstrap de la card donde se previsualisan los los articulos -->
+<link rel="stylesheet" href="../../css/stylo5.css">
 <br>
 <center>
-    <h3>Vista previa del producto</h3><br>
+    
 <div class="home">
+<h3>Vista previa del producto</h3><br>
     <div class="card" style="width: 18rem;">
         <img src="../../img/img-paciente0.avif" id="card-img" class="card-img-top" alt="Erro al cargar la imagen">
         <div class="card-body">

@@ -43,6 +43,7 @@
                             <input type="text" class="form-control" id="valor" name="precio_pro" value="<?php echo htmlspecialchars(Producto::productos(7, id::desencriptar($_GET['data']))); ?>">
                         </div>
                         <button type="submit" name="actualizarProducto" value="#" class="btn btn-primary btn-block">Actualizar Producto</button>
+                        <br> <a href="admin.php?seccion=seccion-ac-pro">Regresar</a>
                     </form>
                 </div>
             </div>
@@ -50,4 +51,3 @@
     </div>
 </div>
 <br>
-<a href="admin.php?seccion=seccion-ac-pro">Regresar</a>
