@@ -206,16 +206,23 @@ class Model {
         return $resulatdo = $conexion->query($sql);
     }
 
-    public static function sqlAgregarCategoria($categorias,$id_pro){
+    public static function sqlAgregarCategoria($des,$categorias = null,$id_pro = null){
         include("bd-conect/inclucion-bd.php");
-        $sql ="";
-        for($i = 0; $i <count($categorias); $i ++){
-            $sql .= "INSERT INTO tb_categoriasProducto(id_producto,id_categoria)";
-            $sql .= "values('$id_pro','$categorias[$i]')";
+        if( $des == 1){
+            $sql ="INSERT INTO tb_categoriasProducto(id_producto,id_categoria)values";
+            for($i = 0; $i <count($categorias); $i ++){
+                $sql .= "('$id_pro','$categorias[$i]')";
+                if($i != count($categorias)-1){
+                    $sql .= ",";
+                }
+            }
         }
-        echo $sql;
+        if($des == 2 ){
+            $sql = "select count(*) from tb_categorias";
+        }
         return $resulatdo = $conexion->query($sql);
     }
+
     
 
 }

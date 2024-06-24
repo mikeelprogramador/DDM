@@ -117,8 +117,18 @@ class Producto {
         return $salida; 
     }
     
-    public static function agregarCategoria($categoria,$id_pro){
+    public static function agregarCategoria($des,$categoria,$id_pro){
         include_once("modelo.php");
-        $consulta = Model::sqlAgregarCategoria($categoria,$id_pro);
+        $consulta = Model::sqlAgregarCategoria($des,$categoria,$id_pro);
+    }
+
+    public static function contarCategorias($des){
+        include_once("modelo.php");
+        $salida = 0;
+        $consulta = Model::sqlAgregarCategoria($des);
+        while($fila = $consulta->fetch_array()){
+            $salida += $fila[0];
+        }
+        return $salida;
     }
 }

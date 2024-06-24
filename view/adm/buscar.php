@@ -24,15 +24,15 @@ if(isset($_POST ['enviar'])){
     }else{
       $precio = 0;
     }
-
+    /*Crea una array para las categorias*/
     $categorias = [];
-    for($i = 1; $i <=6; $i ++){
+    for($i = 1; $i <=Producto::contarCategorias(2); $i ++){
       if(isset($_POST['categoria'.$i])  != ''){
         $categorias[] = $_POST['categoria'.$i];
         
       }
     }
-    
+
     if(isset($_FILES['card-img'])){
       $files =  $_FILES['card-img'];
       $img  = Producto::img($files);
@@ -46,10 +46,11 @@ if(isset($_POST ['enviar'])){
       if(  !empty($_FILES['card-img']) && $id != "" && $nombre != "" ){
         
         $nowProducto = Producto::cargarProducto($id,$nombre,$descrip,$caracter,$cantidad,$ofertas,$img,$precio,$color);
-        if( ! empty($categorias)){
-          Producto::agregarCategoria($categorias,$id);
+        if( !empty($categorias) ){
+          
+          Producto::agregarCategoria(1,$categorias,$id);
         }
-        //Producto::AgregarMegustaProducos($id);/*modificar*/
+          //Producto::AgregarMegustaProducos($id);/*modificar*/
         if( $nowProducto == 0 ){
           header("location: admin.php?men=".$nowProducto."&seccion=seccion-ag-pro");
         }if( $nowProducto == 1 ){
