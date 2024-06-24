@@ -22,7 +22,7 @@ class Vista{
             $salida .= '<h5 class="card-title">'.$fila['producto_nombre'].'</h5>';
             $salida .= '<p class="card-text">COP $ '.$fila['precio'].'</p>';
             $salida .= '<p class="card-text">'.$fila['descripcion_producto'].'</p>';
-            $salida .= '<a href="../../descripcion/acerca_del_producto/product.php?http='.urlencode($token).'&data='.$id.'" class="btn btn-primary mt-auto">Comprar</a>';  
+            $salida .= '<a href="../../descripcion/acerca_del_producto/product.php?http='.urlencode($token).'&data='.$id.'" class="btn btn-primary mt-auto"  >Comprar</a>';  
             $salida .= '</div>';
             $salida .= '</div>';
             $salida .= '</div>';
