@@ -22,14 +22,16 @@ function cambiarFoto(img){
     });
     
 }
-function mostrarImagen(event) {
+
+function mostrarImagen(event,des) {
     var formData = new FormData();
     var archivo = event.target.files[0]; // Obtiene el archivo seleccionado
 
     formData.append('foto_perfil', archivo);
-
+    if(des === 1) ur = 'consultas.php';
+    if(des === 2) ur = 'buscar.php';
     $.ajax({
-        url: 'consultas.php',
+        url: ur,
         type: 'POST', // Método HTTP correcto para enviar archivos
         data: formData,
         dataType: 'html',

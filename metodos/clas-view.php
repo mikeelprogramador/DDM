@@ -116,7 +116,7 @@ class Vista{
         return $salida;
     }
 
-    public static function perfil($id_user){
+    public static function perfil($id_user,$des){
         include_once("modelo.php");
         $salida = "";
         $consulta = Model::sqlUsuario(3,$id_user);
@@ -140,7 +140,7 @@ class Vista{
             $salida .= "<div class='mb-3'>";
             $salida .= "<label class='form-label'>Correo</label>";
             $salida .= "<input type='text' class='form-control' value='$fila[3]' disabled>";
-            $salida .= "<input type='file' class='form-control' id='foto_perfil' onchange='mostrarImagen(event)' ";
+            $salida .= "<input type='file' class='form-control' id='foto_perfil' onchange='mostrarImagen(event,$des)' ";
             $salida .= "</div>";
             $salida .= "<div class='mb-3'>";
             $salida .= "<button type='button' class='btn btn-primary' onclick='editarDatos()'>Editar datos</button>";

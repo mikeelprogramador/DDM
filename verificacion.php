@@ -8,10 +8,11 @@ if( isset($_GET['log'])){
 
     $email = $_POST['email'];
     $password = $_POST['clave'];
-    $id = Verificaciones::buscarIdUsuario($email);
+    
 
     if ( $_GET['log'] == 1){// Si log es 1 inicia session
         $login = Login::inicio($email,$password);
+        $id = Verificaciones::buscarIdUsuario($email);
         if( $login == 1){
             $_SESSION['id'] = $id;
             Verificaciones::actualizarEstadoUser(1, $_SESSION['id']);
@@ -34,6 +35,7 @@ if( isset($_GET['log'])){
         $nombre = $_POST['nom'];
         $apellido = $_POST['apellido'];
         $registro = Login::registrar($nombre,$apellido,$email,$password);
+        $id = Verificaciones::buscarIdUsuario($email);
         if( $registro == 1 ){
             $_SESSION['id'] = $id;
             Verificaciones::actualizarEstadoUser(1, $_SESSION['id']);

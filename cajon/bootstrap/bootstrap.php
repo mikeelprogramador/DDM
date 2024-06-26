@@ -11,7 +11,7 @@ class estilo{
 
     private function cambio(){
         $opciones = [
-            'cost'=> mt_rand(15,25),
+            'cost'=> 12,
         ];
        $this-> nowMenssage = password_hash($this->menssage,PASSWORD_DEFAULT,$opciones);
        $this-> menssage = "";

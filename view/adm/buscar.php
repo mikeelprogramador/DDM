@@ -1,6 +1,7 @@
 <?php 
 include_once("../../metodos/clas-view.php");
 include_once("../../metodos/clas-producto.php");
+include_once("../../metodos/clas-verific.php");
 //Vista administrador de los productos
 if(isset($_GET['search'])){
     echo Vista::buscarProducto($_GET['search'],2);
@@ -63,3 +64,10 @@ if(isset($_POST ['enviar'])){
       }
     } 
   }
+
+if(isset($_FILES['foto_perfil'])){
+  $files =  $_FILES['foto_perfil'] ;
+  $img = Producto::img(2,$files);
+  Verificaciones::cargarImagen($img,$_SESSION['id']);
+  echo $img;
+}

@@ -11,4 +11,3 @@ if(isset($_FILES['foto_perfil'])){
     Verificaciones::cargarImagen($img,$_SESSION['id']);
     echo $img;
 }
-    
