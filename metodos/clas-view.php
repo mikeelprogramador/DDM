@@ -73,28 +73,37 @@ class Vista{
     /**
      * Metodo para visualizar la lista de productos
      */
-    public static function ContenidoProducto($id){
+    public static function ContenidoProducto($id) {
         include_once("modelo.php");
         include_once("../../cajon/bootstrap/bootstrap.php");
         $salida = "";
-        $consulta = Model::sqlverificarProducto($id,"mostrar");
-        while($fila = $consulta->fetch_array()){
-            $salida .= $fila[1]."<br>";
-            $salida .= $fila[2]."<br>";
-            $salida .= $fila[3]."<br>";
-            $salida .= $fila[4]."<br>";
-            $salida .= $fila[5]."<br>";
-            $salida .= "<img src='{$fila[6]}'>"."<br>";
-            $salida .= $fila[7]."<br>";
-            $salida .= $fila[8]."<br>";
-            $salida .= "<input type='checkbox' name='agregar' id='like'>Agregar  <br> ";
-            $salida .= "<input type='checkbox' name='like' id='like' onclick='megusta(this)'>Like <br> ";
-            $salida .= "<input type='checkbox' name='like' id='dislike' onclick='megusta(this)'>Dislike<br>    ";
-            $salida .= "<a href='#'>Comprar</a> <br><br>    ";
+        $consulta = Model::sqlverificarProducto($id, "mostrar");
+        while ($fila = $consulta->fetch_array()) {
             
+            $salida .= "<div class='producto-contenedor'>";
+            $salida .= "<div class='row'>";
+            $salida .= "<div class='col-md-6' id='producto-imagen'><img src='" . htmlspecialchars($fila[6]) . "' alt='Producto' class='img-fluid'></div>"; // imagen del producto
+            $salida .= "<div class='col-md-6' id='producto-detalles'>";
+            $salida .= "<h2 class='producto-nombre' style='color: #c29349;'>" . htmlspecialchars($fila[1]) . "</h2>";
+            $salida .= "<p class='producto-descripcion'>" . htmlspecialchars($fila[2]) . "</p>";
+            $salida .= "<p class='producto-caracteristicas'><strong>Características: </strong>" . htmlspecialchars($fila[3]) . "</p>";
+            $salida .= "<p class='producto-colores'><strong>Colores disponibles: </strong>" . htmlspecialchars($fila[4]) . "</p>";
+            $salida .= "<p class='producto-cantidad'><strong>Cantidades disponibles: </strong>" . htmlspecialchars($fila[5]) . "</p>";
+            $salida .= "<p class='producto-precio'><strong>Precio: </strong>" . htmlspecialchars($fila[7]) . "</p>";
+            $salida .= "<p class='producto-ofertas'><strong>Ofertas: </strong>" . htmlspecialchars($fila[8]) . "</p>";
+            $salida .= "<div class='producto-opciones'>";
+            $salida .= "<div class='like-container'>";
+            $salida .= "<img src='../../img/como.png' alt='Me Gusta' id='like-icon' class='reaction-icon' onclick='toggleLike()'>";
+            $salida .= "<img src='../../img/disgusto.png' alt='No Me Gusta' id='dislike-icon' class='reaction-icon' onclick='toggleDislike()'>";
+            $salida .= "</div>"; 
+            $salida .= "<a href='#' class='btn btn-primary producto-comprar'>Comprar</a>";
+            $salida .= "</div>";
+            $salida .= "</div><br>";
         }
         return $salida;
     }
+    
+    
 
     /**
      * Metodo para visuarliza los comentarios

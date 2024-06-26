@@ -53,3 +53,29 @@ function megusta(checkbox){
         }
       });
 }
+
+function toggleLike() {
+    const likeIcon = document.getElementById('like-icon');
+    const dislikeIcon = document.getElementById('dislike-icon');
+
+    // Remover clase disliked si está activa
+    if (dislikeIcon.classList.contains('disliked')) {
+        dislikeIcon.classList.remove('disliked');
+    }
+
+    // Alternar la clase liked
+    likeIcon.classList.toggle('liked');
+}
+
+function toggleDislike() {
+    const dislikeIcon = document.getElementById('dislike-icon');
+    const likeIcon = document.getElementById('like-icon');
+
+    // Remover clase liked si está activa
+    if (likeIcon.classList.contains('liked')) {
+        likeIcon.classList.remove('liked');
+    }
+
+    // Alternar la clase disliked
+    dislikeIcon.classList.toggle('disliked');
+}

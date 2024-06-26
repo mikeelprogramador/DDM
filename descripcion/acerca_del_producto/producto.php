@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="../../css/stylo6.css">
+
 <div class="contendor-productos">
     <?php
         $id = id::desencriptar($_GET['data']);
@@ -17,6 +19,7 @@
 <div class="comentarios">
     <label for="">Cajas de comentarios</label>
     <br><br>
+    
     <div  id="coment">
         <?php
             
@@ -25,4 +28,5 @@
     </div>
 </div>
 <script src="../../js/coment.js"></script>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>  

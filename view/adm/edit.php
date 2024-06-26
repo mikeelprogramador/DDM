@@ -1,9 +1,10 @@
+<link rel="stylesheet" href="../../css/stylo4.css">
 <br>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-lg-6">
             <div class="card shadow-sm">
-                <div class="card-header bg-primary text-white">
+                <div class="card-header bg-primary text-white" style="background-color: chocolate;">
                     Actualizar Producto
                 </div>
                 <div class="card-body">
