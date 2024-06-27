@@ -50,7 +50,9 @@ function Recaptcha() {
             '<p>¡Queremos saber si realmente eres humano!</p>' +
             '<p>Código de verificación</p>' +
             '<div>' +
+            '<p style="-webkit-touch-callout: none; webkit-user-select: none; -moz-user-select: none;-ms-user-select: none; user-select: none;">'+
             token +
+            '</p>'+
             '</div>',
             input: 'text',
             inputLabel: 'Ingresa el codigo:',

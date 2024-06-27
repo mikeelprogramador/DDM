@@ -14,8 +14,7 @@
     ?>
 </div>
 </center>
-<button onclick="recargar()">Recargar Estado Del Usuario</button>
-<button> <a href="admin.php?seccion=seccion1">volver</a> </button>
+<button onclick="recargar()">Recargar</button>
     
 </body>
 </html>
