@@ -2,7 +2,6 @@
   include_once("../../metodos/clas-verific.php");
   include_once("../../cajon/bootstrap/bootstrap.php");
   include_once("../../metodos/clas-view.php");
-  include_once("../../metodos/clas-carrito.php");
   if(! isset($_SESSION)) session_start();
   if(! isset($_SESSION['id'])){
     header("location: ../../index.php");
@@ -11,9 +10,6 @@
       header("location: ../../index.php");
     }
   }
-if( Carrito::verificarCarrito($_SESSION['id']) == 0 ){
-  Carrito::crearCarrito($_SESSION['id']);
-}
 
   $seccion = "home"; 
   

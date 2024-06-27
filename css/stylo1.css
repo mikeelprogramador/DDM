@@ -13,8 +13,7 @@
 }
 .offer {
     display: none;
-  
-   
+
 }
 .offer.active {
     display: block;

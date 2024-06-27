@@ -2,7 +2,6 @@
 include_once("../../metodos/clas-producto.php");
 include_once("../../metodos/clas-view.php");
 include_once("../../cajon/bootstrap/bootstrap.php");
-if(!isset($_SESSION))session_start();
 if( isset($_POST['agregarComentario']) && $_POST['agregarComentario'] == true ){
     $comentario = $_POST['comentario'];
     if( $comentario != ""){
@@ -19,7 +18,4 @@ if( isset($_POST['eliminarComentario']) && $_POST['eliminarComentario'] == true 
        echo Vista::viewComentarios($id, $_SESSION['id']);
 
     }    
-}
-if( isset($_GET['agregar'])){
-    echo $_SESSION['id'];
 }

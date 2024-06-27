@@ -231,19 +231,6 @@ class Model {
         return $resulatdo = $conexion->query($sql);
     }
 
-    public static function sqlCarrito($des,$id_user){
-        include("bd-conect/inclucion-bd.php");
-        if($des == 1 ){
-            $sql = "INSERT INTO  tb_carrito(id_usuario)";
-            $sql .= "values('$id_user')";
-        }
-        if($des == 2 ){
-            $sql = "select count(*) from tb_carrito ";
-            $sql .= "where id_usuario = '$id_user'";
-        }
-        return $resulatdo = $conexion->query($sql);
-    }
-
     
 
 }

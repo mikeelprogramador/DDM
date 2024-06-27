@@ -1,8 +1,4 @@
-<head>
-<title>Hacerca del producto</title>
 <link rel="stylesheet" href="../../css/stylo6.css">
-</head>
-
 
 <div class="contendor-productos">
     <?php
