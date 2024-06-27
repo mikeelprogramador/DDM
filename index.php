@@ -5,4 +5,9 @@
 * Programa ADSO SENA 
 */
 
-header("location: login.php");
+if( file_exists('intalador.php') == true){
+    header("location: instalar.php");
+
+}else{
+    header("location: login.php");
+}

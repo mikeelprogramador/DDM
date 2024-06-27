@@ -82,21 +82,21 @@ class Vista{
             
             $salida .= "<div class='producto-contenedor'>";
             $salida .= "<div class='row'>";
-            $salida .= "<div class='col-md-6' id='producto-imagen'><img src='" . htmlspecialchars($fila[6]) . "' alt='Producto' class='img-fluid'></div>"; // imagen del producto
+            $salida .= "<div class='col-md-6' id='producto-imagen'><img src='" .$fila[6] . "' alt='Producto' class='img-fluid'></div>"; // imagen del producto
             $salida .= "<div class='col-md-6' id='producto-detalles'>";
-            $salida .= "<h2 class='producto-nombre' style='color: #c29349;'>" . htmlspecialchars($fila[1]) . "</h2>";
-            $salida .= "<p class='producto-descripcion'>" . htmlspecialchars($fila[2]) . "</p>";
-            $salida .= "<p class='producto-caracteristicas'><strong>Características: </strong>" . htmlspecialchars($fila[3]) . "</p>";
-            $salida .= "<p class='producto-colores'><strong>Colores disponibles: </strong>" . htmlspecialchars($fila[4]) . "</p>";
-            $salida .= "<p class='producto-cantidad'><strong>Cantidades disponibles: </strong>" . htmlspecialchars($fila[5]) . "</p>";
-            $salida .= "<p class='producto-precio'><strong>Precio: </strong>" . htmlspecialchars($fila[7]) . "</p>";
-            $salida .= "<p class='producto-ofertas'><strong>Ofertas: </strong>" . htmlspecialchars($fila[8]) . "</p>";
+            $salida .= "<h2 class='producto-nombre' style='color: #c29349;'>" . $fila[1] . "</h2>";
+            $salida .= "<p class='producto-descripcion'>" . $fila[2] . "</p>";
+            $salida .= "<p class='producto-caracteristicas'><strong>Características: </strong>" . $fila[3] . "</p>";
+            $salida .= "<p class='producto-colores'><strong>Colores disponibles: </strong>" . $fila[4] . "</p>";
+            $salida .= "<p class='producto-cantidad'><strong>Cantidades disponibles: </strong>" . $fila[5] . "</p>";
+            $salida .= "<p class='producto-precio'><strong>Precio: </strong>" . $fila[7] . "</p>";
+            $salida .= "<p class='producto-ofertas'><strong>Ofertas: </strong>" . $fila[8] . "</p>";
             $salida .= "<div class='producto-opciones'>";
             $salida .= "<div class='like-container'>";
             $salida .= "<img src='../../img/como.png' alt='Me Gusta' id='like-icon' class='reaction-icon' onclick='toggleLike()'>";
             $salida .= "<img src='../../img/disgusto.png' alt='No Me Gusta' id='dislike-icon' class='reaction-icon' onclick='toggleDislike()'>";
             $salida .= "</div>"; 
-            $salida .= "<a href='#' class='btn btn-primary producto-comprar'>Comprar</a>";
+            $salida .= "<a href='comet_control.php?agregar' class='btn btn-primary producto-comprar'>Comprar</a>";
             $salida .= "</div>";
             $salida .= "</div><br>";
         }
