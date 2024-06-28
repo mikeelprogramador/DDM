@@ -22,4 +22,14 @@ class Carrito{
         
     }
 
+    public static function buscarCarrito($id_user){
+        include_once("modelo.php");
+        $salida = 0;
+        $consulta = Model::sqlBuscarCarrito($id_user);
+        while($fila = $consulta->fetch_array()){
+            $salida = $fila[0];
+        }
+        return $salida;
+    }
+
 }

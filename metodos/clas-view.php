@@ -96,7 +96,7 @@ class Vista{
             $salida .= "<img src='../../img/como.png' alt='Me Gusta' id='like-icon' class='reaction-icon' onclick='toggleLike()'>";
             $salida .= "<img src='../../img/disgusto.png' alt='No Me Gusta' id='dislike-icon' class='reaction-icon' onclick='toggleDislike()'>";
             $salida .= "</div>"; 
-            $salida .= "<a href='comet_control.php?agregar' class='btn btn-primary producto-comprar'>Comprar</a>";
+            $salida .= "<a href='comet_control.php?data=$fila[0]' class='btn btn-primary producto-comprar'>Comprar</a>";
             $salida .= "</div>";
             $salida .= "</div><br>";
         }

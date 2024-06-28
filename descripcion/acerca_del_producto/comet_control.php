@@ -2,6 +2,7 @@
 include_once("../../metodos/clas-producto.php");
 include_once("../../metodos/clas-view.php");
 include_once("../../cajon/bootstrap/bootstrap.php");
+include_once("../../metodos/clas-carrito.php");
 if(!isset($_SESSION))session_start();
 if( isset($_POST['agregarComentario']) && $_POST['agregarComentario'] == true ){
     $comentario = $_POST['comentario'];
@@ -20,6 +21,10 @@ if( isset($_POST['eliminarComentario']) && $_POST['eliminarComentario'] == true 
 
     }    
 }
-if( isset($_GET['agregar'])){
-    echo $_SESSION['id'];
+if( isset($_GET['data'])){
+   if( Carrito::buscarCarrito($_SESSION['id']) != 0 ){
+    echo "si tienes carrtio";
+   }else{
+    echo "no tienes carrito";
+   }
 }

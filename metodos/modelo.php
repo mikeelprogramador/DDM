@@ -244,6 +244,11 @@ class Model {
         return $resulatdo = $conexion->query($sql);
     }
 
-    
+    public static function sqlBuscarCarrito($id_user){
+        include("bd-conect/inclucion-bd.php");
+        $sql = "select id_carrito from tb_carrito ";
+        $sql .= "where id_usuario = '$id_user'";
+        return $resulatdo = $conexion->query($sql);
+    }
 
 }
