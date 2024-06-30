@@ -34,8 +34,6 @@ function eliminarComentario(id_comen, id_pro){
         datatype: 'text',
         method: 'post',
         success: function (respuesta){
-           // ( respuesta != "" ? $("#coment").html(respuesta): alert("No has ingresado ningun comentario"));
-            //console.log(respuesta);
             $("#coment").html(respuesta)
         },
         error: function (xhr,status,error){
@@ -54,7 +52,7 @@ function megusta(checkbox){
       });
 }
 
-function toggleLike() {
+function toggleLike(id) {
     const likeIcon = document.getElementById('like-icon');
     const dislikeIcon = document.getElementById('dislike-icon');
 
@@ -65,6 +63,22 @@ function toggleLike() {
 
     // Alternar la clase liked
     likeIcon.classList.toggle('liked');
+    var param = {
+        'like': true,
+        'data': id
+    }
+    $.ajax({
+        data: param,
+        url: 'comet_control.php',
+        datatype: 'html',
+        method: 'get',
+        success: function(respuesta){
+           document.getElementById('producto-contenedor').innerHTML = respuesta;
+        },
+        error: function(xhr,statuc,error){
+            console.log(error);
+        }
+    });
 }
 
 function toggleDislike() {

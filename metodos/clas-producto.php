@@ -20,16 +20,21 @@ class Producto {
     }
     /**
      * Agregar megusta a un producto
-     *//*
-    public static function AgregarMegustaProducos($id){
+     */
+    public static function valoracion($id_pro,$id_user,$valoracion){
+        include_once("modelo.php");
+        $consulta = Model::sqlValoracion($id_pro,$id_user,$valoracion);
+    }
+
+    public static function contarValoracion($valoracion,$id_pro){
         include_once("modelo.php");
         $salida = 0;
-        $consulta = Model::sqlAgregarMegustaProducos($id);
-        if($consulta){
-            $salida = 1;
+        $consulta = Model::sqlContarValoracion($valoracion,$id_pro);
+        while($fila = $consulta->fetch_array()){
+            $salida += $fila[0];
         }
         return $salida;
-    }*/
+    }
     /**
      * Metodo si el producto existe
      */

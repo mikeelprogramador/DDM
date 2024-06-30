@@ -39,3 +39,8 @@ if(isset($_GET['estado']) && $_GET['estado'] == "agregado"){
         header("location: product.php?http=".$_GET['http']."&data=".$_GET['data']."&question=false");
     }
 }
+if(isset($_GET['like']) && $_GET['like'] == true){
+    $id = id::desencriptar($_GET['data']);
+    Producto::valoracion($id,$_SESSION['id'],0);
+    echo Vista::ContenidoProducto($id,$_SESSION['token']);
+}

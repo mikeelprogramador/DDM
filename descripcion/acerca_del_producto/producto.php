@@ -1,15 +1,16 @@
 <head>
 <title>Hacerca del producto</title>
-<link rel="stylesheet" href="../../css/stylo6.css">
+ <!-- <link rel="stylesheet" href="../../css/stylo6.css">  -->
 </head>
 
 
-<div class="contendor-productos">
-    <?php
+<div class="producto-refe">
+<?php
         $id = id::desencriptar($_GET['data']);
-        echo Vista::ContenidoProducto($id);
+        echo Vista::ContenidoProducto($id,$_SESSION['token']);
     ?>
 </div>
+
 
 <a href="<?php echo (Verificaciones::verificarPerfil(1,$_SESSION['id']) == 2? '../../view/user/ddm.php':'../../view/adm/admin.php');  ?>"><button>Regresar</button></a>
 

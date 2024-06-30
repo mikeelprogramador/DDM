@@ -48,10 +48,8 @@ if(isset($_POST ['enviar'])){
         
         $nowProducto = Producto::cargarProducto($id,$nombre,$descrip,$caracter,$cantidad,$ofertas,$img,$precio,$color);
         if( !empty($categorias) ){
-          
           Producto::agregarCategoria(1,$categorias,$id);
         }
-          //Producto::AgregarMegustaProducos($id);/*modificar*/
         if( $nowProducto == 0 ){
           header("location: admin.php?men=".$nowProducto."&seccion=seccion-ag-pro");
         }if( $nowProducto == 1 ){

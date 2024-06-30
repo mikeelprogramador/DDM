@@ -100,11 +100,19 @@ class Model {
         return $sql;
     }
 
+    public static function sqlValoracion($id_pro,$id_user,$valoracion){
+        include("bd-conect/inclucion-bd.php"); 
+        $sql = "INSERT INTO tb_valoracion(id_producto,id_usuario,valoracion) ";
+        $sql .= "values('$id_pro','$id_user','$valoracion')";
+        return $resulatdo = $conexion->query($sql);
+
+    }
+
     public static function sqlEliminarProducto($id){
         include("bd-conect/inclucion-bd.php"); 
         Model::sqlEliminarFkProductos(1,$id);
         Model::sqlEliminarComentario($id);
-        
+        Model::sqlEliminarFkProductos(2,$id);
         $sql = "DELETE FROM tb_productos WHERE id_producto = '$id'";
         return $resultado = $conexion->query($sql);
     }
@@ -113,9 +121,9 @@ class Model {
         include("bd-conect/inclucion-bd.php"); 
         if( $put == 1){
             $tabla = "tb_categoriasProducto";
-        }/*if($put == 2){
-            $tabla = "tb_megusta";
-        }*/
+        }if($put == 2){
+            $tabla = "tb_valoracion";
+        }
         $sql = "DELETE FROM $tabla WHERE id_producto =  '$id'";
         $resultado = $conexion->query($sql);
     }
@@ -154,13 +162,7 @@ class Model {
         $sql .= "where tb_productos.id_producto = '$id_pro' ";
         return $resultado = $conexion->query($sql);
     }
-    /*
-    public static function sqlAgregarMegustaProducos($id){
-        include("bd-conect/inclucion-bd.php"); 
-        $sql = "INSERT INTO  tb_megusta(id_producto)values('$id')";
-        return $resulatdo = $conexion->query($sql);
 
-    }*/
 
     public static function sqlVerificarPerfil($des,$id_user){
         include("bd-conect/inclucion-bd.php"); 
@@ -282,6 +284,13 @@ class Model {
         $sql = "select count(*) from tb_carypro as t1  ";
         $sql .= "inner join tb_carrito as t2 on t1.id_carrito = t2.id_carrito ";
         $sql .= "where t2.id_usuario = '$id_user' and t1.id_producto = '$id_pro' ";
+        return $resulatdo = $conexion->query($sql);
+    }
+
+    public static function sqlContarValoracion($valoracion,$id_pro){
+        include("bd-conect/inclucion-bd.php");
+        $sql = "select count(*) from tb_valoracion ";
+        $sql .= "where id_producto = '$id_pro' and valoracion = '$valoracion';";
         return $resulatdo = $conexion->query($sql);
     }
 

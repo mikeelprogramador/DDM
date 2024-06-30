@@ -73,14 +73,17 @@ class Vista{
     /**
      * Metodo para visualizar la lista de productos
      */
-    public static function ContenidoProducto($id) {
+    public static function ContenidoProducto($id,$token) {
         include_once("modelo.php");
+        include_once("clas-producto.php");
         include_once("../../cajon/bootstrap/bootstrap.php");
         $salida = "";
         $consulta = Model::sqlverificarProducto($id, "mostrar");
         while ($fila = $consulta->fetch_array()) {
             $id = id::encriptar($fila[0]);
-            $salida .= "<div class='producto-contenedor'>";
+            $like = Producto::contarValoracion(0,$fila[0]);
+            $deslike = Producto::contarValoracion(1,$fila[0]);
+            $salida .= "<div class='producto-contenedor' id='producto-contenedor'>";
             $salida .= "<div class='row'>";
             $salida .= "<div class='col-md-6' id='producto-imagen'><img src='" .$fila[6] . "' alt='Producto' class='img-fluid'></div>"; // imagen del producto
             $salida .= "<div class='col-md-6' id='producto-detalles'>";
@@ -91,16 +94,15 @@ class Vista{
             $salida .= "<p class='producto-cantidad'><strong>Cantidades disponibles: </strong>" . $fila[5] . "</p>";
             $salida .= "<p class='producto-precio'><strong>Precio: </strong>" . $fila[7] . "</p>";
             $salida .= "<p class='producto-ofertas'><strong>Ofertas: </strong>" . $fila[8] . "</p>";
-            $salida .= "<div class='producto-opciones'>";
             $salida .=  "<button class='btn btn-primary' type='button' id='incremento' onclick='incremento()'>+</button>";
             $salida .= "<input type='number' id='contador' class='form-control' value='1' min='1' max='$fila[4]' disabled>";
             $salida .= "<button class='btn btn-primary' type='button' id='decremento' onclick='decremento()'>-</button>";
             $salida .= "<div class='like-container'>";
-            $salida .= "<img src='../../img/como.png' alt='Me Gusta' id='like-icon' class='reaction-icon' onclick='toggleLike()'>";
-            $salida .= "<img src='../../img/disgusto.png' alt='No Me Gusta' id='dislike-icon' class='reaction-icon' onclick='toggleDislike()'>";
+            $salida .= "<img src='../../img/como.png' alt='Me Gusta' id='like-icon' class='reaction-icon' onclick='toggleLike(\"{$id}\")'>$like";
+            $salida .= "<img src='../../img/disgusto.png' alt='No Me Gusta' id='dislike-icon' class='reaction-icon' onclick='toggleDislike()'>$deslike";
             $salida .= "</div>"; 
             $salida .= "<a class='btn btn-primary producto-comprar' id='enlace' >Compra ahora</a><br>";
-            $salida .= "<a class='btn btn-primary producto-comprar'onclick='enviarDatos(1,\"{$_GET['http']}\",\"{$id}\")' >Agregar al carrito</a>";
+            $salida .= "<a class='btn btn-primary producto-comprar'onclick='enviarDatos(1,\"{$token}\",\"{$id}\")' >Agregar al carrito</a>";
             $salida .= "</div>";
             $salida .= "</div><br>";
         }

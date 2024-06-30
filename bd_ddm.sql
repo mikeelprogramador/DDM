@@ -1,4 +1,4 @@
--- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: bd_ddm
 -- ------------------------------------------------------
@@ -28,7 +28,7 @@ CREATE TABLE `tb_carrito` (
   PRIMARY KEY (`id_carrito`),
   KEY `id_usuario` (`id_usuario`),
   CONSTRAINT `tb_carrito_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `tb_usuarios` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -37,7 +37,7 @@ CREATE TABLE `tb_carrito` (
 
 LOCK TABLES `tb_carrito` WRITE;
 /*!40000 ALTER TABLE `tb_carrito` DISABLE KEYS */;
-INSERT INTO `tb_carrito` VALUES (1,3);
+INSERT INTO `tb_carrito` VALUES (1,3),(2,4);
 /*!40000 ALTER TABLE `tb_carrito` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -52,12 +52,13 @@ CREATE TABLE `tb_carypro` (
   `id_carypro` int(11) NOT NULL AUTO_INCREMENT,
   `id_carrito` int(11) NOT NULL,
   `id_producto` varchar(10) NOT NULL,
+  `cantidad` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_carypro`),
   KEY `id_carrito` (`id_carrito`),
   KEY `id_producto` (`id_producto`),
   CONSTRAINT `tb_carypro_ibfk_1` FOREIGN KEY (`id_carrito`) REFERENCES `tb_carrito` (`id_carrito`),
   CONSTRAINT `tb_carypro_ibfk_2` FOREIGN KEY (`id_producto`) REFERENCES `tb_productos` (`id_producto`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -66,6 +67,7 @@ CREATE TABLE `tb_carypro` (
 
 LOCK TABLES `tb_carypro` WRITE;
 /*!40000 ALTER TABLE `tb_carypro` DISABLE KEYS */;
+INSERT INTO `tb_carypro` VALUES (1,1,'112',3);
 /*!40000 ALTER TABLE `tb_carypro` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -133,7 +135,7 @@ CREATE TABLE `tb_categoriasproducto` (
   KEY `id_categoria` (`id_categoria`),
   CONSTRAINT `tb_categoriasproducto_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `tb_productos` (`id_producto`),
   CONSTRAINT `tb_categoriasproducto_ibfk_2` FOREIGN KEY (`id_categoria`) REFERENCES `tb_categorias` (`id_categoria`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -164,7 +166,7 @@ CREATE TABLE `tb_comentarios` (
   KEY `id_usuario` (`id_usuario`),
   CONSTRAINT `tb_comentarios_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `tb_productos` (`id_producto`),
   CONSTRAINT `tb_comentarios_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `tb_usuarios` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -249,10 +251,16 @@ DROP TABLE IF EXISTS `tb_valoracion`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tb_valoracion` (
-  `id_valoracion` int(11) NOT NULL,
-  `valoracion` varchar(100) NOT NULL,
-  PRIMARY KEY (`id_valoracion`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `id_valoracion` int(11) NOT NULL AUTO_INCREMENT,
+  `id_producto` varchar(10) DEFAULT NULL,
+  `id_usuario` int(11) DEFAULT NULL,
+  `valoracion` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_valoracion`),
+  KEY `id_producto` (`id_producto`),
+  KEY `id_usuario` (`id_usuario`),
+  CONSTRAINT `tb_valoracion_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `tb_productos` (`id_producto`),
+  CONSTRAINT `tb_valoracion_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `tb_usuarios` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -261,7 +269,7 @@ CREATE TABLE `tb_valoracion` (
 
 LOCK TABLES `tb_valoracion` WRITE;
 /*!40000 ALTER TABLE `tb_valoracion` DISABLE KEYS */;
-INSERT INTO `tb_valoracion` VALUES (0,''),(1,'like'),(2,'not like');
+INSERT INTO `tb_valoracion` VALUES (1,'112',1,0),(2,'112',1,0),(3,'112',1,0),(4,'112',1,0),(5,'112',1,0),(6,'112',1,0),(7,'112',1,0),(8,'112',1,0),(9,'112',1,0),(10,'112',1,0),(11,'112',1,0),(12,'112',1,0),(13,'112',1,0),(14,'112',1,0),(15,'112',1,0),(16,'112',1,0),(17,'112',1,0),(18,'112',1,0),(19,'112',1,0),(20,'112',1,0),(21,'112',1,0),(22,'112',1,0),(23,'112',1,0),(24,'112',1,0),(25,'112',1,0),(26,'12a14',3,0),(27,'12a14',3,0),(28,'12a14',3,0),(29,'12a14',3,0),(30,'12a14',3,0),(31,'12a14',3,0),(32,'12a14',3,0),(33,'12a14',3,0),(34,'12a14',3,0),(35,'12a14',3,0),(36,'12a14',3,0),(37,'12a14',3,0),(38,'12a14',3,0),(39,'12a14',3,0),(40,'12a14',3,0),(41,'12a14',3,0),(42,'12a14',3,0),(43,'12a14',3,0),(44,'12a14',3,0);
 /*!40000 ALTER TABLE `tb_valoracion` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -274,4 +282,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-27 10:58:52
+-- Dump completed on 2024-06-30  8:58:39
