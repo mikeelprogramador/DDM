@@ -79,7 +79,7 @@ class Vista{
         $salida = "";
         $consulta = Model::sqlverificarProducto($id, "mostrar");
         while ($fila = $consulta->fetch_array()) {
-            
+            $id = id::encriptar($fila[0]);
             $salida .= "<div class='producto-contenedor'>";
             $salida .= "<div class='row'>";
             $salida .= "<div class='col-md-6' id='producto-imagen'><img src='" .$fila[6] . "' alt='Producto' class='img-fluid'></div>"; // imagen del producto
@@ -92,11 +92,15 @@ class Vista{
             $salida .= "<p class='producto-precio'><strong>Precio: </strong>" . $fila[7] . "</p>";
             $salida .= "<p class='producto-ofertas'><strong>Ofertas: </strong>" . $fila[8] . "</p>";
             $salida .= "<div class='producto-opciones'>";
+            $salida .=  "<button class='btn btn-primary' type='button' id='incremento' onclick='incremento()'>+</button>";
+            $salida .= "<input type='number' id='contador' class='form-control' value='1' min='1' max='$fila[4]' disabled>";
+            $salida .= "<button class='btn btn-primary' type='button' id='decremento' onclick='decremento()'>-</button>";
             $salida .= "<div class='like-container'>";
             $salida .= "<img src='../../img/como.png' alt='Me Gusta' id='like-icon' class='reaction-icon' onclick='toggleLike()'>";
             $salida .= "<img src='../../img/disgusto.png' alt='No Me Gusta' id='dislike-icon' class='reaction-icon' onclick='toggleDislike()'>";
             $salida .= "</div>"; 
-            $salida .= "<a href='comet_control.php?data=$fila[0]' class='btn btn-primary producto-comprar'>Comprar</a>";
+            $salida .= "<a class='btn btn-primary producto-comprar' id='enlace' >Compra ahora</a><br>";
+            $salida .= "<a class='btn btn-primary producto-comprar'onclick='enviarDatos(1,\"{$_GET['http']}\",\"{$id}\")' >Agregar al carrito</a>";
             $salida .= "</div>";
             $salida .= "</div><br>";
         }
@@ -175,6 +179,37 @@ class Vista{
             if($des == 2){
                 $salida .= "<input type=checkbox  name=categoria$fila[0] value=$fila[0] >$fila[1] <br>";
             }
+        }
+        return $salida;
+    }
+
+    public static function mostrarCarrito($id_user){
+        include_once("../../cajon/bootstrap/bootstrap.php");
+        include_once("modelo.php");
+        $salida = "";
+        $consulta = Model::sqlMostrarCarrito($id_user);
+        while($fila = $consulta->fetch_assoc()){
+            $id = id::encriptar($fila['id_producto']);
+            $num = str_replace(".","",$fila['precio']);$num .= str_replace(",","",$num);
+            $cantidad = floatval($fila['cantidad']);$dinero = floatval($num);
+            $salida .= '<div class="container mt-4">'; 
+            $salida .= '<div class="row">';
+            $salida .= '<div class="col-sm-6 col-md-4 col-lg-3 mb-4">'; 
+            $salida .= '<div class="card h-100" style="width: 100%;">';  
+            $salida .= '<img src="'.$fila['img'].'" class="card-img-top" alt="La imagen no ha sido ubicada">';
+            $salida .= '<div class="card-body d-flex flex-column">';
+            $salida .= '<h5 class="card-title">'.$fila['producto_nombre'].'</h5>';
+            $salida .= '<p class="card-text">COP $ '.$fila['precio'].'</p>';
+            $salida .= "<button class='btn btn-primary' type='button' id='incremento' onclick='sumarCantidad(\"$id\",\"{$fila['cantidad']}\",\"{$fila['cantidades']}\")'>+</button>";
+            $salida .= '<input type="number" id="cantidad" class="form-control" value="'.$fila['cantidad'].'" min="1" max="'.$fila['cantidades'].'" disabled>';
+            $salida .= "<button class='btn btn-primary' type='button' id='decremento' onclick='restarCantidad(\"$id\",\"{$fila['cantidad']}\")'>-</button>";
+            $salida .= '<p class="card-text"> Valor total: '.number_format($dinero*$cantidad, 2, ',', '.').'</p>';
+            $salida .= '<button class="btn btn-primary mt-auto" >Eilimar del carrtio</button>';
+            $salida .= '</div>';
+            $salida .= '</div>';
+            $salida .= '</div>';
+            $salida .= '</div>'; 
+            $salida .= '</div>';
         }
         return $salida;
     }

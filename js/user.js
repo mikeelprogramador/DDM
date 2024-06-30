@@ -50,4 +50,80 @@ function mostrarImagen(event,des) {
 function eliminarFoto(){
     console.log("hola mundo");
 }
- 
+
+function sumarCantidad(id,cantidad,disponibles){
+    var param = {
+        'cantidad': cantidad,
+        'max':disponibles,
+        'aumentar': true,
+        'data': id
+    };
+    $.ajax({
+        data: param,
+        url: 'consultas.php',
+        datatype: 'html',
+        method: 'get',
+        success: function(respuesta){
+            if(respuesta === "limite"){
+                Swal.fire({
+                    icon: "error",
+                    title: "Error",
+                    text: "No puedes agregar más cantidades.",
+                });
+            }else{
+                document.getElementById('carrito').innerHTML = respuesta;
+                actualizarDinero();
+            }
+            
+        },
+        error: function(xhr,status,error){
+            console.log(error);
+        }
+    });
+}
+
+function restarCantidad(id,cantidad){
+    var param = {
+        'cantidad': cantidad,
+        'restar': true,
+        'data': id
+    };
+    $.ajax({
+        data: param,
+        url: 'consultas.php',
+        datatype: 'html',
+        method: 'get',
+        success: function(respuesta){
+            if(respuesta === "limite"){
+                Swal.fire({
+                    icon: "error",
+                    title: "Error",
+                    text: "No puedes eliminar más cantidades.",
+                });
+            }else{
+                document.getElementById('carrito').innerHTML = respuesta;
+                actualizarDinero();
+            }
+        },
+        error: function(xhr,status,error){
+            console.log(error);
+        }
+    });
+}
+function actualizarDinero(){
+    var param = {
+        'dinero': 'actualizar'
+    };
+    $.ajax({
+        data: param,
+        url: 'consultas.php',
+        datatype: 'html',
+        method: 'get',
+        success: function(respuesta){
+            document.getElementById('dinero').innerHTML = respuesta;
+        },
+        error: function(xhr,status,error){
+            console.log(error);
+        }
+    });
+}

@@ -251,4 +251,38 @@ class Model {
         return $resulatdo = $conexion->query($sql);
     }
 
+    public static function sqlAgregarCarrito($carrito,$id_pro,$cantidad){
+        include("bd-conect/inclucion-bd.php");
+        $sql = "INSERT INTO tb_carypro(id_carrito,id_producto,cantidad)";
+        $sql .= "values('$carrito','$id_pro','$cantidad')";
+        return $resulatdo = $conexion->query($sql);
+    }
+
+    public static function sqlMostrarCarrito($id_user){
+        include("bd-conect/inclucion-bd.php");
+        $sql = "select * from tb_productos as t1 ";
+        $sql .= "inner join tb_carypro as t2 on t1.id_producto = t2.id_producto ";
+        $sql .= "inner join tb_carrito as t3 on t2.id_carrito = t3.id_carrito ";
+        $sql .= "where t3.id_usuario = '$id_user' ";
+        return $resulatdo = $conexion->query($sql);
+    }
+
+    public static function sqlAumentarCantidad($des,$carrito,$id_pro){
+        include("bd-conect/inclucion-bd.php");
+        if($des == 1)$operacion = "+";
+        if($des == 2)$operacion = "-";
+        $sql = "update tb_carypro ";
+        $sql .= "set cantidad = cantidad $operacion 1 ";
+        $sql .= "where id_carrito = '$carrito' and id_producto = '$id_pro' ";
+        return $resulatdo = $conexion->query($sql);
+    }
+
+    public static function sqlRestriccionCarrito($id_user,$id_pro){
+        include("bd-conect/inclucion-bd.php");
+        $sql = "select count(*) from tb_carypro as t1  ";
+        $sql .= "inner join tb_carrito as t2 on t1.id_carrito = t2.id_carrito ";
+        $sql .= "where t2.id_usuario = '$id_user' and t1.id_producto = '$id_pro' ";
+        return $resulatdo = $conexion->query($sql);
+    }
+
 }

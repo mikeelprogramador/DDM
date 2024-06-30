@@ -22,14 +22,20 @@ if( isset($_POST['eliminarComentario']) && $_POST['eliminarComentario'] == true 
 
     }    
 }
-if( isset($_GET['data'])){
+if(isset($_GET['estado']) && $_GET['estado'] == "agregado"){
     $id = id::desencriptar($_GET['data']);
     $carrito = Carrito::buscarCarrito($_SESSION['id']);
-   if( $carrito != 0 ){
-        if(Carrito::agregarAlCarrito($carrito,$id) == 1 ){
-            header("location: product.php?http=".$_GET['http']."&data=".$_GET['data']."&question=true");
+    $cantidad = $_GET['can'];
+    if( $carrito != 0 ){
+        if(Carrito::restriccionCarrito($_SESSION['id'],$id) == 0){
+            if(Carrito::agregarAlCarrito($carrito,$id,$cantidad) == 1 ){
+                header("location: product.php?http=".$_GET['http']."&data=".$_GET['data']."&question=true");
+            }
+        }else{
+            header("location: product.php?http=".$_GET['http']."&data=".$_GET['data']."&question=existe ");
         }
-   }else{
-    header("location: product.php?http=".$_GET['http']."&data=".$_GET['data']."&question");
-   }
+        
+    }else{
+        header("location: product.php?http=".$_GET['http']."&data=".$_GET['data']."&question=false");
+    }
 }

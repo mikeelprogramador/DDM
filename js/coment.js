@@ -79,3 +79,26 @@ function toggleDislike() {
     // Alternar la clase disliked
     dislikeIcon.classList.toggle('disliked');
 }
+
+function incremento(){
+    let contador = document.getElementById('contador');
+    valorActual = parseInt(contador.value);
+    if( valorActual < parseInt(contador.max)){
+        contador.value = valorActual + 1;
+    }
+    
+}
+
+function decremento(){
+    let contador = document.getElementById('contador');
+    valorActual = parseInt(contador.value);
+    if( valorActual > parseInt(contador.min)){
+        contador.value = valorActual - 1;
+    }
+    
+}
+function enviarDatos(des,token,id) {
+    var cantidad = document.getElementById('contador').value;
+    if(des === 1)estado = "agregado";
+    window.location.href = "comet_control.php?http="+token+"&data="+id+"&can="+cantidad+"&estado="+estado;
+}

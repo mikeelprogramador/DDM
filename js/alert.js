@@ -43,3 +43,26 @@ function alertError(option = null ){
       });
 }
 
+function alertCarrito(des){
+    if(des === 1 ){
+        Swal.fire({
+            title: "Cargado",
+            text: "Su producto se cargo exitosamente!",
+            icon: "success"
+        });
+    }
+    if(des === 2 ){
+        Swal.fire({
+            icon: "error",
+            title: "Error",
+            text: "No tines un carrito para agregar productos",
+        });
+    }
+    if( des == 3 ){
+        Swal.fire({
+            icon: "error",
+            title: "Error",
+            text: "Este producto ya esta agregado en el carrito.",
+        });
+    }
+}

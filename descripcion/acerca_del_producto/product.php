@@ -10,5 +10,28 @@ if( isset($_GET['http'])){
        
     }
 }
+
+if(isset($_GET['question'])){
+    if($_GET['question'] == true){
+        ?><Script>
+            window.onload = function() {
+            alertCarrito(1);
+            };
+        </Script><?php  
+    }if($_GET['question'] == false){
+        ?><Script>
+        window.onload = function(){
+            alertCarrito(2);
+        };
+    </Script><?php   
+    }if($_GET['question'] == "existe"){
+        ?><Script>
+        window.onload = function(){
+            alertCarrito(3);
+        };
+        </Script><?php 
+    }
+}
+
 $seccion = "producto";
 include($seccion.".php");
