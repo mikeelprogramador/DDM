@@ -88,11 +88,15 @@ class Model {
         include("bd-conect/inclucion-bd.php");
         if( $des == 1 ){
             $sql = "select * ";
-        }
-        if( $des == 2 ){
+            $tabla = "tb_productos";
+        }if( $des == 2 ){
             $sql = "select count(*) ";
+            $tabla = "tb_productos";
+        }if( $des == 3 ){
+            $sql = "select count(*) ";
+            $tabla = "tb_facturas";
         }
-        $sql .= "from tb_productos where id_producto = '$id'";
+        $sql .= "from $tabla where id_producto = '$id'";
         return $resulatdo = $conexion->query($sql);
     }
 
@@ -207,6 +211,7 @@ class Model {
 
     public static function sqlProductos($des,$id_pro){
         include("bd-conect/inclucion-bd.php");
+        $tabla = "tb_productos";
         if($des == 1)$dato = "producto_nombre";
         if($des == 2)$dato = "descripcion_producto";
         if($des == 3)$dato = "caracteristicas_producto";
@@ -215,7 +220,12 @@ class Model {
         if($des == 6)$dato = "img";
         if($des == 7)$dato = "precio";
         if($des == 8)$dato = "color";
-        $sql = "SELECT $dato FROM tb_productos where id_producto = '$id_pro'";
+        if($des == 9){
+            $dato = "id_categoria";
+            $tabla = "tb_categoriasProducto";
+
+        }
+        $sql = "SELECT $dato FROM $tabla where id_producto = '$id_pro'";
         return $resulatdo = $conexion->query($sql);
 
     }
@@ -236,9 +246,10 @@ class Model {
                     $sql .= ",";
                 }
             }
+            echo $sql;
         }
         if($des == 2 ){
-            $sql = "select count(*) from tb_categorias";
+            $sql = "select id_categoria from tb_categorias order by id_categoria desc  limit 1";
         }
         return $resulatdo = $conexion->query($sql);
     }
@@ -477,7 +488,7 @@ class Model {
     public static function sqlVentas(){
       include("bd-conect/inclucion-bd.php");
       $sql  = "select DISTINCT producto,";
-      $sql .= "(select cantidades from tb_facturas as t2 where t1.id_producto = t2.id_producto )  ";
+      $sql .= "(select sum(cantidades) from tb_facturas as t2 where t1.id_producto = t2.id_producto )  ";
       $sql .= "from tb_facturas as t1  ";
       return $resultado = $conexion->query($sql);
     }
@@ -493,11 +504,26 @@ class Model {
 
     public static function sqlActualizarTotalCompra($id_compra,$id_user){
         include("bd-conect/inclucion-bd.php");
+        include_once("clas-functions.php");
         $sql = "update tb_compras ";
-        $sql .="set total_compra = '".$_SESSION['totalCompra']."' ";
+        $sql .="set total_compra = '".Funciones::strDinero($_SESSION['totalCompra'])."' ";
         $sql .="where id_compra = '$id_compra' and id_usuario = '$id_user'";
         $_SESSION['totalCompra'] = 0; 
         $conexion->query($sql);
+    }
+
+    public static function sqlCreateCategoria($categoria){
+        include("bd-conect/inclucion-bd.php");
+        $sql = "INSERT INTO tb_categorias(categoria)";
+        $sql .="values('$categoria')";
+        $conexion->query($sql);
+    }
+
+    public static function sqlCountCategorias($categoria){
+        include("bd-conect/inclucion-bd.php");
+        $sql = "select count(*) from tb_categorias ";
+        $sql .="where categoria = '$categoria'";
+        return $conexion->query($sql);
     }
 
 }

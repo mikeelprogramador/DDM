@@ -184,9 +184,17 @@ public static function ContenidoProducto($id, $token) {
                 $salida .= "<li><a class='dropdown-item' href='ddm.php?seccion=categorias&cate=$fila[1]'>$fila[1]</a></li>";
             }
             if($des == 2){
+                if($des2 == 9){
+
+                }
                 $salida .= "<input type=checkbox  name=categoria$fila[0] value=$fila[0] >$fila[1] <br>";
             }
+            if($des == 3){
+                $salida .= "<option value='".$fila[1]."'>".$fila[1]."</option>";
+            }
         }
+
+
         return $salida;
     }
 

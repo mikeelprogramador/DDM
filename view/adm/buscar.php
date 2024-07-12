@@ -2,7 +2,11 @@
 include_once("../../metodos/clas-view.php");
 include_once("../../metodos/clas-producto.php");
 include_once("../../metodos/clas-functions.php");
-include_once("../../metodos/clas-functions.php");
+include_once("../../metodos/modelo.php");
+include_once("../../metodos/clas-sessiones.php");
+//Se inician las sessiones
+Session::iniciarSessiones();
+
 //Vista administrador de los productos
 if(isset($_GET['search'])){
     echo Vista::buscarProducto($_GET['search'],2);
@@ -35,28 +39,28 @@ if(isset($_POST ['enviar'])){
     for($i = 1; $i <=Producto::contarCategorias(2); $i ++){
       if(isset($_POST['categoria'.$i])  != ''){
         $categorias[] = $_POST['categoria'.$i];
-        
       }
     }
-
+    
     if(isset($_FILES['card-img'])){
-      $img  = Producto::img(1,$_FILES['card-img']);
-      if( $img == "0" )header("location: admin.php?men=img".$img."&seccion=seccion-ag-pro");
-      if( $img == "1" )header("location: admin.php?men=img".$img."&seccion=seccion-ag-pro");
+      $img  = Producto::img(1,$_FILES['card-img']);//creado la imagen
+      if( $img == "0" )header("location: admin.php?men=img".$img."&seccion=seccion-ag-pro");//El formato de la imagen coincide
+      if( $img == "1" )header("location: admin.php?men=img".$img."&seccion=seccion-ag-pro");//El tamaño de la imagen no coincide
     }
 
-    if( $img != "0" || $img !="1" ){
+    //Verificando de la imagen
       if(  !empty($_FILES['card-img']) && $id != "" && $nombre != "" ){
-        
+        //Crear el producto
         $nowProducto = Producto::cargarProducto($id,$nombre,$descrip,$caracter,$cantidad,$ofertas,$img,$precio,$color);
-        if( !empty($categorias) )Producto::agregarCategoria(1,$categorias,$id);
-        if( $nowProducto == 0 )header("location: admin.php?men=".$nowProducto."&seccion=seccion-ag-pro");
-        if( $nowProducto == 1 )header("location: admin.php?men=".$nowProducto."&seccion=seccion-ag-pro");
-        if( $nowProducto == 2 )header("location: admin.php?men=".$nowProducto."&seccion=seccion-ag-pro");
+        if( $nowProducto == 0 ){
+          if( !empty($categorias) )Producto::agregarCategoria(1,$categorias,$id);//Se le agregan la categorias al porducto ya creado
+          header("location: admin.php?men=".$nowProducto."&seccion=seccion-ag-pro");//datos si el prodcucto se creo correctamente
+        }
+        if( $nowProducto == 1 )header("location: admin.php?men=".$nowProducto."&seccion=seccion-ag-pro");//dato si ya existe
+        if( $nowProducto == 2 )header("location: admin.php?men=".$nowProducto."&seccion=seccion-ag-pro");//dato si no se creo
       }else {
         header("location: admin.php?men=2&seccion=seccion-ag-pro");
       }
-    } 
   }
 
 
@@ -65,4 +69,22 @@ if(isset($_FILES['foto_perfil'])){
   $img = Producto::img(2,$files);
   Funciones::cargarImagen($img,$_SESSION['id']);
   echo $img;
+}
+
+if(isset($_GET['createCategoria']) && $_GET['createCategoria'] == true){
+  if(Producto::countCategorias($_GET['categoria']) == 0){
+    Model::sqlCreateCategoria($_GET['categoria']);
+    echo 1;
+  }else{
+    echo 0;
+  }
+  
+}
+
+if(isset($_GET['aparece']) && $_GET['aparece'] == true){
+  echo Vista::mostrarCategorias(2);
+}
+
+if(isset($_GET['producto']) && ($_GET['producto'])== "actualizar"){
+  echo "hola amigos ahhhhh ";
 }

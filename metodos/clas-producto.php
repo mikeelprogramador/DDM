@@ -6,7 +6,7 @@ class Producto {
     public static function cargarProducto($id,$nombre,$descrip,$caracter,$cantidad,$oferta,$img,$precio,$color){
         $salida = 0;
        include_once("modelo.php");
-       if(Producto::verificarProducto($id) == 1 ){
+       if(Producto::verificarProducto($id,2) == 1 || Producto::verificarProducto($id,3) == 1 ){
            $salida += 0;
        }else{
             $consulta = Model::sqlCargarProducto($id,$nombre,$descrip,$caracter,$cantidad,$oferta,$img,$precio,$color);
@@ -22,16 +22,11 @@ class Producto {
     /**
      * Metodo si el producto existe
      */
-    public static function verificarProducto($id){
+    public static function verificarProducto($id,$des){
         include_once("modelo.php");
-        $salida = 0;
-        $consulta = Model::sqlverificarProducto($id,2);
+        $consulta = Model::sqlverificarProducto($id,$des);
         while($fila=$consulta->fetch_array()){
-            if($fila[0] == 1){
-                $salida += 1;
-            }else{
-                $salida +=0;
-            }
+            $salida = $fila[0];
         }
         return $salida;
     }
@@ -193,5 +188,13 @@ class Producto {
         }
         return $salida;
     }
-    
+
+    public static function countCategorias($categoria){
+        include_once("modelo.php");
+        $consulta = Model::sqlCountCategorias($categoria);
+        while($fila = $consulta->fetch_array()){
+            $salida = $fila[0];
+        }
+        return $salida;
+    }
 }

@@ -8,7 +8,7 @@
                     Actualizar Producto
                 </div>
                 <div class="card-body">
-                    <form action="buscar.php?data=<?php echo $_GET['data'];  ?>" method="post">
+                    <form action="buscar.php?producto=actualizar&data=<?php echo $_GET['data'];  ?>" method="post">
                         <div class="mb-3">
                             <label for="nombre" class="form-label">Nombre</label>
                             <input type="text" class="form-control" id="nombre" name="nombre_pro" value="<?php echo (Producto::productos(1, id::desencriptar($_GET['data']))); ?>">

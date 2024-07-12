@@ -28,5 +28,54 @@ function continuar() {
 }
 
 function aparecerCategorias(){
+    document.getElementById('create-catego').style.display = 'none';
     document.getElementById('catego').style.display = 'block';
+    var param = {
+        'aparece':true,
+    };
+    $.ajax({
+        data:param,
+        url: 'buscar.php',
+        datatype: 'texto',
+        method:'get',
+        success: function(respuesta){
+            document.getElementById('catego').innerHTML = respuesta;
+        },
+        error: function(xhr,status,erro){
+            console.log(respuesta);
+        }
+    })
 }
+
+function createCategoria(){
+    document.getElementById('catego').style.display = 'none';
+    document.getElementById('mensaje').style.display = 'none';
+    document.getElementById('create-catego').style.display = 'block';
+}
+
+function guardarCategoria(){
+    var categoria = document.getElementById('text-catego').value;
+    var param = {
+        'createCategoria':true,
+        'categoria': categoria
+    };
+
+    $.ajax({
+        data:param,
+        url: 'buscar.php',
+        datatype: 'texto',
+        method:'get',
+        success: function(respuesta){
+            document.getElementById('mensaje').style.display = 'block';
+            if(respuesta === "1"){
+                document.getElementById('mensaje').innerHTML = 'La Categoria se a creado correctamente.';
+            }
+            if(respuesta === "0"){
+                document.getElementById('mensaje').innerHTML = 'La Categoria ya existe.';
+            }
+        },
+        error: function(xhr,status,erro){
+            console.log(respuesta);
+        }
+    })
+ }

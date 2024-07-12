@@ -76,12 +76,28 @@ body, html {
 
 /* Estilo para la sección de categorías */
 #catego {
+    display: none;
     margin-top: 10px;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #fff;
 }
+
+#create-catego{
+    display: none;
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+#mensaje{
+    display: none; 
+}
+
+
 
 /* Estilo para la previsualización de la imagen */
 .user-photo {

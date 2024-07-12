@@ -60,11 +60,22 @@
                
                     <div class="mb-3">
                         <label class="form-label">Categorías</label><br>
-                        <button type="button" class="btn btn-primary mb-2" id="select_cate" onclick="aparecerCategorias()">Seleccionar</button>
-                        <button type="button" class="btn btn-primary mb-2" id="create_cate">Continuar</button>
+                        <button type="button" class="btn btn-primary mb-2" id="select_cate" onclick="aparecerCategorias()">Seleccionar Categoria</button>
+                        <button type="button" class="btn btn-primary mb-2" id="create_cate" onclick="createCategoria()">Crear una Categoria</button>
                     </div>
                     <div id="catego">
-                        <?php echo Vista::mostrarCategorias(2); ?>
+                        <br>
+                    </div>
+                    <div id="create-catego">
+                        <label for="">Crear categoria</label>
+                        <input  type="text" id="text-catego" multiple list="lista-catego" size="64" >
+                        <datalist id="lista-catego" >
+                            <?php
+                                echo Vista::mostrarCategorias(3);
+                            ?>
+                        </datalist><br><br>
+                        <button type="button" class="btn btn-primary mb-2" id="catego-create" onclick="guardarCategoria()">Crear</button>
+                        <div id="mensaje"></div>
                     </div>
                     
                     <div class="mb-3">
@@ -79,6 +90,7 @@
 
                    
                     <button type="submit" name="enviar" class="btn btn-primary">Enviar</button>
+                    <br><br>
                 </div>
             </form>
         </div>
