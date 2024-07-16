@@ -26,14 +26,14 @@ if( isset($_GET['id']) ){
 //Formulario para cargar productos
 if(isset($_POST ['enviar'])){
   
-  $id = $_POST['id-pro'];
-  $nombre = $_POST['name-pro'];
-  $descrip = $_POST['descrip-pro'];
-  $caracter = $_POST['caracter-pro'];
-  $color = $_POST['color-pro'];
-  $cantidad = $_POST['cantidad-pro'];
-  $ofertas = $_POST['oferta-pro'];
-  $precio = $_POST['precio-pro'];
+  $id = Funciones::vacunaXxs($_POST['id-pro']);
+  $nombre = Funciones::vacunaXxs($_POST['name-pro']);
+  $descrip = Funciones::vacunaXxs($_POST['descrip-pro']);
+  $caracter = Funciones::vacunaXxs($_POST['caracter-pro']);
+  $color = Funciones::vacunaXxs($_POST['color-pro']);
+  $cantidad = Funciones::vacunaXxs($_POST['cantidad-pro']);
+  $ofertas = Funciones::vacunaXxs($_POST['oferta-pro']);
+  $precio = Funciones::vacunaXxs($_POST['precio-pro']);
   (isset($_POST['iva-pro'])? $iva = $_POST['iva-pro']: $iva = 0);
   ($precio > 0?$precio = Funciones::strDinero($precio):$precio = 0 );
 

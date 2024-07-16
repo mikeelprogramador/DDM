@@ -80,6 +80,7 @@ public static function ContenidoProducto($id, $token) {
     include_once("../../conf/model.php");
     include_once("clasS_producto.php");
     include_once("class_encript.php");
+    include_once("class_funciones.php");
 
     $salida = "";
     $consulta = Model::sqlverificarProducto($id, 1);
@@ -88,19 +89,19 @@ public static function ContenidoProducto($id, $token) {
         $productoId = id::encriptar($fila[0]);
         $like = Productos::contarValoracion(0, $fila[0]);
         $deslike = Productos::contarValoracion(1, $fila[0]);
-
+        $salida .=Funciones::horas($fila[9],'mostra_fecha');
         $salida .= "<div class='producto' id='actualizar'>";
         $salida .= "<div class='row' >";
         $salida .= "<div class='col-md-6' id='producto-imagen'><img src='" .$fila[6] . "' alt='Producto' class='img-fluid'></div>"; // imagen del producto
         $salida .= "<div class='col-md-6' id='producto-detalles'>";
         $salida .= "<h2 class='producto-nombre' style='color: #c29349;'>" . $fila[1] . "</h2>";
         $salida .= "<p class='producto-descripcion'>" . $fila[2] . "</p>";
-        $salida .= "<p class='producto-caracteristicas'><strong>Características: </strong>" . $fila[3] . "</p>";
+        $salida .= "<p class='producto-caracteristicas'><strong>Características: </strong> " . $fila[3] . "</p>";
         $salida .= "<p class='producto-colores'><strong>Cantidades disponibles: </strong>" . $fila[4] . "</p>";
         $salida .= "<p class='producto-cantidad'><strong>Colores </strong>" . $fila[8] . "</p>";
         $salida .= "<p class='producto-precio'><strong>Precio: </strong>" . $fila[7] . "</p>";
         $salida .= "<p class='producto-ofertas'><strong>Ofertas: </strong>" . $fila[5] . "</p>";
-        $salida .= "<p class='producto-precio'><strong>Subido hace: </strong>" . $fila[9] . "</p>";
+        $salida .= "<p class='producto-precio'><strong id='mostra_fecha'>Subido hace: </strong></p>";
         $salida .= "<button class='btn btn-primary' type='button' id='incremento' onclick='incremento()'>+</button>";
         $salida .= "<input type='number' id='contador' class='form-control' value='1' min='1' max='" . $fila[4] . "' disabled>";
         $salida .= "<button class='btn btn-primary' type='button' id='decremento' onclick='decremento()'>-</button>";

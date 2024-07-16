@@ -139,3 +139,25 @@ function enviarDatos(des,token,id) {
     }
     window.location.href = url;
 }
+
+function mostrarFechas(fecha,lugar){
+     // Fecha inicial
+  var fechaInicial = moment(fecha);
+
+  // Fecha actual
+  var fechaActual = moment();
+
+  var minutos = fechaActual.diff(fechaInicial, 'minutes');
+  var horas = fechaActual.diff(fechaInicial, 'hours');
+  var dias = fechaActual.diff(fechaInicial, 'days');
+  var años = fechaActual.diff(fechaInicial, 'year');
+  if(minutos <60){
+    document.getElementById(lugar).innerHTML = "Subido Hace: "+minutos+ " minutos";
+  }else if(horas <24){
+    document.getElementById(lugar).innerHTML = "Subido Hace: "+horas+ " horas";
+  }else if(dias <365){
+    document.getElementById(lugar).innerHTML = "Subido Hace: "+dias+ " días";
+  }else{
+    document.getElementById(lugar).innerHTML = "Subido Hace: "+años+ " año";
+  }
+}

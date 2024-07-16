@@ -13,7 +13,7 @@ class Model {
     public static function sqlRegistarUsuario($id,$nombre,$apellido,$email,$newPwd){
     include("model/conexion.php");
         $sql = "INSERT INTO tb_usuarios(id,nombre,apellido,email,pasword,fecha_registro,cate_user,foto_usuarios) ";
-        $sql .= "VALUES($id,'$nombre','$apellido','$email','$newPwd',now(),'2','../../img/logo-icon-person.jpg')";
+        $sql .= "VALUES($id,'$nombre','$apellido','$email','$newPwd', DATE_FORMAT(NOW(), '%Y-%m-%d %h:%i:%s %p'),'2','../../img/logo-icon-person.jpg')";
         return $conexion->query($sql);
     }
     /**
@@ -77,7 +77,7 @@ class Model {
     include("model/conexion.php");
         $sql = "INSERT INTO tb_productos";
         $sql .= "(id_producto,producto_nombre,descripcion_producto,caracteristicas_producto,cantidades,id_ofertas,img,precio,color,fec_cre)";
-        $sql.= "VALUE('$id','$nombre','$descrip','$caracter','$cantidad','$oferta','$img','$precio','$color',now())";
+        $sql.= "VALUE('$id','$nombre','$descrip','$caracter','$cantidad','$oferta','$img','$precio','$color', DATE_FORMAT(NOW(), '%Y-%m-%d %h:%i:%s %p'))";
         return $resulatdo = $conexion->query($sql);
     }
     /**
@@ -180,7 +180,7 @@ class Model {
     public static function sqlComentarios($comentario,$id_producto,$id_usuario){
    include("model/conexion.php");
         $sql = "INSERT INTO tb_comentarios(comentario,fechaComentario,id_producto,id_usuario)";
-        $sql .= "value('$comentario',now(),'$id_producto','$id_usuario')";
+        $sql .= "value('$comentario',DATE_FORMAT(NOW(), '%Y-%m-%d %h:%i:%s %p'),'$id_producto','$id_usuario')";
         return $resulatdo = $conexion->query($sql);
     }
 
@@ -368,7 +368,7 @@ class Model {
     public static function sqlCompras($id_user,$depar,$munici,$telefono,$barrio,$direccion,$nombre,$email){
    include("model/conexion.php");
         $sql = "INSERT INTO tb_compras(id_usuario,departamento,municipio,telefono,barrio,direccion,fecha_de_compra,cliente,correo)";
-        $sql .= "values('$id_user','$depar','$munici','$telefono','$barrio','$direccion',now(),'$nombre','$email')";
+        $sql .= "values('$id_user','$depar','$munici','$telefono','$barrio','$direccion', DATE_FORMAT(NOW(), '%Y-%m-%d %h:%i:%s %p'),'$nombre','$email')";
         return $resultado = $conexion->query($sql);
     }
 

@@ -52,4 +52,19 @@ class Funciones{
         return $salida;
     }
 
+    public static function horas($hora,$lugar){
+        $salida = "<script>";
+        $salida .= "window.onload = function() {";
+        $salida .= "mostrarFechas('".$hora."','".$lugar."');";
+        $salida .= "};";
+        $salida .= "</script>";
+        return $salida;
+    }
+
+    public static function vacunaXxs($texto){
+        $salida = str_replace("<script>","",$texto);
+        $salida .= str_replace("</script>","",$texto);
+        return $salida;
+    }
+
 }

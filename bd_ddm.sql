@@ -132,7 +132,7 @@ DROP TABLE IF EXISTS `tb_comentarios`;
 CREATE TABLE `tb_comentarios` (
   `id_comentario` int(11) NOT NULL AUTO_INCREMENT,
   `comentario` varchar(600) NOT NULL,
-  `fechaComentario` varchar(20) NOT NULL,
+  `fechaComentario` varchar(150) DEFAULT NULL,
   `id_producto` varchar(10) NOT NULL,
   `id_usuario` int(11) NOT NULL,
   PRIMARY KEY (`id_comentario`),
@@ -140,7 +140,7 @@ CREATE TABLE `tb_comentarios` (
   KEY `id_usuario` (`id_usuario`),
   CONSTRAINT `tb_comentarios_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `tb_productos` (`id_producto`),
   CONSTRAINT `tb_comentarios_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `tb_usuarios` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -149,7 +149,6 @@ CREATE TABLE `tb_comentarios` (
 
 LOCK TABLES `tb_comentarios` WRITE;
 /*!40000 ALTER TABLE `tb_comentarios` DISABLE KEYS */;
-INSERT INTO `tb_comentarios` VALUES (7,'Me estafaron este no es un silbato profesional los demandare','2024-07-16 10:31:32','20',1);
 /*!40000 ALTER TABLE `tb_comentarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -284,7 +283,7 @@ CREATE TABLE `tb_productos` (
   `img` varchar(200) DEFAULT NULL,
   `precio` varchar(200) DEFAULT NULL,
   `color` varchar(150) NOT NULL,
-  `fec_cre` datetime DEFAULT NULL,
+  `fec_cre` varchar(150) DEFAULT NULL,
   PRIMARY KEY (`id_producto`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -295,7 +294,6 @@ CREATE TABLE `tb_productos` (
 
 LOCK TABLES `tb_productos` WRITE;
 /*!40000 ALTER TABLE `tb_productos` DISABLE KEYS */;
-INSERT INTO `tb_productos` VALUES ('20','silbato ','Es un silbato de arbitro ','Es un silbato de arbitro profesional',10,0,'../../fotos/descarga.jfif','6.545,00','negro','2024-07-16 10:28:22');
 /*!40000 ALTER TABLE `tb_productos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -356,7 +354,6 @@ CREATE TABLE `tb_valoracion` (
 
 LOCK TABLES `tb_valoracion` WRITE;
 /*!40000 ALTER TABLE `tb_valoracion` DISABLE KEYS */;
-INSERT INTO `tb_valoracion` VALUES (0,'20',1,'1');
 /*!40000 ALTER TABLE `tb_valoracion` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -369,4 +366,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-07-16 10:35:22
+-- Dump completed on 2024-07-16 12:28:51
