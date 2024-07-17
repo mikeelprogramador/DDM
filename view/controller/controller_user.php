@@ -13,7 +13,7 @@ if(Session::verificarSesssiones() == 0 )header("location: ../../index.php");
 if(isset($_FILES['foto_perfil'])){
     $files =  $_FILES['foto_perfil'] ;
     $img = CrearProducto::img(2,$files);
-    if($img =="1" || $img !=="0"){
+    if($img =="1" || $img =="0"){
         echo "limitesImg";
     }else{
         Usuarios::cargarImagen($img,$_SESSION['id']);

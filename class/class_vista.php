@@ -89,7 +89,6 @@ public static function ContenidoProducto($id, $token) {
         $productoId = id::encriptar($fila[0]);
         $like = Productos::contarValoracion(0, $fila[0]);
         $deslike = Productos::contarValoracion(1, $fila[0]);
-        $salida .=Funciones::horas($fila[9],'mostra_fecha');
         $salida .= "<div class='producto' id='actualizar'>";
         $salida .= "<div class='row' >";
         $salida .= "<div class='col-md-6' id='producto-imagen'><img src='" .$fila[6] . "' alt='Producto' class='img-fluid'></div>"; // imagen del producto
@@ -101,14 +100,11 @@ public static function ContenidoProducto($id, $token) {
         $salida .= "<p class='producto-cantidad'><strong>Colores </strong>" . $fila[8] . "</p>";
         $salida .= "<p class='producto-precio'><strong>Precio: </strong>" . $fila[7] . "</p>";
         $salida .= "<p class='producto-ofertas'><strong>Ofertas: </strong>" . $fila[5] . "</p>";
-        $salida .= "<p class='producto-precio'><strong id='mostra_fecha'>Subido hace: </strong></p>";
+        $salida .= "<p class='producto-precio'><strong id='mostra_fecha'>Subido hace:". Funciones::horas($fila[9],'mostra_fecha')."</strong></p>";
         $salida .= "<button class='btn btn-primary' type='button' id='incremento' onclick='incremento()'>+</button>";
         $salida .= "<input type='number' id='contador' class='form-control' value='1' min='1' max='" . $fila[4] . "' disabled>";
         $salida .= "<button class='btn btn-primary' type='button' id='decremento' onclick='decremento()'>-</button>";
-        $salida .= "<div class='like-container'>";
-        $salida .= "<img src='../../img/como.png' alt='Me Gusta' id='like-icon' class='reaction-icon' onclick='toggleLike(\"{$productoId}\")'>$like";
-        $salida .= "<img src='../../img/disgusto.png' alt='No Me Gusta' id='dislike-icon' class='reaction-icon' onclick='toggleDislike(\"{$productoId}\")'>$deslike";
-        $salida .= "</div>";
+        $salida .= self::verLikes($productoId,$like,$deslike);
         $salida .= "<a class='btn btn-primary producto-comprar' id='enlace' onclick='enviarDatos(2,\"{$token}\",\"{$productoId}\")' >Compra ahora</a><br>";
         $salida .= "<a class='btn btn-primary producto-comprar' onclick='enviarDatos(1,\"{$token}\",\"{$productoId}\")' >Agregar al carrito</a>";
         $salida .= "</div>";
@@ -118,6 +114,14 @@ public static function ContenidoProducto($id, $token) {
     return $salida;
 }
 
+    public static function verlikes($productoId,$like,$deslike){
+        $salida = "";
+        $salida .= "<div class='like-container' id='like-container'>";
+        $salida .= "<img src='../../img/como.png' alt='Me Gusta' id='like-icon' class='reaction-icon' onclick='toggleLike(\"{$productoId}\")'>$like";
+        $salida .= "<img src='../../img/disgusto.png' alt='No Me Gusta' id='dislike-icon' class='reaction-icon' onclick='toggleDislike(\"{$productoId}\")'>$deslike";
+        $salida .= "</div>";
+        return $salida;
+    }
     
     
 
@@ -149,15 +153,17 @@ public static function ContenidoProducto($id, $token) {
             $salida .= "<div class='container mt-5'>";
             $salida .= "<div class='row justify-content-center'>";
             $salida .= "<div class='col-md-4'>";
-            $salida .= "<div class='circle text-center bg-primary text-white rounded-circle' >";
+            $salida .= "<div class='circle text-center bg-primary text-white rounded-circle >";
+            $salida .= "<label for='foto_perfil' id='label_foto'onclick='activarfiles()' >";
             $salida .= "<img src='$fila[8]' class='img-fluid' id='imagen_perfil' alt='No cargaste la imagen en la base' onmouseenter='cambiarFoto(this)'>";
+            $salida .= "</label>";
             $salida .= "</div>";
             $salida .= "</div>";
             $salida .= "<div class='col-md-8'>";
             $salida .= "<div class='mb-3'>";
             $salida .= "<label class='form-label'>Nombre</label>";
             $salida .= "<input type='text' class='form-control' id='edit_nombre' value='$fila[1]' disabled>";
-            $salida .= "</div>";
+            $salida .= "</div>";    
             $salida .= "<div class='mb-3'>";
             $salida .= "<label class='form-label'>Apellido</label>";
             $salida .= "<input type='text' class='form-control' id='edit_apellido' value='$fila[2]' disabled>";

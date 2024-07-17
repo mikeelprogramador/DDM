@@ -74,7 +74,7 @@ function toggleLike(id) {
         datatype: 'html',
         method: 'get',
         success: function(respuesta){
-           document.getElementById('actualizar').innerHTML = respuesta;
+           document.getElementById('like-container').innerHTML = respuesta;
         },
         error: function(xhr,statuc,error){
             console.log(error);
@@ -104,7 +104,7 @@ function toggleDislike(id) {
         datatype: 'html',
         method: 'get',
         success: function(respuesta){
-           document.getElementById('actualizar').innerHTML = respuesta;
+           document.getElementById('like-container').innerHTML = respuesta;
         },
         error: function(xhr,statuc,error){
             console.log(error);

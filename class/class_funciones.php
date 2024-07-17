@@ -62,8 +62,11 @@ class Funciones{
     }
 
     public static function vacunaXxs($texto){
-        $salida = str_replace("<script>","",$texto);
-        $salida .= str_replace("</script>","",$texto);
+        $patron_xss = '/<\s*(script|img|iframe|frame|video|audio|embed|object|svg|javascript)\b[^>]*>.*?<\/\s*\1\s*>/i';
+        //remplaza el script 
+        $salida = preg_replace($patron_xss, '', $texto);
+        //elimina el html
+        $salida = strip_tags($salida);
         return $salida;
     }
 

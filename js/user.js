@@ -14,13 +14,12 @@ function crearBotonEdit(){
     div.appendChild(boton);
 }
 
-function cambiarFoto(img){
+function cambiarFoto(img) {
     img.style.cursor = 'pointer';
-    img.addEventListener('click', function() {
-            var foto = document.getElementById('foto_perfil');
-            foto.click();
-    });
-    
+}
+function activarfiles(){
+    var foto = document.getElementById('foto_perfil');
+    foto.click();
 }
 
 function mostrarImagen(event,des) {
@@ -38,6 +37,7 @@ function mostrarImagen(event,des) {
         contentType: false, // Importante: false cuando se usa FormData
         processData: false, // Importante: false cuando se usa FormData
         success: function(respuesta) {
+            console.log(respuesta);
             if(respuesta === "limitesImg"){
                 alertPro(respuesta);
             }else{

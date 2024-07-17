@@ -2,11 +2,12 @@
 include_once('../../class/class_sessiones.php');
 include_once('../../class/class_login.php');
 include_once('../../class/class_user.php');
+include_once('../../class/class_funciones.php');
 Session::iniciarSessiones();
 
 if( isset($_GET['log']) && $_GET['log'] == 1){
-    $email = $_POST['email'];
-    $password = $_POST['clave'];
+    $email = Funciones::vacunaXxs($_POST['email']);
+    $password = Funciones::vacunaXxs($_POST['clave']);
     $login = Login::inicio($email,$password);
     $id = Login::encontarUsuario(2,$email);
 
@@ -26,12 +27,12 @@ if( isset($_GET['log']) && $_GET['log'] == 1){
 
 if( isset($_GET['log']) && $_GET['log'] == 0){
 
-    $email = $_POST['email'];
-    $password = $_POST['clave'];
-    $nombre = $_POST['nom'];
-    $apellido = $_POST['apellido'];
+    $email = Funciones::vacunaXxs($_POST['email']);
+    $password = Funciones::vacunaXxs($_POST['clave']);
+    $nombre = Funciones::vacunaXxs($_POST['nom']);
+    $apellido = Funciones::vacunaXxs( $_POST['apellido']);
     $registro = Login::registrar($nombre,$apellido,$email,$password);
-    $id = Login::buscarIdUsuario($email);
+    $id = Login::encontarUsuario(2,$email);
 
     if( $registro == 1 ){
         $_SESSION['id'] = $id;
