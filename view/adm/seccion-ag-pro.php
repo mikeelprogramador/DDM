@@ -70,7 +70,7 @@
                         <input  type="text" id="text-catego" multiple list="lista-catego" size="64" >
                         <datalist id="lista-catego" >
                             <?php
-                                echo Vista::mostrarCategorias(3);
+                                echo Vista::mostrarCategorias(3,1);
                             ?>
                         </datalist><br><br>
                         <button type="button" class="btn btn-primary mb-2" id="catego-create" onclick="guardarCategoria()">Crear</button>

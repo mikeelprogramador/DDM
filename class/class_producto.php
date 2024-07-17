@@ -41,16 +41,12 @@ class Productos {
      * Agregar megusta a un producto
      */
     public static function valoracion($id_pro,$id_user,){
-                include_once("../../conf/model.php");
-        $salida = 1;
+        include_once("../../conf/model.php");
         $consulta = Model::sqlValoracion($id_pro,$id_user);
-        if($consulta){
-            $salida = 0;
-        }
     }
 
     public static function actualizarLikes($id_user,$id_pro,$valoracion){
-                include_once("../../conf/model.php");
+        include_once("../../conf/model.php");
         $salida = 1;
         $consulta = Model::sqlLikes(3,$id_user,$id_pro,$valoracion);
         if($consulta){
@@ -60,7 +56,7 @@ class Productos {
     }
 
     public static function contarValoracion($valoracion,$id_pro){
-                include_once("../../conf/model.php");
+        include_once("../../conf/model.php");
         $salida = 0;
         $consulta = Model::sqlContarValoracion($valoracion,$id_pro);
         while($fila = $consulta->fetch_array()){
@@ -70,8 +66,8 @@ class Productos {
     }
 
     public static function verificarLikes($id_user,$id_pro){
-                include_once("../../conf/model.php");
-        $salida = 0;
+        include_once("../../conf/model.php");
+        $salida =1;
         $consulta = Model::sqlLikes(1,$id_user,$id_pro);
         while($fila = $consulta->fetch_array()){
             $salida = $fila[0];
@@ -80,17 +76,13 @@ class Productos {
     }
 
     public static function eliminarLikes($id_user,$id_pro){
-                include_once("../../conf/model.php");
-        $salida = 1;
+        include_once("../../conf/model.php");
         $consulta = Model::sqlLikes(2,$id_user,$id_pro);
-        if($consulta){
-            $salida = 0;
-        }
     }
 
     public static function valoracionUsuario($id_user,$id_pro){
-                include_once("../../conf/model.php");
-        $salida = -1;
+        include_once("../../conf/model.php");
+        $salida =1;
         $consulta = Model::sqlLikes(4,$id_user,$id_pro);
         while($fila = $consulta->fetch_array()){
             $salida = $fila[0];

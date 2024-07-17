@@ -59,7 +59,7 @@ class Model {
             $dato = "nombre";
         }
         $sql = "select $dato from tb_usuarios where id = '$id_user'";
-        return $resulatdo = $conexion->query($sql);
+        return  $conexion->query($sql);
     }
     /**
      * Metodo que crea el codigo del usuairo apartir de cuantos clientes existna el la pagina,muestra los datos del usuario
@@ -70,7 +70,7 @@ class Model {
         if( $des == 1) $dato = "count(*)";
         if( $des == 2) $dato = "*";
         $sql = "select $dato from tb_usuarios ";
-        return $resulatdo = $conexion->query($sql);
+        return  $conexion->query($sql);
     }
 
     public static function sqlCargarProducto($id,$nombre,$descrip,$caracter,$cantidad,$oferta,$img,$precio,$color){
@@ -78,7 +78,7 @@ class Model {
         $sql = "INSERT INTO tb_productos";
         $sql .= "(id_producto,producto_nombre,descripcion_producto,caracteristicas_producto,cantidades,id_ofertas,img,precio,color,fec_cre)";
         $sql.= "VALUE('$id','$nombre','$descrip','$caracter','$cantidad','$oferta','$img','$precio','$color', DATE_FORMAT(NOW(), '%Y-%m-%d %h:%i:%s %p'))";
-        return $resulatdo = $conexion->query($sql);
+        return  $conexion->query($sql);
     }
     /**
      * Metodo para verificar si un producto y para mostrar un producto
@@ -97,7 +97,7 @@ class Model {
             $tabla = "tb_facturas";
         }
         $sql .= "from $tabla where id_producto = '$id'";
-        return $resulatdo = $conexion->query($sql);
+        return  $conexion->query($sql);
     }
 
     public static function sqlMostrarProductos($search = null,$des = null,$categoria = null){
@@ -122,7 +122,7 @@ class Model {
             }
         }
        // echo $sql ;
-        return $resulatdo = $conexion->query($sql);
+        return  $conexion->query($sql);
     }
 
     private static function textoBuqueda($search){
@@ -145,7 +145,7 @@ class Model {
         Model::sqlEliminarComentario($id,1);
         Model::sqlEliminarFkProductos(2,$id);
         $sql = "DELETE FROM tb_productos WHERE id_producto = '$id'";
-        return $resultado = $conexion->query($sql);
+         return  $conexion->query($sql);
     }
 
     public static function sqlEliminarFkProductos($des,$id){
@@ -174,14 +174,14 @@ class Model {
         if( $des == 1){
             $sql .= "where id_producto = '$id'";
         }
-        return $resultado = $conexion->query($sql);
+         return  $conexion->query($sql);
     }
 
     public static function sqlComentarios($comentario,$id_producto,$id_usuario){
    include("model/conexion.php");
         $sql = "INSERT INTO tb_comentarios(comentario,fechaComentario,id_producto,id_usuario)";
         $sql .= "value('$comentario',DATE_FORMAT(NOW(), '%Y-%m-%d %h:%i:%s %p'),'$id_producto','$id_usuario')";
-        return $resulatdo = $conexion->query($sql);
+        return  $conexion->query($sql);
     }
 
     public static function sqlViewComentarios($id_pro){
@@ -191,7 +191,7 @@ class Model {
         $sql .= "inner join tb_usuarios on tb_comentarios.id_usuario = tb_usuarios.id ";
         $sql .= "inner join tb_productos on tb_comentarios.id_producto = tb_productos.id_producto ";
         $sql .= "where tb_productos.id_producto = '$id_pro' ";
-        return $resultado = $conexion->query($sql);
+         return  $conexion->query($sql);
     }
 
 
@@ -206,7 +206,7 @@ class Model {
         }
         $sql = "update tb_usuarios set status_user = '$dato' where id= ('$id_user') ";
         //echo $sql;
-        return $resulatdo = $conexion->query($sql);
+        return  $conexion->query($sql);
     }
 
     public static function sqlProductos($des,$id_pro){
@@ -226,14 +226,19 @@ class Model {
 
         }
         $sql = "SELECT $dato FROM $tabla where id_producto = '$id_pro'";
-        return $resulatdo = $conexion->query($sql);
+        return  $conexion->query($sql);
 
     }
 
-    public static function sqlMostrarCategorias(){
-   include("model/conexion.php");
-        $sql = "select * from tb_categorias";
-        return $resulatdo = $conexion->query($sql);
+    public static function sqlMostrarCategorias($des,$id_pro =null){
+        include("model/conexion.php");
+        if($des == 1) $sql = "select * from tb_categorias";
+        if($des == 2){
+            $sql = "select id_categoria,categoria,";
+            $sql .= "(select id_categoria from tb_categoriasProducto as t2 where id_producto = '$id_pro' and t1.id_categoria = t2.id_categoria) ";
+            $sql .= "from tb_categorias as t1";
+        }
+        return  $conexion->query($sql);
     }
 
     public static function sqlAgregarCategoria($des,$categorias = null,$id_pro = null){
@@ -251,7 +256,7 @@ class Model {
         if($des == 2 ){
             $sql = "select id_categoria from tb_categorias order by id_categoria desc  limit 1";
         }
-        return $resulatdo = $conexion->query($sql);
+        return  $conexion->query($sql);
     }
 
     public static function sqlActualizarImagen($img,$id_user){
@@ -259,7 +264,7 @@ class Model {
         $sql = "UPDATE tb_usuarios ";
         $sql .= "set foto_usuarios = '$img' ";
         $sql .= "where id = '$id_user'";
-        return $resulatdo = $conexion->query($sql);
+        return  $conexion->query($sql);
     }
 
     public static function sqlCarrito($des,$id_user){
@@ -272,21 +277,21 @@ class Model {
             $sql = "select count(*) from tb_carrito ";
             $sql .= "where id_usuario = '$id_user'";
         }
-        return $resulatdo = $conexion->query($sql);
+        return  $conexion->query($sql);
     }
 
     public static function sqlBuscarCarrito($id_user){
    include("model/conexion.php");
         $sql = "select id_carrito from tb_carrito ";
         $sql .= "where id_usuario = '$id_user'";
-        return $resulatdo = $conexion->query($sql);
+        return  $conexion->query($sql);
     }
 
     public static function sqlAgregarCarrito($carrito,$id_pro,$cantidad){
    include("model/conexion.php");
         $sql = "INSERT INTO tb_carypro(id_carrito,id_producto,cantidad_de_productos)";
         $sql .= "values('$carrito','$id_pro','$cantidad')";
-        return $resulatdo = $conexion->query($sql);
+        return  $conexion->query($sql);
     }
 
     public static function sqlMostrarCarrito($des,$id_user){
@@ -299,7 +304,7 @@ class Model {
         $sql .= "inner join tb_carypro as t2 on t1.id_producto = t2.id_producto ";
         $sql .= "inner join tb_carrito as t3 on t2.id_carrito = t3.id_carrito ";
         $sql .= "where t3.id_usuario = '$id_user' ";
-        return $resulatdo = $conexion->query($sql);
+        return  $conexion->query($sql);
     }
 
     public static function sqlAumentarCantidad($des,$carrito,$id_pro){
@@ -309,7 +314,7 @@ class Model {
         $sql = "update tb_carypro ";
         $sql .= "set cantidad_de_productos = cantidad_de_productos $operacion 1 ";
         $sql .= "where id_carrito = '$carrito' and id_producto = '$id_pro' ";
-        return $resulatdo = $conexion->query($sql);
+        return  $conexion->query($sql);
     }
 
     public static function sqlRestriccionCarrito($id_user,$id_pro){
@@ -317,14 +322,14 @@ class Model {
         $sql = "select count(*) from tb_carypro as t1  ";
         $sql .= "inner join tb_carrito as t2 on t1.id_carrito = t2.id_carrito ";
         $sql .= "where t2.id_usuario = '$id_user' and t1.id_producto = '$id_pro' ";
-        return $resulatdo = $conexion->query($sql);
+        return  $conexion->query($sql);
     }
 
     public static function sqlValoracion($id_pro,$id_user){
    include("model/conexion.php");
         $sql = "INSERT INTO tb_valoracion(id_producto,id_usuario) ";
         $sql .= "values('$id_pro','$id_user')";
-        return $resulatdo = $conexion->query($sql);
+        return  $conexion->query($sql);
 
     }
 
@@ -332,7 +337,7 @@ class Model {
    include("model/conexion.php");
         $sql = "select count(*) from tb_valoracion ";
         $sql .= "where id_producto = '$id_pro' and valoracion = '$valoracion';";
-        return $resulatdo = $conexion->query($sql);
+        return  $conexion->query($sql);
     }
 
     public static function sqlLikes($des,$id_user,$id_pro,$valoracion = null){
@@ -342,8 +347,8 @@ class Model {
         if($des == 3 )$sql = "update tb_valoracion set valoracion = '$valoracion'";
         if($des == 4 )$sql = "select valoracion from tb_valoracion ";
         if($des == 5 )$sql = "select id_usuario from tb_valoracion ";
-        $sql .= "where id_usuario = '$id_user' and id_producto = '$id_pro' ";
-        return $resulatdo = $conexion->query($sql);
+        $sql .= "where id_usuario = '$id_user' and id_producto = '$id_pro' "; 
+        return  $conexion->query($sql);
     }
 
     public static function sqlRegiones($des,$valor = null){
@@ -362,20 +367,20 @@ class Model {
             $dato = "municipio";$tabla = "tb_municipios"; $continuacion = "where id_municipio = $valor";
         }
         $sql = "SELECT $dato FROM $tabla $continuacion ";
-        return $resultado = $conexion->query($sql);
+         return  $conexion->query($sql);
     }
 
     public static function sqlCompras($id_user,$depar,$munici,$telefono,$barrio,$direccion,$nombre,$email){
    include("model/conexion.php");
         $sql = "INSERT INTO tb_compras(id_usuario,departamento,municipio,telefono,barrio,direccion,fecha_de_compra,cliente,correo)";
         $sql .= "values('$id_user','$depar','$munici','$telefono','$barrio','$direccion', DATE_FORMAT(NOW(), '%Y-%m-%d %h:%i:%s %p'),'$nombre','$email')";
-        return $resultado = $conexion->query($sql);
+         return  $conexion->query($sql);
     }
 
     public static function sqlCountCompras(){
    include("model/conexion.php");
         $sql = "select id_compra  from tb_compras order by id_compra desc limit 1;";
-        return $resultado = $conexion->query($sql);
+         return  $conexion->query($sql);
     }
 
     public static function sqlProduCompra($id_compra,$id_pro,$cantidad,$precio){
@@ -396,7 +401,7 @@ class Model {
                 $sql .= ",";
             }
         }
-       return $resultado = $conexion->query($sql);
+        return  $conexion->query($sql);
     }
 
     public static function sqlComprasUni($id_compra,$id_pro,$cantidad,$precio){
@@ -405,7 +410,7 @@ class Model {
         $porducto = Productos::productos(1,$id_pro);
         $sql = "INSERT INTO tb_facturas(id_compra,id_producto,producto,cantidades,sub_valor)";
         $sql .= "values('$id_compra','$id_pro','$porducto','$cantidad','$precio')";
-        return $resultado = $conexion->query($sql);
+         return  $conexion->query($sql);
     }
 
     public static function sqlBorraComporaAU($des,$id_compra,$id_user = null){
@@ -413,14 +418,14 @@ class Model {
         $sql = "delete from ";
         if($des == 1) $sql .= "tb_compras where id_compra = '$id_compra' and id_usuario = '$id_user'";
         if($des == 2) $sql .= "tb_facturas where id_compra = '$id_compra'";
-        return $resultado = $conexion->query($sql);
+         return  $conexion->query($sql);
     }
 
     public static function sqlVaciarCarrito($id_carrito){
         include("model/conexion.php");
         $sql  = "delete from tb_carypro ";
         $sql .= "where id_carrito = '$id_carrito'";
-        return $resultado = $conexion->query($sql);
+         return  $conexion->query($sql);
     }
 
     public static function sqlActualizarCantidadesMax($id_pro,$cantidad){
@@ -447,7 +452,7 @@ class Model {
         $sql  = "select * from tb_compras as t1 ";
         $sql .= "inner join tb_usuarios as t2 on t1.id_usuario = t2.id ";
         $sql .= "where t1.id_usuario = '$id_user'";
-        return $resultado = $conexion->query($sql);
+         return  $conexion->query($sql);
     }
 
     public static function sqlFactura($des,$id_user,$id_compra){
@@ -475,14 +480,14 @@ class Model {
         $sql .= "inner join tb_usuarios as t4 on t2.id_usuario = t4.id ";
         $sql .= "where t4.id = '$id_user' and t2.id_compra = '$id_compra' $limit";
         //echo $sql;
-        return $resultado = $conexion->query($sql);
+         return  $conexion->query($sql);
     }
 
     public static function sqlEliminarDelCarrito($carrito,$id_pro){
         include("model/conexion.php");
         $sql = "DELETE  FROM tb_carypro ";
         $sql .= "where id_carrito = '$carrito' and id_producto = '$id_pro'";
-        return $resultado = $conexion->query($sql);
+         return  $conexion->query($sql);
     }
 
     public static function sqlVentas(){
@@ -490,7 +495,7 @@ class Model {
       $sql  = "select DISTINCT producto,";
       $sql .= "(select sum(cantidades) from tb_facturas as t2 where t1.id_producto = t2.id_producto )  ";
       $sql .= "from tb_facturas as t1  ";
-      return $resultado = $conexion->query($sql);
+       return  $conexion->query($sql);
     }
 
     public static function sqlComprasDelUsuario(){
@@ -499,7 +504,7 @@ class Model {
       $sql .= "(select count(*) from tb_compras as  t3 where  t1.id = t3.id_usuario ) ";
       $sql .= "from tb_usuarios as t1  ";
       $sql .= "inner join tb_compras as t2 on t1.id = t2.id_usuario";
-      return $resultado = $conexion->query($sql);
+       return  $conexion->query($sql);
     }
 
     public static function sqlActualizarTotalCompra($id_compra,$id_user){

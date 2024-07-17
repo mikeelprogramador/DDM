@@ -150,13 +150,20 @@ function mostrarFechas(fecha,lugar){
   var minutos = fechaActual.diff(fechaInicial, 'minutes');
   var horas = fechaActual.diff(fechaInicial, 'hours');
   var dias = fechaActual.diff(fechaInicial, 'days');
+  var semanas = fechaActual.diff(fechaInicial, 'week');
+  var mes = fechaActual.diff(fechaInicial, 'month');
   var años = fechaActual.diff(fechaInicial, 'year');
+  
   if(minutos <60){
     document.getElementById(lugar).innerHTML = "Subido Hace: "+minutos+ " minutos";
   }else if(horas <24){
     document.getElementById(lugar).innerHTML = "Subido Hace: "+horas+ " horas";
-  }else if(dias <365){
+  }else if(dias <8){
     document.getElementById(lugar).innerHTML = "Subido Hace: "+dias+ " días";
+  }else if(semanas<4){
+    document.getElementById(lugar).innerHTML = "Subido Hace: "+semanas+ " semanas";
+  }else if(mes<12){
+    document.getElementById(lugar).innerHTML = "Subido Hace: "+mes+ " mes";
   }else{
     document.getElementById(lugar).innerHTML = "Subido Hace: "+años+ " año";
   }

@@ -110,7 +110,7 @@ CREATE TABLE `tb_categoriasproducto` (
   KEY `id_categoria` (`id_categoria`),
   CONSTRAINT `tb_categoriasproducto_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `tb_productos` (`id_producto`),
   CONSTRAINT `tb_categoriasproducto_ibfk_2` FOREIGN KEY (`id_categoria`) REFERENCES `tb_categorias` (`id_categoria`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -119,6 +119,7 @@ CREATE TABLE `tb_categoriasproducto` (
 
 LOCK TABLES `tb_categoriasproducto` WRITE;
 /*!40000 ALTER TABLE `tb_categoriasproducto` DISABLE KEYS */;
+INSERT INTO `tb_categoriasproducto` VALUES (1,'21',1),(3,'50',1),(4,'50',2),(6,'50',4),(7,'50',5);
 /*!40000 ALTER TABLE `tb_categoriasproducto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -140,7 +141,7 @@ CREATE TABLE `tb_comentarios` (
   KEY `id_usuario` (`id_usuario`),
   CONSTRAINT `tb_comentarios_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `tb_productos` (`id_producto`),
   CONSTRAINT `tb_comentarios_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `tb_usuarios` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -294,6 +295,7 @@ CREATE TABLE `tb_productos` (
 
 LOCK TABLES `tb_productos` WRITE;
 /*!40000 ALTER TABLE `tb_productos` DISABLE KEYS */;
+INSERT INTO `tb_productos` VALUES ('21','silbato ','1','window.alert(\"Hello world!\");</script>',0,0,'../../fotos/descarga.jfif','0,00','negro','2024-07-01 12:31:31 PM'),('50','gorra','gorrita','hola ',1,0,'../../fotos/descarga.jfif','26.180,00','','2024-07-17 11:32:27 AM');
 /*!40000 ALTER TABLE `tb_productos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -324,7 +326,7 @@ CREATE TABLE `tb_usuarios` (
 
 LOCK TABLES `tb_usuarios` WRITE;
 /*!40000 ALTER TABLE `tb_usuarios` DISABLE KEYS */;
-INSERT INTO `tb_usuarios` VALUES (1,'Maicol','Sánchez','mike','$2y$12$6ZhGvHK5l69ZlKsZKfr5veHLU7rG5J/.Es4H.IOb/4HMPtwZBuVTq','2024-07-11 12:14:50',0,'Activo','../../img_user/images.jfif'),(2,'Juan','Castañeda','juan','$2y$12$fi04aypwRyUjHQlBfhE81Ox4VtHrOzj6jwCdtTbO226zpuqc0/s0i','2024-07-11 12:22:28',1,'Activo','../../img/logo-icon-person.jpg'),(3,'Pepito','perez','pepito','$2y$12$rxuzlnp3n7WOAJUf/im6g.o/HumEBXf11.53fblUJ7pQkO.n/mZ6S','2024-07-11 16:56:14',2,'Inactivo','../../img/logo-icon-person.jpg');
+INSERT INTO `tb_usuarios` VALUES (1,'Maicol','Sánchez','mike','$2y$12$6ZhGvHK5l69ZlKsZKfr5veHLU7rG5J/.Es4H.IOb/4HMPtwZBuVTq','2024-07-11 12:14:50',0,'Activo','../../img_user/planeta-tierra-vista-desde-la-luna_1280x720_xtrafondos.com.jpg'),(2,'Juan','Castañeda','juan','$2y$12$fi04aypwRyUjHQlBfhE81Ox4VtHrOzj6jwCdtTbO226zpuqc0/s0i','2024-07-11 12:22:28',1,'Activo','../../img/logo-icon-person.jpg'),(3,'Pepito','perez','pepito','$2y$12$rxuzlnp3n7WOAJUf/im6g.o/HumEBXf11.53fblUJ7pQkO.n/mZ6S','2024-07-11 16:56:14',2,'Activo','../../img_user/planeta-tierra-vista-desde-la-luna_1280x720_xtrafondos.com.jpg');
 /*!40000 ALTER TABLE `tb_usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -336,7 +338,7 @@ DROP TABLE IF EXISTS `tb_valoracion`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tb_valoracion` (
-  `id_valoracion` int(11) NOT NULL,
+  `id_valoracion` int(11) NOT NULL AUTO_INCREMENT,
   `id_producto` varchar(10) NOT NULL,
   `id_usuario` int(11) NOT NULL,
   `valoracion` varchar(100) NOT NULL,
@@ -345,7 +347,7 @@ CREATE TABLE `tb_valoracion` (
   KEY `id_usuario` (`id_usuario`),
   CONSTRAINT `tb_valoracion_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `tb_productos` (`id_producto`),
   CONSTRAINT `tb_valoracion_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `tb_usuarios` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -354,6 +356,7 @@ CREATE TABLE `tb_valoracion` (
 
 LOCK TABLES `tb_valoracion` WRITE;
 /*!40000 ALTER TABLE `tb_valoracion` DISABLE KEYS */;
+INSERT INTO `tb_valoracion` VALUES (2,'21',3,'0'),(3,'21',1,'0');
 /*!40000 ALTER TABLE `tb_valoracion` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -366,4 +369,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-07-16 12:28:51
+-- Dump completed on 2024-07-17 12:40:23

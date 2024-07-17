@@ -36,6 +36,14 @@
                             <input type="number" class="form-control" id="cantidades" name="cantidad_pro" value="<?php echo (Productos::productos(4, id::desencriptar($_GET['data']))); ?>">
                         </div>
                         <div class="mb-3">
+                            <label for="cantidades" class="form-label">Categorias</label>
+                            <div class="categoria">
+                                <?php
+                                    echo Vista::mostrarCategorias(4,2,id::desencriptar($_GET['data']));
+                                ?>
+                            </div>
+                        </div>
+                        <div class="mb-3">
                             <label for="ofertas" class="form-label">Ofertas</label>
                             <input type="text" class="form-control" id="ofertas" name="ofertas_pro" value="<?php echo (Productos::productos(5, id::desencriptar($_GET['data']))); ?>">
                         </div>

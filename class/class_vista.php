@@ -104,7 +104,9 @@ public static function ContenidoProducto($id, $token) {
         $salida .= "<button class='btn btn-primary' type='button' id='incremento' onclick='incremento()'>+</button>";
         $salida .= "<input type='number' id='contador' class='form-control' value='1' min='1' max='" . $fila[4] . "' disabled>";
         $salida .= "<button class='btn btn-primary' type='button' id='decremento' onclick='decremento()'>-</button>";
+        $salida .= "<div class='like-container' id='like-container'>";
         $salida .= self::verLikes($productoId,$like,$deslike);
+        $salida .= "</div>";
         $salida .= "<a class='btn btn-primary producto-comprar' id='enlace' onclick='enviarDatos(2,\"{$token}\",\"{$productoId}\")' >Compra ahora</a><br>";
         $salida .= "<a class='btn btn-primary producto-comprar' onclick='enviarDatos(1,\"{$token}\",\"{$productoId}\")' >Agregar al carrito</a>";
         $salida .= "</div>";
@@ -116,10 +118,8 @@ public static function ContenidoProducto($id, $token) {
 
     public static function verlikes($productoId,$like,$deslike){
         $salida = "";
-        $salida .= "<div class='like-container' id='like-container'>";
         $salida .= "<img src='../../img/como.png' alt='Me Gusta' id='like-icon' class='reaction-icon' onclick='toggleLike(\"{$productoId}\")'>$like";
         $salida .= "<img src='../../img/disgusto.png' alt='No Me Gusta' id='dislike-icon' class='reaction-icon' onclick='toggleDislike(\"{$productoId}\")'>$deslike";
-        $salida .= "</div>";
         return $salida;
     }
     
@@ -186,10 +186,10 @@ public static function ContenidoProducto($id, $token) {
         return $salida; 
     }
 
-    public static function mostrarCategorias($des){
+    public static function mostrarCategorias($des,$desbd,$id_pro = null){
         include_once("../../conf/model.php");
         $salida = "";
-        $consulta = Model::sqlMostrarCategorias();
+        $consulta = Model::sqlMostrarCategorias($desbd,$id_pro);
         while($fila = $consulta->fetch_array()){
             if($des == 1){
                 $salida .= "<li><a class='dropdown-item' href='ddm.php?seccion=categorias&cate=$fila[1]'>$fila[1]</a></li>";
@@ -199,6 +199,13 @@ public static function ContenidoProducto($id, $token) {
             }
             if($des == 3){
                 $salida .= "<option value='".$fila[1]."'>".$fila[1]."</option>";
+            }
+            if($des == 4){
+                if($fila[0] == $fila[2]){
+                    $salida .= "<input type=checkbox  name=categoria$fila[0] value=$fila[0] checked >$fila[1] <br>";
+                }else{
+                    $salida .= "<input type=checkbox  name=categoria$fila[0] value=$fila[0] >$fila[1] <br>";
+                }
             }
         }
         return $salida;

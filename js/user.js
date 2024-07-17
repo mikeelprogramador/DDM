@@ -31,13 +31,12 @@ function mostrarImagen(event,des) {
     if(des === 2) ur = '../controller/controller_admin.php';
     $.ajax({
         url: ur,
-        type: 'POST', // Método HTTP correcto para enviar archivos
+        type: 'POST', 
         data: formData,
         dataType: 'html',
         contentType: false, // Importante: false cuando se usa FormData
         processData: false, // Importante: false cuando se usa FormData
         success: function(respuesta) {
-            console.log(respuesta);
             if(respuesta === "limitesImg"){
                 alertPro(respuesta);
             }else{

@@ -97,7 +97,7 @@ if(isset($_GET['createCategoria']) && $_GET['createCategoria'] == true){
 }
 
 if(isset($_GET['aparece']) && $_GET['aparece'] == true){
-  echo Vista::mostrarCategorias(2);
+  echo Vista::mostrarCategorias(2,1);
 }
 
 if(isset($_GET['producto']) && ($_GET['producto'])== "actualizar"){

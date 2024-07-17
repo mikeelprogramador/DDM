@@ -42,7 +42,7 @@
           </a>
           <ul class="dropdown-menu custom-dropdown">
             <?php
-                echo Vista::mostrarCategorias(1);
+                echo Vista::mostrarCategorias(1,1);
             ?>
           </ul>
         </li>
