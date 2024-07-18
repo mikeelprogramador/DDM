@@ -42,7 +42,7 @@ class CrearProducto{
             
          if($tipo != 'jpg' && $tipo != 'png' && $tipo != 'gif'&& $tipo != 'tiff' && $tipo != 'webp' && $tipo != 'bmp'&& $tipo != 'jpeg' && $tipo != 'jfif'){
              $salida = "0";
-         }else if($tamaño > 3*1024*1024){
+         }else if($tamaño > 1*1280*720){
              $salida = "1";
          }else{
              $src = $carpeta.$nombre;

@@ -33,9 +33,7 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="ddm.php?seccion=home">Inicio</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Historial</a>
-        </li>
+        
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Categorias
@@ -58,7 +56,6 @@
           </a>
           <ul class="dropdown-menu custom-dropdown">
             <li><a class="dropdown-item" href="ddm.php?seccion=perfil">Perfil</a></li>
-            <li><a class="dropdown-item" href="ddm.php?seccion=compras">Compras</a></li>
             <li><a class="dropdown-item" href="ddm.php?seccion=out">Cerrar sesión</a></li>
           </ul>
         </li>

@@ -54,8 +54,8 @@ a, a:hover, a:visited, a:active {
     margin-bottom: 20px;
 }
 
-.producto-imagen img {
-    max-width: 100%;
+#producto-imagen img {
+    max-width: 70%;
     border-radius: 10px;
     transition: transform 0.3s;
 }

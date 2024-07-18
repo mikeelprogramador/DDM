@@ -150,6 +150,7 @@ public static function ContenidoProducto($id, $token) {
         $salida = "";
         $consulta = Model::sqlUsuario(3,$id_user);
         while($fila = $consulta->fetch_array()){
+            $salida .= "<div class='con'>";
             $salida .= "<div class='container mt-5'>";
             $salida .= "<div class='row justify-content-center'>";
             $salida .= "<div class='col-md-4'>";
@@ -178,6 +179,7 @@ public static function ContenidoProducto($id, $token) {
             $salida .= "<button type='button' class='btn btn-secondary ms-2' id='boton_correo'>Cambiar correo</button>";
             $salida .= "<button type='button' class='btn btn-secondary ms-2' id='boton_contraseña'>Cambiar contraseña</button>";
             $salida .= "<button type='button' class='btn btn-secondary ms-2' id='delete_img' onclick='eliminarFoto()'>Eliminar foto</button>";
+            $salida .= "</div>";
             $salida .= "</div>";
             $salida .= "</div>";
             $salida .= "</div>";

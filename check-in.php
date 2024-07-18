@@ -49,6 +49,7 @@ if( isset($_GET['men']) && $_GET['men'] == "-1error" || isset($_GET['men']) && $
         <center><p>¿Ya te has registrado?
           Inicia sesión por favor
         </p></center>
+        <a href="terminos.php" style="color: #9e7a40; text-decoration: none;"><input type="checkbox"> Terminos y condiciones</a>
         <a href="login.php" style="color: #9e7a40; text-decoration: none;">Iniciar sesión</a>
     </div>
     
