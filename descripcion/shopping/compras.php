@@ -10,9 +10,9 @@ if(isset($_GET['seccion']))$seccion = $_GET['seccion'];
 
 
 if(isset($_GET['estado']) && $_GET['estado'] == "compraMax"){
-    $_SESSION['url'] = "../../view/user/ddm.php?seccion=carrito";
+    $_SESSION['url'] = "../../view/user/ddm.php?estado=cancelado&seccion=carrito";
     $url = "compras.php?seccion=ubicacion&http=".$_SESSION['token']."&estado=compraMax";
-    $action = "secuencias.php?estado=compraMax";
+    $action = "../../view/controller/controller_compra.php?estado=compraMax";
 }
 
 if(isset($_GET['estado']) && $_GET['estado'] == "compraUni"){

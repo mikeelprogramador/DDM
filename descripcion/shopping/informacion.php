@@ -21,7 +21,7 @@
             </div>
         </div>
         <div class="acciones">
-            <a href="secuencias.php?compra=eliminar" class="btn cancelar">Cancelar Compra</a>
+            <a href="../../view/controller/controller_compra.php?compra=eliminar" class="btn cancelar">Cancelar Compra</a>
             <a href="<?php echo $url ?>" class="btn cambiar">Cambiar Dirección</a>
         </div>
     </div></center>

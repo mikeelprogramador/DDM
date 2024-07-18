@@ -34,13 +34,13 @@ if(isset($_GET['estado']) && $_GET['estado'] == "compraMax" ){
         $_SESSION['telefono'] = Funciones::vacunaXxs($_POST['telefono']);
         $_SESSION['barrio'] = Funciones::vacunaXxs($_POST['barrio']);
         $_SESSION['direccion'] = Funciones::vacunaXxs($_POST['direccion']);
-        header("location: compras.php?seccion=informacion&htpp=".$_SESSION['token']."&estado=compraMax");
+        header("location: ../../descripcion/shopping/compras.php?seccion=informacion&htpp=".$_SESSION['token']."&estado=compraMax");
     }
 }
 
 if(isset($_GET['compra']) && $_GET['compra'] == "eliminar"){
         Session::reinicarEnvio();
-        header("location:".$_SESSION['url'].= "&esatdo=cancel"."");
+        header("location:".$_SESSION['url']."");
     
 }
 

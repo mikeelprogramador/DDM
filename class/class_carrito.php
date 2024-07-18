@@ -37,15 +37,13 @@ class Carrito{
     }
 
     public static function dinero($des,$id_user){
-                include_once("../../conf/model.php");
+        include_once("../../conf/model.php");
+        include_once("class_funciones.php");
         $salida = 0;
         $consulta = Model::sqlMostrarCarrito($des,$id_user);
         while($fila = $consulta->fetch_array()){
-            $num = str_replace(".","",$fila[7]);
-            $num .= str_replace(",","",$num);
-            $cantidad = floatval($fila[12]);
-            $dinero = floatval($num);
-            $salida += $dinero*$cantidad;
+            $valor = Funciones::intDinero($fila[7]);
+            $salida = $valor*floatval($fila[13]);
         }
         return $salida;
     }
@@ -73,8 +71,5 @@ class Carrito{
         return $salida;
     }
 
-
-
-    
 
 }

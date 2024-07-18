@@ -87,8 +87,8 @@ if(isset($_FILES['foto_perfil'])){
 }
 
 if(isset($_GET['createCategoria']) && $_GET['createCategoria'] == true){
-  if(CrearProducto::countCategorias($_GET['categoria']) == 0){
-    Model::sqlCreateCategoria($_GET['categoria']);
+  if(CrearProducto::countCategorias(Funciones::vacunaXxs($_GET['categoria'])) == 0){
+    Model::sqlCreateCategoria(Funciones::vacunaXxs($_GET['categoria']));
     echo 1;
   }else{
     echo 0;
@@ -101,5 +101,7 @@ if(isset($_GET['aparece']) && $_GET['aparece'] == true){
 }
 
 if(isset($_GET['producto']) && ($_GET['producto'])== "actualizar"){
-  echo "hola amigos ahhhhh ";
+  $nombre = Funciones::vacunaXxs($_POST['nombre_pro']);
+  $descrip = Funciones::vacunaXxs($_POST['descripcion_pro']);
+  
 }
