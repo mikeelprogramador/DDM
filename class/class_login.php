@@ -6,7 +6,7 @@ class Login {
      */
     public static function registrar($nombre,$apellido,$email,$password){
         include_once("class_encript.php");
-                include_once("../../conf/model.php");
+        include_once("../../conf/model.php");
         $passwordEncript = Encriptar::codificar(1,$password);
         $id = Login::crearIdUsuario();
         if( Login::encontarUsuario(1,$email) == 0 ){

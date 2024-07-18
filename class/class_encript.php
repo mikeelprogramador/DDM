@@ -5,7 +5,7 @@ class Encriptar{
         $opciones = [
             'cost'=> 12,
         ];
-       $passwordEncript = password_hash($this->$password,PASSWORD_DEFAULT,$opciones);
+       $passwordEncript = password_hash($password,PASSWORD_DEFAULT,$opciones);
         return $passwordEncript;
     }
 

@@ -13,12 +13,12 @@ if(isset($_GET['estado']) && $_GET['estado'] == "compraUni" ){
     if(!isset($_POST['departamenrtos']) && !isset($_POST['municipios'])){
         header("location: ../../descripcion/acerca_del_producto/product.php?http=".$_SESSION['token']."&data=".$_GET['data']."&erro=direccion");
     }else{
-        $_SESSION['correo'] = $_POST['email'];
+        $_SESSION['correo'] = Funciones::vacunaXxs($_POST['email']);
         $_SESSION['departamento'] = Vista::regiones(3,$_POST['departamentos']);
         $_SESSION['municipios'] = Vista::regiones(4,$_POST['municipios']);
-        $_SESSION['telefono'] = $_POST['telefono'];
-        $_SESSION['barrio'] = $_POST['barrio'];
-        $_SESSION['direccion'] = $_POST['direccion'];
+        $_SESSION['telefono'] = Funciones::vacunaXxs($_POST['telefono']);
+        $_SESSION['barrio'] = Funciones::vacunaXxs($_POST['barrio']);
+        $_SESSION['direccion'] = Funciones::vacunaXxs($_POST['direccion']);
         header("location: ../../descripcion/shopping/compras.php?seccion=informacion&htpp=".$_SESSION['token']."&data=".$_GET['data']."&estado=compraUni");
         
     }
@@ -28,12 +28,12 @@ if(isset($_GET['estado']) && $_GET['estado'] == "compraMax" ){
     if(!isset($_POST['departamenrtos']) && !isset($_POST['municipios'])){
         header("location: ../../view/user/ddm.php?seccion=carrito&error=direccion");
     }else{
-        $_SESSION['correo'] = $_POST['email'];
+        $_SESSION['correo'] = Funciones::vacunaXxs($_POST['email']);
         $_SESSION['departamento'] = Vista::regiones(3,$_POST['departamentos']);
         $_SESSION['municipios'] = Vista::regiones(4,$_POST['municipios']);
-        $_SESSION['telefono'] = $_POST['telefono'];
-        $_SESSION['barrio'] = $_POST['barrio'];
-        $_SESSION['direccion'] = $_POST['direccion'];
+        $_SESSION['telefono'] = Funciones::vacunaXxs($_POST['telefono']);
+        $_SESSION['barrio'] = Funciones::vacunaXxs($_POST['barrio']);
+        $_SESSION['direccion'] = Funciones::vacunaXxs($_POST['direccion']);
         header("location: compras.php?seccion=informacion&htpp=".$_SESSION['token']."&estado=compraMax");
     }
 }

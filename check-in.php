@@ -1,6 +1,6 @@
 <?php
-include_once("metodos/clas-sessiones.php");
-include_once("metodos/clas-functions.php");
+include_once("class/class_sessiones.php");
+include_once("class/class_funciones.php");
 Session::iniciarSessiones();
 
 if( isset($_GET['men']) && $_GET['men'] == "-1error" || isset($_GET['men']) && $_GET['men'] == "-1error"  ){
