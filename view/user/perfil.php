@@ -17,7 +17,7 @@
           <ul class="dropdown-menu custom-dropdown">
             <li><a class="dropdown-item" href="#">Historial</a></li>
             <hr>
-            <li><a class="dropdown-item" href="#">Prductos con mayor reseña de me gusta</a></li>
+            <li><a class="dropdown-item" href="#">Productos que me gustaron</a></li>
             <hr>
             <li><a class="dropdown-item" href="ddm.php?seccion=compras">Compras</a></li>
             <hr>

@@ -93,7 +93,7 @@ if(isset($_GET['estado']) && $_GET['estado'] == "comprando" && isset($_GET['iden
 
         $id_compra = Compras::countCompra();
         $id_pro = id::desencriptar($_GET['data']);
-        $precio = Funciones::intDinero(Productos::productos(7,$id_pro));
+        $precio = Funciones::intDinero(Productos::detallesDelProducto(7,$id_pro));
         $total = Funciones::strDinero($cantidades*$precio);
 
         if(Compras::comprasUni($id_compra,$id_pro,$cantidades,$total) == 1){

@@ -53,18 +53,7 @@ class CrearProducto{
          }
          return $salida;
      }
-     /**
-      * Eliminar el producto
-      */
-     public static function eliminarProducto($id){
-        include_once("../../conf/model.php");
-         $salida = 0;
-         $consulta = Model::sqlEliminarProducto($id);
-         if( $consulta ){
-             $salida = 1; //si se elimino correctamnete
-         }
-         return $salida; 
-     }
+
 
      public static function agregarCategoria($des,$categoria,$id_pro){
         include_once("../../conf/model.php");

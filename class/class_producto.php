@@ -4,7 +4,7 @@ class Productos {
      * Metodo para crear comentario
      */
     public static function crearComentarios($comentario,$id_producto,$id_usuario){
-                include_once("../../conf/model.php");
+        include_once("../../conf/model.php");
         $salida = 0;
         $consulta = Model::sqlComentarios($comentario,$id_producto,$id_usuario);
         if($consulta){
@@ -12,30 +12,35 @@ class Productos {
         }
         return $salida; 
     }
+    
+    public static function eliminarProducto($id){
+        include_once("../../conf/model.php");
+         $salida = 0;
+         $consulta = Model::sqlEliminarProducto($id);
+         if( $consulta )$salida = 1; //si se elimino correctamnete
+         return $salida; 
+     }
     /**
      * Eliminar comentario
      */
     public static function eliminarComentarios($id_comen, $id_user){
-                include_once("../../conf/model.php");
+        include_once("../../conf/model.php");
         $salida = 0;
-        $consulta = Model::sqlEliminarComentario("","eliminar",$id_comen, $id_user);
-        if($consulta){
-            $salida = 1;
-        }
+        $consulta = Model::sqlEliminarComentario($id_comen, $id_user);
+        if($consulta)$salida = 1;
         return $salida; 
     }
 
-    public static function productos($des,$id_pro){
-                include_once("../../conf/model.php");
+    public static function detallesDelProducto($des,$id_pro){
+        include_once("../../conf/model.php");
         $salida = ""; 
-        $consulta = Model::sqlProductos($des,$id_pro);
+        $consulta = Model::sqlDetallesDelProducto($des,$id_pro);
         while($fila = $consulta->fetch_array()){
             $salida .= $fila[0];
         }
         return $salida; 
     }
     
-
 
         /**
      * Agregar megusta a un producto

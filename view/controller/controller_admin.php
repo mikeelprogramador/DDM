@@ -5,6 +5,7 @@ include_once("../../class/class_funciones.php");
 include_once("../../class/class_user.php");
 include_once("../../conf/model.php");
 include_once("../../class/class_sessiones.php");
+include_once("../../class/class_producto.php");
 //Se inician las sessiones
 Session::iniciarSessiones();
 if(Session::verificarSesssiones() == 0 )header("location: ../../index.php");
@@ -19,7 +20,7 @@ if(isset($_GET['busquedaGeneral'])){
 }
 //Desicion para eliminar un producto
 if( isset($_GET['id']) ){
-    if(CrearProducto::eliminarProducto($_GET['id']) == 1){
+    if(Productos::eliminarProducto($_GET['id']) == 1){
       echo Vista::buscarProducto('',1);
     }
 }
