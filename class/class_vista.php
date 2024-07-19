@@ -150,40 +150,56 @@ public static function ContenidoProducto($id, $token) {
         $salida = "";
         $consulta = Model::sqlUsuario(3,$id_user);
         while($fila = $consulta->fetch_array()){
+
+            // este es el contenedor padre 
             $salida .= "<div class='con'>";
-            $salida .= "<div class='container mt-5'>";
+            $salida .= "</div>";
+
+            // este es el primer contenedor 
+
+            $salida .= "<div class='con'> ";
+            $salida .= "<div class='container1 mt-5' onclick=' '>";
+            
             $salida .= "<div class='row justify-content-center'>";
             $salida .= "<div class='col-md-4'>";
             $salida .= "<div class='circle text-center bg-primary text-white rounded-circle >";
-            $salida .= "<label for='foto_perfil' id='label_foto'onclick='activarfiles()' >";
+            $salida .= "<label for='foto_perfil' id='label_foto' onclick='activarfiles()' >";
             $salida .= "<img src='$fila[8]' class='img-fluid' id='imagen_perfil' alt='No cargaste la imagen en la base' onmouseenter='cambiarFoto(this)'>";
             $salida .= "</label>";
             $salida .= "</div>";
             $salida .= "</div>";
-            $salida .= "<div class='col-md-8'>";
+
+            $salida .= "<div class='col-md-8 ' > ";
+            $salida .= "<div class='mb-3' >";
+            $salida .= "<p>Nombre</p>";
+            $salida .= "</div>";  
+
             $salida .= "<div class='mb-3'>";
-            $salida .= "<label class='form-label'>Nombre</label>";
-            $salida .= "<input type='text' class='form-control' id='edit_nombre' value='$fila[1]' disabled>";
-            $salida .= "</div>";    
+            $salida .= "<p'>Apellido</p>";
+            $salida .= "</div>";
+
             $salida .= "<div class='mb-3'>";
-            $salida .= "<label class='form-label'>Apellido</label>";
-            $salida .= "<input type='text' class='form-control' id='edit_apellido' value='$fila[2]' disabled>";
-            $salida .= "</div>";
-            $salida .= "<div class='mb-3'>";
-            $salida .= "<label class='form-label'>Correo</label>";
-            $salida .= "<input type='text' class='form-control' value='$fila[3]' disabled>";
-            $salida .= "<input type='file' class='form-control' id='foto_perfil' onchange='mostrarImagen(event,$des)' ";
-            $salida .= "</div>";
-            $salida .= "<div class='mb-3'>";
-            $salida .= "<button type='button' class='btn btn-primary' onclick='editarDatos()'>Editar datos</button>";
-            $salida .= "<button type='button' class='btn btn-secondary ms-2' id='boton_correo'>Cambiar correo</button>";
-            $salida .= "<button type='button' class='btn btn-secondary ms-2' id='boton_contraseña'>Cambiar contraseña</button>";
-            $salida .= "<button type='button' class='btn btn-secondary ms-2' id='delete_img' onclick='eliminarFoto()'>Eliminar foto</button>";
+            $salida .= "<p'>Correo</p>";
             $salida .= "</div>";
             $salida .= "</div>";
             $salida .= "</div>";
             $salida .= "</div>";
+            $salida .= "</div>"; 
+            
+            // este es el segundo contenedor 
+
+            $salida .= "<div class='con'> ";
+            $salida .= "<div class='container2 mt-5' onclick=' '> hola perro 2 ";
             $salida .= "</div>";
+            $salida .= "</div>";
+
+            // este es el tercer contenedor 
+
+            $salida .= "<div class='con'> ";
+            $salida .= "<div class='container3 mt-5' onclick=' '> hola perro 3 ";
+            $salida .= "</div>";
+            $salida .= "</div>";
+
         }
         return $salida; 
     }
