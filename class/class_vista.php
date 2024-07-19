@@ -152,7 +152,7 @@ public static function ContenidoProducto($id, $token) {
         while($fila = $consulta->fetch_array()){
 
             // este es el contenedor padre 
-            $salida .= "<div class='con'>";
+            $salida .= "<div class='con' >";
             $salida .= "</div>";
 
             // este es el primer contenedor 
@@ -165,6 +165,7 @@ public static function ContenidoProducto($id, $token) {
             $salida .= "<div class='circle text-center bg-primary text-white rounded-circle >";
             $salida .= "<label for='foto_perfil' id='label_foto' onclick='activarfiles()' >";
             $salida .= "<img src='$fila[8]' class='img-fluid' id='imagen_perfil' alt='No cargaste la imagen en la base' onmouseenter='cambiarFoto(this)'>";
+            $salida .= "<input type='file' class='form-control' id='foto_perfil' onchange='mostrarImagen(event,$des)' ";
             $salida .= "</label>";
             $salida .= "</div>";
             $salida .= "</div>";
@@ -189,8 +190,9 @@ public static function ContenidoProducto($id, $token) {
             // este es el segundo contenedor 
 
             $salida .= "<div class='con'> ";
-            $salida .= "<div class='container2 mt-5' onclick=' '> hola perro 2 ";
-            $salida .= "</div>";
+            $salida .= "<div class='container2 mt-5' onclick='verConfiguraciones()'>";
+            $salida .= "Configuraciones";
+            $salida .= "</div>";    
             $salida .= "</div>";
 
             // este es el tercer contenedor 

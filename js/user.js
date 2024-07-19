@@ -53,6 +53,25 @@ function eliminarFoto(){
     console.log("hola mundo");
 }
 
+function verConfiguraciones(){
+    document.getElementById('perfil').style.display = 'none';
+    document.getElementById('sub-contenedor').style.display = 'block';
+    document.getElementById('contenido_sub-contenedor').style.display = 'block';
+    
+
+}
+
+function regresarPerfil(){
+    document.getElementById('contenido_sub-contenedor').style.display = 'none';
+    document.getElementById('sub-contenedor').style.display = 'none';
+    document.getElementById('perfil').style.display = 'block';
+
+}
+
+
+
+
+
 function sumarCantidad(id,cantidad,disponibles){
     var param = {
         'cantidad': cantidad,

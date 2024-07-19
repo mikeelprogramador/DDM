@@ -146,4 +146,26 @@
         width: 120px;
         height: 120px;
     }
+
+
+}
+
+/*Menu oculto*/
+#contenido_sub-contenedor{
+    display: none;
+}
+
+.sub-contenedor{
+    display: none;
+    padding: 20px;
+    border-radius: 8px; /* Borde redondeado */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para dar relieve */
+}
+/*Contenedores dentro de suc-contenedor*/
+.sub-contenedor > div {
+    margin-bottom: 10px; /* Espaciado entre los elementos internos */
+    padding: 10px;
+    border-radius: 8px; /* Borde redondeado */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra para dar relieve */
+    background-color: white;
 }
