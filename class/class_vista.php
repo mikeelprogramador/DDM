@@ -133,14 +133,14 @@ public static function ContenidoProducto($id, $token) {
         $salida = "";
         $consulta = Model::sqlViewComentarios($id_pro);
         while($fila = $consulta->fetch_array()){
-            $salida .= $fila[0]."<br>";
+            $salida .= "<h3>". $fila[0]."<br></h3>";
             $salida .= $fila[1]."<br>";
-            $salida .= $fila[2]."<br>";
+            $salida .="<h4>". $fila[2]."<br></h4>";
             if( $fila[3] == $id_user){
-                $salida.= "<button>Editar</button><br>";
-                $salida.= "<button onclick='eliminarComentario(\"$fila[4]\",\"$id_pro\")'>Eliminar</button><br>";
+                $salida.= "<button>Editar</button>";
+                $salida.= "<button onclick='eliminarComentario(\"$fila[4]\",\"$id_pro\")'>Eliminar</button>";
             }
-            $salida .= "<button>Responder</button><br><br>";
+            $salida .= "<button>Responder</button><br><br><br>";
         }
         return $salida;
     }

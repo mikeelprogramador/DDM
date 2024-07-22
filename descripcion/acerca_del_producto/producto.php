@@ -24,13 +24,14 @@
             <input type="text" id="comentario" placeholder="Escribe tu comentario..." required>
             <input type="submit" value="Enviar">
         </form>
-        <label for="coment">Cajas de comentarios</label>
+        <label for="coment" id="caja">Cajas de comentarios</label>
         <br><br>
         <div id="coment">
             <?php
                 echo Vista::viewComentarios($id, $_SESSION['id']);
             ?>
         </div>
+        
     </div>
 
 </div>
