@@ -52,7 +52,7 @@
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Usuario
+           <?php echo Usuarios::verificarPerfil(2,$_SESSION['id'])?>
           </a>
           <ul class="dropdown-menu custom-dropdown">
             <li><a class="dropdown-item" href="ddm.php?seccion=perfil">Perfil</a></li>
@@ -60,7 +60,7 @@
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Bienvenido a DDM</a>
+          <a class="nav-link disabled" aria-disabled="true">Bienvenido <?php echo Usuarios::verificarPerfil(2,$_SESSION['id'])?></a>
         </li>
       </ul>
 
@@ -92,6 +92,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="../../js/user.js"></script>
     <script src="../../js/alert.js"></script>
+    <script src="../../js/carrito.js"></script>
 
   </body>
 </html>

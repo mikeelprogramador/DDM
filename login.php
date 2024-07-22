@@ -55,6 +55,9 @@ if(isset($_GET['reset'])){
             <br><br>
             <input type="submit" id="botonEnviar" name="enviar" value="Iniciar Sesión" >
         </form>
+
+        <a href="recuperacion.php?recuperarContraseña">olvide la contraseña</a>
+
         <p>¿No te has registrado?</p>
         
       

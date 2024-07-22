@@ -203,6 +203,7 @@ class Model {
             $tabla = "tb_categoriasProducto";
 
         }
+        if($des == 10)$dato = "fec_cre";
         $sql = "SELECT $dato FROM $tabla where id_producto = '$id_pro'";
         return  $conexion->query($sql);
 

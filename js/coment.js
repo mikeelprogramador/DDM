@@ -141,6 +141,7 @@ function enviarDatos(des,token,id) {
 }
 
 function mostrarFechas(fecha,lugar){
+console.log("horas en  tiempo real");
      // Fecha inicial
   var fechaInicial = moment(fecha);
 

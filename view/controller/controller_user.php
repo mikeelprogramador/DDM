@@ -7,8 +7,12 @@ include_once("../../class/class_funciones.php");
 include_once("../../class/class_carrito.php");
 include_once("../../conf/model.php");
 include_once("../../class/class_sessiones.php");
+include_once("../../class/class_token.php");
+include_once("../../class/class_correo.php");
+include_once("../../class/class_login.php");
 Session::iniciarSessiones();
 if(Session::verificarSesssiones() == 0 )header("location: ../../index.php");
+Session::sessionCodigo();
 
 if(isset($_FILES['foto_perfil'])){
     $files =  $_FILES['foto_perfil'] ;
@@ -45,4 +49,17 @@ if(isset($_GET['eliminarDelCarrito']) && $_GET['eliminarDelCarrito'] == true){
     $id = id::desencriptar($_GET['data']);
     Model::sqlEliminarDelCarrito($carrito,$id);
     echo Vista::mostrarCarrito(1, $_SESSION['id']);
+}
+
+if(isset($_GET['saveDato'])){
+    $_SESSION['codigo'] = token::Obtener_token(10);
+    if(Login::encontrarUsuario(1,$_POST['correo']) == 0){
+        echo "not exist";
+    }else{
+        $id = Login::encontrarUsuario(2,$_POST['correo']);
+        $nombre = Usuarios::verificarPerfil(2,$id);
+        $html = Funciones::htmlRecuperarContraseña($nombre,id::encriptar($id),$_SESSION['codigo']);
+        //echo Correo::EnviarCorreo($_POST['correo'],"Recperacion de clave",$html);
+    }
+
 }

@@ -1,18 +1,3 @@
-function editarDatos(){
-    document.getElementById("edit_nombre").disabled = false;
-    document.getElementById("edit_apellido").disabled = false;
-    crearBotonEdit();
-    //console.log("hola");
-}
-function crearBotonEdit(){
-    var div = document.getElementById("botones");
-    var boton = document.createElement("button");
-    boton.type = "button";
-    boton.textContent = "Actualizar";
-    document.getElementById("boton_contraseña").style.display= "none";
-    document.getElementById("boton_correo").style.display= "none";
-    div.appendChild(boton);
-}
 
 function cambiarFoto(img) {
     img.style.cursor = 'pointer';
@@ -49,9 +34,6 @@ function mostrarImagen(event,des) {
     });
 }
 
-function eliminarFoto(){
-    console.log("hola mundo");
-}
 
 function verConfiguraciones(){
     document.getElementById('perfil').style.display = 'none';
@@ -64,106 +46,70 @@ function verConfiguraciones(){
 function regresarPerfil(){
     document.getElementById('contenido_sub-contenedor').style.display = 'none';
     document.getElementById('sub-contenedor').style.display = 'none';
+    document.getElementById('cambio').style.display = 'none';
     document.getElementById('perfil').style.display = 'block';
 
 }
 
-
-
-
-
-function sumarCantidad(id,cantidad,disponibles){
-    var param = {
-        'cantidad': cantidad,
-        'max':disponibles,
-        'aumentar': true,
-        'data': id
-    };
-    $.ajax({
-        data: param,
-        url: '../controller/controller_user.php',
-        datatype: 'html',
-        method: 'get',
-        success: function(respuesta){
-            if(respuesta === ""){
-                Swal.fire({
-                    icon: "error",
-                    title: "Error",
-                    text: "No puedes agregar más cantidades.",
-                });
-            }else{
-                document.getElementById('carrito').innerHTML = respuesta;
-                actualizarDinero();
-            }
-            
-        },
-        error: function(xhr,status,error){
-            console.log(error);
-        }
-    });
+function cambiarDato(des){
+    document.getElementById('sub-contenedor').style.display = 'none';
+    document.getElementById('cambio').style.display = 'block';
+    if(des === 1){
+        document.getElementById('mensajeCorreo').innerHTML = 'A continuacion enviaremos  un correo para recuperar su contraseñe';
+    }
+    if(des === 2){
+        document.getElementById('mensajeCorreo').innerHTML = 'A continuacion enviaremos un correo para cambiar su correo';
+    }
 }
 
-function restarCantidad(id,cantidad){
-    var param = {
-        'cantidad': cantidad,
-        'restar': true,
-        'data': id
-    };
-    $.ajax({
-        data: param,
-        url: '../controller/controller_user.php',
-        datatype: 'html',
-        method: 'get',
-        success: function(respuesta){
-            if(respuesta === ""){
-                Swal.fire({
-                    icon: "error",
-                    title: "Error",
-                    text: "No puedes eliminar más cantidades.",
-                });
-            }else{
-                document.getElementById('carrito').innerHTML = respuesta;
-                actualizarDinero();
-            }
-        },
-        error: function(xhr,status,error){
-            console.log(error);
-        }
-    });
-}
-function actualizarDinero(){
-    var param = {
-        'dinero': 'actualizar'
-    };
-    $.ajax({
-        data: param,
-        url: '../controller/controller_user.php',
-        datatype: 'html',
-        method: 'get',
-        success: function(respuesta){
-            document.getElementById('dinero').innerHTML = respuesta;
-        },
-        error: function(xhr,status,error){
-            console.log(error);
-        }
-    });
+function devolver(){
+    document.getElementById('cambio').style.display = 'none';
+    document.getElementById('sub-contenedor').style.display = 'block';
+    
 }
 
-function eliminarDelCarrito(id){
-    var param = {
-        'data':id,
-        'eliminarDelCarrito': true
+function enviarCorreo(event,des){
+    event.preventDefault();
+    var texto = document.getElementById('dato');
+    var correo = document.getElementById('correo');
+
+    var param  = {
+        'correo': correo.value
+    };
+    if(des === 1){
+        direccion = '../controller/controller_user.php?saveDato';
+    }
+    if(des === 2 ){
+        direccion = 'view/controller/controller_user.php?saveDato';
     }
     $.ajax({
         data: param,
-        url: '../controller/controller_user.php',
-        datatype: 'html',
-        method: 'get',
+        url: direccion,
+        datatype: 'texto',
+        method: 'post',
+        beforeSend: function(){
+            texto.innerHTML = "Su correo esta siendo enviedo";
+            texto.style.backgroundColor = 'yellow';
+        },
         success: function(respuesta){
-            document.getElementById('carrito').innerHTML = respuesta;
+            console.log(respuesta);
+            if(respuesta === "0"){
+                correo.value = '';
+                texto.innerHTML = "Su correo fue enviado exitosamente verifica su vandeja de entradas o spam";
+                texto.style.backgroundColor = 'green';
+            }
+            if(respuesta === "1" || respuesta === "not exist" ){ 
+                texto.innerHTML = "El correo que ingresaste no se a podido encontrar verifica si esta bien escrito. ";
+                texto.style.backgroundColor = 'red';
+            }
         },
         error: function(xhr,status,error){
             console.log(error);
         }
     });
 }
+
+
+
+
+

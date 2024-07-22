@@ -169,3 +169,6 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra para dar relieve */
     background-color: white;
 }
+#cambio{
+    display:none;
+}

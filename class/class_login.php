@@ -9,7 +9,7 @@ class Login {
         include_once("../../conf/model.php");
         $passwordEncript = Encriptar::codificar(1,$password);
         $id = Login::crearIdUsuario();
-        if( Login::encontarUsuario(1,$email) == 0 ){
+        if( Login::encontrarUsuario(1,$email) == 0 ){
             $consulta = Model::sqlRegistarUsuario($id,$nombre,$apellido,$email,$passwordEncript);
             if($consulta){
                 $salida = 1;
@@ -57,7 +57,7 @@ class Login {
     }
 
     private static function crearIdUsuario(){
-                include_once("../../conf/model.php");
+        include_once("../../conf/model.php");
         $salida = 0; 
         $consulta = Model::sqlCraerIdUsuario(1);
         while($fila=$consulta->fetch_array()){
@@ -66,10 +66,10 @@ class Login {
         return $salida;
     }
 
-    public static function encontarUsuario($des,$email){
+    public static function encontrarUsuario($des,$email){
         include_once("../../conf/model.php");
         $consulta = Model::sqlUsuario($des,$email);
-        while($fila= $consulta->fetch_array()){
+        while($fila = $consulta->fetch_array()){
             $salida = $fila[0];
         }
         return $salida;

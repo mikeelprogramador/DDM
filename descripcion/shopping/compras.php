@@ -3,11 +3,15 @@ include_once("../../class/class_vista.php");
 include_once("../../class/class_producto.php");
 include_once("../../class/class_encript.php");
 include_once("../../class/class_sessiones.php");
+include_once("../../class/class_user.php");
 Session::iniciarSessiones();
 if(Session::verificarSesssiones() == 0 )header("location: ../../index.php");
 
 if(isset($_GET['seccion']))$seccion = $_GET['seccion'];
 
+if(Usuarios::verificarPerfil(1,$_SESSION['id']) !=2){
+    header("location: ../../descripcion/acerca_del_producto/product.php?http=".$_SESSION['token']."&data=".$_GET['data']."&question=notcompra");
+}
 
 if(isset($_GET['estado']) && $_GET['estado'] == "compraMax"){
     $_SESSION['url'] = "../../view/user/ddm.php?estado=cancelado&seccion=carrito";

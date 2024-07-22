@@ -28,14 +28,16 @@ function alertCarrito(des){
         alertCart("success", "Cargado", "Su producto se cargo exitosamente!");
     }
     if(des === "2" ){
-        console.log("hola");
-        alertCart("error", "Error", "No tines un carrito para agregar productos");
+        alertCart("error", "Error", "No tienes un carrito para agregar productos");
     }
     if( des === "3" ){
         alertCart("error", "Error","Este producto ya esta agregado en el carrito.");
     }
     if( des === "4" ){
         alertCart("error","Error","No hay cantidades disponibles");
+    }
+    if( des === "5" ){
+        alertCart("error","Error","No puedes comprar con esta cuenta");
     }
 }
 

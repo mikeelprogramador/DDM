@@ -15,12 +15,12 @@ class Usuarios{
      * Metodo actualiza el estado del usuario
      */
     public static function actualizarEstadoUser($des,$id_user){
-                include_once("../../conf/model.php");
+        include_once("../../conf/model.php");
         $consulta = Model::sqlActualizarEstadoUser($des,$id_user);
     }
 
     public static function cargarImagen($img,$id_user){
-                include_once("../../conf/model.php");
+        include_once("../../conf/model.php");
         $consulta = Model::sqlActualizarImagen($img,$id_user);
     }
 }

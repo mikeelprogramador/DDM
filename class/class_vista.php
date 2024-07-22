@@ -190,7 +190,7 @@ public static function ContenidoProducto($id, $token) {
             // este es el segundo contenedor 
 
             $salida .= "<div class='con'> ";
-            $salida .= "<div class='container2 mt-5' onclick='verConfiguraciones()'>";
+            $salida .= "<div class='container2 mt-5' onclick='verConfiguraciones()' onmouseenter='cambiarFoto(this)'>";
             $salida .= "Configuraciones";
             $salida .= "</div>";    
             $salida .= "</div>";
@@ -198,7 +198,7 @@ public static function ContenidoProducto($id, $token) {
             // este es el tercer contenedor 
 
             $salida .= "<div class='con'> ";
-            $salida .= "<div class='container3 mt-5' onclick=' '> hola perro 3 ";
+            $salida .= "<div class='container3 mt-5' onclick=' ' onmouseenter='cambiarFoto(this)'> hola perro 3 ";
             $salida .= "</div>";
             $salida .= "</div>";
 

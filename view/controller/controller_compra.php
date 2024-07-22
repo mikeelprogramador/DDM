@@ -10,6 +10,7 @@ include_once("../../class/class_encript.php");
 if(!isset($_SESSION))session_start();
 
 if(isset($_GET['estado']) && $_GET['estado'] == "compraUni" ){
+
     if(!isset($_POST['departamenrtos']) && !isset($_POST['municipios'])){
         header("location: ../../descripcion/acerca_del_producto/product.php?http=".$_SESSION['token']."&data=".$_GET['data']."&erro=direccion");
     }else{

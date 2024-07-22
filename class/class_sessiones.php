@@ -19,6 +19,9 @@ class Session{
     public static function sessionToken(){
         if(! isset($_SESSION['token'])) $_SESSION['token'] = "";
     }
+    public static function sessionCodigo(){
+        if(! isset($_SESSION['codigo'])) $_SESSION['codigo'] = "";
+    }
 
     public static function reinicarEnvio(){
         $_SESSION['correo'] = "";

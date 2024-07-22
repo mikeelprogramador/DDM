@@ -9,7 +9,7 @@ if( isset($_GET['log']) && $_GET['log'] == 1){
     $email = Funciones::vacunaXxs($_POST['email']);
     $password = Funciones::vacunaXxs($_POST['clave']);
     $login = Login::inicio($email,$password);
-    $id = Login::encontarUsuario(2,$email);
+    $id = Login::encontrarUsuario(2,$email);
 
     if( $login == 1){
         $_SESSION['id'] = $id;
@@ -32,7 +32,7 @@ if( isset($_GET['log']) && $_GET['log'] == 0){
     $nombre = Funciones::vacunaXxs($_POST['nom']);
     $apellido = Funciones::vacunaXxs( $_POST['apellido']);
     $registro = Login::registrar($nombre,$apellido,$email,$password);
-    $id = Login::encontarUsuario(2,$email);
+    $id = Login::encontrarUsuario(2,$email);
 
     if( $registro == 1 ){
         $_SESSION['id'] = $id;
