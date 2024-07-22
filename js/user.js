@@ -92,16 +92,18 @@ function enviarCorreo(event,des){
             texto.style.backgroundColor = 'yellow';
         },
         success: function(respuesta){
-            console.log(respuesta);
-            if(respuesta === "0"){
-                correo.value = '';
-                texto.innerHTML = "Su correo fue enviado exitosamente verifica su vandeja de entradas o spam";
-                texto.style.backgroundColor = 'green';
-            }
-            if(respuesta === "1" || respuesta === "not exist" ){ 
-                texto.innerHTML = "El correo que ingresaste no se a podido encontrar verifica si esta bien escrito. ";
-                texto.style.backgroundColor = 'red';
-            }
+            setTimeout(function() {
+                if(respuesta === "0"){
+                    correo.value = '';
+                    texto.innerHTML = "Su correo fue enviado exitosamente verifica su vandeja de entradas o spam";
+                    texto.style.backgroundColor = 'green';
+                }
+                if(respuesta === "1" || respuesta === "not exist" ){ 
+                    texto.innerHTML = "El correo que ingresaste no se a podido encontrar verifica si esta bien escrito. ";
+                    texto.style.backgroundColor = 'red';
+                }
+            }, 5000);
+            
         },
         error: function(xhr,status,error){
             console.log(error);
