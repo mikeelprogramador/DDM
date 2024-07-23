@@ -3,6 +3,8 @@ include_once('../../class/class_sessiones.php');
 include_once('../../class/class_login.php');
 include_once('../../class/class_user.php');
 include_once('../../class/class_funciones.php');
+include_once('../../class/class_encript.php');
+include_once('../../conf/model.php');
 Session::iniciarSessiones();
 
 if( isset($_GET['log']) && $_GET['log'] == 1){
@@ -41,4 +43,18 @@ if( isset($_GET['log']) && $_GET['log'] == 0){
     }
     if( $registro == 0)header("location: ../../check-in.php?men=".$registro."error");
     if( $registro == -1 )header("location: ../../check-in.php?men=".$registro."error");
+}
+
+if(isset($_GET['cambioPasswprd'])){
+    $_SESSION['id'] = "";
+    $id = id::desencriptar($_GET['datause']);
+    $passwordActual = $_POST['passwordActual'];
+    $passwordBd = Login::obtenerPassword(3,$id);
+    if(Encriptar::codificar(2,$passwordActual,$passwordBd)){
+        $passwordNueva = Encriptar::codificar(1,$_POST['passwordNueva']);
+        Model::sqlCambiarPassword($passwordNueva,$id);
+        echo "la contraseña se cambio exitosamnete";
+    }else{
+        echo "la contrasña no coincide";
+    }
 }

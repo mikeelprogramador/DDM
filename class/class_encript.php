@@ -9,13 +9,13 @@ class Encriptar{
         return $passwordEncript;
     }
 
-    private static function verificar($password,$passwordEncript){
-        return password_verify($password,$passwordEncript);
+    private static function verificar($password,$passwordBd){
+        return password_verify($password,$passwordBd);
     }
 
-    public static function codificar($des,$password,$passwordEncript = null){
+    public static function codificar($des,$password,$passwordBd = null){
         if($des == 1)$salida = self::encriptar($password);
-        if($des == 2)$salida = self::verificar($password,$passwordEncript);
+        if($des == 2)$salida = self::verificar($password,$passwordBd);
         return $salida;
     }
 }

@@ -73,6 +73,21 @@ class Model {
         return  $conexion->query($sql);
     }
 
+    public static function sqlCambiarPassword($password,$id_user){
+        include("model/conexion.php");
+        $sql = "update tb_usuarios  ";
+        $sql .= "set pasword = '$password' ";
+        $sql .= "where id = '$id_user' ";
+        $conexion->query($sql);
+    }
+
+    public static function sqlbuscarUsuario($correo,$id_user){
+        include("model/conexion.php");
+        $sql = "select count(*) from tb_usuarios  ";
+        $sql .= "where email = '$correo' and id = '$id_user' ";
+        return $conexion->query($sql);
+    }
+
     public static function sqlCargarProducto($id,$nombre,$descrip,$caracter,$cantidad,$oferta,$img,$precio,$color){
         include("model/conexion.php");
         $sql = "INSERT INTO tb_productos";

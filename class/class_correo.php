@@ -7,7 +7,7 @@
     
 class Correo{
 
-    public static function EnviarCorreo($correo,$asunto,$body){
+    public static function correo($correo,$asunto,$body){
         include("../../PHPMailer/PHPMailer.php");
         include("../../PHPMailer/Exception.php");
         include("../../PHPMailer/SMTP.php");// Solo si estás usando SMTP
@@ -45,6 +45,21 @@ class Correo{
             $salida =  1;
         }
         return $salida;
+    }
+
+    public static function enviarCorreo($des,$correo,$codigo){
+        include_once("class_sessiones.php");
+        include_once("class_user.php");
+        include_once("class_funciones.php");
+        include_once("../../conf/model.php");
+        Session::iniciarSessiones();
+        if($des == 1 )$id = Login::encontrarUsuario(2,$correo);
+        if($des == 2 )$id = $_SESSION['id'];
+        $nombre = Usuarios::verificarPerfil(2,$id);
+        $passwordNueva = Encriptar::codificar(1,$codigo);
+        Model::sqlCambiarPassword($passwordNueva,$id);
+        $html = Funciones::htmlRecuperarContraseña($nombre,id::encriptar($id),$codigo);
+        return Correo::correo($_POST['correo'],"Recperacion de clave",$html);
     }
 
 }

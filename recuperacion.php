@@ -15,13 +15,13 @@ if(Session::verificarSesssiones() == 0 )$_SESSION['id'] = "invitado";
     <?php
     if(isset($_GET['datause'])){
     ?>
-        <form action="">
+        <form action="view/controller/controller_login.php?cambioPasswprd&datause=<?php echo $_GET['datause']?>" method="post">
         <label for="">Contraseña actual</label>
         <input type="password" name="passwordActual" id="passwordActual" placeholder="Ingresa la contraseña actual">
         <label for="">Nueva contraseña</label>
-        <input type="password" name="passwordnueva" id="passwordnuevo" placeholder="Ingresa la nueva contraseña">
+        <input type="password" name="passwordNueva" id="passwordnuevo" placeholder="Ingresa la nueva contraseña">
         <label for="">Escribe nuevamente la contraseña</label>
-        <input type="password" name="repetPassword" id="repetPassword" placeholder="Ingresa la nueva contraseña">
+        <input type="password" id="repetPassword" placeholder="Ingresa la nueva contraseña">
         <input type="submit">
         </form>
     <?php

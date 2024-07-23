@@ -53,13 +53,17 @@ if(isset($_GET['eliminarDelCarrito']) && $_GET['eliminarDelCarrito'] == true){
 
 if(isset($_GET['saveDato'])){
     $_SESSION['codigo'] = token::Obtener_token(10);
-    if(Login::encontrarUsuario(1,$_POST['correo']) == 0){
-        echo "not exist";
+    if($_SESSION['id'] == "invitado"){
+        if(Login::encontrarUsuario(1,$_POST['correo']) == 0){
+            echo "not exist";
+        }else{
+            echo Correo::enviarCorreo(1,$_POST['correo'], $_SESSION['codigo']);
+        }
     }else{
-        $id = Login::encontrarUsuario(2,$_POST['correo']);
-        $nombre = Usuarios::verificarPerfil(2,$id);
-        $html = Funciones::htmlRecuperarContraseña($nombre,id::encriptar($id),$_SESSION['codigo']);
-        //echo Correo::EnviarCorreo($_POST['correo'],"Recperacion de clave",$html);
+        if(Login::buscarUsuariosCorreoId($_POST['correo'],$_SESSION['id']) == 0){
+            echo "not exist";
+        }else{
+            echo Correo::enviarCorreo(2,$_POST['correo'], $_SESSION['codigo']);
+        }
     }
-
 }

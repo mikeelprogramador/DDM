@@ -27,9 +27,9 @@ class Login {
         include_once("class_encript.php");
         include_once("../../conf/model.php");
         $salida = 0;
-        $passwordEncript = Login::obtenerPassword($email);
-        if(Encriptar::codificar(2,$password,$passwordEncript)){
-            $consulta = Model::sqlInicoSesion($email,$passwordEncript);
+        $passwordBd = Login::obtenerPassword(2,$email);
+        if(Encriptar::codificar(2,$password,$passwordBd)){
+            $consulta = Model::sqlInicoSesion($email,$passwordBd);
             while($fila= $consulta->fetch_array()){
                 if( $fila[1] > 0 ){
                     $salida = 1;
@@ -46,10 +46,10 @@ class Login {
         return $salida;
     }
 
-    private static function obtenerPassword($email){
+    public static function obtenerPassword($des,$dato){
         include_once("../../conf/model.php");
         $salida = "";
-        $consulta = Model::sqlUsuario(2,$email);
+        $consulta = Model::sqlUsuario($des,$dato);
         while($fila= $consulta->fetch_array()){
             $salida .= $fila[4];
         }
@@ -74,4 +74,14 @@ class Login {
         }
         return $salida;
     }
+
+    public static function buscarUsuariosCorreoId($correo,$id_user){
+        include_once("../../conf/model.php");
+        $consulta = Model::sqlbuscarUsuario($correo,$id_user);
+        while($fila = $consulta->fetch_array()){
+            $salida = $fila[0];
+        }
+        return $salida;
+    }
 }
+
