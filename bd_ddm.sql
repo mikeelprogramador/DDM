@@ -1,4 +1,4 @@
--- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: bd_ddm
 -- ------------------------------------------------------
@@ -28,7 +28,7 @@ CREATE TABLE `tb_carrito` (
   PRIMARY KEY (`id_carrito`),
   KEY `id_usuario` (`id_usuario`),
   CONSTRAINT `tb_carrito_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `tb_usuarios` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -58,7 +58,7 @@ CREATE TABLE `tb_carypro` (
   KEY `id_producto` (`id_producto`),
   CONSTRAINT `tb_carypro_ibfk_1` FOREIGN KEY (`id_carrito`) REFERENCES `tb_carrito` (`id_carrito`),
   CONSTRAINT `tb_carypro_ibfk_2` FOREIGN KEY (`id_producto`) REFERENCES `tb_productos` (`id_producto`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -67,7 +67,6 @@ CREATE TABLE `tb_carypro` (
 
 LOCK TABLES `tb_carypro` WRITE;
 /*!40000 ALTER TABLE `tb_carypro` DISABLE KEYS */;
-INSERT INTO `tb_carypro` VALUES (8,4,'21',1);
 /*!40000 ALTER TABLE `tb_carypro` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -142,7 +141,7 @@ CREATE TABLE `tb_comentarios` (
   KEY `id_usuario` (`id_usuario`),
   CONSTRAINT `tb_comentarios_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `tb_productos` (`id_producto`),
   CONSTRAINT `tb_comentarios_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `tb_usuarios` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -151,6 +150,7 @@ CREATE TABLE `tb_comentarios` (
 
 LOCK TABLES `tb_comentarios` WRITE;
 /*!40000 ALTER TABLE `tb_comentarios` DISABLE KEYS */;
+INSERT INTO `tb_comentarios` VALUES (29,'hola','2024-07-25 12:46:18 AM','22',3),(30,'soy un comentario','2024-07-25 08:14:33 AM','21',3),(58,'soy un comentario','2024-07-25 01:47:40 PM','22',3),(61,'este producto es genial ','2024-07-25 02:02:31 PM','22',1);
 /*!40000 ALTER TABLE `tb_comentarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -258,7 +258,7 @@ CREATE TABLE `tb_historial` (
   KEY `id_producto` (`id_producto`),
   CONSTRAINT `tb_historial_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `tb_usuarios` (`id`),
   CONSTRAINT `tb_historial_ibfk_2` FOREIGN KEY (`id_producto`) REFERENCES `tb_productos` (`id_producto`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -267,6 +267,7 @@ CREATE TABLE `tb_historial` (
 
 LOCK TABLES `tb_historial` WRITE;
 /*!40000 ALTER TABLE `tb_historial` DISABLE KEYS */;
+INSERT INTO `tb_historial` VALUES (1,3,'22','2024-07-25 01:58:03 PM'),(2,1,'22','2024-07-25 02:03:23 PM');
 /*!40000 ALTER TABLE `tb_historial` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -424,7 +425,7 @@ CREATE TABLE `tb_usuarios` (
 
 LOCK TABLES `tb_usuarios` WRITE;
 /*!40000 ALTER TABLE `tb_usuarios` DISABLE KEYS */;
-INSERT INTO `tb_usuarios` VALUES (1,'Maicol','Sánchez','mike','$2y$12$6ZhGvHK5l69ZlKsZKfr5veHLU7rG5J/.Es4H.IOb/4HMPtwZBuVTq','2024-07-11 12:14:50',0,'Activo','../../img_user/planeta-tierra-vista-desde-la-luna_1280x720_xtrafondos.com.jpg'),(2,'Juan','Castañeda','juan','$2y$12$fi04aypwRyUjHQlBfhE81Ox4VtHrOzj6jwCdtTbO226zpuqc0/s0i','2024-07-11 12:22:28',1,'Inactivo','../../img/logo-icon-person.jpg'),(3,'Pepito','perez','pepito','$2y$12$rxuzlnp3n7WOAJUf/im6g.o/HumEBXf11.53fblUJ7pQkO.n/mZ6S','2024-07-11 16:56:14',2,'Inactivo','../../img_user/planeta-tierra-vista-desde-la-luna_1280x720_xtrafondos.com.jpg');
+INSERT INTO `tb_usuarios` VALUES (1,'Maicol','Sánchez','mike','$2y$12$mh7.6tw8h3jXPh7rsrS1TutQiycFj1agjtqU.FJtIbBmgkZUNJsNy','2024-07-11 12:14:50',0,'Activo','../../img_user/planeta-tierra-vista-desde-la-luna_1280x720_xtrafondos.com.jpg'),(2,'Juan','Castañeda','juan','$2y$12$Q1wN5m.9YRRcB8prBhVt4Ou/SMa6BF7I4YK35PWvp82hhmNSnCFl2','2024-07-11 12:22:28',1,'Inactivo','../../img/logo-icon-person.jpg'),(3,'Pepito','perez','pepito','$2y$12$rxuzlnp3n7WOAJUf/im6g.o/HumEBXf11.53fblUJ7pQkO.n/mZ6S','2024-07-11 16:56:14',2,'Inactivo','../../img_user/planeta-tierra-vista-desde-la-luna_1280x720_xtrafondos.com.jpg');
 /*!40000 ALTER TABLE `tb_usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -445,7 +446,7 @@ CREATE TABLE `tb_valoracion` (
   KEY `id_usuario` (`id_usuario`),
   CONSTRAINT `tb_valoracion_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `tb_productos` (`id_producto`),
   CONSTRAINT `tb_valoracion_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `tb_usuarios` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -454,7 +455,7 @@ CREATE TABLE `tb_valoracion` (
 
 LOCK TABLES `tb_valoracion` WRITE;
 /*!40000 ALTER TABLE `tb_valoracion` DISABLE KEYS */;
-INSERT INTO `tb_valoracion` VALUES (2,'21',3,'0'),(5,'21',2,'0'),(6,'21',1,'0'),(7,'22',3,'0');
+INSERT INTO `tb_valoracion` VALUES (2,'21',3,'0'),(5,'21',2,'0'),(13,'21',1,'0'),(14,'22',3,'0');
 /*!40000 ALTER TABLE `tb_valoracion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -504,4 +505,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-07-19 10:03:03
+-- Dump completed on 2024-07-25 14:06:23

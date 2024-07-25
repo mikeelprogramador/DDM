@@ -3,6 +3,8 @@
 
 <div class="compras">
     <?php
-    echo Vista::verCompras($_SESSION['id']);
+    echo Compras::verCompras($_SESSION['id']);
     ?>
 </div>
+
+<a href="ddm.php?seccion=perfil">Regresar</a>

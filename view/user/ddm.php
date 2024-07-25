@@ -4,10 +4,13 @@ include_once("../../class/class_carrito.php");
 include_once("../../class/class_encript.php");
 include_once("../../class/class_sessiones.php");
 include_once("../../class/class_user.php");
+include_once("../../class/class_historial.php");
+include_once("../../class/class_compra.php");
 
 Session::iniciarSessiones();
 if(Session::verificarSesssiones() == 0 )header("location: ../../index.php");
 if( Carrito::verificarCarrito($_SESSION['id']) == 0 )Carrito::crearCarrito($_SESSION['id']);
+Session::eliminarHistorial();
 
 $seccion = "home"; 
   

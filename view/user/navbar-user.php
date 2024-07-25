@@ -63,16 +63,21 @@
           <a class="nav-link disabled" aria-disabled="true">Bienvenido <?php echo Usuarios::verificarPerfil(2,$_SESSION['id'])?></a>
         </li>
       </ul>
-
-      <form class="d-flex" role="search">
+      <div class="d-flex">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a href="ddm.php?seccion=carrito" class="nav-link active" aria-current="page" href="#"><img src="../../img/carro.png" alt=""></a>
+          <a href="ddm.php?seccion=carrito" class="nav-link active" aria-current="page" href="#"><img src="../../img/carro.png" alt=""></a>
           </li>
         </ul>
-        <input class="form-control me-2" type="search" placeholder="Buscar productos" aria-label="Search">
-        <button class="btn btn-outline-success" id="boton" type="submit">Buscar</button>
-      </form>
+      </div>
+      <?php
+        if($seccion == "historial" || $seccion == "home" || $seccion == "categorias"  ){
+          ?><form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Buscar productos" aria-label="Search">
+          <button class="btn btn-outline-success" id="boton" type="submit">Buscar</button>
+        </form><?php
+        }
+      ?>
     </div>
   </div>
 </nav>
@@ -89,10 +94,12 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment-with-locales.min.js" integrity="sha512-4F1cxYdMiAW98oomSLaygEwmCnIP38pb4Kx70yQYqRwLVCs3DbRumfBq82T08g/4LJ/smbFGFpmeFlQgoDccgg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="../../js/user.js"></script>
     <script src="../../js/alert.js"></script>
     <script src="../../js/carrito.js"></script>
+    <script src="../../js/coment.js"></script>
 
   </body>
 </html>

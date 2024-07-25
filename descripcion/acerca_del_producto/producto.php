@@ -26,6 +26,7 @@
         </form>
         <label for="coment" id="caja">Cajas de comentarios</label>
         <br><br>
+        <p id="respuesta-comet"></p>
         <div id="coment">
             <?php
                 echo Vista::viewComentarios($id, $_SESSION['id']);
@@ -33,6 +34,17 @@
         </div>
         
     </div>
+
+
+
+
+
+
+
+
+
+
+
 
 </div>
 </body>

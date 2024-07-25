@@ -1,4 +1,5 @@
 function apareceComentario(event,id){
+    var texto = document.getElementById("respuesta-comet");
     event.preventDefault();
     var param = {
         'agregarComentario': true,
@@ -11,14 +12,26 @@ function apareceComentario(event,id){
         url: '../../view/controller/controller_producto.php',
         datatype: 'text',
         method: 'post',
-        success: function (respuesta){
-            $("#coment").html(respuesta);
+        beforeSend: function(){
+            texto.style.backgroundColor = 'yellow';
+            texto.innerHTML = "Cargando comentario...";
             document.getElementById("comentario").value = "";
+        },
+        success: function (respuesta){
+            setTimeout(function(){
+                texto.style.backgroundColor = 'green';
+                texto.innerHTML = "EL comentario se cargo exitisamente";
+            },4000);
+            setTimeout(function(){
+                $("#coment").html(respuesta);
+                texto.innerHTML = '';
+            },6000);
         },
         error: function (xhr,status,error){
             console.log(error);
         }
     });
+
 }
 function eliminarComentario(id_comen, id_pro){
     var param = {
@@ -39,6 +52,7 @@ function eliminarComentario(id_comen, id_pro){
             console.log(error);
         }
     });
+
 }
 
 function megusta(checkbox){
@@ -141,8 +155,7 @@ function enviarDatos(des,token,id) {
 }
 
 function mostrarFechas(fecha,lugar){
-console.log("horas en  tiempo real");
-     // Fecha inicial
+   // Fecha inicial
   var fechaInicial = moment(fecha);
 
   // Fecha actual
@@ -156,16 +169,19 @@ console.log("horas en  tiempo real");
   var años = fechaActual.diff(fechaInicial, 'year');
   
   if(minutos <60){
-    document.getElementById(lugar).innerHTML = "Subido Hace: "+minutos+ " minutos";
+    document.getElementById(lugar).innerHTML = "Cargado hace: "+minutos+ " minutos";
   }else if(horas <24){
-    document.getElementById(lugar).innerHTML = "Subido Hace: "+horas+ " horas";
+    document.getElementById(lugar).innerHTML = "Cargado hace: "+horas+ " horas";
   }else if(dias <8){
-    document.getElementById(lugar).innerHTML = "Subido Hace: "+dias+ " días";
+    document.getElementById(lugar).innerHTML = "Cargado hace: "+dias+ " días";
   }else if(semanas<4){
-    document.getElementById(lugar).innerHTML = "Subido Hace: "+semanas+ " semanas";
+    document.getElementById(lugar).innerHTML = "Cargado hace: "+semanas+ " semanas";
   }else if(mes<12){
-    document.getElementById(lugar).innerHTML = "Subido Hace: "+mes+ " mes";
+    document.getElementById(lugar).innerHTML = "Cargado hace: "+mes+ " mes";
   }else{
-    document.getElementById(lugar).innerHTML = "Subido Hace: "+años+ " año";
+    document.getElementById(lugar).innerHTML = "Cargado hace: "+años+ " año";
   }
 }
+
+
+

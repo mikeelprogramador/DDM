@@ -81,6 +81,13 @@ class Model {
         $conexion->query($sql);
     }
 
+    public static function sqlAgregarHistorial($id_user,$id_pro){
+        include("model/conexion.php");
+        $sql = "insert into tb_historial(id_usuario,id_producto,fec_ver)";
+        $sql .="values('$id_user','$id_pro',DATE_FORMAT(NOW(), '%Y-%m-%d %h:%i:%s %p'))";
+        $conexion->query($sql);
+    }
+
     public static function sqlbuscarUsuario($correo,$id_user){
         include("model/conexion.php");
         $sql = "select count(*) from tb_usuarios  ";
@@ -183,8 +190,8 @@ class Model {
         $sql .= "from tb_comentarios ";
         $sql .= "inner join tb_usuarios on tb_comentarios.id_usuario = tb_usuarios.id ";
         $sql .= "inner join tb_productos on tb_comentarios.id_producto = tb_productos.id_producto ";
-        $sql .= "where tb_productos.id_producto = '$id_pro' ";
-         return  $conexion->query($sql);
+        $sql .= "where tb_productos.id_producto = '$id_pro' order by fechaComentario asc     ";
+        return  $conexion->query($sql);
     }
 
 
@@ -524,5 +531,7 @@ class Model {
         $sql .="where categoria = '$categoria'";
         return $conexion->query($sql);
     }
+
+
 
 }

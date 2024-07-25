@@ -28,7 +28,7 @@ if(isset($_GET['aumentar']) && $_GET['aumentar'] == true){
     $id = id::desencriptar($_GET['data']);
     $carrito = Carrito::buscarCarrito($_SESSION['id']);
     if($_GET['cantidad'] < $_GET['max']){
-        echo(Carrito::aumentarCantidad(1,$carrito,$id) == 1?  Vista::mostrarCarrito(1,$_SESSION['id']): '');
+        echo(Carrito::aumentarCantidad(1,$carrito,$id) == 1?  Carrito::mostrarCarrito(1,$_SESSION['id']): '');
     }
 }
 
@@ -36,7 +36,7 @@ if(isset($_GET['restar']) && $_GET['restar'] == true){
     $id = id::desencriptar($_GET['data']);
     $carrito = Carrito::buscarCarrito($_SESSION['id']);
     if($_GET['cantidad'] > 1){
-        echo(Carrito::aumentarCantidad(2,$carrito,$id) == 1? Vista::mostrarCarrito(1,$_SESSION['id']): '');
+        echo(Carrito::aumentarCantidad(2,$carrito,$id) == 1? Carrito::mostrarCarrito(1,$_SESSION['id']): '');
     }
 }
 
@@ -48,7 +48,7 @@ if(isset($_GET['eliminarDelCarrito']) && $_GET['eliminarDelCarrito'] == true){
     $carrito = Carrito::buscarCarrito($_SESSION['id']);
     $id = id::desencriptar($_GET['data']);
     Model::sqlEliminarDelCarrito($carrito,$id);
-    echo Vista::mostrarCarrito(1, $_SESSION['id']);
+    echo Carrito::mostrarCarrito(1, $_SESSION['id']);
 }
 
 if(isset($_GET['saveDato'])){

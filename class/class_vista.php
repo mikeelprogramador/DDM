@@ -76,52 +76,53 @@ class Vista{
     /**
      * Metodo para visualizar la lista de productos
      */
-public static function ContenidoProducto($id, $token) {
-    include_once("../../conf/model.php");
-    include_once("clasS_producto.php");
-    include_once("class_encript.php");
-    include_once("class_funciones.php");
-
-    $salida = "";
-    $consulta = Model::sqlverificarProducto($id, 1);
-
-    while ($fila = $consulta->fetch_array()) {
-        $productoId = id::encriptar($fila[0]);
-        $like = Productos::contarValoracion(0, $fila[0]);
-        $deslike = Productos::contarValoracion(1, $fila[0]);
-        $salida .= "<div class='producto' id='actualizar'>";
-        $salida .= "<div class='row' >";
-        $salida .= "<div class='col-md-6' id='producto-imagen'><img src='" .$fila[6] . "' alt='Producto' class='img-fluid'></div>"; // imagen del producto
-        $salida .= "<div class='col-md-6' id='producto-detalles'>";
-        $salida .= "<h2 class='producto-nombre' style='color: #c29349;'>" . $fila[1] . "</h2>";
-        $salida .= "<p class='producto-descripcion'>" . $fila[2] . "</p>";
-        $salida .= "<p class='producto-caracteristicas'><strong>Características: </strong> " . $fila[3] . "</p>";
-        $salida .= "<p class='producto-colores'><strong>Cantidades disponibles: </strong>" . $fila[4] . "</p>";
-        $salida .= "<p class='producto-cantidad'><strong>Colores </strong>" . $fila[8] . "</p>";
-        $salida .= "<p class='producto-precio'><strong>Precio: </strong>" . $fila[7] . "</p>";
-        $salida .= "<p class='producto-ofertas'><strong>Ofertas: </strong>" . $fila[5] . "</p>";
-        $salida .= "<p class='producto-precio'><strong id='mostra_fecha'>Subido hace:". Funciones::horas($fila[9],'mostra_fecha')."</strong></p>";
-        $salida .= "<button class='btn btn-primary' type='button' id='incremento' onclick='incremento()'>+</button>";
-        $salida .= "<input type='number' id='contador' class='form-control' value='1' min='1' max='" . $fila[4] . "' disabled>";
-        $salida .= "<button class='btn btn-primary' type='button' id='decremento' onclick='decremento()'>-</button>";
-        $salida .= "<div class='like-container' id='like-container'>";
-        $salida .= self::verLikes($productoId,$like,$deslike);
-        $salida .= "</div>";
-        $salida .= "<a class='btn btn-primary producto-comprar' id='enlace' onclick='enviarDatos(2,\"{$token}\",\"{$productoId}\")' >Compra ahora</a><br>";
-        $salida .= "<a class='btn btn-primary producto-comprar' onclick='enviarDatos(1,\"{$token}\",\"{$productoId}\")' >Agregar al carrito</a>";
-        $salida .= "</div>";
-        $salida .= "</div>";
-        $salida .= "</div>";
-    }
-    return $salida;
-}
-
-    public static function verlikes($productoId,$like,$deslike){
+    public static function ContenidoProducto($id, $token) {
+        include_once("../../conf/model.php");
+        include_once("clasS_producto.php");
+        include_once("class_encript.php");
+        include_once("class_funciones.php");
+    
         $salida = "";
-        $salida .= "<img src='../../img/como.png' alt='Me Gusta' id='like-icon' class='reaction-icon' onclick='toggleLike(\"{$productoId}\")'>$like";
-        $salida .= "<img src='../../img/disgusto.png' alt='No Me Gusta' id='dislike-icon' class='reaction-icon' onclick='toggleDislike(\"{$productoId}\")'>$deslike";
+        $consulta = Model::sqlverificarProducto($id, 1);
+    
+        while ($fila = $consulta->fetch_array()) {
+            $productoId = id::encriptar($fila[0]);
+            $like = Productos::contarValoracion(0, $fila[0]);
+            $deslike = Productos::contarValoracion(1, $fila[0]);
+            $salida .=  Funciones::horaWindow($fila[9],'mostra_fecha');
+            $salida .= "<div class='producto' id='actualizar'>";
+            $salida .= "<div class='row' >";
+            $salida .= "<div class='col-md-6' id='producto-imagen'><img src='" .$fila[6] . "' alt='Producto' class='img-fluid'></div>"; // imagen del producto
+            $salida .= "<div class='col-md-6' id='producto-detalles'>";
+            $salida .= "<h2 class='producto-nombre' style='color: #c29349;'>" . $fila[1] . "</h2>";
+            $salida .= "<p class='producto-descripcion'>" . $fila[2] . "</p>";
+            $salida .= "<p class='producto-caracteristicas'><strong>Características: </strong> " . $fila[3] . "</p>";
+            $salida .= "<p class='producto-colores'><strong>Cantidades disponibles: </strong>" . $fila[4] . "</p>";
+            $salida .= "<p class='producto-cantidad'><strong>Colores </strong>" . $fila[8] . "</p>";
+            $salida .= "<p class='producto-precio'><strong>Precio: </strong>" . $fila[7] . "</p>";
+            $salida .= "<p class='producto-ofertas'><strong>Ofertas: </strong>" . $fila[5] . "</p>";
+            $salida .= "<p class='producto-precio'><strong id='mostra_fecha'></strong></p>";
+            $salida .= "<button class='btn btn-primary' type='button' id='incremento' onclick='incremento()'>+</button>";
+            $salida .= "<input type='number' id='contador' class='form-control' value='1' min='1' max='" . $fila[4] . "' disabled>";
+            $salida .= "<button class='btn btn-primary' type='button' id='decremento' onclick='decremento()'>-</button>";
+            $salida .= "<div class='like-container' id='like-container'>";
+            $salida .= self::verLikes($productoId,$like,$deslike);
+            $salida .= "</div>";
+            $salida .= "<a class='btn btn-primary producto-comprar' id='enlace' onclick='enviarDatos(2,\"{$token}\",\"{$productoId}\")' >Compra ahora</a><br>";
+            $salida .= "<a class='btn btn-primary producto-comprar' onclick='enviarDatos(1,\"{$token}\",\"{$productoId}\")' >Agregar al carrito</a>";
+            $salida .= "</div>";
+            $salida .= "</div>";
+            $salida .= "</div>";
+        }
         return $salida;
     }
+    
+        public static function verlikes($productoId,$like,$deslike){
+            $salida = "";
+            $salida .= "<img src='../../img/como.png' alt='Me Gusta' id='like-icon' class='reaction-icon' onclick='toggleLike(\"{$productoId}\")'>$like";
+            $salida .= "<img src='../../img/disgusto.png' alt='No Me Gusta' id='dislike-icon' class='reaction-icon' onclick='toggleDislike(\"{$productoId}\")'>$deslike";
+            return $salida;
+        }
     
     
 
@@ -129,13 +130,17 @@ public static function ContenidoProducto($id, $token) {
      * Metodo para visuarliza los comentarios
      */
     public static function viewComentarios($id_pro,$id_user){
-                include_once("../../conf/model.php");
+        include_once("../../conf/model.php");
+        include_once("class_funciones.php");
         $salida = "";
         $consulta = Model::sqlViewComentarios($id_pro);
         while($fila = $consulta->fetch_array()){
+            $id = strval($fila[4]);
+            $lugar = 'comentario'.$id;
+            $salida .= Funciones::horaEstatica($fila[2],$lugar);
             $salida .= "<h3>". $fila[0]."<br></h3>";
             $salida .= $fila[1]."<br>";
-            $salida .="<h4>". $fila[2]."<br></h4>";
+            $salida .="<h4 id='comentario".$id."'>". $fila[2]."<br></h4>";
             if( $fila[3] == $id_user){
                 $salida.= "<button>Editar</button>";
                 $salida.= "<button onclick='eliminarComentario(\"$fila[4]\",\"$id_pro\")'>Eliminar</button>";
@@ -146,7 +151,7 @@ public static function ContenidoProducto($id, $token) {
     }
 
     public static function perfil($id_user,$des){
-                include_once("../../conf/model.php");
+        include_once("../../conf/model.php");
         $salida = "";
         $consulta = Model::sqlUsuario(3,$id_user);
         while($fila = $consulta->fetch_array()){
@@ -231,44 +236,6 @@ public static function ContenidoProducto($id, $token) {
         return $salida;
     }
 
-    public static function mostrarCarrito($des,$id_user){
-        include_once("class_encript.php");
-        include_once("../../conf/model.php");
-        include_once("class_funciones.php");
-        include_once("class_carrito.php");
-        $salida = "";
-        $consulta = Model::sqlMostrarCarrito($des,$id_user);
-        while($fila = $consulta->fetch_assoc()){
-            $id = id::encriptar($fila['id_producto']);
-            $valor = Funciones::intDinero($fila['precio']);
-            $cantidad = floatval($fila['cantidad_de_productos']);
-            if($fila['cantidades'] == 0){
-                $carrito = Carrito::buscarCarrito($id_user);
-                Model::sqlEliminarDelCarrito($carrito,$fila['id_producto']);
-                header("location: ddm.php?seccion=carrito");
-            }
-            $salida .= '<div class="container mt-4">'; 
-            $salida .= '<div class="row">';
-            $salida .= '<div class="col-sm-6 col-md-4 col-lg-3 mb-4">'; 
-            $salida .= '<div class="card h-100" style="width: 100%;">';  
-            $salida .= '<img src="'.$fila['img'].'" class="card-img-top" alt="La imagen no ha sido ubicada">';
-            $salida .= '<div class="card-body d-flex flex-column">';
-            $salida .= '<h5 class="card-title">'.$fila['producto_nombre'].'</h5>';
-            $salida .= '<p class="card-text">COP $ '.$fila['precio'].'</p>';
-            $salida .= "<button class='btn btn-primary' type='button' id='incremento' onclick='sumarCantidad(\"$id\",\"{$cantidad}\",\"{$fila['cantidades']}\")'>+</button>";
-            $salida .= '<input type="number" id="cantidad" class="form-control" value="'.$cantidad.'" min="1" max="'.$fila['cantidades'].'" disabled>';
-            $salida .= "<button class='btn btn-primary' type='button' id='decremento' onclick='restarCantidad(\"$id\",\"{$cantidad}\")'>-</button>";
-            $salida .= '<p class="card-text"> Valor total: '.Funciones::strDinero($valor*$cantidad).'</p>';
-            $salida .= "<button class='btn btn-primary mt-auto' onclick='eliminarDelCarrito(\"$id\")'>Eilimar del carrtio</button>";
-            $salida .= '</div>';
-            $salida .= '</div>';
-            $salida .= '</div>';
-            $salida .= '</div>'; 
-            $salida .= '</div>';
-        }
-        return $salida;
-    }
-
     public static function regiones($des,$id_region = null){
         include_once("../../conf/model.php");
         $salida = "";
@@ -288,32 +255,6 @@ public static function ContenidoProducto($id, $token) {
         return $salida;
     }
 
-    
-
-    public static function verCompras($id_user){
-        include_once("class_encript.php");
-        include_once("../../conf/model.php");
-        $salida = "<div class='contenido'>";
-        $consulta = Model::sqlVerCompra($id_user);
-        while($fila = $consulta->fetch_assoc()){
-            $compra = id::encriptar($fila['id_compra']);
-            $salida .= "<div class='compra'>";
-            $salida .= "<div class='compra-info'>";
-            $salida .= "<p class='compra-codigo'>Código de compra: ".$fila['id_compra']."</p>";
-            $salida .= "<p class='compra-usuario'>".$fila['nombre']." ".$fila['apellido']."</p>";
-            $salida .= "<p class='compra-departamento'>Departamento: ".$fila['departamento']."</p>";
-            $salida .= "<p class='compra-municipio'>Municipio: ".$fila['municipio']."</p>";
-            $salida .= "<p class='compra-total'>Total: ".$fila['total_compra']."</p>";
-            $salida .= "</div>";
-            $salida .= "<div class='compra-opciones'>";
-            $salida .= "<a class='compra-factura' href='../../descripcion/factura.php?code=".$compra."'>Ver factura</a>";
-            $salida .= "</div>";
-            $salida .= "</div>";
-        }
-        $salida .= "</div>"; // cierre del contenedor de contenido
-        return $salida;
-    }
-    
     
     public static function factura($des,$id_user,$id_compra,$des2 = null){
         include_once("../conf/model.php");

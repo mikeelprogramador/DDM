@@ -22,6 +22,17 @@ class Session{
     public static function sessionCodigo(){
         if(! isset($_SESSION['codigo'])) $_SESSION['codigo'] = "";
     }
+    public static function sessionHistorial(){
+        if(! isset($_SESSION['historial'])){
+            $_SESSION['historial'] = "";
+            return 1;
+        } unset($_SESSION['codigo_ejecutado']);
+    }
+    public static function eliminarHistorial(){
+        if(isset($_SESSION['historial'])){
+            unset($_SESSION['historial']);
+        } 
+    }
 
     public static function reinicarEnvio(){
         $_SESSION['correo'] = "";

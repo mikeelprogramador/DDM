@@ -4,12 +4,14 @@ include_once("../../class/class_sessiones.php");
 include_once("../../class/class_encript.php");
 include_once("../../class/class_user.php");
 include_once("../../class/class_funciones.php");
+include_once("../../class/class_historial.php");
 
 Session::iniciarSessiones();
 if(Session::verificarSesssiones() == 0 )header("location: ../../index.php");
 if( !isset($_GET['http']))header("location: ../../erro.php");
 if($_GET['http'] != $_SESSION['token'])header("location: ../../erro.php");
 
+if(Session::sessionHistorial() == 1 ) Historial::agregarHistorial($_SESSION['id'],id::desencriptar($_GET['data']));
 
 
 $seccion = "producto";

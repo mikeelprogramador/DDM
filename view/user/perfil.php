@@ -4,7 +4,7 @@
 <div class="con"> 
   <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Más informacion</a>
   <ul class="dropdown-menu custom-dropdown">
-    <li><a class="dropdown-item" href="#">Historial</a></li>
+    <li><a class="dropdown-item" href="ddm.php?seccion=historial">Historial</a></li>
     <hr>
     <li><a class="dropdown-item" href="#">Productos que me gustaron</a></li>
     <hr>

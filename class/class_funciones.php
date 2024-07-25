@@ -25,21 +25,23 @@ class Funciones{
 
 
     public static function alertas($mensaje,$alerta,$id = null){
-        include_once("class_producto.php");
-        if($alerta == 1)$function = "alertPro";
-        if($alerta == 2)$function = "verificacion";
-        if($alerta == 3){
-            $function = "alertCarrito";
-            $hora = Productos::detallesDelProducto(10,$id);
-        }
-        $salida = "<script> ";
-        $salida .= "window.onload = function() { ";
-        $salida .= $function."('".$mensaje."'); ";
-        if($alerta == 3)$salida .= "mostrarFechas('".$hora."','mostra_fecha');";
-        $salida .= "}; ";
-        $salida .= "</script>";
-        return $salida;
-    }
+      include_once("class_producto.php");
+      if($alerta == 1)$function = "alertPro";
+      if($alerta == 2)$function = "verificacion";
+      if($alerta == 3){
+          $function = "alertCarrito";
+          echo $function;
+          $hora = Productos::detallesDelProducto(10,$id);
+      }
+      $salida = "<script> ";
+      $salida .= "window.onload = function() { ";
+      $salida .= "console.log('hola'); ";
+      $salida .= $function."('".$mensaje."'); ";
+      if($alerta == 3)$salida .= "mostrarFechas('".$hora."','mostra_fecha');";
+      $salida .= "}; ";
+      $salida .= "</script>";
+      return $salida;
+  }
 
     public static function activarRecapchat(){
         $salida = "<script>";
@@ -57,13 +59,23 @@ class Funciones{
         return $salida;
     }
 
-    public static function horas($hora,$lugar){
-        $salida = "<script>";
-        $salida .= "window.onload = function() {";
-        $salida .= "mostrarFechas('".$hora."','".$lugar."');";
-        $salida .= "};";
-        $salida .= "</script>";
-        return $salida;
+    public static function horaWindow($hora,$lugar){
+      $salida = "<script>";
+      $salida .= "window.onload = function() {";
+      $salida .= "mostrarFechas('".$hora."','".$lugar."');";
+      $salida .= "};";
+      $salida .= "</script>";
+      return $salida;
+  }
+
+
+    public static function horaEstatica($hora,$lugar){
+      $salida = "<script>";
+      $salida .= "document.addEventListener('DOMContentLoaded', function() {";
+      $salida .= "mostrarFechas('" . $hora . "','" . $lugar . "');";
+      $salida .= "});";
+      $salida .= "</script>";
+      return $salida;
     }
 
     public static function vacunaXxs($texto){

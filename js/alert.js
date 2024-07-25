@@ -24,6 +24,7 @@ function alertPro(mensaje){
 }
 
 function alertCarrito(des){
+    console.log(des);
     if(des === "1" ){
         alertCart("success", "Cargado", "Su producto se cargo exitosamente!");
     }

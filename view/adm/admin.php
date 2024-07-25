@@ -6,10 +6,12 @@ include_once("../../class/class_estadisticas.php");
 include_once("../../class/class_funciones.php");
 include_once("../../class/class_encript.php");
 include_once("../../class/class_producto.php");
+include_once("../../class/class_historial.php");
 
 Session::iniciarSessiones();
 if(Session::verificarSesssiones() == 0 )header("location: ../../index.php");
 if(Usuarios::verificarPerfil(1,$_SESSION['id']) == "2")header("location: ../user/ddm.php?");
+Session::eliminarHistorial();
 
 $seccion = "admin_home"; //Sección por defecto.
 if( isset( $_GET[ 'seccion' ] ) )$seccion = $_GET[ 'seccion' ]; 
