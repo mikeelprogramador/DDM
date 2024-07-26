@@ -4,13 +4,28 @@ Session::iniciarSessiones();
 if(Session::verificarSesssiones() == 0 )$_SESSION['id'] = "invitado";
 
 ?>
-<!DOCTYPE html>
+
+<!doctype html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recuperar de cuenta - DDM</title>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-05CZXNWMZE"></script>
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-05CZXNWMZE');
+  </script> 
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DDM_Recuperar cuenta</title>
+  <link rel="stylesheet" href="css/contraseña.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
+
 <body>
     <?php
     if(isset($_GET['datause'])){
@@ -31,10 +46,10 @@ if(Session::verificarSesssiones() == 0 )$_SESSION['id'] = "invitado";
     if(isset($_GET['recuperarContraseña'])){
     ?>
     <div class="save-passwrd">
-        <p>A continuacion enviaremos  un correo para recuperar su contraseñe</p>
+        <p><h4>A continuacion enviaremos un correo para recuperar su contraseñe</h4></p>
         <p id="dato"></p>
         <form action="../controller/controller_user.php?saveDato" method="post" onsubmit="enviarCorreo(event,2)">
-        <label for="">Correo</label>
+        <label for="">Por favor digite su Correo</label>
         <input type="text" id="correo" name="correo" placeholder="email@gmail.com" required> 
         <input type="submit">
         </form>
@@ -47,6 +62,12 @@ if(Session::verificarSesssiones() == 0 )$_SESSION['id'] = "invitado";
 
 
 </body>
+  
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<!-- Conexión del script. -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
 <script src="js/user.js"></script>
+</body>
 </html>

@@ -88,20 +88,43 @@ function enviarCorreo(event,des){
         datatype: 'texto',
         method: 'post',
         beforeSend: function(){
-            texto.innerHTML = "Su correo esta siendo enviedo";
-            texto.style.backgroundColor = 'yellow';
+            texto.innerHTML = "Su correo está siendo enviado......";
+            texto.style.backgroundColor = '#fcf801'; 
+            texto.style.color = 'white';
+            texto.style.padding = '10px';
+            texto.style.borderRadius = '5px';
+            texto.style.marginTop = '10px';
+            texto.style.fontSize = '16px';
+            texto.style.fontWeight = 'bold';
+            texto.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.1)';
         },
         success: function(respuesta){
             setTimeout(function() {
                 if(respuesta === "0"){
                     correo.value = '';
-                    texto.innerHTML = "Su correo fue enviado exitosamente verifica su vandeja de entradas o spam";
-                    texto.style.backgroundColor = 'green';
+                    texto.innerHTML = "Su correo fue enviado exitosamente. Verifica su bandeja de entradas o spam.";
+                    texto.style.backgroundColor = '#4CAF50'; 
+                    texto.style.color = 'white';
+                    texto.style.padding = '10px';
+                    texto.style.borderRadius = '5px';
+                    texto.style.marginTop = '10px';
+                    texto.style.fontSize = '16px';
+                    texto.style.fontWeight = 'bold';
+                    texto.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.1)';
                 }
-                if(respuesta === "1" || respuesta === "not exist" ){ 
-                    texto.innerHTML = "El correo que ingresaste no se a podido encontrar verifica si esta bien escrito. ";
-                    texto.style.backgroundColor = 'red';
+                
+                if(respuesta === "1" || respuesta === "not exist"){ 
+                    texto.innerHTML = "El correo que ingresaste no se ha podido encontrar. Verifica si está bien escrito.";
+                    texto.style.backgroundColor = '#f44336'; 
+                    texto.style.color = 'white';
+                    texto.style.padding = '10px';
+                    texto.style.borderRadius = '5px';
+                    texto.style.marginTop = '10px';
+                    texto.style.fontSize = '16px';
+                    texto.style.fontWeight = 'bold';
+                    texto.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.1)';
                 }
+                
             }, 5000);
             
         },
@@ -110,6 +133,7 @@ function enviarCorreo(event,des){
         }
     });
 }
+
 
 
 
