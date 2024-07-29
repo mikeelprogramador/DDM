@@ -23,4 +23,13 @@ class Usuarios{
         include_once("../../conf/model.php");
         $consulta = Model::sqlActualizarImagen($img,$id_user);
     }
+
+    public static function fotoPerfil($id_user){
+        include_once("../../conf/model.php");
+        $consulta = Model::sqlUsuario(3,$id_user);
+        while($fila = $consulta->fetch_array()){
+            $salida = $fila[8];
+        }
+        return $salida;
+    }
 }

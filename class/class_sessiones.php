@@ -13,6 +13,7 @@ class Session{
         if($_SESSION['id'] == "")$salida = 0;
         return $salida;
     }
+
     public static function sessionRecapchat(){
         if( !isset($_SESSION['stop']))$_SESSION['stop'] = 0;
     }

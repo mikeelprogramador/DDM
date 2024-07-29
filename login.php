@@ -2,7 +2,6 @@
 include_once('class/class_sessiones.php');
 include_once('class/class_token.php');
 include_once('class/class_funciones.php');
-Session::iniciarSessiones();
 Session::sessionRecapchat();
 
 if(isset($_GET['men']) && $_GET['men'] == "error-1" || isset($_GET['men']) && $_GET['men'] == "error-0" ){

@@ -5,6 +5,7 @@ include_once("../../class/class_encript.php");
 include_once("../../class/class_user.php");
 include_once("../../class/class_funciones.php");
 include_once("../../class/class_historial.php");
+include_once("../../class/class_comentarios.php");
 
 Session::iniciarSessiones();
 if(Session::verificarSesssiones() == 0 )header("location: ../../index.php");

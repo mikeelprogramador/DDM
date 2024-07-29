@@ -4,6 +4,8 @@ include_once('../../class/class_login.php');
 include_once('../../class/class_user.php');
 include_once('../../class/class_funciones.php');
 include_once('../../class/class_encript.php');
+include_once('../../class/class_token.php');
+include_once('../../class/class_correo.php');
 include_once('../../conf/model.php');
 Session::iniciarSessiones();
 
@@ -43,6 +45,15 @@ if( isset($_GET['log']) && $_GET['log'] == 0){
     }
     if( $registro == 0)header("location: ../../check-in.php?men=".$registro."error");
     if( $registro == -1 )header("location: ../../check-in.php?men=".$registro."error");
+}
+
+if(isset($_GET['saveDato'])){
+    $_SESSION['codigo'] = token::Obtener_token(10);
+    if(Login::encontrarUsuario(1,$_POST['correo']) == 0){
+         echo "not exist";
+    }else{
+        echo Correo::enviarCorreo(1,$_POST['correo'], $_SESSION['codigo']);
+    }
 }
 
 if(isset($_GET['cambioPasswprd'])){

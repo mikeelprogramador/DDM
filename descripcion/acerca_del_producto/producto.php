@@ -29,22 +29,11 @@
         <p id="respuesta-comet"></p>
         <div id="coment">
             <?php
-                echo Vista::viewComentarios($id, $_SESSION['id']);
+                echo Comentarios::verComentarios($id, $_SESSION['id']);
             ?>
         </div>
         
     </div>
-
-
-
-
-
-
-
-
-
-
-
 
 </div>
 </body>

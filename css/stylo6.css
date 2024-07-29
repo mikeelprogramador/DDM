@@ -200,17 +200,7 @@ input[type="submit"] {
     border-radius: 5px;
     transition: background-color 0.5s, transform 0.3s;
 }
-button{
-    background-color: #c29349;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 5px;
-    transition: background-color 0.3s, transform 0.3s;
-    margin: 2px;
-}
+
 input[type="submit"]:hover {
     background-color: #a3703c;
     transform: scale(1.05);
@@ -254,4 +244,101 @@ input[type="submit"]:hover {
         margin-left: 0;
         border-right: none;
     }
+}
+
+/*Perro mofique este el estilo esto no lo balla a borrar, cuando lo arregle borre este comnetario */
+
+
+.avatar-container {
+    display: flex;
+    align-items: center;
+    background-color: #fff; /* Fondo blanco opcional para el contenedor */
+    border-radius: 8px; /* Bordes redondeados opcionales */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra opcional */
+    padding: 10px;
+    margin-bottom: 20px; /* Espacio inferior opcional entre comentarios */
+}
+
+.avatar {
+    width: 60px; /* Tamaño del círculo */
+    height: 60px; /* Tamaño del círculo */
+    border-radius: 50%; /* Hace el div circular */
+    overflow: hidden; /* Oculta la parte de la imagen que se sale del círculo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fcf801; /* Color de fondo opcional */
+    margin-right: 15px; /* Espacio entre el círculo y el texto */
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ajusta la imagen para cubrir el área del div */
+}
+
+.usuario-container {
+    display: flex;
+    flex-direction: column; /* Organiza el texto en una columna */
+}
+
+.nombre-tiempo-container {
+    display: flex;
+    align-items: center; /* Alinea los elementos verticalmente */
+    margin-bottom: 5px; /* Espacio inferior para separar del comentario */
+}
+
+.nombre {
+    font-size: 14px; /* Ajusta el tamaño del texto según el tamaño del círculo */
+    color: #333; /* Color del texto */
+    margin: 0; /* Elimina márgenes para ajuste fino */
+    margin-right: 10px; /* Espacio entre nombre y tiempo */
+}
+
+.tiempo {
+    font-size: 14px; /* Ajusta el tamaño del texto */
+    color: #666; /* Color del texto */
+    margin: 0; /* Elimina márgenes para ajuste fino */
+}
+
+.comentario {
+    font-size: 15px; /* Ajusta el tamaño del comentario */
+    color: #666; /* Color del comentario */
+    margin: 5px 0 0 0; /* Espacio superior para separar del nombre-tiempo */
+}
+
+.button-container {
+    display: flex;
+    flex-direction: row; /* Alinea los botones horizontalmente */
+}
+
+button {
+    background-color: transparent; /* Color de fondo transparente */
+    color: black; /* Color del texto negro */
+    border: 1px solid #007bff; /* Borde azul para visibilidad */
+    border-radius: 4px; /* Bordes redondeados */
+    padding: 4px 8px; /* Espaciado interno reducido para botones estrechos */
+    margin: 2px; /* Espacio alrededor del botón */
+    cursor: pointer; /* Cambia el cursor para indicar que es clickeable */
+    font-size: 12px; /* Tamaño del texto en el botón */
+    transition: background-color 0.3s, color 0.3s; /* Transición suave para color de fondo y texto */
+}
+
+button:hover {
+    background-color: #007bff; /* Color de fondo azul al pasar el ratón */
+    color: white; /* Color del texto blanco en hover */
+}
+
+button:focus {
+    outline: none; /* Elimina el contorno del botón cuando está en foco */
+}
+
+.respuesta-container{
+    display:none;
+}
+.fecha{
+    display: none;
+}
+.RespuestasComentario{
+    display: none;
 }

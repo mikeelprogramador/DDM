@@ -53,17 +53,15 @@ if(isset($_GET['eliminarDelCarrito']) && $_GET['eliminarDelCarrito'] == true){
 
 if(isset($_GET['saveDato'])){
     $_SESSION['codigo'] = token::Obtener_token(10);
-    if($_SESSION['id'] == "invitado"){
-        if(Login::encontrarUsuario(1,$_POST['correo']) == 0){
-            echo "not exist";
-        }else{
-            echo Correo::enviarCorreo(1,$_POST['correo'], $_SESSION['codigo']);
-        }
+    if(Login::buscarUsuariosCorreoId($_POST['correo'],$_SESSION['id']) == 0){
+        echo "not exist";
     }else{
-        if(Login::buscarUsuariosCorreoId($_POST['correo'],$_SESSION['id']) == 0){
-            echo "not exist";
-        }else{
-            echo Correo::enviarCorreo(2,$_POST['correo'], $_SESSION['codigo']);
-        }
+        echo Correo::enviarCorreo(2,$_POST['correo'], $_SESSION['codigo']);
     }
+}
+
+if(isset($_GET['cambiarFoto'])){
+    $img = '../../img/logo-icon-person.jpg';
+    Usuarios::cargarImagen($img,$_SESSION['id']);
+    echo $img;
 }

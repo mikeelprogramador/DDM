@@ -95,9 +95,10 @@ if(isset($_GET['estado']) && $_GET['estado'] == "comprando" && isset($_GET['iden
         $id_compra = Compras::countCompra();
         $id_pro = id::desencriptar($_GET['data']);
         $precio = Funciones::intDinero(Productos::detallesDelProducto(7,$id_pro));
-        $total = Funciones::strDinero($cantidades*$precio);
+        $_SESSION['totalCompra'] = $cantidades*$precio;
+        
 
-        if(Compras::comprasUni($id_compra,$id_pro,$cantidades,$total) == 1){
+        if(Compras::comprasUni($id_compra,$id_pro,$cantidades,Funciones::strDinero($_SESSION['totalCompra'])) == 1){
             Model::sqlActualizarTotalCompra($id_compra,$id_user);
             Model::sqlActualizarCantidadesUni($id_pro,$cantidades);     
             header("location: ../../view/user/ddm.php");

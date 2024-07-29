@@ -1,7 +1,5 @@
 <?php
 include_once("class/class_sessiones.php");
-Session::iniciarSessiones();
-if(Session::verificarSesssiones() == 0 )$_SESSION['id'] = "invitado";
 
 ?>
 
@@ -42,13 +40,13 @@ if(Session::verificarSesssiones() == 0 )$_SESSION['id'] = "invitado";
     <?php
         }
     ?>
-        <?php
+    <?php
     if(isset($_GET['recuperarContraseña'])){
     ?>
     <div class="save-passwrd">
         <p><h4>A continuacion enviaremos un correo para recuperar su contraseñe</h4></p>
-        <p id="dato"></p>
-        <form action="../controller/controller_user.php?saveDato" method="post" onsubmit="enviarCorreo(event,2)">
+        <p class="dato" id="dato"></p>
+        <form action="../controller/controller_login.php?saveDato" method="post" onsubmit="enviarCorreo(event,2)">
         <label for="">Por favor digite su Correo</label>
         <input type="text" id="correo" name="correo" placeholder="email@gmail.com" required> 
         <input type="submit">

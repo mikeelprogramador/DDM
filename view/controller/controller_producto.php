@@ -4,6 +4,7 @@ include_once("../../class/class_vista.php");
 include_once("../../class/class_encript.php");
 include_once("../../class/class_carrito.php");
 include_once("../../class/class_funciones.php");
+include_once("../../class/class_comentarios.php");
 if(!isset($_SESSION))session_start();
 
 if( isset($_POST['agregarComentario']) && $_POST['agregarComentario'] == true ){
@@ -11,7 +12,7 @@ if( isset($_POST['agregarComentario']) && $_POST['agregarComentario'] == true ){
     if( $comentario != ""){
         $id = id::desencriptar($_POST['data']);
         if( Productos::crearComentarios($comentario,$id,$_SESSION['id']) == 1){
-            echo Vista::viewComentarios($id,$_SESSION['id']);
+            echo Comentarios::verComentarios($id,$_SESSION['id']);
         }
     }
 }
@@ -19,7 +20,7 @@ if( isset($_POST['eliminarComentario']) && $_POST['eliminarComentario'] == true 
     $id_comen = $_POST['comen'];
     $id = $_POST['data'];
     if(  Productos::eliminarComentarios($id_comen,$_SESSION['id']) == 1){
-       echo Vista::viewComentarios($id, $_SESSION['id']);
+       echo Comentarios::verComentarios($id, $_SESSION['id']);
 
     }
 }

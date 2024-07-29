@@ -51,12 +51,15 @@
           <a class="nav-link" href="#">Ofertas</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-           <?php echo Usuarios::verificarPerfil(2,$_SESSION['id'])?>
+          <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <div class="avatar me-2">
+                  <img src='<?php echo Usuarios::fotoPerfil($_SESSION['id']) ?>' id="foto_avatar">
+              </div>
+              <?php echo Usuarios::verificarPerfil(2,$_SESSION['id'])?>
           </a>
           <ul class="dropdown-menu custom-dropdown">
-            <li><a class="dropdown-item" href="ddm.php?seccion=perfil">Perfil</a></li>
-            <li><a class="dropdown-item" href="ddm.php?seccion=out">Cerrar sesión</a></li>
+              <li><a class="dropdown-item" href="ddm.php?seccion=perfil">Perfil</a></li>
+              <li><a class="dropdown-item" href="ddm.php?seccion=out">Cerrar sesión</a></li>
           </ul>
         </li>
         <li class="nav-item">

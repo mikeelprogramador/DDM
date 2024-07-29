@@ -19,19 +19,19 @@
 <!-- contenedor obsiones de usuario -->
 <div class="sub-contenedor" id="sub-contenedor">
   <!-- contendor 1 -->
-  <div onmouseenter='cambiarFoto(this)' onclick="cambiarDato(1)">
+  <div onmouseenter='cambiarMouse(this)' onclick="cambiarDato(1)">
     Cambiar contraseña
   </div>
   <!-- contenedor 2 -->
-    <div onmouseenter='cambiarFoto(this)' onclick="cambiarDato(2)">
+    <div onmouseenter='cambiarMouse(this)' onclick="cambiarDato(2)">
       Cambiar Correo
     </div>
   <!-- conteneodor 3 -->
-    <div onmouseenter='cambiarFoto(this)'>
+    <div onmouseenter='cambiarMouse(this)'>
       Eliminar foto
     </div>
   <!-- contenedor 4 -->
-  <div onmouseenter='cambiarFoto(this)'>
+  <div onmouseenter='cambiarMouse(this)'>
       Eliminar Cuenta
   </div>
 

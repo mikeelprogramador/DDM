@@ -186,11 +186,11 @@ class Model {
 
     public static function sqlViewComentarios($id_pro){
         include("model/conexion.php");
-        $sql = "select tb_usuarios.nombre,comentario,fechaComentario,tb_usuarios.id,id_comentario ";
+        $sql = "select tb_usuarios.nombre,tb_usuarios.foto_usuarios,comentario,fechaComentario,tb_usuarios.id,id_comentario ";
         $sql .= "from tb_comentarios ";
         $sql .= "inner join tb_usuarios on tb_comentarios.id_usuario = tb_usuarios.id ";
         $sql .= "inner join tb_productos on tb_comentarios.id_producto = tb_productos.id_producto ";
-        $sql .= "where tb_productos.id_producto = '$id_pro' order by fechaComentario asc     ";
+        $sql .= "where tb_productos.id_producto = '$id_pro' order by fechaComentario desc     ";
         return  $conexion->query($sql);
     }
 

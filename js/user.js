@@ -1,5 +1,5 @@
 
-function cambiarFoto(img) {
+function cambiarMouse(img) {
     img.style.cursor = 'pointer';
 }
 function activarfiles(){
@@ -26,6 +26,7 @@ function mostrarImagen(event,des) {
                 alertPro(respuesta);
             }else{
                 document.getElementById("imagen_perfil").src = respuesta;
+                document.getElementById("foto_avatar").src = respuesta;
             }
         },
         error: function(xhr, status, error) {
@@ -39,7 +40,6 @@ function verConfiguraciones(){
     document.getElementById('perfil').style.display = 'none';
     document.getElementById('sub-contenedor').style.display = 'block';
     document.getElementById('contenido_sub-contenedor').style.display = 'block';
-    
 
 }
 
@@ -80,7 +80,7 @@ function enviarCorreo(event,des){
         direccion = '../controller/controller_user.php?saveDato';
     }
     if(des === 2 ){
-        direccion = 'view/controller/controller_user.php?saveDato';
+        direccion = 'view/controller/controller_login.php?saveDato';
     }
     $.ajax({
         data: param,
@@ -89,40 +89,20 @@ function enviarCorreo(event,des){
         method: 'post',
         beforeSend: function(){
             texto.innerHTML = "Su correo está siendo enviado......";
-            texto.style.backgroundColor = '#fcf801'; 
-            texto.style.color = 'white';
-            texto.style.padding = '10px';
-            texto.style.borderRadius = '5px';
-            texto.style.marginTop = '10px';
-            texto.style.fontSize = '16px';
-            texto.style.fontWeight = 'bold';
-            texto.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.1)';
+            texto.style.backgroundColor = '#fcf801';
+            decoracionTexto(texto);
         },
         success: function(respuesta){
             setTimeout(function() {
                 if(respuesta === "0"){
                     correo.value = '';
                     texto.innerHTML = "Su correo fue enviado exitosamente. Verifica su bandeja de entradas o spam.";
-                    texto.style.backgroundColor = '#4CAF50'; 
-                    texto.style.color = 'white';
-                    texto.style.padding = '10px';
-                    texto.style.borderRadius = '5px';
-                    texto.style.marginTop = '10px';
-                    texto.style.fontSize = '16px';
-                    texto.style.fontWeight = 'bold';
-                    texto.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.1)';
+                    texto.style.backgroundColor = '#4CAF50';
                 }
                 
                 if(respuesta === "1" || respuesta === "not exist"){ 
                     texto.innerHTML = "El correo que ingresaste no se ha podido encontrar. Verifica si está bien escrito.";
                     texto.style.backgroundColor = '#f44336'; 
-                    texto.style.color = 'white';
-                    texto.style.padding = '10px';
-                    texto.style.borderRadius = '5px';
-                    texto.style.marginTop = '10px';
-                    texto.style.fontSize = '16px';
-                    texto.style.fontWeight = 'bold';
-                    texto.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.1)';
                 }
                 
             }, 5000);
@@ -130,6 +110,46 @@ function enviarCorreo(event,des){
         },
         error: function(xhr,status,error){
             console.log(error);
+        }
+    });
+}
+
+function decoracionTexto(texto){
+    texto.style.color = 'white';
+    texto.style.padding = '10px';
+    texto.style.borderRadius = '5px';
+    texto.style.marginTop = '10px';
+    texto.style.fontSize = '16px';
+    texto.style.fontWeight = 'bold';
+    texto.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.1)';
+}
+
+function eliminarFoto(){
+    alertdelet(null,"question","Eilimar foto","¿Estas seguro de eliminar tu foto?",1);
+}
+
+function eliminar(des){
+
+    var param = {}
+    if(des === 1 ){
+        param['cambiarFoto'] = '';
+    }
+    if(des === 2 ){
+        param['elimarCuenta'] = '';
+    }
+    $.ajax({
+        data:param,
+        url: '../controller/controller_user.php',
+        datatype: 'texto',
+        method: 'get', 
+        success: function(respuesta) {
+            document.getElementById("imagen_perfil").src = respuesta;
+            document.getElementById("foto_avatar").src = respuesta;
+            alert("success","Foto eliminada","Su foto de perfil se a eliminado");
+        },
+        error: function(xhr, status, error) {
+            console.log(error);
+            alert("Error","opsss.","Algo ha fallado");
         }
     });
 }

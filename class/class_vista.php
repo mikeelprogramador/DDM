@@ -80,7 +80,7 @@ class Vista{
         include_once("../../conf/model.php");
         include_once("clasS_producto.php");
         include_once("class_encript.php");
-        include_once("class_funciones.php");
+        include_once("class_fechas.php");
     
         $salida = "";
         $consulta = Model::sqlverificarProducto($id, 1);
@@ -89,7 +89,6 @@ class Vista{
             $productoId = id::encriptar($fila[0]);
             $like = Productos::contarValoracion(0, $fila[0]);
             $deslike = Productos::contarValoracion(1, $fila[0]);
-            $salida .=  Funciones::horaWindow($fila[9],'mostra_fecha');
             $salida .= "<div class='producto' id='actualizar'>";
             $salida .= "<div class='row' >";
             $salida .= "<div class='col-md-6' id='producto-imagen'><img src='" .$fila[6] . "' alt='Producto' class='img-fluid'></div>"; // imagen del producto
@@ -101,7 +100,7 @@ class Vista{
             $salida .= "<p class='producto-cantidad'><strong>Colores </strong>" . $fila[8] . "</p>";
             $salida .= "<p class='producto-precio'><strong>Precio: </strong>" . $fila[7] . "</p>";
             $salida .= "<p class='producto-ofertas'><strong>Ofertas: </strong>" . $fila[5] . "</p>";
-            $salida .= "<p class='producto-precio'><strong id='mostra_fecha'></strong></p>";
+            $salida .= "<p class='producto-precio'><strong id='mostra_fecha'>".Fecha::mostrarFechas($fila[9])."</strong></p>";
             $salida .= "<button class='btn btn-primary' type='button' id='incremento' onclick='incremento()'>+</button>";
             $salida .= "<input type='number' id='contador' class='form-control' value='1' min='1' max='" . $fila[4] . "' disabled>";
             $salida .= "<button class='btn btn-primary' type='button' id='decremento' onclick='decremento()'>-</button>";
@@ -126,30 +125,6 @@ class Vista{
     
     
 
-    /**
-     * Metodo para visuarliza los comentarios
-     */
-    public static function viewComentarios($id_pro,$id_user){
-        include_once("../../conf/model.php");
-        include_once("class_funciones.php");
-        $salida = "";
-        $consulta = Model::sqlViewComentarios($id_pro);
-        while($fila = $consulta->fetch_array()){
-            $id = strval($fila[4]);
-            $lugar = 'comentario'.$id;
-            $salida .= Funciones::horaEstatica($fila[2],$lugar);
-            $salida .= "<h3>". $fila[0]."<br></h3>";
-            $salida .= $fila[1]."<br>";
-            $salida .="<h4 id='comentario".$id."'>". $fila[2]."<br></h4>";
-            if( $fila[3] == $id_user){
-                $salida.= "<button>Editar</button>";
-                $salida.= "<button onclick='eliminarComentario(\"$fila[4]\",\"$id_pro\")'>Eliminar</button>";
-            }
-            $salida .= "<button>Responder</button><br><br><br>";
-        }
-        return $salida;
-    }
-
     public static function perfil($id_user,$des){
         include_once("../../conf/model.php");
         $salida = "";
@@ -169,7 +144,7 @@ class Vista{
             $salida .= "<div class='col-md-4'>";
             $salida .= "<div class='circle text-center bg-primary text-white rounded-circle >";
             $salida .= "<label for='foto_perfil' id='label_foto' onclick='activarfiles()' >";
-            $salida .= "<img src='$fila[8]' class='img-fluid' id='imagen_perfil' alt='No cargaste la imagen en la base' onmouseenter='cambiarFoto(this)'>";
+            $salida .= "<img src='$fila[8]' class='img-fluid' id='imagen_perfil' alt='No cargaste la imagen en la base' onmouseenter='cambiarMouse(this)'>";
             $salida .= "<input type='file' class='form-control' id='foto_perfil' onchange='mostrarImagen(event,$des)' ";
             $salida .= "</label>";
             $salida .= "</div>";
@@ -195,15 +170,16 @@ class Vista{
             // este es el segundo contenedor 
 
             $salida .= "<div class='con'> ";
-            $salida .= "<div class='container2 mt-5' onclick='verConfiguraciones()' onmouseenter='cambiarFoto(this)'>";
-            $salida .= "Configuraciones";
+            $salida .= "<div class='container2 mt-5' onclick='' onmouseenter='cambiarMouse(this)'>";
+            $salida .= "Datos de usuario";
             $salida .= "</div>";    
             $salida .= "</div>";
 
             // este es el tercer contenedor 
 
             $salida .= "<div class='con'> ";
-            $salida .= "<div class='container3 mt-5' onclick=' ' onmouseenter='cambiarFoto(this)'> hola perro 3 ";
+            $salida .= "<div class='container3 mt-5' onclick='verConfiguraciones()' onmouseenter='cambiarMouse(this)'>";
+            $salida .= "Configuracion de cuenta";
             $salida .= "</div>";
             $salida .= "</div>";
 

@@ -154,34 +154,32 @@ function enviarDatos(des,token,id) {
     window.location.href = url;
 }
 
-function mostrarFechas(fecha,lugar){
-   // Fecha inicial
-  var fechaInicial = moment(fecha);
-
-  // Fecha actual
-  var fechaActual = moment();
-
-  var minutos = fechaActual.diff(fechaInicial, 'minutes');
-  var horas = fechaActual.diff(fechaInicial, 'hours');
-  var dias = fechaActual.diff(fechaInicial, 'days');
-  var semanas = fechaActual.diff(fechaInicial, 'week');
-  var mes = fechaActual.diff(fechaInicial, 'month');
-  var años = fechaActual.diff(fechaInicial, 'year');
-  
-  if(minutos <60){
-    document.getElementById(lugar).innerHTML = "Cargado hace: "+minutos+ " minutos";
-  }else if(horas <24){
-    document.getElementById(lugar).innerHTML = "Cargado hace: "+horas+ " horas";
-  }else if(dias <8){
-    document.getElementById(lugar).innerHTML = "Cargado hace: "+dias+ " días";
-  }else if(semanas<4){
-    document.getElementById(lugar).innerHTML = "Cargado hace: "+semanas+ " semanas";
-  }else if(mes<12){
-    document.getElementById(lugar).innerHTML = "Cargado hace: "+mes+ " mes";
-  }else{
-    document.getElementById(lugar).innerHTML = "Cargado hace: "+años+ " año";
-  }
+function responder(lugar){
+    var div = document.getElementById(lugar);
+    div.style.display = 'block';
 }
+
+function cancelarRespuesta(lugar){
+    var div = document.getElementById(lugar);
+    div.style.display = 'none';
+}
+
+
+function cargarRespuesta(comentario){
+    var texto = document.getElementById('respuesta').value;
+    if(texto === ""){
+        console.log("No hay nada escrito, escribe algo por favor");
+    }else{
+        console.log(comentario);
+        console.log(texto);
+    }
+}
+
+
+
+
+
+
 
 
 

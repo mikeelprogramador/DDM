@@ -4,6 +4,7 @@ class Compras{
     
     public static function verCompras($id_user){
         include_once("class_encript.php");
+        include_once("class_fechas.php");
         include_once("../../conf/model.php");
         $salida = "<div class='contenido'>";
         $consulta = Model::sqlVerCompra($id_user);
@@ -16,6 +17,7 @@ class Compras{
             $salida .= "<p class='compra-departamento'>Departamento: ".$fila['departamento']."</p>";
             $salida .= "<p class='compra-municipio'>Municipio: ".$fila['municipio']."</p>";
             $salida .= "<p class='compra-total'>Total: ".$fila['total_compra']."</p>";
+            $salida .= "<p class='compra-fecha'>Compra realizada ".Fecha::mostrarFechas($fila['fecha_de_compra'])."</p>";
             $salida .= "</div>";
             $salida .= "<div class='compra-opciones'>";
             $salida .= "<a class='compra-factura' href='../../descripcion/factura.php?code=".$compra."'>Ver factura</a>";
