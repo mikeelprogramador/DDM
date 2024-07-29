@@ -69,18 +69,23 @@
             </li>
             <?php
           }
-        ?><li class="nav-item dropdown">
+        ?>
+
+        <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <div class="avatar">
+                  <img src='<?php echo Usuarios::fotoPerfil($_SESSION['id']) ?>' id="foto_avatar">
+              </div>
         <?php echo Usuarios::verificarPerfil(2,$_SESSION['id'])?>
         </a>
         <ul class="dropdown-menu custom-dropdown">
           <li><a class="dropdown-item" href="admin.php?seccion=perfil">Mi perfil</a></li>
           <li><a class="dropdown-item" href="admin.php?seccion=out">Cerrar sesion</a></li>
         </ul>
-
+        </li>
         <li class="nav-item">
           <a class="nav-link disabled" aria-disabled="true">
-            Bienvenido <?php echo (Usuarios::verificarPerfil(1,$_SESSION['id'])== 0? "SuperAdmin":"Admin")?>
+            Bienvenido <?php echo Usuarios::verificarPerfil(1,$_SESSION['id'])== 0? "SuperAdmin":"Admin"?>
           </a>
         </li>
       </ul>

@@ -89,7 +89,7 @@ function enviarCorreo(event,des){
         method: 'post',
         beforeSend: function(){
             texto.innerHTML = "Su correo está siendo enviado......";
-            texto.style.backgroundColor = '#fcf801';
+            texto.style.backgroundColor = '#c29349';
             decoracionTexto(texto);
         },
         success: function(respuesta){

@@ -137,7 +137,7 @@ class Vista{
 
             // este es el primer contenedor 
 
-            $salida .= "<div class='con'> ";
+            $salida .= "<div class='container'> ";
             $salida .= "<div class='container1 mt-5' onclick=' '>";
             
             $salida .= "<div class='row justify-content-center'>";

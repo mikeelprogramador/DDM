@@ -1,20 +1,24 @@
-<link rel="stylesheet" href="../../css/styloPerfil.css">
+<link rel="stylesheet" href="../../css/perfiladmin.css">
 
 <!-- Barra de navegacion delperfil -->
 <div class="con"> 
+  
   <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Más informacion</a>
   <ul class="dropdown-menu custom-dropdown">
-    <li><a class="dropdown-item" href="admin.php?seccion=historial">Historial</a></li>
+    <li><a class="dropdown-item" href="ddm.php?seccion=historial">Historial</a></li>
     <hr>
     <li><a class="dropdown-item" href="#">Productos que me gustaron</a></li>
+    <hr>
+    <li><a class="dropdown-item" href="ddm.php?seccion=compras">Compras</a></li>
     <hr>
     <li><a class="dropdown-item" href="#">Comentarios</a></li>
     <div id="contenido_sub-contenedor">
     <hr>
     <li><a class="dropdown-item" onclick="regresarPerfil()">Regresar</a></li>
     </div>
+    
   </ul>
-</div><br>
+
 
 <!-- contenedor obsiones de usuario -->
 <div class="sub-contenedor" id="sub-contenedor">
@@ -27,7 +31,7 @@
       Cambiar Correo
     </div>
   <!-- conteneodor 3 -->
-    <div onmouseenter='cambiarMouse(this)'>
+    <div onmouseenter='cambiarMouse(this)' onclick="eliminarFoto();">
       Eliminar foto
     </div>
   <!-- contenedor 4 -->
@@ -63,6 +67,11 @@
 </div>
 </center>
 </div>
+
+
+</div>
+
+
 
 
 

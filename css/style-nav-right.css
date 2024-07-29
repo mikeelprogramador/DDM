@@ -1,61 +1,45 @@
-.user-table {
-    max-width: 100%;
+.productos{
+    background-color: #DCA650;
+    
+    position:relative;
+    width: 100%; 
+    
+}
+
+
+.home{
+    position: relative;
+    left: 50px; 
+}
+.card{
+  position:relative;
+   
+}
+#bocom{
+    background-color: #B34F16;
+    border: 1px solid #B34F16;
+}
+.custom-navbar .navbar-nav .nav-link {
+    color: #ffffff; /* Color del texto de los enlaces */
+    width: 80%;
+}
+
+/*avatar*/
+
+
+.avatar {
+    display: inline-block;
+    width: 40px; /* Ajusta el tamaño del avatar según sea necesario */
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 10px; /* Añade un margen para separar del texto */
+    vertical-align: middle; /* Alinea verticalmente en el medio */
+  }
+  
+  .avatar img {
     width: 100%;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #f8f9fa;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow-x: auto; /* Permite hacer scroll horizontal si es necesario */
-}
-
-.user-table th,
-.user-table td {
-    padding: 12px 15px;
-    border: 1px solid #ddd;
-}
-
-.user-table th {
-    background-color: #f2f2f2;
-    color: #b34f16;
-}
-
-.user-table tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-.user-table tr:hover {
-    background-color: #f1f1f1;
-}
-
-@media (max-width: 768px) {
-    .user-table {
-        padding: 10px;
-        overflow-x: auto; /* Asegura el scroll horizontal en dispositivos móviles */
-    }
-    .user-table th,
-    .user-table td {
-        font-size: 0.9rem;
-    }
-}
-
-
-
-button{
-    display: inline-block; 
-    font-weight: bold; 
-    text-decoration: none;
-    text-transform: uppercase; 
-    background-color:#b34f16;
-    border: none; 
-    border-radius: 50px; 
-    cursor: pointer;
-    outline: none;
-}
-
-a {
-    color: black;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease;
-}
+    height: 100%;
+    object-fit: cover;
+  }
+  

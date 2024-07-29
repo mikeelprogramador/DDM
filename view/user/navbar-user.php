@@ -50,6 +50,7 @@
         <li class="nav-item">
           <a class="nav-link" href="#">Ofertas</a>
         </li>
+
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <div class="avatar me-2">
@@ -66,6 +67,8 @@
           <a class="nav-link disabled" aria-disabled="true">Bienvenido <?php echo Usuarios::verificarPerfil(2,$_SESSION['id'])?></a>
         </li>
       </ul>
+
+      
       <div class="d-flex">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">

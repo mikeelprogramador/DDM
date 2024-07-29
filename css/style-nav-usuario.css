@@ -20,6 +20,13 @@
     border: 1px solid #B34F16;
 }
 
+.custom-navbar .navbar-nav .nav-link {
+    color: #ffffff; /* Color del texto de los enlaces */
+    height: 80%;
+   
+}
+
+
 /*avatar*/
 
 .avatar {
