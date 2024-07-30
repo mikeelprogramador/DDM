@@ -13,6 +13,7 @@ if(isset($_GET['estado']) && $_GET['estado'] == "compraUni" ){
 
     if(!isset($_POST['departamenrtos']) && !isset($_POST['municipios'])){
         header("location: ../../descripcion/acerca_del_producto/product.php?http=".$_SESSION['token']."&data=".$_GET['data']."&erro=direccion");
+        exit();
     }else{
         $_SESSION['correo'] = Funciones::vacunaXxs($_POST['email']);
         $_SESSION['departamento'] = Vista::regiones(3,$_POST['departamentos']);
@@ -21,6 +22,7 @@ if(isset($_GET['estado']) && $_GET['estado'] == "compraUni" ){
         $_SESSION['barrio'] = Funciones::vacunaXxs($_POST['barrio']);
         $_SESSION['direccion'] = Funciones::vacunaXxs($_POST['direccion']);
         header("location: ../../descripcion/shopping/compras.php?seccion=informacion&htpp=".$_SESSION['token']."&data=".$_GET['data']."&estado=compraUni");
+        exit();
         
     }
 }
@@ -28,6 +30,7 @@ if(isset($_GET['estado']) && $_GET['estado'] == "compraUni" ){
 if(isset($_GET['estado']) && $_GET['estado'] == "compraMax" ){
     if(!isset($_POST['departamenrtos']) && !isset($_POST['municipios'])){
         header("location: ../../view/user/ddm.php?seccion=carrito&error=direccion");
+        exit();
     }else{
         $_SESSION['correo'] = Funciones::vacunaXxs($_POST['email']);
         $_SESSION['departamento'] = Vista::regiones(3,$_POST['departamentos']);
@@ -36,12 +39,14 @@ if(isset($_GET['estado']) && $_GET['estado'] == "compraMax" ){
         $_SESSION['barrio'] = Funciones::vacunaXxs($_POST['barrio']);
         $_SESSION['direccion'] = Funciones::vacunaXxs($_POST['direccion']);
         header("location: ../../descripcion/shopping/compras.php?seccion=informacion&htpp=".$_SESSION['token']."&estado=compraMax");
+        exit();
     }
 }
 
 if(isset($_GET['compra']) && $_GET['compra'] == "eliminar"){
         Session::reinicarEnvio();
         header("location:".$_SESSION['url']."");
+        exit();
     
 }
 
@@ -67,15 +72,18 @@ if(isset($_GET['estado']) && $_GET['estado'] == "comprando" && isset($_GET['iden
             Model::sqlActualizarCantidadesMAx($id_productos,$cantidades);
             Model::sqlActualizarTotalCompra($id_compra,$id_user);
            header("location: ../../view/user/ddm.php");
+           exit();
 
         }else{
             Model::sqlBorraComporaAU(1,$id_compra,$id_user);
             header("location: ../../view/user/ddm.php?seccion=carrito&error=datos");
+            exit();
                 
         }
             
     }else{
        header("location: ../../view/user/ddm.php?seccion=carrito&error=datos");
+       exit();
     }
 }
 
@@ -102,12 +110,15 @@ if(isset($_GET['estado']) && $_GET['estado'] == "comprando" && isset($_GET['iden
             Model::sqlActualizarTotalCompra($id_compra,$id_user);
             Model::sqlActualizarCantidadesUni($id_pro,$cantidades);     
             header("location: ../../view/user/ddm.php");
+            exit();
         }else{
             Model::sqlBorraComporaAU(1,$id_compra,$_SESSION['id']);
             header("location: ../acerca_del_producto/product.php?http=".$_SESSION['token']."&data=".$_GET['data']."&erro=direccion");
+            exit();
         } 
     }else{
         header("location: ../acerca_del_producto/product.php?http=".$_SESSION['token']."&data=".$_GET['data']."&erro=direccion");
+        exit();
     }
 }
 

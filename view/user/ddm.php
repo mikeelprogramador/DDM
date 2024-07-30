@@ -8,7 +8,11 @@ include_once("../../class/class_historial.php");
 include_once("../../class/class_compra.php");
 
 Session::iniciarSessiones();
-if(Session::verificarSesssiones() == 0 )header("location: ../../index.php");
+if(Session::verificarSesssiones() == 0 ){
+  header("location: ../../index.php");
+  exit();
+}
+
 if( Carrito::verificarCarrito($_SESSION['id']) == 0 )Carrito::crearCarrito($_SESSION['id']);
 Session::eliminarHistorial();
 

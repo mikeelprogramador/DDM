@@ -245,10 +245,12 @@ input[type="submit"]:hover {
         border-right: none;
     }
 }
+.actualizarComentario{
+    display: none;
+}
 
-/*Perro mofique este el estilo esto no lo balla a borrar, cuando lo arregle borre este comnetario */
 
-
+/*comentarios*/
 .avatar-container {
     display: flex;
     align-items: center;

@@ -165,13 +165,82 @@ function cancelarRespuesta(lugar){
 }
 
 
-function cargarRespuesta(comentario){
-    var texto = document.getElementById('respuesta').value;
-    if(texto === ""){
+function cargarRespuesta(idcomentario,lugar){
+    var comentario = document.getElementById(lugar).value;
+    var mensaje = document.getElementById('textRespuesta'+idcomentario);
+    if(comentario === ""){
         console.log("No hay nada escrito, escribe algo por favor");
     }else{
-        console.log(comentario);
-        console.log(texto);
+        var param = {
+            'respuestaCome':'true',
+            'idComet':idcomentario,
+            'comet':comentario
+        };
+        $.ajax({
+            data: param,
+            url: '../../view/controller/controller_producto.php',
+            datatype: 'html',
+            method: 'post',
+            beforeSend: function(){
+                mensaje.innerHTML = "Cargando Respuesta";
+            },
+            success: function(respuesta){
+                setTimeout(function(){
+                    mensaje.innerHTML = "Respuesta cargada";
+                },3000)
+                setTimeout(function(){
+                    mensaje.innerHTML = "";
+                    document.getElementById('RespuestasComentario'+idcomentario).innerHTML = respuesta;
+                },5000)
+            }
+        });
+        
+    }
+}
+
+function editarComentario(des,lugar1,lugar2,lugar3 = null){
+    var nuevoComnetario = document.getElementById(lugar1);
+    var comentarioActual = document.getElementById(lugar2);
+    if(des === 1){
+        comentarioActual.style.display = 'none';
+        nuevoComnetario.style.display = 'block';
+        document.getElementById(lugar3).value = comentarioActual.innerHTML;
+    }
+    if(des === 2){
+        comentarioActual.style.display = 'block';
+        nuevoComnetario.style.display = 'none';
+    }
+}
+
+function actualizarComentario(lugar,texto,idPro,idComet){
+    var nuevoComentario = document.getElementById(lugar).value;
+    var mensaje = document.getElementById(texto);
+    if(nuevoComentario === "" ){
+        mensaje.innerHTML = "No puedes dejar el comentario vacio";
+    }else{
+        var param = {
+            'updateComet':'true',
+            'data':idPro,
+            'idComet':idComet,
+            'comet':nuevoComentario
+        };
+        $.ajax({
+            data: param,
+            url: '../../view/controller/controller_producto.php',
+            datatype: 'html',
+            method: 'post',
+            beforeSend: function(){
+                mensaje.innerHTML = "Cargando actualizacion de comentario";
+            },
+            success: function(respuesta){
+                setTimeout(function(){
+                    mensaje.innerHTML = "El comentario se actualizo correctamente";
+                },3000)
+                setTimeout(function(){
+                    document.getElementById('coment').innerHTML = respuesta;
+                },5000)
+            }
+        });
     }
 }
 

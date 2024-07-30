@@ -8,15 +8,18 @@ include_once("../../class/class_historial.php");
 include_once("../../class/class_comentarios.php");
 
 Session::iniciarSessiones();
-if(Session::verificarSesssiones() == 0 )header("location: ../../index.php");
-if( !isset($_GET['http']))header("location: ../../erro.php");
-if($_GET['http'] != $_SESSION['token'])header("location: ../../erro.php");
-
-if(Session::sessionHistorial() == 1 ) Historial::agregarHistorial($_SESSION['id'],id::desencriptar($_GET['data']));
-
-
-$seccion = "producto";
-include($seccion.".php");
+if(Session::verificarSesssiones() == 0 ){
+    header("location: ../../index.php");
+    exit();
+}
+if( !isset($_GET['http'])){
+    header("location: ../../erro.php");
+    exit();
+}
+if($_GET['http'] != $_SESSION['token']){
+    header("location: ../../erro.php");
+    exit();
+}
 
 if(isset($_GET['question'])){
     if($_GET['question'] == "true") echo Funciones::alertas(1,3,id::desencriptar($_GET['data']));
@@ -26,3 +29,10 @@ if(isset($_GET['question'])){
     if($_GET['question'] == "notcompra") echo Funciones::alertas(5,3,id::desencriptar($_GET['data']));
 
 }
+
+if(Session::sessionHistorial() == 1 ) Historial::agregarHistorial($_SESSION['id'],id::desencriptar($_GET['data']));
+
+
+$seccion = "producto";
+include($seccion.".php");
+

@@ -104,7 +104,21 @@ class Productos {
             $salida = $fila['cantidades'];
         }
         return $salida;
-}
+    }
+
+    public static function calificacionProducto($idProducto){
+        include_once("../../conf/model_vista.php");
+        $consulta = ModelVista::sqlVerValoracionProducto($idProducto);
+        while($fila = $consulta->fetch_assoc()){
+            if($fila['likes'] > $fila['dislikes']){
+                $salida = 'Producto mayor valorado';
+            }
+            if($fila['dislikes'] > $fila['likes']){
+                $salida = 'Producto menor preferido';
+            }
+        }
+        return $salida;
+    }
 
 
 }

@@ -11,6 +11,7 @@ class Vista{
     public static function mostrarProductos($text = null,$des = null,$cate = null) {
         include_once("../../conf/model.php");
         include_once("class_encript.php");
+        include_once("class_producto.php");
         $salida = '<div class="container mt-4">'; 
         $salida .= '<div class="row">';  
         $token = token::Obtener_token(64);
@@ -25,6 +26,7 @@ class Vista{
             $salida .= '<h5 class="card-title">'.$fila['producto_nombre'].'</h5>';
             $salida .= '<p class="card-text">COP $ '.$fila['precio'].'</p>';
             $salida .= '<p class="card-text">'.$fila['descripcion_producto'].'</p>';
+            $salida .= '<p class="card-text">'.Productos::calificacionProducto($fila['id_producto']).'</p>';
             $salida .= '<a href="../../descripcion/acerca_del_producto/product.php?http='.urlencode($token).'&data='.$id.'" class="btn btn-primary mt-auto"  >Comprar</a>';  
             $salida .= '</div>';
             $salida .= '</div>';

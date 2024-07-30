@@ -11,7 +11,10 @@ include_once("../../class/class_token.php");
 include_once("../../class/class_correo.php");
 include_once("../../class/class_login.php");
 Session::iniciarSessiones();
-if(Session::verificarSesssiones() == 0 )header("location: ../../index.php");
+if(Session::verificarSesssiones() == 0 ){
+    header("location: ../../index.php");
+    exit();
+}
 Session::sessionCodigo();
 
 if(isset($_FILES['foto_perfil'])){

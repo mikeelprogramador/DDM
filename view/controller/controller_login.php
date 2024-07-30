@@ -19,14 +19,23 @@ if( isset($_GET['log']) && $_GET['log'] == 1){
         $_SESSION['id'] = $id;
         Usuarios::actualizarEstadoUser(1, $id);
         header("location: ../user/ddm.php?");
+        exit();
     }
     if( $login == 2 ){
         $_SESSION['id'] = $id;
         Usuarios::actualizarEstadoUser(1, $id);
         header("location: ../adm/admin.php?");
+        exit();
     }
-    if( $login == 0 )header("location: ../../login.php?men=error".$login."");
-    if(  $login == -1 )header("location: ../../login.php?men=error".$login."");
+    if( $login == 0 ){
+        header("location: ../../login.php?men=error".$login."");
+        exit();
+    }
+    if(  $login == -1 ){
+        header("location: ../../login.php?men=error".$login."");
+        exit();
+    }
+
 }
 
 if( isset($_GET['log']) && $_GET['log'] == 0){
@@ -42,9 +51,17 @@ if( isset($_GET['log']) && $_GET['log'] == 0){
         $_SESSION['id'] = $id;
         Usuarios::actualizarEstadoUser(1, $id);
         header("location: ../user/ddm.php?");
+        exit();
     }
-    if( $registro == 0)header("location: ../../check-in.php?men=".$registro."error");
-    if( $registro == -1 )header("location: ../../check-in.php?men=".$registro."error");
+    if( $registro == 0){
+        header("location: ../../check-in.php?men=".$registro."error");
+        exit();
+    }
+    if( $registro == -1 ){
+        header("location: ../../check-in.php?men=".$registro."error");
+        exit();
+    }
+
 }
 
 if(isset($_GET['saveDato'])){

@@ -8,7 +8,10 @@ include_once("../../class/class_sessiones.php");
 include_once("../../class/class_producto.php");
 //Se inician las sessiones
 Session::iniciarSessiones();
-if(Session::verificarSesssiones() == 0 )header("location: ../../index.php");
+if(Session::verificarSesssiones() == 0 ){
+  header("location: ../../index.php");
+  exit();
+}
 
 //Vista administrador de los productos
 if(isset($_GET['search'])){
@@ -52,7 +55,10 @@ if(isset($_POST ['enviar'])){
   if(isset($_FILES['card-img'])){
     $img  = CrearProducto::img(1,$_FILES['card-img']);//creado la imagen
     //filtro para la imagen
-    if( $img == "1" || $img == "0")header("location: ../adm/admin.php?menPro=img".$img."&seccion=seccion-ag-pro");
+    if( $img == "1" || $img == "0"){
+      header("location: ../adm/admin.php?menPro=img".$img."&seccion=seccion-ag-pro");
+      exit();
+    }
   }
 
 
@@ -64,11 +70,20 @@ if(isset($_POST ['enviar'])){
       if( $nowProducto == 1 ){
         if( !empty($categorias) )CrearProducto::agregarCategoria(1,$categorias,$id);//Se le agregan la categorias al porducto ya creado
         header("location: ../adm/admin.php?menPro=".$nowProducto."&seccion=seccion-ag-pro");//datos si el prodcucto se creo correctamente
+        exit();
       }
-      if( $nowProducto == 0 )header("location: ../adm/admin.php?menPro=".$nowProducto."&seccion=seccion-ag-pro");//dato si ya existe
-      if( $nowProducto == 2 )header("location: ../adm/admin.php?menPro=".$nowProducto."&seccion=seccion-ag-pro");//dato si no se creo
+      if( $nowProducto == 0 ){
+        header("location: ../adm/admin.php?menPro=".$nowProducto."&seccion=seccion-ag-pro");//dato si ya existe
+        exit();
+      }
+      if( $nowProducto == 2 ){
+        header("location: ../adm/admin.php?menPro=".$nowProducto."&seccion=seccion-ag-pro");//dato si no se creo
+        exit();
+      }
+
     }else {
       header("location: ../adm/admin.php?menPro=2&seccion=seccion-ag-pro");
+      exit();
     }
   }
 

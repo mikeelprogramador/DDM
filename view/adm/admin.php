@@ -9,7 +9,10 @@ include_once("../../class/class_producto.php");
 include_once("../../class/class_historial.php");
 
 Session::iniciarSessiones();
-if(Session::verificarSesssiones() == 0 )header("location: ../../index.php");
+if(Session::verificarSesssiones() == 0 ){
+  header("location: ../../index.php");
+  exit();
+}
 if(Usuarios::verificarPerfil(1,$_SESSION['id']) == "2")header("location: ../user/ddm.php?");
 Session::eliminarHistorial();
 
