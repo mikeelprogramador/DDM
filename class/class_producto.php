@@ -95,15 +95,6 @@ class Productos {
         return $salida;
     }
 
-    public static function checkUsuario($id_user,$id_pro){
-                include_once("../../conf/model.php");
-        $salida = -1;
-        $consulta = Model::sqlLikes(5,$id_user,$id_pro);
-        while($fila = $consulta->fetch_array()){
-            $salida = $fila[0];
-        }
-        return $salida;
-    }
 
     public static function verCantidades($id_pro,$des){
         include_once("../../conf/model.php");

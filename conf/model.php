@@ -62,7 +62,13 @@ class Model {
         return  $conexion->query($sql);
     }
     /**
-     * Metodo que crea el codigo del usuairo apartir de cuantos clientes existna el la pagina,muestra los datos del usuario
+     * Metodo para hacer un conteo de los usuarios y porder ver los usuarios
+     * aunque el nombre no concuerde con el metodo, este metodo sirve para crear el cidigo de un usuario
+     * por eso el nombre sqlCrearIdUsuario
+     * @param des {numero} es una decision, si es 1 realiza un coteo de la tabla usuarios,si es 2 muestra los 
+     * de dicha tabla
+     * @return conexion se retornal el resumtado de la confulta, osea si la consulta es exitosa retornamos true
+     * de lo contrario de retorna false
      * 
      */
     public static function sqlCraerIdUsuario($des){
@@ -73,6 +79,14 @@ class Model {
         return  $conexion->query($sql);
     }
 
+    /**
+     * Metodo para cambiar la contraseña del usuario cuando no recuerde dicha contraseña se activara un mecaniosmo de 
+     * recuperacion y cambio de con traseña
+     * @param password {texto} la contraseña por la que se remplazada en la base de datos
+     * @param id_user {numero} el codigo del usuario
+     * @return conexion se retornal el resumtado de la confulta, osea si la consulta es exitosa retornamos true
+     * de lo contrario de retorna false
+     */
     public static function sqlCambiarPassword($password,$id_user){
         include("model/conexion.php");
         $sql = "update tb_usuarios  ";
@@ -81,6 +95,14 @@ class Model {
         $conexion->query($sql);
     }
 
+
+    /**
+     * Metodo para agregar un dato a la tabla histotial
+     * @param id_user {numero} el codigo del usuario
+     * @param id_pro {texto} el codigo del porducto
+     * @return conexion se retornal el resumtado de la confulta, osea si la consulta es exitosa retornamos true
+     * de lo contrario de retorna false
+     */
     public static function sqlAgregarHistorial($id_user,$id_pro){
         include("model/conexion.php");
         $sql = "insert into tb_historial(id_usuario,id_producto,fec_ver)";
@@ -88,6 +110,16 @@ class Model {
         $conexion->query($sql);
     }
 
+
+    /**
+     * Metodo de busqueda se diseño para saber si el correo y el codigo de la persona existen
+     * en la base de datos, esto se utiliza  para verificar la existencia de la persona al enviar 
+     * un correo electronico
+     * @param correo {texto} correo del usuario
+     * @param id_user {numero} codigo del usuario
+     * @return conexion se retornal el resumtado de la confulta, osea si la consulta es exitosa retornamos true
+     * de lo contrario de retorna false
+     */
     public static function sqlbuscarUsuario($correo,$id_user){
         include("model/conexion.php");
         $sql = "select count(*) from tb_usuarios  ";
@@ -95,6 +127,20 @@ class Model {
         return $conexion->query($sql);
     }
 
+    /**
+     * Metodo para agregar un porducto en la base de datos
+     * @param id {texto} codigo del producto
+     * @param nombre {texto} nombre del producto creado
+     * @param descrip {texto} es la descripcion del producto
+     * @param caracter {texto } caracteristicas del producto
+     * @param cantidad {numero} cantidades de productos disponibles
+     * @param ofertas {texto} la opferta que tendra el producto
+     * @param img {texto} imagen del producto
+     * @param precio {texto} el precio del producto
+     * @param color {texto} el color del producto
+     * @return conexion se retornal el resumtado de la confulta, osea si la consulta es exitosa retornamos true
+     * de lo contrario de retorna false
+     */
     public static function sqlCargarProducto($id,$nombre,$descrip,$caracter,$cantidad,$oferta,$img,$precio,$color){
         include("model/conexion.php");
         $sql = "INSERT INTO tb_productos";
@@ -103,8 +149,14 @@ class Model {
         return  $conexion->query($sql);
     }
     /**
-     * Metodo para verificar si un producto y para mostrar un producto
-     * param @palabra la palabra clave para buscar o mostrar
+     * Metodo para ha cer conteo de los productos, verifica si el codigo del producto ya exista
+     * @param id {texto} codigo del producto
+     * @param des {numero} 1 muestra el producto segun el id
+     * 2 hace un conteo de la tabla productos con el id ingresado
+     * 3 hace un conteo de la tabla facturas con el id ingresado
+     * @return conexion se retornal el resumtado de la confulta, osea si la consulta es exitosa retornamos true
+     * de lo contrario de retorna false
+     * 
      */
     public static function sqlverificarProducto($id,$des){
         include("model/conexion.php");
@@ -122,6 +174,20 @@ class Model {
         return  $conexion->query($sql);
     }
 
+    /**
+     * Metodo para mostar los productos
+     * @param search {texto} este parametro es la gusqueda del prducto, se inicializa en null para que
+     * para que no afecte las operacion, cuando ya no sea null se sabe que hay un texto en la variable
+     * @param des {numero} 1 muestra toda la tabla productoos
+     * 2 muestra los productos segun una busqueda que se hace con la variable search, con un metodo textoBusqueda
+     * 3 muestra los productos segun la busqueda que se hace cin la variable search y con el metodo textoBusqueda
+     * esta busqueda se hace con el tercer parametor que la categoria de los productos
+     * @return conexion se retornal el resumtado de la confulta, osea si la consulta es exitosa retornamos true
+     * de lo contrario de retorna false
+     * 
+     * En este metodo se muestran los productos, cuando el paramtro search no sea null y el parametro des sea igual a 2 o a 3 
+     * se mostara los produtos con una pequeña busqueda gracias a una funcion textoBusqueda
+     */
     public static function sqlMostrarProductos($search = null,$des = null,$categoria = null){
         include("model/conexion.php");
         if($des == 1 ){
@@ -146,6 +212,15 @@ class Model {
         return  $conexion->query($sql);
     }
 
+    /**
+     * Metodo para hacer busquedas
+     * @param search {texto} el texto con el que se va hace la busqueda
+     * @return conexion se retornal el resumtado de la confulta, osea si la consulta es exitosa retornamos true
+     * de lo contrario de retorna false
+     * 
+     * Este metodo con una parametro search que tiene un texto a buscar, toma el texto y lo combierte en una array para buscar el productos
+     * segun cualquir letra que este contenga, la busqueda se hace por el nombre, caracteristicas y el id
+     */
     private static function textoBuqueda($search){
         $palabra = explode(" ",$search);
             $sql = "where ";
@@ -158,7 +233,13 @@ class Model {
         return $sql;
     }
 
-
+    /**
+     * Metodo para eliminar el producto, este metodo usa una funcion de mysql la cual elimina el 
+     * productos de todas las tablas
+     * @param id {texto} codigo del producto
+     * @return conexion se retornal el resumtado de la confulta, osea si la consulta es exitosa retornamos true
+     * de lo contrario de retorna false
+     */
     public static function sqlEliminarProducto($id){
         include("model/conexion.php");
         $sql = "select EliminarProductos('$id')";
@@ -166,9 +247,13 @@ class Model {
     }
 
     /**
-     * comentra bien este metodo, 2 parametros
-     * param @id_comen codigo comentario
-     * param @id_user codigo usuario
+     * Metodo para eliminar comentarios
+     * @param id_comen {number} codigo del comentario echo por el usuairo
+     * @param id_user {number} codigo usuario
+     * @return conexion se retornal el resumtado de la confulta, osea si la consulta es exitosa retornamos true
+     * de lo contrario de retorna false
+     * 
+     * Esta funcion hace un delet en la tabla comentarios al comentario que el usuario quiera eliminar
      */
     public static function sqlEliminarComentario($id_comen, $id_user){
         include("model/conexion.php");
@@ -177,6 +262,18 @@ class Model {
         return  $conexion->query($sql);
     }
 
+    /**
+     * Metodo para guardar los comentarios
+     * @param comentarios {texto} este parametro guarda el comentario que realizo el usuario
+     * @param id_producto {texto} este parametro contiene el codigo del producto
+     * @param id_usuario {texto} este parametro contiene el codigo del usuario
+     * @return conexion se retornal el resumtado de la confulta, osea si la consulta es exitosa retornamos true
+     * de lo contrario de retorna false
+     * 
+     * Este metodo hace un insert into en la tabla comentario para ingresar el comentario realizado por el usuario 
+     * utiliza una funcion DATE_FORMAT(NOW(), '%Y-%m-%d %h:%i:%s %p para tarer la el año,mes,dia,hora,minuto,segundo y formato 12 horas
+     * de la fecha por ejemplo 2024-07-09 09:19:22 PM
+     */
     public static function sqlComentarios($comentario,$id_producto,$id_usuario){
         include("model/conexion.php");
         $sql = "INSERT INTO tb_comentarios(comentario,fechaComentario,id_producto,id_usuario)";
@@ -184,6 +281,15 @@ class Model {
         return  $conexion->query($sql);
     }
 
+    /**
+     * Metodo para ver los comentario
+     * @param id_pro {texto} este arametro contiene el codigo del producto 
+     * @return conexion se retornal el resumtado de la confulta, osea si la consulta es exitosa retornamos true
+     * de lo contrario de retorna false
+     * 
+     * Este metodo se encarga se realizar una consulta sql que segun el codigo del producto mostrar los comentarios 
+     * que se han realizado en el producto.
+     */
     public static function sqlViewComentarios($id_pro){
         include("model/conexion.php");
         $sql = "select tb_usuarios.nombre,tb_usuarios.foto_usuarios,comentario,fechaComentario,tb_usuarios.id,id_comentario ";
@@ -196,7 +302,18 @@ class Model {
 
 
 
-
+    /**
+     * Metodo para actualizar el estado del usuario
+     * @param des {numero} si la desicion es 1 el estado cambiara a activo 
+     * por el contratio si la desicion es 2 el estado cambiara a inactivo
+     * @param id_user {numero} codigo del usuario
+     * @return conexion se retornal el resumtado de la confulta, osea si la consulta es exitosa retornamos true
+     * de lo contrario de retorna false
+     * 
+     * Este metodo en la tabla usuario el esatdo del usuario que se encuantra en el parametro id_user, y gracias a el parametro 
+     * des podemos decirle que se actualize a esatdo activo o inactivo
+     * 
+     */
     public static function sqlActualizarEstadoUser($des,$id_user){
         include("model/conexion.php");
         if($des == 1){
@@ -205,10 +322,27 @@ class Model {
             $dato = "Inactivo";
         }
         $sql = "update tb_usuarios set status_user = '$dato' where id= ('$id_user') ";
-        //echo $sql;
         return  $conexion->query($sql);
     }
 
+    /**
+     * Metodo para ver los detalles de un producto en espesifico
+     * @param des {numero} este parametro contiene que un numero que segun este numero se ejecutan opciones diferentes 
+     * 1 ver el nombre del producto
+     * 2 ver la descripcion del producto
+     * 3 ver la caracteristicas del producto
+     * 4 ver la cantidades del producto
+     * 5 ver la ofertas del producto
+     * 6 ver la magen del producto
+     * 7 ver el precio del producto
+     * 8 ver el color del producto
+     * 10 ver la fecha del producto
+     * @param id_pro {texto} en este parametro esta el codigo del producto
+     * @return conexion se retornal el resumtado de la confulta, osea si la consulta es exitosa retornamos true
+     * de lo contrario de retorna false
+     * 
+     * este metodo muestra pequeñas partes que se necesiten sobre el producto
+     */
     public static function sqlDetallesDelProducto($des,$id_pro){
         include("model/conexion.php");
         $tabla = "tb_productos";
@@ -220,17 +354,23 @@ class Model {
         if($des == 6)$dato = "img";
         if($des == 7)$dato = "precio";
         if($des == 8)$dato = "color";
-        if($des == 9){
-            $dato = "id_categoria";
-            $tabla = "tb_categoriasProducto";
-
-        }
         if($des == 10)$dato = "fec_cre";
         $sql = "SELECT $dato FROM $tabla where id_producto = '$id_pro'";
         return  $conexion->query($sql);
 
     }
 
+    /**
+     * Metodo para mostrar las categorias
+     * @param des {numero}este parametro si es 1 ejecuta un select de la tabla categorias
+     * 2 muestra con el id_pro en que categorias esta el producto
+     * @param id_pro {texto} este parametro puede estar nulo o puede contener el codigo del producto
+     * @return conexion se retornal el resumtado de la confulta, osea si la consulta es exitosa retornamos true
+     * de lo contrario de retorna false
+     * 
+     * Metodo para mostar las coategorias y segun una desicion puede mostar en las categorias que esta un producto
+     * o solo mostrar todas las categorias
+     */
     public static function sqlMostrarCategorias($des,$id_pro =null){
         include("model/conexion.php");
         if($des == 1) $sql = "select * from tb_categorias";
@@ -242,6 +382,23 @@ class Model {
         return  $conexion->query($sql);
     }
 
+    /**
+     * Metodo para agregar categorias
+     * @param des {numero} si es 1 inserta en que categorias va a estar el producto atraves de un cilo fo
+     * si es dos hace muestra el codigo de la ultima categoria, para que se puede realizar un conteo con dicho
+     * sql, ejemplo: en contoller_admin va a estar esta funcion con el dato dos para que muestra la el codigo de la 
+     * ultima categoria para asi ejecutar un cilo for para encontra en que categorias tiene que estar el productos
+     * @param categoria {texto} este parametro es un array en donde esta el codigo de la categroia 
+     * @param id_pro {texto} codigo del producto
+     * @return conexion se retornal el resumtado de la confulta, osea si la consulta es exitosa retornamos true
+     * de lo contrario de retorna false
+     * 
+     * En este metodo si la opcion es 1 con el parametro categorias, que en su interior es un array con el codigo
+     * de las categoria insertaremos dato por dato ejemplo si el productos esta en 3 categorias el cilo flor se ejecutara 
+     * 3 veces ya que en la array ahi tres codigo de las categrias a las que va a pertener el productoy con una decision de
+     * aprepara la coma, esta desion se hace para cuando termine el cilo for no quele con una como da más y haya un error
+     * en el interprete de mysql
+     */
     public static function sqlAgregarCategoria($des,$categorias = null,$id_pro = null){
         include("model/conexion.php");
         if( $des == 1){
@@ -252,7 +409,6 @@ class Model {
                     $sql .= ",";
                 }
             }
-            echo $sql;
         }
         if($des == 2 ){
             $sql = "select id_categoria from tb_categorias order by id_categoria desc  limit 1";
@@ -295,6 +451,21 @@ class Model {
         return  $conexion->query($sql);
     }
 
+    /**
+     * Metodo para mostrar el coarrito
+     * @param des {numero} un parametro que segun el numero es una desicion
+     * 1 motrar el carrito del usuario 
+     * 2 obtener el codigo del producto que se encuentra almacenado en el carrito del usuairo
+     * 3 obtener las cantidades de cada producto que se encuentra en el carrtio del usuario
+     * 4 obtener el precio de todos los productos que se encuentran en el carrito del usuario
+     * @param id_user {numero} parametro con el codigo del usuairo
+     * @return conexion se retornal el resumtado de la confulta, osea si la consulta es exitosa retornamos true
+     * de lo contrario de retorna false
+     * 
+     * Metodo que ejecuta un sql en el cual se muestra los productos del carrito segun el codigo de la persona
+     * que se agregue en id_user y las desiciones ayuda a obtener el codigo de los productos,las cantidades y los precion
+     * para cuando se realize una compra total o una compra desde el carrito
+     */
     public static function sqlMostrarCarrito($des,$id_user){
         include("model/conexion.php");
         if($des == 1)$dato = "*";
@@ -326,6 +497,15 @@ class Model {
         return  $conexion->query($sql);
     }
 
+    /**
+     * Metodo para insertar un megusta en un producto
+     * @param id_pro {texto} se encuentra el codigo del producto 
+     * @param id_user {numero} en este paramtro se encuntra el codigo del usuario
+     * @return conexion se retornal el resumtado de la confulta, osea si la consulta es exitosa retornamos true
+     * de lo contrario de retorna false
+     * 
+     * En este metodo se insertara el like o disloike que el usuario haya dado a cierto producto
+     */
     public static function sqlValoracion($id_pro,$id_user){
         include("model/conexion.php");
         $sql = "INSERT INTO tb_valoracion(id_producto,id_usuario) ";
@@ -334,6 +514,16 @@ class Model {
 
     }
 
+    /**
+     * Metodo para contar lso megustas
+     * @param valoracion {numero} aqui esta la valoracion que queramos buscar 
+     * cabe aclarar que 0(es megusta ) y 1(no megusta)
+     * @param id_pro {texto} en este parametro estara el codigo del producto
+     * @return conexion se retornal el resumtado de la confulta, osea si la consulta es exitosa retornamos true
+     * de lo contrario de retorna false
+     * 
+     * Metodo para hacer un coteo de los likes o dislike que tiene un producto
+     */
     public static function sqlContarValoracion($valoracion,$id_pro){
         include("model/conexion.php");
         $sql = "select count(*) from tb_valoracion ";
@@ -341,13 +531,15 @@ class Model {
         return  $conexion->query($sql);
     }
 
+    /**
+     * 
+     */
     public static function sqlLikes($des,$id_user,$id_pro,$valoracion = null){
         include("model/conexion.php");
         if($des == 1 )$sql = "select count(*) from tb_valoracion ";
         if($des == 2 ) $sql = "delete from tb_valoracion ";
         if($des == 3 )$sql = "update tb_valoracion set valoracion = '$valoracion'";
         if($des == 4 )$sql = "select valoracion from tb_valoracion ";
-        if($des == 5 )$sql = "select id_usuario from tb_valoracion ";
         $sql .= "where id_usuario = '$id_user' and id_producto = '$id_pro' "; 
         return  $conexion->query($sql);
     }
@@ -371,6 +563,22 @@ class Model {
          return  $conexion->query($sql);
     }
 
+    /**
+     *Metodo las compras
+     * @param id_user {numero} parametro con el codigo del usuario
+     * @param depar {texto} en este parametro esta el departamento escogido por el usuario cuando llana el 
+     * formulario para la compra
+     * @param munici {texto} en este parametro esta eñ municipio escoigo por el usuario
+     * @param telefono {numero} parametro con el numero telefonico ingreado por el usuario
+     * @param barrio {texto} parametro con el barrio de recidencia del usuario
+     * @param direccion {texto} paramtro con la direccion dada por el usuario
+     * @param nombre {texto} parametro con el nombre de la parsona que realizo la compra
+     * @param eamil {texto} parametro con el correo electronico de la persona
+     * @return conexion se retornal el resumtado de la confulta, osea si la consulta es exitosa retornamos true
+     * de lo contrario de retorna false
+     * 
+     * En este metodo se agrega una compra a la tabla compras
+     */
     public static function sqlCompras($id_user,$depar,$munici,$telefono,$barrio,$direccion,$nombre,$email){
         include("model/conexion.php");
         $sql = "INSERT INTO tb_compras(id_usuario,departamento,municipio,telefono,barrio,direccion,fecha_de_compra,cliente,correo)";
@@ -378,12 +586,40 @@ class Model {
          return  $conexion->query($sql);
     }
 
+    /**
+     * Metodo para contar la contra en la que se esta realizando
+     * @return conexion se retornal el resumtado de la confulta, osea si la consulta es exitosa retornamos true
+     * de lo contrario de retorna false
+     * 
+     * Metodo que me devuelve el codigo de la compra que se esta realizando.
+     */
     public static function sqlCountCompras(){
         include("model/conexion.php");
         $sql = "select id_compra  from tb_compras order by id_compra desc limit 1;";
          return  $conexion->query($sql);
     }
 
+    /**
+     * Metodo para realizar una compra por medio del carrito
+     * @param id_compra {numero} parametro que contiene el codigo de la compra
+     * @param id_pro {texto} array con el codigo de los productos que hay en el caarrito
+     * @param cantidad {numero} array segun las cantidades que estan en el carrtio
+     * @param precio {texto} array con el precio de todos los productos segun el carrito
+     * @return conexion se retornal el resumtado de la confulta, osea si la consulta es exitosa retornamos true
+     * de lo contrario de retorna false
+     * 
+     * Metodo para ingresar todo los productos que haya en el corrito a la factura 
+     * con un ciclo for se procede a sacar uno por uno lod datos que habia en las arrays
+     * para insertarlos en una sola compra con muchos prodcutos se el precio lo convertimos en un numero,
+     * ya que en la base de datos se guarda como texto, depues de hacer las operacion lo convertimos denuevo
+     * en un texto para almacenarlo en la base de datos
+     * se usa una variable de seccion para almacenar el total de la compra 
+     * metodo intDinero combierte el precio que esta en texto a un numero 
+     * metodo strDinero combierte el numero en un texto convertido en precio
+     * metodo detallesDelProducto se usa para hayar el los nombre de los productos que estamos ingresando a la factura
+     * por ultimo una desicion para poner la coma asi cuando termine el ciclo for el sql no tendra una coma al final 
+     * del sql ejemplo (),(),
+     */
     public static function sqlProduCompra($id_compra,$id_pro,$cantidad,$precio){
         include("model/conexion.php");
         include_once("../class/class_funciones");
@@ -405,15 +641,42 @@ class Model {
         return  $conexion->query($sql);
     }
 
+    /**
+     * Metodo para compra unitaria o compra desde el producto
+     * @param id_compra {numero} parametor con el codigo de la compra
+     * @param id_pro {texto} parametor con el codigo del producto
+     * @param cantidad {numero} parametro con la cantidades que se van a comprar del producto
+     * @param precio {texto} precio del producto segun las cantidades de producto a comprar
+     * @return conexion se retornal el resumtado de la confulta, osea si la consulta es exitosa retornamos true
+     * de lo contrario de retorna false
+     * 
+     * Metodo para ingresar en la tabla facuras la compra de un solo producto con sus caracteristicas, codigo de compra
+     * codigo del producto, cantidades del producto comprado y el valor, con un metodo de una classe llamada productos 
+     * sacamos el nombre del producto para tambien insertarlo en la tabla
+     */
     public static function sqlComprasUni($id_compra,$id_pro,$cantidad,$precio){
         include("model/conexion.php");
         include_once("../class/class_productophp");
         $porducto = Productos::detallesDelProducto(1,$id_pro);
         $sql = "INSERT INTO tb_facturas(id_compra,id_producto,producto,cantidades,sub_valor)";
         $sql .= "values('$id_compra','$id_pro','$porducto','$cantidad','$precio')";
-         return  $conexion->query($sql);
+        return  $conexion->query($sql);
     }
 
+    /**
+     * Metodo para borrar una compra 
+     * @param des {numero} parametro que ejecuta una desicion 
+     * 1 para eliminar la compra con el codigo de la compra y el codigo del usuario
+     * 2 para eliminar las facturas que esten en la compra con el codigo de la compra
+     * @param id_compra {numero} parametro con el codigo de la compra
+     * @param id_user {numero} parametro que puede se nulo, peor tambien puede contener el codigo del usuario
+     * @return conexion se retornal el resumtado de la confulta, osea si la consulta es exitosa retornamos true
+     * de lo contrario de retorna false
+     * 
+     * Metodo para eliminar una ejemplo en el controller_compra en la linea 64 y 108 ay dos metodos que
+     * su funcion es agregar la factura a la compra, en caso de que no se agregen esas facturas a la compra
+     * se ejecutara esta funcion que elimina inmediatamente la compra de la base de datos
+     */
     public static function sqlBorraComporaAU($des,$id_compra,$id_user = null){
         include("model/conexion.php");
         $sql = "delete from ";
@@ -429,6 +692,22 @@ class Model {
          return  $conexion->query($sql);
     }
 
+    /**
+     * Metodo para actualizar lso productos segun las cantidades del carrito
+     * @param id_pro {texto} array en donde se encuentrar el codigo de los productos que estan en el carrito de compras
+     * @param cantidad {numero}array en donde se enctra las cantiades comopradas desde el carrito
+     * @return conexion se retornal el resumtado de la confulta, osea si la consulta es exitosa retornamos true
+     * de lo contrario de retorna false
+     * 
+     * Metodo para actualizar las cantidades del producto segun las cantidades de articulos que compramos desde 
+     * el carrito de compras, utilizamos un cilco for para las array en donde extraemos las cantidades y el codigo
+     * del producto y ejecutamos el sql cada vez que que el cilo for se recargue, esto porque un update no deja acomular
+     * por eso se ejecuta de en el for.
+     * donde a las cantidades actuales de le restaran las cantidades compradas desde el carrtio 
+     * por ejemplo si en el carrito hay 3 producto el el cilo for se ejecuta 3 veces y el update igual
+     * 
+     * mejorar sintaxis
+     */
     public static function sqlActualizarCantidadesMax($id_pro,$cantidad){
          include("model/conexion.php");
         $limite = count($id_pro)-1;
@@ -441,6 +720,17 @@ class Model {
             $conexion->query($sql);
         }
     }
+
+    /**
+     * Metodo para actualizar cantidades del porductos por la compra desde el producto o compra unitaria
+     * @param id_pro {texto} parametro con el codigo del producto
+     * @param cantidad {numero} paramtro con la cantidades del producto que se compro
+     * @return conexion se retornal el resumtado de la confulta, osea si la consulta es exitosa retornamos true
+     * de lo contrario de retorna false
+     * 
+     * Metodo para actualizar el producto que se compro de manera rapida o unitario o compra desde el producto
+     * conde a las cantidades actuales de le restan las cantidades compradas 
+     */
     public static function sqlActualizarCantidadesUni($id_pro,$cantidad){
             include("model/conexion.php");
             $sql = "update tb_productos ";

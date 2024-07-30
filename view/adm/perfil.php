@@ -5,11 +5,9 @@
   
   <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Más informacion</a>
   <ul class="dropdown-menu custom-dropdown">
-    <li><a class="dropdown-item" href="ddm.php?seccion=historial">Historial</a></li>
+    <li><a class="dropdown-item" href="admin.php?seccion=historial">Historial</a></li>
     <hr>
     <li><a class="dropdown-item" href="#">Productos que me gustaron</a></li>
-    <hr>
-    <li><a class="dropdown-item" href="ddm.php?seccion=compras">Compras</a></li>
     <hr>
     <li><a class="dropdown-item" href="#">Comentarios</a></li>
     <div id="contenido_sub-contenedor">
@@ -56,7 +54,7 @@
 </div>
 
 
-<!-- Comentarios -->
+<!-- perfil -->
 <div>
 <center>
 

@@ -131,14 +131,10 @@ class Vista{
         $consulta = Model::sqlUsuario(3,$id_user);
         while($fila = $consulta->fetch_array()){
 
-            // este es el contenedor padre 
-            $salida .= "<div class='con' >";
-            $salida .= "</div>";
-
             // este es el primer contenedor 
 
             $salida .= "<div class='container'> ";
-            $salida .= "<div class='container1 mt-5' onclick=' '>";
+            $salida .= "<div class='container1 mt-5'>";
             
             $salida .= "<div class='row justify-content-center'>";
             $salida .= "<div class='col-md-4'>";

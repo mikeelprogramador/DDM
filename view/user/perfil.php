@@ -16,7 +16,7 @@
     <li><a class="dropdown-item" onclick="regresarPerfil()">Regresar</a></li>
     </div>
   </ul>
-</div><br>
+</div>
 
 <!-- contenedor obsiones de usuario -->
 <div class="sub-contenedor" id="sub-contenedor">

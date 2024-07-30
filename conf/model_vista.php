@@ -27,5 +27,18 @@ class ModelVista{
         return $conexion->query($sql);
     }
 
+    public static function sqlVerValoracionProducto($idProducto){
+        include("model/conexion.php");
+        $sql = "select count(valoracion) as likes, ";
+        $sql .= "(select count(valoracion) ";
+        $sql .= "from tb_valoracion ";
+        $sql .= "where id_producto = '$idProducto' and valoracion = 1  )as dislikes  ";
+        $sql .= "from tb_valoracion ";
+        $sql .= "where id_producto = '$idProducto   ' and valoracion = 0 ";
+        return $conexion->query($sql);
+    }
+
+
+
     
 }
