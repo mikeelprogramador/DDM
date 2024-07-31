@@ -1,12 +1,10 @@
 /* Estilos Generales */
-.body {
+body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     background-color: #f5f5f5;
     margin: 0;
     padding: 0;
 }
-
-
 
 /* Estilo para la tarjeta de perfil */
 .container {
@@ -19,35 +17,95 @@
     margin-left: auto;
     margin-right: auto;
 }
-.container1 {
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(141, 51, 51, 0.1);
+/* Estilo para formularios de cambio */
+form {
+    background: #ffffff;
     padding: 20px;
-    margin-top: 20px;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    max-width: 100%;
 }
-.container2 {
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(141, 51, 51, 0.1);
-    padding: 20px;
-    margin-top: 20px;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
+
+form label {
+    font-weight: bold;
+    margin-top: 10px;
+    display: block;
 }
-.container3 {
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(141, 51, 51, 0.1);
+
+form input[type="password"],
+form input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+form input[type="submit"] {
+    background-color: #c29349;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+}
+
+form input[type="submit"]:hover {
+    background-color: #a87d35;
+}
+
+/* Estilo para el contenedor de cambio de contraseña y correo */
+.save-passwrd {
+    background: #ffffff;
     padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 340px;
+    max-width: 100%;
+    text-align: center;
+}
+
+.save-passwrd p {
+    margin-top: 10px;
+    color: black;
+}
+
+.save-passwrd a {
+    display: inline-block;
     margin-top: 20px;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
+    color: #c29349;
+    text-decoration: none;
+}
+
+.save-passwrd a:hover {
+    text-decoration: underline;
+}
+
+/* Estilo para las opciones de usuario */
+.sub-contenedor {
+    display: none;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Contenedores dentro de sub-contenedor */
+.sub-contenedor > .option {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.sub-contenedor > .option:hover {
+    background-color: #e6e6e6;
+    transform: scale(1.02);
 }
 
 /* Estilo para la imagen de perfil */
@@ -61,7 +119,7 @@
     align-items: center;
     justify-content: center;
     margin: 0 auto;
-    border: 2px solid #B34F16;   /* Color de borde similar a Mercado Libre */
+    border: 2px solid #B34F16;
 }
 
 .circle img {
@@ -72,7 +130,6 @@
 }
 
 .circle:hover {
-    cursor: pointer;
     opacity: 0.9;
 }
 
@@ -93,8 +150,7 @@
 }
 
 .btn-primary:hover {
-    background-color: #B34F16;
-    border-color: #B34F16;
+    background-color: #8A3A11;
     transform: scale(1.05);
 }
 
@@ -106,7 +162,7 @@
 
 .btn-secondary:hover {
     background-color: #B34F16;
-    border-color: #B34F16;
+    color: #fff;
     transform: scale(1.05);
 }
 
@@ -130,10 +186,25 @@
     margin-bottom: 5px;
     display: block;
 }
+.sub-contenedor > .option {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.sub-contenedor > .option:hover {
+    background-color: #e6e6e6;
+    transform: scale(1.02);
+}
+
 
 /* Responsividad */
 @media (max-width: 768px) {
-    .perfil-container {
+    .container {
         padding: 10px;
     }
 
@@ -146,29 +217,32 @@
         width: 120px;
         height: 120px;
     }
-
-
 }
 
-/*Menu oculto*/
-#contenido_sub-contenedor{
+/* Menu oculto */
+#contenido_sub-contenedor {
     display: none;
 }
 
-.sub-contenedor{
+/* Cambio de correo o contraseña */
+#cambio {
     display: none;
-    padding: 20px;
-    border-radius: 8px; /* Borde redondeado */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para dar relieve */
 }
-/*Contenedores dentro de suc-contenedor*/
-.sub-contenedor > div {
-    margin-bottom: 10px; /* Espaciado entre los elementos internos */
-    padding: 10px;
-    border-radius: 8px; /* Borde redondeado */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra para dar relieve */
+
+/* Contenedores específicos */
+.container1, .container2, .container3 {
     background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(141, 51, 51, 0.1);
+    padding: 20px;
+    margin-top: 20px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
-#cambio{
-    display:none;
+
+.container1:hover, .container2:hover, .container3:hover {
+    background-color: #e6e6e6;
+    transform: scale(1.02);
 }
