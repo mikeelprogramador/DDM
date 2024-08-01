@@ -70,5 +70,7 @@ if(isset($_GET['cambiarFoto'])){
 }
 
 if(isset($_GET['busquedaGeneral'])){
-    echo Vista::mostrarProductos(2,$_GET['busquedaGeneral']);
+    $categorias = "";
+    if(isset($_GET['cate']))$categorias = $_GET['cate'];
+    echo Vista::mostrarProductos(2,$_GET['busquedaGeneral'],$categorias);
 }

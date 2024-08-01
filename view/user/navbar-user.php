@@ -81,11 +81,11 @@
           ?>
           <form class="d-flex" role="search">
             <input class="form-control me-2" id="barra-search" type="search" placeholder="Buscar productos" aria-label="Search" onkeypress="pulsar(event)">
-            <button class="btn btn-outline-success " type="button" id="boton"  onclick="buscarProductos(<?php echo $lugar ?>)">Buscar</button>
+            <button class="btn btn-outline-success " type="button" id="boton"  onclick="buscarProductos(<?php echo $lugar;?><?php echo ',';?>'<?php if($seccion == 'categorias')echo $categorias; ?>')">Buscar</button>
           </form>
           <?php
         }
-      ?>
+      ?>s
     </div>
   </div>
 </nav>

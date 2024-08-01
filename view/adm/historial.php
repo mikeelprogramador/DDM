@@ -1,4 +1,4 @@
-<div class="historial">
+<div class="historial" id="historial">
     <?php
         $historial = Historial::verHistorial($_SESSION['id']);
         if($historial == 0){

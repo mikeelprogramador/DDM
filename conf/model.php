@@ -201,23 +201,26 @@ class Model {
     public static function sqlMostrarProductos($des,$search = null,$categoria = null){
         include("model/conexion.php");
         if($des == 1 ){
-            $sql = "select * from tb_productos ORDER BY RAND()";
+            $sql = "select * from tb_productos ";
         }
         if( $des === 2){
-            $sql = "select * from tb_productos as t1 ";
-            $sql .="inner join tb_categoriasProducto as t2 on t1.id_producto = t2.id_producto ";
-            $sql .= "inner join tb_categorias as t3 on t2.id_categoria = t3.id_Categoria ";
+            $sql = "select distinct t1.* from tb_productos as t1 ";
+            $sql .="left join tb_categoriasProducto as t2 on t1.id_producto = t2.id_producto ";
+            $sql .= "left join tb_categorias as t3 on t2.id_categoria = t3.id_Categoria ";
             if( $categoria == null){
                 if($search != null)$sql .= Model::textoBuqueda(1,$search);
             }else{
-                if($search = null){
-                    $sql .= "where t3.categoria = '$categoria' ";
-                }else{
+                if($search != null){
                     $sql .= Model::textoBuqueda(2,$search);
+                    $sql .= " and t3.categoria = '$categoria' ";
+                }else{
+                    $sql .= "where t3.categoria = '$categoria' ";
                 }
+
             }
             
         }
+        $sql .= " ORDER BY RAND()";
         return  $conexion->query($sql);
         $conexion->close();
     }
@@ -245,7 +248,6 @@ class Model {
                     $sql .= " and ";
                 }
             }
-            $sql .=" ORDER BY RAND()";
         return $sql;
     }
 

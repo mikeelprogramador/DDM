@@ -9,7 +9,7 @@
     <!-- <div class="productos"> -->
       <!-- <p class="texto"> -->
       <br>
-        <div class="subContainer">
+        <div class="subContainer" id="productosCategorias">
           <?php
             echo $productos;
           ?>
