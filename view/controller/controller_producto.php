@@ -90,12 +90,13 @@ if(isset($_GET['dislike']) && $_GET['dislike'] == true){
 
 if(isset($_POST['updateComet']) && $_POST['updateComet'] == 'true' ){
     $comentario = Funciones::vacunaXxs($_POST['comet']);
+    $id = id::desencriptar($_POST['data']);
     Model::actualizarComentario($_POST['idComet'],$comentario);
     echo Comentarios::verComentarios($id,$_SESSION['id']);
 }
 
 if(isset($_POST['respuestaCome']) && $_POST['respuestaCome'] == 'true' ){
     $comentario = Funciones::vacunaXxs($_POST['comet']);
-    //Model::ResponderComentario($_POST['idComet'],$comentario,$_SESSION['id']);
+    Model::ResponderComentario($_POST['idComet'],$comentario,$_SESSION['id']);
     echo Comentarios::verRespuestas($_POST['idComet'],$_SESSION['id']);
 }

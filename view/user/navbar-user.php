@@ -77,11 +77,13 @@
         </ul>
       </div>
       <?php
-        if($seccion == "historial" || $seccion == "home" || $seccion == "categorias"  ){
-          ?><form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Buscar productos" aria-label="Search">
-          <button class="btn btn-outline-success" id="boton" type="submit">Buscar</button>
-        </form><?php
+        if($seccion == "home" ||  $seccion == "categorias" || $seccion == "historial"   ){
+          ?>
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" id="barra-search" type="search" placeholder="Buscar productos" aria-label="Search" onkeypress="pulsar(event)">
+            <button class="btn btn-outline-success " type="button" id="boton"  onclick="buscarProductos(<?php echo $lugar ?>)">Buscar</button>
+          </form>
+          <?php
         }
       ?>
     </div>
@@ -95,7 +97,6 @@
       include($seccion.".php");
   ?>
 
-
   </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
@@ -106,6 +107,7 @@
     <script src="../../js/alert.js"></script>
     <script src="../../js/carrito.js"></script>
     <script src="../../js/coment.js"></script>
+    <script src="../../js/productos.js"></script>
 
   </body>
 </html>

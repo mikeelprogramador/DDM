@@ -68,3 +68,7 @@ if(isset($_GET['cambiarFoto'])){
     Usuarios::cargarImagen($img,$_SESSION['id']);
     echo $img;
 }
+
+if(isset($_GET['busquedaGeneral'])){
+    echo Vista::mostrarProductos(2,$_GET['busquedaGeneral']);
+}

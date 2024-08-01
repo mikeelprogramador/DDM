@@ -15,16 +15,16 @@ if(Session::verificarSesssiones() == 0 ){
 
 //Vista administrador de los productos
 if(isset($_GET['search'])){
-    echo Vista::buscarProducto($_GET['search'],2);
+    echo Vista::buscarProducto(2,$_GET['search']);
 }
 //Vista general de los productos
 if(isset($_GET['busquedaGeneral'])){
-    echo Vista::mostrarProductos($_GET['busquedaGeneral'],2);
+    echo Vista::mostrarProductos(2,$_GET['busquedaGeneral']);
 }
 //Desicion para eliminar un producto
 if( isset($_GET['id']) ){
     if(Productos::eliminarProducto($_GET['id']) == 1){
-      echo Vista::buscarProducto('',1);
+      echo Vista::buscarProducto(1);
     }
 }
 //Formulario para cargar productos

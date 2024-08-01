@@ -19,10 +19,29 @@ function busquedaAdm(event){
     })
 }
 
-function buscarProductos(ban){
-    let texto; 
-    if(ban === 1){
-        texto = $("#barra-search").val();
+function buscarProductos(des){
+    var texto= document.getElementById('barra-search').value;
+    var Url;
+    var ubicacion;
+    var cajaMensaje;
+    if(des === 0){
+        Url = '../controller/controller_admin.php';
+        ubicacion = 'subContainer';
+    }
+    if(des === 1 ){
+        Url = '../controller/controller_user.php';
+        ubicacion = 'homeProductos';
+        cajaMensaje = document.getElementById('mensajeProducto');
+        mensaje = "No se pudo encontrar "+ texto;
+    }
+    if(des === 2 ){
+        Url = '../controller/controller_user.php';
+        ubicacion = 'subContainer';
+
+    }
+    if(des === 3 ){
+        Url = '../controller/controller_admin.php';
+        ubicacion = 'subContainer';
     }
     var param = {
         'busquedaGeneral': texto
@@ -30,12 +49,16 @@ function buscarProductos(ban){
 
     $.ajax({
         data: param,    
-        url: '../controller/controller_admin.php',
+        url: Url,
         datatype: 'html',
         method: 'get',
         success: function(respuestas){
-            $("#subContainer").html(respuestas);
-            //console.log(respuestas);
+            if(respuestas === "0"){
+                cajaMensaje.innerHTML = mensaje;
+            }else{
+                document.getElementById(ubicacion).innerHTML = respuestas;
+            }
+            
         },
         error: function(xhr,status, error){
             console.log("Erro",error);

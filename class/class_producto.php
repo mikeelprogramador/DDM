@@ -108,6 +108,7 @@ class Productos {
 
     public static function calificacionProducto($idProducto){
         include_once("../../conf/model_vista.php");
+        $salida = "";
         $consulta = ModelVista::sqlVerValoracionProducto($idProducto);
         while($fila = $consulta->fetch_assoc()){
             if($fila['likes'] > $fila['dislikes']){

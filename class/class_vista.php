@@ -8,7 +8,7 @@ class Vista{
     /**
      * Funcion para buscar y moestar la flast card de los productos
      */
-    public static function mostrarProductos($text = null, $des = null, $cate = null) {
+    public static function mostrarProductos($des, $text = null,$cate = null) {
         include_once("../../conf/model.php");
         include_once("class_encript.php");
         include_once("class_producto.php");
@@ -16,32 +16,36 @@ class Vista{
         $salida .= '<div class="row">';
         $token = token::Obtener_token(64);
         $_SESSION['token'] = $token;
-        $consulta = Model::sqlMostrarProductos($text, $des, $cate);
+        $consulta = Model::sqlMostrarProductos($des,$text,$cate);
         $count = 0;
-        while ($fila = $consulta->fetch_assoc()) {
-            $id = id::encriptar($fila['id_producto']);
-            $url = '../../descripcion/acerca_del_producto/product.php?http=' . urlencode($token) . '&data=' . $id;
-            if ($count % 4 == 0 && $count != 0) {
-                $salida .= '</div><div class="row">';
+        if($consulta->num_rows == 0){
+            $salida = 0;
+        }else{
+            while ($fila = $consulta->fetch_assoc()) {
+                $id = id::encriptar($fila['id_producto']);
+                $url = '../../descripcion/acerca_del_producto/product.php?http=' . urlencode($token) . '&data=' . $id;
+                if ($count % 4 == 0 && $count != 0) {
+                    $salida .= '</div><div class="row">';
+                }
+                $salida .= '<div class="col-sm-6 col-md-4 col-lg-3 mb-4">';
+                $salida .= '<a href="' . $url . '" class="card-link">';
+                $salida .= '<div class="card h-100" style="width: 100%;">';
+                $salida .= '<img src="' . $fila['img'] . '" class="card-img-top" alt="La imagen no ha sido ubicada">';
+                $salida .= '<div class="card-body d-flex flex-column">';
+                $salida .= '<h5 class="card-title">' . $fila['producto_nombre'] . '</h5>';
+                $salida .= '<p class="card-text">COP $ ' . $fila['precio'] . '</p>';
+                // $salida .= '<p class="card-text">' . $fila['descripcion_producto'] . '</p>';
+                $salida .= '<p class="card-text">' . Productos::calificacionProducto($fila['id_producto']) . '</p>';
+                $salida .= '<a href="' . $url . '" class="btn btn-primary mt-auto">Descripcion del producto</a>';
+                $salida .= '</div>';
+                $salida .= '</div>';
+                $salida .= '</a>';
+                $salida .= '</div>';
+                $count++;
             }
-            $salida .= '<div class="col-sm-6 col-md-4 col-lg-3 mb-4">';
-            $salida .= '<a href="' . $url . '" class="card-link">';
-            $salida .= '<div class="card h-100" style="width: 100%;">';
-            $salida .= '<img src="' . $fila['img'] . '" class="card-img-top" alt="La imagen no ha sido ubicada">';
-            $salida .= '<div class="card-body d-flex flex-column">';
-            $salida .= '<h5 class="card-title">' . $fila['producto_nombre'] . '</h5>';
-            $salida .= '<p class="card-text">COP $ ' . $fila['precio'] . '</p>';
-            // $salida .= '<p class="card-text">' . $fila['descripcion_producto'] . '</p>';
-            $salida .= '<p class="card-text">' . Productos::calificacionProducto($fila['id_producto']) . '</p>';
-            $salida .= '<a href="' . $url . '" class="btn btn-primary mt-auto">Descripcion del producto</a>';
-            $salida .= '</div>';
-            $salida .= '</div>';
-            $salida .= '</a>';
-            $salida .= '</div>';
-            $count++;
+            $salida .= '</div>'; 
+            $salida .= '</div>'; 
         }
-        $salida .= '</div>'; 
-        $salida .= '</div>'; 
         return $salida;
     }
     
@@ -49,7 +53,7 @@ class Vista{
     /**
      * Funcion de peticion asincrona para busacr los productos en tiempo real
      */
-    public static function buscarProducto($text = null, $des = null){
+    public static function buscarProducto($des,$text = null){
         include_once("../../conf/model.php");
         include_once("class_encript.php");
         $salida = "<div class='table-responsive'>"; // Añade un contenedor para la tabla responsiva
@@ -66,7 +70,7 @@ class Vista{
         $salida .= "<th scope='col'>Eliminar</th>";
         $salida .= "</tr></thead><tbody>"; // Encabezado de la tabla con clase 'thead-dark'
     
-        $consulta = Model::sqlMostrarProductos($text,$des);
+        $consulta = Model::sqlMostrarProductos($des,$text);
         while($fila = $consulta->fetch_array()){
             $id = id::encriptar($fila[0]);
             $salida .= "<tr>";

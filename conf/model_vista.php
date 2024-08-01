@@ -24,7 +24,7 @@ class ModelVista{
         $sql = "select t3.nombre,t3.foto_usuarios,repuesta,fech_repuesta,t3.id,idRespuesta,idComentario ";
         $sql .= "from tb_respuestasComentarios as t1 ";
         $sql .= "inner join tb_comentarios as t2 on t1.idComentario = t2.id_comentario ";
-        $sql .= "inner join tb_usuarios as t3 on t2.id_usuario = t3.id  ";
+        $sql .= "inner join tb_usuarios as t3 on t1.idUsuario = t3.id  ";
         $sql .= "where idComentario = '$idComentario' order by fech_repuesta desc ";
         return $conexion->query($sql);
         $conexion->close();

@@ -5,6 +5,6 @@
 
 <div class="search" id="search">
      <?php
-        echo Vista::buscarProducto('',1);
+        echo Vista::buscarProducto(1);
     ?> 
 </div>

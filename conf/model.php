@@ -186,38 +186,37 @@ class Model {
 
     /**
      * Metodo para mostar los productos
-     * @param search {texto} este parametro es la gusqueda del prducto, se inicializa en null para que
-     * para que no afecte las operacion, cuando ya no sea null se sabe que hay un texto en la variable
      * @param des {numero} 1 muestra toda la tabla productoos
      * 2 muestra los productos segun una busqueda que se hace con la variable search, con un metodo textoBusqueda
-     * 3 muestra los productos segun la busqueda que se hace cin la variable search y con el metodo textoBusqueda
      * esta busqueda se hace con el tercer parametor que la categoria de los productos
+     * @param search {texto} este parametro es la gusqueda del prducto, se inicializa en null para que
+     * para que no afecte las operacion, cuando ya no sea null se sabe que hay un texto en la variable
+     * @param categoria {texto} en este paramtro esta la categoria a a la que pertenece el producto
      * @return conexion se retornal el resumtado de la confulta, osea si la consulta es exitosa retornamos true
      * de lo contrario de retorna false
      * 
      * En este metodo se muestran los productos, cuando el paramtro search no sea null y el parametro des sea igual a 2 o a 3 
      * se mostara los produtos con una pequeña busqueda gracias a una funcion textoBusqueda
      */
-    public static function sqlMostrarProductos($search = null,$des = null,$categoria = null){
+    public static function sqlMostrarProductos($des,$search = null,$categoria = null){
         include("model/conexion.php");
         if($des == 1 ){
-            $sql = "select * from tb_productos ";
+            $sql = "select * from tb_productos ORDER BY RAND()";
         }
         if( $des === 2){
-            $sql = "select * from tb_productos ";
-            if( $search != null )$sql .= Model::textoBuqueda($search);
-        }
-        if($des == 3 ){
-            $sql = "select t1.id_producto,img,producto_nombre,precio,descripcion_producto ";
-            $sql .= "from tb_productos as t1 ";
+            $sql = "select * from tb_productos as t1 ";
             $sql .="inner join tb_categoriasProducto as t2 on t1.id_producto = t2.id_producto ";
             $sql .= "inner join tb_categorias as t3 on t2.id_categoria = t3.id_Categoria ";
-            if( $search != null ){
-                $sql .= Model::textoBuqueda($search);
-                $sql .= " and t3.categoria = '$categoria' ";
+            if( $categoria == null){
+                if($search != null)$sql .= Model::textoBuqueda(1,$search);
             }else{
-                $sql .= "where t3.categoria = '$categoria' ";
+                if($search = null){
+                    $sql .= "where t3.categoria = '$categoria' ";
+                }else{
+                    $sql .= Model::textoBuqueda(2,$search);
+                }
             }
+            
         }
         return  $conexion->query($sql);
         $conexion->close();
@@ -225,6 +224,8 @@ class Model {
 
     /**
      * Metodo para hacer busquedas
+     * @param des {numero} 1 para que la busqueda tambien se realise por el codigo del producto
+     * 2 para cerrar co parentcis las busquedas
      * @param search {texto} el texto con el que se va hace la busqueda
      * @return conexion se retornal el resumtado de la confulta, osea si la consulta es exitosa retornamos true
      * de lo contrario de retorna false
@@ -232,22 +233,26 @@ class Model {
      * Este metodo con una parametro search que tiene un texto a buscar, toma el texto y lo combierte en una array para buscar el productos
      * segun cualquir letra que este contenga, la busqueda se hace por el nombre, caracteristicas y el id
      */
-    private static function textoBuqueda($search){
+    private static function textoBuqueda($des,$search){
         $palabra = explode(" ",$search);
             $sql = "where ";
             for($i = 0; $i < count($palabra); $i++){
-                $sql .= "(producto_nombre like '%".$palabra[$i]."%' or descripcion_producto like '%".$palabra[$i]."%' or id_producto like '%".$palabra[$i]."%')";
+                $sql .= "(producto_nombre like '%".$palabra[$i]."%' or descripcion_producto like '%".$palabra[$i]."%' ";
+                $sql .= "or caracteristicas_producto like '%".$palabra[$i]."%'  or t3.categoria like '%".$palabra[$i]."%' ";
+                if($des === 1 )$sql .=" or t1.id_producto like '%".$palabra[$i]."%')";
+                if($des === 2 )$sql .=")";
                 if($i != count($palabra)-1){
                     $sql .= " and ";
                 }
             }
+            $sql .=" ORDER BY RAND()";
         return $sql;
     }
 
     /**
      * Metodo para eliminar el producto, este metodo usa una funcion de mysql la cual elimina el 
      * productos de todas las tablas
-     * @param id {texto} codigo del producto
+     * @param id {texto} codigo del producto    
      * @return conexion se retornal el resumtado de la confulta, osea si la consulta es exitosa retornamos true
      * de lo contrario de retorna false
      */

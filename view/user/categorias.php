@@ -1,11 +1,21 @@
-<br>
-  <div class="productos">
-    <p class="texto">
-    <br>
-<div class="subContainer">
-    <?php
-      echo Vista::mostrarProductos('',3,$_GET['cate']);
+<?php
+  $productos = Vista::mostrarProductos(2,'',$_GET['cate']);
+  if($productos == 0){
     ?>
-</div>
-  </p> 
-  </div>
+      <p>No hay productos en esta categoria</p>
+    <?php
+  }else{
+    ?><br>
+    <!-- <div class="productos"> -->
+      <!-- <p class="texto"> -->
+      <br>
+        <div class="subContainer">
+          <?php
+            echo $productos;
+          ?>
+        </div>
+      <!-- </p>  -->
+    <!-- </div>--><?php
+  }
+?>
+

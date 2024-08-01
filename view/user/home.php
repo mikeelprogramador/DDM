@@ -1,12 +1,22 @@
 <link rel="stylesheet" href="../../css/card.css">
 <br>
-  <div class="productos">
-    <p class="texto">
-    <br>
-<div class="subContainer">
-    <?php
-      echo Vista::mostrarProductos('',1);
+  <?php
+  $productos = Vista::mostrarProductos(1);
+  if($productos == 0){
     ?>
-</div>
-  </p> 
-  </div>
+      <p id="mensajeProducto"></p>
+    <?php
+  }else{
+    ?><br>
+    <!-- <div class="productos"> -->
+      <!-- <p class="texto"> -->
+      <br>
+      <div class="subContainer" id="homeProductos">
+          <?php
+            echo $productos;
+          ?>
+        </div>
+      <!-- </p>  -->
+    <!-- </div>--><?php
+  }
+?>

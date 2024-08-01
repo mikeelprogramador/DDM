@@ -185,6 +185,7 @@ function cargarRespuesta(idcomentario,lugar){
                 mensaje.innerHTML = "Cargando Respuesta";
             },
             success: function(respuesta){
+                console.log(respuesta);
                 setTimeout(function(){
                     mensaje.innerHTML = "Respuesta cargada";
                 },3000)
