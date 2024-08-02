@@ -38,9 +38,11 @@
 </div>
 </body>
 
+<script src="../../js/sweetalert.js"></script>
 <script src="../../js/coment.js"></script>
 <script src="../../js/alert.js"></script>
 <script src="../../js/contra.js"></script>
+<script src="../../js/texto.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>  
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment-with-locales.min.js" integrity="sha512-4F1cxYdMiAW98oomSLaygEwmCnIP38pb4Kx70yQYqRwLVCs3DbRumfBq82T08g/4LJ/smbFGFpmeFlQgoDccgg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

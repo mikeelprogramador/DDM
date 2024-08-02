@@ -2,101 +2,60 @@
 
 function alertPro(mensaje){
     if(mensaje === "0" ){
-        alertUrl("error","Oops...","El codigo de este producto ya se encuntra creado",'admin.php?seccion=seccion-ag-pro'); 
+        alertUrl(Mensajes.mensajesSeewalert(401),Mensajes.mensajesGlobales(102),Mensajes.mensajesProductos(301),'admin.php?seccion=seccion-ag-pro'); 
     }
     //Mensaje de error del producto
     if( mensaje == "1" ){
-        alertUrl("success","¡Cargado!","El producto se ha cardo exitosamente",'admin.php?');  
+        alertUrl(Mensajes.mensajesSeewalert(402),Mensajes.mensajesGlobales(103),Mensajes.mensajesProductos(302),'admin.php?');  
     }
     if( mensaje == "2" ){
-        alertUrl("error","Oops...","Ocurrio un error al crear el producto",'admin.php?seccion=seccion-ag-pro'); 
+        alertUrl(Mensajes.mensajesSeewalert(401),Mensajes.mensajesGlobales(102),Mensajes.mensajesProductos(303),'admin.php?seccion=seccion-ag-pro'); 
     }
     //Mensaje de error de la imagen 
     if( mensaje == "img0" ){
-        alertUrl("error","Oops...","El producto no cumple los estandares (codigo,nombre,imagen)",'admin.php?seccion=seccion-ag-pro'); 
+        alertUrl(Mensajes.mensajesSeewalert(401),Mensajes.mensajesGlobales(102),Mensajes.mensajesProductos(304),'admin.php?seccion=seccion-ag-pro'); 
     }
     if( mensaje == "img1" ){
-        alertUrl("error","Oops...","La imagen no cumple los estandares (formato y/o tamaño)",'admin.php?seccion=seccion-ag-pro'); 
+        alertUrl(Mensajes.mensajesSeewalert(401),Mensajes.mensajesGlobales(102),Mensajes.mensajesProductos(305),'admin.php?seccion=seccion-ag-pro'); 
     }
     if( mensaje == "limitesImg" ){
-        alertUrl("error","Oops...","La imagen no cumple los estandares (formato y/o tamaño)",''); 
+        alertUrl(Mensajes.mensajesSeewalert(401),Mensajes.mensajesGlobales(102),Mensajes.mensajesProductos(306),''); 
     }
 }
 
 function alertCarrito(des){
-    console.log(des);
     if(des === "1" ){
-        alert("success", "Cargado", "Su producto se cargo exitosamente!");
+        alert(Mensajes.mensajesSeewalert(402),Mensajes.mensajesGlobales(103),Mensajes.mensajesCarrito(201));
     }
     if(des === "2" ){
-        alert("error", "Error", "No tienes un carrito para agregar productos");
+        alert(Mensajes.mensajesSeewalert(401), Mensajes.mensajesGlobales(101), Mensajes.mensajesCarrito(202));
     }
     if( des === "3" ){
-        alert("error", "Error","Este producto ya esta agregado en el carrito.");
+        alert(Mensajes.mensajesSeewalert(401), Mensajes.mensajesGlobales(101),Mensajes.mensajesCarrito(203));
     }
     if( des === "4" ){
-        alert("error","Error","No hay cantidades disponibles");
+        alert(Mensajes.mensajesSeewalert(401),Mensajes.mensajesGlobales(101),Mensajes.mensajesCarrito(204));
     }
     if( des === "5" ){
-        alert("error","Error","No puedes comprar con esta cuenta");
+        alert(Mensajes.mensajesSeewalert(401),Mensajes.mensajesGlobales(101),Mensajes.mensajesCarrito(205));
     }
 }
 
 function verificacion(mensaje){
     //Lista de error cuando el usuario inicia sesion
     if( mensaje == "error-1" ){
-        alertUrl("error","Oops...","El Usuario y contraseña no coinciden.",'index.php'); 
+        alertUrl(Mensajes.mensajesSeewalert(401),Mensajes.mensajesGlobales(102),Mensajes.mensajesGlobales(104),'index.php'); 
     }
     if( mensaje === "error0" ){
-        alertUrl("error","Oops...","Ups ocurrio un error al momento de verificar los datos, intenta más tarde.",'index.php'); 
+        alertUrl(Mensajes.mensajesSeewalert(401),Mensajes.mensajesGlobales(102),Mensajes.mensajesGlobales(105),'index.php'); 
     }
     //Lista de errores cuando el usaurio crea una cuanta
     if( mensaje === "-1error" ){
-        alertUrl("error","Oops...","Estos datos ya le pertenecen a un usuario, verifica nuevamente",'index.php'); 
+        alertUrl(Mensajes.mensajesSeewalert(401),Mensajes.mensajesGlobales(102),Mensajes.mensajesGlobales(106),'index.php'); 
     }
     if( mensaje === "0error" ){
-        alertUrl("error","Oops...","Ups ah ocurrido un erro al crear el usuario, verifca que los datos sean correctos",'index.php'); 
+        alertUrl(Mensajes.mensajesSeewalert(401),Mensajes.mensajesGlobales(102),Mensajes.mensajesGlobales(107),'index.php'); 
     }
 
 }
 
-
-//Funciones de las alertas
-
-function alert(iconText,titleText,text){
-    Swal.fire({
-        icon: iconText,
-        title: titleText,
-        text: text,
-    });
-}
-
-function alertUrl(iconText, titleText,text,url){
-    Swal.fire({
-        icon: iconText,
-        title: titleText,
-        text: text
-      }).then((result) => {
-        if(result.isConfirmed){
-            window.location.href = url;
-        }
-      });
-}
-
-function alertdelet(des,iconText, titleText,text,des){
-    Swal.fire({
-        icon: iconText,
-        title: titleText,
-        text: text,
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Eliminar"
-      }).then((result) => {
-        if(result.isConfirmed){
-            if(des == 1 ){
-                eliminar(1)
-            }
-        }
-      });
-}

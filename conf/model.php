@@ -893,6 +893,40 @@ class Model {
         $conexion->close();
     }
 
+    public static function sqlBuscarOfertas($idOferta){
+        include("model/conexion.php");
+        $sql = "select idOferta from tb_ofertas ";
+        $sql .= "where oferta = '$idOferta'";
+        return $conexion->query($sql);
+        $conexion->close();
+    }
+
+    public static function sqlCrearOfertas($idOferta){
+        include("model/conexion.php");
+        $sql = "insert into tb_ofertas(oferta)";
+        $sql .= "values('$idOferta')";
+        $conexion->query($sql);
+        $conexion->close();
+
+    }
+
+    public static function sqlActualizarOferta($idOferta,$oferta){
+        include("model/conexion.php");
+        $sql = "update tb_ofertas ";
+        $sql .= "set oferta = '$oferta' ";
+        $sql .= "where idOferta = '$idOferta'";
+        $conexion->query($sql);
+        $conexion->close();
+    }
+
+    public static function sqlELiminarOferta($oferta){
+        include("model/conexion.php");
+        $sql = "delete from tb_ofertas ";
+        $sql .= "where oferta = '$oferta' ";
+        $conexion->query($sql);
+        $conexion->close();
+    }
+
 
 
 }

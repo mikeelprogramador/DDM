@@ -8,6 +8,7 @@ include_once("../../class/class_encript.php");
 include_once("../../class/class_producto.php");
 include_once("../../class/class_historial.php");
 include_once("../../class/class_comentarios.php");
+include_once("../../class/class_ofertas.php");
 
 Session::iniciarSessiones();
 if(Session::verificarSesssiones() == 0 ){

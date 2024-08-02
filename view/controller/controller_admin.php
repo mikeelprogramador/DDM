@@ -6,6 +6,7 @@ include_once("../../class/class_user.php");
 include_once("../../conf/model.php");
 include_once("../../class/class_sessiones.php");
 include_once("../../class/class_producto.php");
+include_once("../../class/class_ofertas.php");
 //Se inician las sessiones
 Session::iniciarSessiones();
 if(Session::verificarSesssiones() == 0 ){
@@ -119,5 +120,37 @@ if(isset($_GET['aparece']) && $_GET['aparece'] == true){
 if(isset($_GET['producto']) && ($_GET['producto'])== "actualizar"){
   $nombre = Funciones::vacunaXxs($_POST['nombre_pro']);
   $descrip = Funciones::vacunaXxs($_POST['descripcion_pro']);
+  
+}
+
+if(isset($_POST['offer-name'])){
+  echo Ofertas::buscarOfertas($_POST['offer-name']);
+}
+
+if(isset($_POST['create-offer-name'])){
+  $oferta = Funciones::vacunaXxs($_POST['create-offer-name']);
+  if(Ofertas::contarOfertas($oferta) == 0){
+    Model::sqlCrearOfertas($oferta);
+    echo 0 ;
+  }else{
+    echo 1;
+  }
+}
+
+if(isset($_POST['update-offer'])){
+  $idOferta = $_POST['id-offer'];
+  $oferta = Funciones::vacunaXxs($_POST['update-offer']);
+  Model::sqlActualizarOferta($idOferta,$oferta);
+  echo 1;
+}
+
+if(isset($_POST['delete-offer'])){
+  $oferta = Funciones::vacunaXxs($_POST['delete-offer']);
+  if(Ofertas::contarOfertas($oferta) == 1){
+    Model::sqlELiminarOferta($oferta);
+    echo 1 ;
+  }else{
+    echo 0;
+  }
   
 }

@@ -73,6 +73,21 @@ class ModelVista{
         $conexion->close();
     }
 
+    public static function sqlverOfertas(){
+        include("model/conexion.php");
+        $sql = "select * from tb_ofertas";
+        return $conexion->query($sql);
+        $conexion->close();
+    }
+
+    public static function sqlContarOfertas($oferta){
+        include("model/conexion.php");
+        $sql = "select count(*) from tb_ofertas ";
+        $sql .= "where oferta = '$oferta' ";
+        return $conexion->query($sql);
+        $conexion->close();
+    }
+ 
 
 
     
