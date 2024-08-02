@@ -85,7 +85,7 @@
           </form>
           <?php
         }
-      ?>s
+      ?>
     </div>
   </div>
 </nav>

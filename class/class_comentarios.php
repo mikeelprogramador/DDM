@@ -96,4 +96,34 @@ class Comentarios {
         return $salida;
     }
 
+    public static function verComentariosUsuario($des,$idUsuario){
+        include_once("../../conf/model_vista.php");
+        include_once("class_fechas.php");
+        $salida = "";
+        if($des === 1)$consulta = ModelVista::sqlVerComentariosUsuarios($idUsuario);
+        if($des === 2)$consulta = ModelVista::sqlVerRespuestasUsuarios($idUsuario);
+        if($consulta->num_rows == 0){
+            $salida = 0;
+        }else{
+            while($fila = $consulta->fetch_array()){
+                //comentarios
+                $salida .= "<div class='avatar-container'>";
+                $salida .= "<div class='avatar'>";
+                $salida .= "<img src='".$fila[1]."'>";
+                $salida .= "</div>";
+                $salida .= "<div class='usuario-container'>";
+                $salida .= "<div class='nombre-tiempo-container'>"; 
+                $salida .= "<p class='nombre'>@".$fila[0]."</p>";
+                $salida .= "<p class='tiempo'>".Fecha::mostrarFechas($fila[3])."</p>";
+                $salida .= "</div>"; 
+                $salida .= "<p class='comentario'>". $fila[2]."</p><br>";
+                $salida .= "<div class='button-container'>"; 
+                $salida .= "</div>";
+                $salida .= "</div>";
+            }
+        }
+        return $salida;
+
+    }
+
 }

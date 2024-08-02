@@ -1,3 +1,4 @@
+<a href="ddm.php?seccion=perfil">Regresar</a>
 <div class="historial">
     <?php
         $historial = Historial::verHistorial($_SESSION['id']);
@@ -6,9 +7,11 @@
                 <p>Ve productos para ampliar tu historial</p>
             </div><?php 
         }else{
+            ?><button>Vaciar historial</button> <?php
             echo $historial;
         }
     ?>
 </div>
-<a href="ddm.php?seccion=perfil">Regresar</a>
+
+
 

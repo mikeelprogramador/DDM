@@ -6,6 +6,7 @@ include_once("../../class/class_sessiones.php");
 include_once("../../class/class_user.php");
 include_once("../../class/class_historial.php");
 include_once("../../class/class_compra.php");
+include_once("../../class/class_comentarios.php");
 
 Session::iniciarSessiones();
 if(Session::verificarSesssiones() == 0 ){

@@ -164,15 +164,15 @@ class Vista{
 
             $salida .= "<div class='col-md-8 ' > ";
             $salida .= "<div class='mb-3' >";
-            $salida .= "<p>Nombre</p>";
+            $salida .= "<p>Nombre: ".$fila[1]."</p>";
             $salida .= "</div>";  
 
             $salida .= "<div class='mb-3'>";
-            $salida .= "<p'>Apellido</p>";
+            $salida .= "<p'>Apellido: ".$fila[2]."</p>";
             $salida .= "</div>";
 
             $salida .= "<div class='mb-3'>";
-            $salida .= "<p'>Correo</p>";
+            $salida .= "<p'>Email: ".$fila[3]."</p>";
             $salida .= "</div>";
             $salida .= "</div>";
             $salida .= "</div>";
@@ -290,6 +290,38 @@ class Vista{
         $salida .= '</table>';
         $salida .= '</div>'; 
     
+        return $salida;
+    }
+
+    public static function verMegustasUsuario($idUsuario){
+        include_once("../../conf/model_vista.php");
+        $salida = '<div class="container mt-4">';
+        $salida .= '<div class="row">';
+        $consulta = ModelVista::sqlMegustasUsuarios($idUsuario);
+        $count = 0;
+        if($consulta->num_rows == 0){
+            $salida = 0;
+        }else{
+            while($fila = $consulta->fetch_assoc()){
+                if ($count % 4 == 0 && $count != 0) {
+                    $salida .= '</div><div class="row">';
+                }
+                $salida .= '<div class="col-sm-6 col-md-4 col-lg-3 mb-4">';
+                $salida .= '<div class="card h-100" style="width: 100%;">';
+                $salida .= '<img src="' . $fila['img'] . '" class="card-img-top" alt="La imagen no ha sido ubicada">';
+                $salida .= '<div class="card-body d-flex flex-column">';
+                $salida .= '<h5 class="card-title">' . $fila['producto_nombre'] . '</h5>';
+                $salida .= '<p class="card-text">COP $ ' . $fila['precio'] . '</p>';
+                $salida .= '</div>';
+                $salida .= '</div>';
+                $salida .= '</a>';
+                $salida .= '</div>';
+                $count++;
+            }
+            $salida .= '</div>'; 
+            $salida .= '</div>';
+            
+        }
         return $salida;
     }
 

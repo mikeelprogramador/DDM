@@ -25,6 +25,7 @@ class Historial{
                 $salida .= '<p class="card-text">COP $ '.$fila['precio'].'</p>';
                 $salida .= '<p class="card-text">'.$fila['descripcion_producto'].'</p>'; 
                 $salida .= '<p class="card-text" id="mostra_fecha" >'.Fecha::mostrarFechas($fila['fec_ver']).'</p>'; 
+                $salida .= '<button class="btn btn-primary mt-auto">Eliminar</button>';
                 $salida .= '</div>';
                 $salida .= '</div>';
                 $salida .= '</div>';
