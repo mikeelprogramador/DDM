@@ -98,29 +98,29 @@
   </div>
 
   <footer class="footer">
-  <div class="container_footer text-center">
-    <div class="footer-content">
-      <p>&copy; <?php echo date("Y"); ?> DDM. Empresa de marketing</p>
-      <p>
-        <a href="#" class="text-white footer-link">Términos y condiciones</a>
-      </p>
+    <div class="container_footer text-center">
+      <div class="footer-content">
+        <p>&copy; <?php echo date("Y"); ?> DDM. Empresa de marketing</p>
+        <p>
+          <a href="#" class="text-white footer-link">Términos y condiciones</a>
+        </p>
+      </div>
+      <div class="footer-contact">
+        <p>Contáctanos:</p>
+        <p>
+          <p>Correo: michaelhernan211@gmail.com</p> <br>
+          <p>Teléfono: +57 3185049904</p> 
+        </p>
+      </div>
+      <div class="footer-contact">
+        <p>Contáctanos:</p>
+        <p>
+          <p>Correo: judacas135@gmail.com</p> <br>
+          <p>Teléfono: +57 3219612850</p> 
+        </p>
+      </div>
     </div>
-    <div class="footer-contact">
-      <p>Contáctanos:</p>
-      <p>
-        <p>Correo: michaelhernan211@gmail.com</p> <br>
-        <p>Teléfono: +57 3185049904</p> 
-      </p>
-    </div>
-    <div class="footer-contact">
-      <p>Contáctanos:</p>
-      <p>
-        <p>Correo: judacas135@gmail.com</p> <br>
-        <p>Teléfono: +57 3219612850</p> 
-      </p>
-    </div>
-  </div>
-</footer>
+  </footer>
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
@@ -134,4 +134,5 @@
     <script src="../../js/productos.js"></script>
 
   </body>
+  
 </html>
