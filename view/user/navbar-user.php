@@ -44,9 +44,7 @@
             ?>
           </ul>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Ayuda</a>
-        </li>
+        
         <li class="nav-item">
           <a class="nav-link" href="#">Ofertas</a>
         </li>
@@ -98,6 +96,32 @@
   ?>
 
   </div>
+
+  <footer class="footer">
+  <div class="container_footer text-center">
+    <div class="footer-content">
+      <p>&copy; <?php echo date("Y"); ?> DDM. Empresa de marketing</p>
+      <p>
+        <a href="#" class="text-white footer-link">Términos y condiciones</a>
+      </p>
+    </div>
+    <div class="footer-contact">
+      <p>Contáctanos:</p>
+      <p>
+        <p>Correo: michaelhernan211@gmail.com</p> <br>
+        <p>Teléfono: +57 3185049904</p> 
+      </p>
+    </div>
+    <div class="footer-contact">
+      <p>Contáctanos:</p>
+      <p>
+        <p>Correo: judacas135@gmail.com</p> <br>
+        <p>Teléfono: +57 3219612850</p> 
+      </p>
+    </div>
+  </div>
+</footer>
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

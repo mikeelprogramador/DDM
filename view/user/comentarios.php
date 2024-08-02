@@ -1,5 +1,6 @@
-<a href="ddm.php?seccion=perfil">Regresar</a>
-<!-- <link rel="stylesheet" href="../../css/stylo6.css"> -->
+
+ <link rel="stylesheet" href="../../css/comentarios.css"> 
+ <button><a href="ddm.php?seccion=perfil">Regresar</a></button> <br><br>
 <?php
     $comentarios =  Comentarios::verComentariosUsuario(1,$_SESSION['id']);
     $respuestas =  Comentarios::verComentariosUsuario(2,$_SESSION['id']);

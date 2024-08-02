@@ -1,4 +1,5 @@
 <a href="ddm.php?seccion=perfil">Regresar</a>
+<link rel="stylesheet" href="../../css/megusta.css">
 <?php
     $megustas = Vista::verMegustasUsuario($_SESSION['id']);
     if($megustas === 0){
