@@ -26,9 +26,9 @@ class Carrito{
                 $salida .= '<h5 class="card-title">' . $fila['producto_nombre'] . '</h5>';
                 $salida .= '<p class="card-text" style="color: #28a745;">COP $ ' . $fila['precio'] . '</p>';
                 $salida .= "<div class='d-flex justify-content-between align-items-center'>";
-                $salida .= "<button class='btn btn-primary' type='button' id='incremento' onclick='sumarCantidad(\"$id\",\"$cantidad\",\"{$fila['cantidades']}\")'>+</button>";
-                $salida .= '<input type="number" id="cantidad" class="form-control" value="' . $cantidad . '" min="1" max="' . $fila['cantidades'] . '" disabled>';
                 $salida .= "<button class='btn btn-primary' type='button' id='decremento' onclick='restarCantidad(\"$id\",\"$cantidad\")'>-</button>";
+                $salida .= '<input type="number" id="cantidad" class="form-control" value="' . $cantidad . '" min="1" max="' . $fila['cantidades'] . '" disabled>';
+                $salida .= "<button class='btn btn-primary' type='button' id='incremento' onclick='sumarCantidad(\"$id\",\"$cantidad\",\"{$fila['cantidades']}\")'>+</button>";
                 $salida .= "</div>";
                 $salida .= '<p class="card-text mt-3">Valor total: ' . Funciones::strDinero($valor * $cantidad) . '</p>';
                 $salida .= "<button class='btn btn-danger mt-auto' onclick='eliminarDelCarrito(\"$id\")'>Eliminar del carrito</button>";

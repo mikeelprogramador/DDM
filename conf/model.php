@@ -927,6 +927,15 @@ class Model {
         $conexion->close();
     }
 
+    public static function sqlEliminarHistorial($des,$idUser,$idHistorial = null){
+        include("model/conexion.php");
+        $sql = "delete from tb_historial ";
+        if($des === 1)$sql .= "where id_usuario = '$idUser' ";
+        if($des === 2)$sql .= "where id_usuario = '$idUser' and idHistorial = '$idHistorial' ";
+        $conexion->query($sql);
+        $conexion->close();
+    }
+
 
 
 }

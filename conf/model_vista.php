@@ -87,6 +87,14 @@ class ModelVista{
         return $conexion->query($sql);
         $conexion->close();
     }
+
+    public static function sqlContarHistorial($idUser){
+        include("model/conexion.php");
+        $sql = "select count(*) from tb_historial ";
+        $sql .= "where id_usuario = '$idUser' ";
+        return $conexion->query($sql);
+        $conexion->close();
+    }
  
 
 

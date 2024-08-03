@@ -7,6 +7,15 @@ class Historial{
         $consulta = Model::sqlAgregarHistorial($id_user,$id_pro);      
     }
 
+    public static function contarHistorial($idUser){
+        include_once("../../conf/model_vista.php");
+        $consulta = ModelVista::sqlContarHistorial($idUser);
+        while($fila = $consulta->fetch_array()){
+            $salida = $fila[0];
+        }
+        return $salida;
+    }
+
     public static function verHistorial($id_user){
         include_once("../../conf/model_vista.php");
         include_once("class_fechas.php");
