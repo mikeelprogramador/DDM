@@ -14,17 +14,17 @@ function apareceComentario(event,id){
         method: 'post',
         beforeSend: function(){
             texto.style.backgroundColor = 'yellow';
-            texto.innerHTML = "Cargando comentario...";
-            document.getElementById("comentario").value = "";
+            texto.innerHTML = Mensajes.mensajesGlobales(111);
+            document.getElementById("comentario").value = Mensajes.mensajesGlobales(0);
         },
         success: function (respuesta){
             setTimeout(function(){
                 texto.style.backgroundColor = 'green';
-                texto.innerHTML = "EL comentario se cargo exitisamente";
+                texto.innerHTML = Mensajes.mensajesGlobales(112);
             },4000);
             setTimeout(function(){
                 $("#coment").html(respuesta);
-                texto.innerHTML = '';
+                texto.innerHTML = Mensajes.mensajesGlobales(0);
             },6000);
         },
         error: function (xhr,status,error){
@@ -169,7 +169,7 @@ function cargarRespuesta(idcomentario,lugar){
     var comentario = document.getElementById(lugar).value;
     var mensaje = document.getElementById('textRespuesta'+idcomentario);
     if(comentario === ""){
-        console.log("No hay nada escrito, escribe algo por favor");
+        alert(Mensajes.mensajesSeewalert(401),Mensajes.mensajesGlobales(102),Mensajes.mensajesGlobales(113))
     }else{
         var param = {
             'respuestaCome':'true',
@@ -182,15 +182,15 @@ function cargarRespuesta(idcomentario,lugar){
             datatype: 'html',
             method: 'post',
             beforeSend: function(){
-                mensaje.innerHTML = "Cargando Respuesta";
+                mensaje.innerHTML = Mensajes.mensajesGlobales(114);
             },
             success: function(respuesta){
                 console.log(respuesta);
                 setTimeout(function(){
-                    mensaje.innerHTML = "Respuesta cargada";
+                    mensaje.innerHTML = Mensajes.mensajesGlobales(115);
                 },3000)
                 setTimeout(function(){
-                    mensaje.innerHTML = "";
+                    mensaje.innerHTML = Mensajes.mensajesGlobales(0);
                     document.getElementById('RespuestasComentario'+idcomentario).innerHTML = respuesta;
                 },5000)
             }
@@ -217,7 +217,7 @@ function actualizarComentario(lugar,texto,idPro,idComet){
     var nuevoComentario = document.getElementById(lugar).value;
     var mensaje = document.getElementById(texto);
     if(nuevoComentario === "" ){
-        mensaje.innerHTML = "No puedes dejar el comentario vacio";
+        mensaje.innerHTML = Mensajes.mensajesGlobales(116);
     }else{
         var param = {
             'updateComet':'true',
@@ -231,11 +231,11 @@ function actualizarComentario(lugar,texto,idPro,idComet){
             datatype: 'html',
             method: 'post',
             beforeSend: function(){
-                mensaje.innerHTML = "Cargando actualizacion de comentario";
+                mensaje.innerHTML = Mensajes.mensajesGlobales(117);
             },
             success: function(respuesta){
                 setTimeout(function(){
-                    mensaje.innerHTML = "El comentario se actualizo correctamente";
+                    mensaje.innerHTML = Mensajes.mensajesGlobales(118);
                 },3000)
                 setTimeout(function(){
                     document.getElementById('coment').innerHTML = respuesta;

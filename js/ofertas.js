@@ -9,22 +9,22 @@ function crearOfertas(event){
         datatype: 'texto',
         method: 'post',
         beforeSend: function(){
-            document.getElementById('text-cretae-offer').innerHTML = "Creando oferta";
+            document.getElementById('text-cretae-offer').innerHTML = Mensajes.mensajesGlobales(122);
         },
         success: function(respuesta){
             if(respuesta === "0"){
                 setTimeout(function(){
-                    document.getElementById('text-cretae-offer').innerHTML = "Oferta creada";
+                    document.getElementById('text-cretae-offer').innerHTML = Mensajes.mensajesGlobales(123);
                 },3000);
                 setTimeout(function(){
-                    document.getElementById('text-cretae-offer').innerHTML = "";
+                    document.getElementById('text-cretae-offer').innerHTML = Mensajes.mensajesGlobales(0);
                     location.reload(true);
                 },5000);
 
             }
             if(respuesta === "1"){
                 setTimeout(function(){
-                    document.getElementById('text-cretae-offer').innerHTML = "La oferta ya existe";
+                    document.getElementById('text-cretae-offer').innerHTML = Mensajes.mensajesGlobales(124);
                 },3500);
             } 
         },
@@ -39,7 +39,7 @@ function actualizarOferta(event){
     var id = document.getElementById('update-id').value;
     var newOffer = document.getElementById('update-name-new').value;
     if(id === ''){
-        document.getElementById('text-update-offer').innerHTML = "No se puede encotrar el codigo";
+        document.getElementById('text-update-offer').innerHTML = Mensajes.mensajesGlobales(125);
     }else{
         var param = {
             'id-offer': id,
@@ -51,12 +51,12 @@ function actualizarOferta(event){
             datatype: 'texto',
             method: 'post',
             beforeSend: function(){
-                document.getElementById('text-update-offer').innerHTML = "Actualizando..";
+                document.getElementById('text-update-offer').innerHTML = Mensajes.mensajesGlobales(126);
             },
             success: function(respuesta){
                 if(respuesta === "1"){
                     setTimeout(function(){
-                        document.getElementById('text-update-offer').innerHTML = "Oferta actaulizada";
+                        document.getElementById('text-update-offer').innerHTML = Mensajes.mensajesGlobales(127);
                     },3000);
                 }
                 setTimeout(function(){
@@ -82,19 +82,19 @@ function eliminarOFerta(event){
         datatype: 'texto',
         method: 'post',
         beforeSend: function(){
-            document.getElementById('text-delete-offer').innerHTML = "Eliminando...";
+            document.getElementById('text-delete-offer').innerHTML = Mensajes.mensajesGlobales(128);
         },
         success: function(respuesta){
             if(respuesta === "1"){
                 setTimeout(function(){
-                    document.getElementById('text-delete-offer').innerHTML = "Oferta Eliminada";
+                    document.getElementById('text-delete-offer').innerHTML = Mensajes.mensajesGlobales(129);
                 },3000);
                 setTimeout(function(){
                     location.reload(true);
                 },5000);
             }else{
                 setTimeout(function(){
-                    document.getElementById('text-delete-offer').innerHTML = "Esta oferta no existe";
+                    document.getElementById('text-delete-offer').innerHTML = Mensajes.mensajesGlobales(130);
                 },3000);
             }
         },
@@ -117,15 +117,15 @@ function buscarCodigo(event){
         method: 'post',
         success: function(respuesta){
             if(respuesta === "Not exist"){
-                document.getElementById('update-id').value = "";
-                document.getElementById('text-update-offer').innerHTML = "Esta oferta no existe";
+                document.getElementById('update-id').value = Mensajes.mensajesGlobales(0);
+                document.getElementById('text-update-offer').innerHTML = Mensajes.mensajesGlobales(130);
 
             }else{
-                document.getElementById('text-update-offer').innerHTML = "";
+                document.getElementById('text-update-offer').innerHTML = Mensajes.mensajesGlobales(0);
                 document.getElementById('update-id').value = respuesta;
             }
             if(ofertaBuscar === ""){
-                document.getElementById('update-id').value = "";
+                document.getElementById('update-id').value = Mensajes.mensajesGlobales(0);
             }
              
         },

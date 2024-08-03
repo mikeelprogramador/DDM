@@ -12,11 +12,7 @@ function sumarCantidad(id,cantidad,disponibles){
         method: 'get',
         success: function(respuesta){
             if(respuesta === ""){
-                Swal.fire({
-                    icon: "error",
-                    title: "Error",
-                    text: "No puedes agregar más cantidades.",
-                });
+                alert(Mensajes.mensajesSeewalert(401),Mensajes.mensajesGlobales(101),Mensajes.mensajesGlobales(108));
             }else{
                 document.getElementById('carrito').innerHTML = respuesta;
                 actualizarDinero();
@@ -42,11 +38,7 @@ function restarCantidad(id,cantidad){
         method: 'get',
         success: function(respuesta){
             if(respuesta === ""){
-                Swal.fire({
-                    icon: "error",
-                    title: "Error",
-                    text: "No puedes eliminar más cantidades.",
-                });
+                alert(Mensajes.mensajesSeewalert(401),Mensajes.mensajesGlobales(101),Mensajes.mensajesGlobales(109));
             }else{
                 document.getElementById('carrito').innerHTML = respuesta;
                 actualizarDinero();

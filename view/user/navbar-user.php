@@ -52,7 +52,7 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <div class="avatar me-2">
-                  <img src='<?php echo Usuarios::fotoPerfil($_SESSION['id']) ?>' id="foto_avatar">
+                <img src='<?php echo Usuarios::fotoPerfil($_SESSION['id']) ?>' id="foto_avatar">
               </div>
               <?php echo Usuarios::verificarPerfil(2,$_SESSION['id'])?>
           </a>
@@ -74,16 +74,12 @@
           </li>
         </ul>
       </div>
-      <?php
-        if($seccion == "home" ||  $seccion == "categorias" || $seccion == "historial"   ){
-          ?>
+      <?php if($seccion == "home" ||  $seccion == "categorias") :?>
           <form class="d-flex" role="search">
             <input class="form-control me-2" id="barra-search" type="search" placeholder="Buscar productos" aria-label="Search" onkeypress="pulsar(event)">
             <button class="btn btn-outline-success " type="button" id="boton"  onclick="buscarProductos(<?php echo $lugar;?><?php echo ',';?>'<?php if($seccion == 'categorias')echo $categorias; ?>')">Buscar</button>
           </form>
-          <?php
-        }
-      ?>
+      <?php endif; ?>
     </div>
   </div>
 </nav>
@@ -97,6 +93,10 @@
 
   </div>
 
+  <?php include("jscriptUser.php") ?>
+
+
+
   <footer class="footer">
     <div class="container_footer text-center">
       <div class="footer-content">
@@ -108,7 +108,7 @@
       <div class="footer-contact">
         <p>Contáctanos:</p>
         <p>
-          <p>Correo: michaelhernan211@gmail.com</p> <br>
+          <p>Correo: maicolsanchez211@gmail.com</p> <br>
           <p>Teléfono: +57 3185049904</p> 
         </p>
       </div>
@@ -123,15 +123,7 @@
   </footer>
 
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment-with-locales.min.js" integrity="sha512-4F1cxYdMiAW98oomSLaygEwmCnIP38pb4Kx70yQYqRwLVCs3DbRumfBq82T08g/4LJ/smbFGFpmeFlQgoDccgg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="../../js/user.js"></script>
-    <script src="../../js/alert.js"></script>
-    <script src="../../js/carrito.js"></script>
-    <script src="../../js/coment.js"></script>
-    <script src="../../js/productos.js"></script>
+
 
   </body>
   

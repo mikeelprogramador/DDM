@@ -19,7 +19,7 @@ function alertUrl(iconText, titleText,text,url){
       });
 }
 
-function alertdelet(des,iconText, titleText,text,des){
+function alertdelet(iconText, titleText,text,des){
     Swal.fire({
         icon: iconText,
         title: titleText,
@@ -31,7 +31,7 @@ function alertdelet(des,iconText, titleText,text,des){
       }).then((result) => {
         if(result.isConfirmed){
             if(des == 1 ){
-                eliminar(1)
+                eliminarFotoPerfil(1)
             }
         }
       });

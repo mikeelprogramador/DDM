@@ -68,10 +68,10 @@ function guardarCategoria(){
         success: function(respuesta){
             document.getElementById('mensaje').style.display = 'block';
             if(respuesta === "1"){
-                document.getElementById('mensaje').innerHTML = 'La Categoria se a creado correctamente.';
+                document.getElementById('mensaje').innerHTML = Mensajes.mensajesGlobales(134);
             }
             if(respuesta === "0"){
-                document.getElementById('mensaje').innerHTML = 'La Categoria ya existe.';
+                document.getElementById('mensaje').innerHTML = Mensajes.mensajesGlobales(135);
             }
         },
         error: function(xhr,status,erro){

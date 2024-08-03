@@ -51,39 +51,31 @@
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Ofertas
+            Otras opciones
           </a>
           <ul class="dropdown-menu custom-dropdown">
-            <li><a class="dropdown-item" href="admin.php?seccion=ofertas">Crear Ofertas</a></li>
-            <li><a class="dropdown-item" href="#">Actualizar Ofertas</a></li>
-            <li><a class="dropdown-item" href="#">Eliminar Ofertas</a></li>
-            <li><a class="dropdown-item" href="#">Buscar Ofertas</a></li>
+            <li><a class="dropdown-item" href="admin.php?seccion=ofertas">Ofertas</a></li>
+            <li><a class="dropdown-item" href="#">Categorias</a></li>
           </ul>
         </li>
-        <?php
-
-          if( Usuarios::verificarPerfil(1,$_SESSION['id']) == 0){
-            ?>
+        <?php if( Usuarios::verificarPerfil(1,$_SESSION['id']) == 0): ?>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Administracion
               </a>
               <ul class="dropdown-menu custom-dropdown">
                 <li><a class="dropdown-item" href="admin.php?seccion=seguimiento_usuarios">Seguimiento de Usuarios</a></li>
-                <li><a class="dropdown-item" href="#">Actualizar Ofertas</a></li>
-                <li><a class="dropdown-item" href="#">Eliminar Ofertas</a></li>
-                <li><a class="dropdown-item" href="#">Buscar Ofertas</a></li>
+                <li><a class="dropdown-item" href="">Crear Usuario</a></li>
+                <li><a class="dropdown-item" href="#">Actualizar Usuario</a></li>
               </ul>
             </li>
-            <?php
-          }
-        ?>
+        <?php endif; ?>
 
         <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
         <div class="avatar">
-                  <img src='<?php echo Usuarios::fotoPerfil($_SESSION['id']) ?>' id="foto_avatar">
-              </div>
+          <img src='<?php echo Usuarios::fotoPerfil($_SESSION['id']) ?>' id="foto_avatar">
+        </div>
         <?php echo Usuarios::verificarPerfil(2,$_SESSION['id'])?>
         </a>
         <ul class="dropdown-menu custom-dropdown">
@@ -100,17 +92,12 @@
 
     </div>
   </div>
-  <?php
-    if($seccion == "admin_home" ){
-      ?>
+  <?php if ($seccion == "admin_home"): ?>
       <form class="d-flex" role="search">
         <input class="form-control me-2" id="barra-search" type="search" placeholder="Buscar productos" aria-label="Search" onkeypress="pulsar(event)">
         <button class="btn btn-outline-success " type="button" id="boton"  onclick="buscarProductos(0)">Buscar</button>
       </form>
-      <?php
-    }
-  ?>
-
+  <?php endif; ?>
 </nav>
 
 
@@ -124,13 +111,7 @@
 
 
 
-
-
-  <?php
-
-    include("jscript.php");
-
-  ?>
+  <?php include("jscriptAdmin.php");?>
 
   </body>
 </html>

@@ -92,7 +92,7 @@ if( isset($_GET['men'])){
 <!-- Conexión del script. -->
 <script src="js/contra_registro.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="js/contra.js"></script>
+<script src="js/captcha.js"></script>
 </body>
 </html>
 

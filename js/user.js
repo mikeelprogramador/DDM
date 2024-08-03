@@ -55,10 +55,10 @@ function cambiarDato(des){
     document.getElementById('sub-contenedor').style.display = 'none';
     document.getElementById('cambio').style.display = 'block';
     if(des === 1){
-        document.getElementById('mensajeCorreo').innerHTML = 'A continuacion enviaremos  un correo para recuperar su contraseñe';
+        document.getElementById('mensajeCorreo').innerHTML = Mensajes.mensajesGlobales(136);
     }
     if(des === 2){
-        document.getElementById('mensajeCorreo').innerHTML = 'A continuacion enviaremos un correo para cambiar su correo';
+        document.getElementById('mensajeCorreo').innerHTML = Mensajes.mensajesGlobales(137);
     }
 }
 
@@ -68,67 +68,12 @@ function devolver(){
     
 }
 
-function enviarCorreo(event,des){
-    event.preventDefault();
-    var texto = document.getElementById('dato');
-    var correo = document.getElementById('correo');
-
-    var param  = {
-        'correo': correo.value
-    };
-    if(des === 1){
-        direccion = '../controller/controller_user.php?saveDato';
-    }
-    if(des === 2 ){
-        direccion = 'view/controller/controller_login.php?saveDato';
-    }
-    $.ajax({
-        data: param,
-        url: direccion,
-        datatype: 'texto',
-        method: 'post',
-        beforeSend: function(){
-            texto.innerHTML = "Su correo está siendo enviado......";
-            texto.style.backgroundColor = '#c29349';
-            decoracionTexto(texto);
-        },
-        success: function(respuesta){
-            setTimeout(function() {
-                if(respuesta === "0"){
-                    correo.value = '';
-                    texto.innerHTML = "Su correo fue enviado exitosamente. Verifica su bandeja de entradas o spam.";
-                    texto.style.backgroundColor = '#4CAF50';
-                }
-                
-                if(respuesta === "1" || respuesta === "not exist"){ 
-                    texto.innerHTML = "El correo que ingresaste no se ha podido encontrar. Verifica si está bien escrito.";
-                    texto.style.backgroundColor = '#f44336'; 
-                }
-                
-            }, 5000);
-            
-        },
-        error: function(xhr,status,error){
-            console.log(error);
-        }
-    });
-}
-
-function decoracionTexto(texto){
-    texto.style.color = 'white';
-    texto.style.padding = '10px';
-    texto.style.borderRadius = '5px';
-    texto.style.marginTop = '10px';
-    texto.style.fontSize = '16px';
-    texto.style.fontWeight = 'bold';
-    texto.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.1)';
-}
 
 function eliminarFoto(){
-    alertdelet(null,"question","Eilimar foto","¿Estas seguro de eliminar tu foto?",1);
+    alertdelet(Mensajes.mensajesSeewalert(403),Mensajes.mensajesGlobales(138),Mensajes.mensajesGlobales(139),1);
 }
 
-function eliminar(des){
+function eliminarFotoPerfil(des){
 
     var param = {}
     if(des === 1 ){
@@ -145,11 +90,11 @@ function eliminar(des){
         success: function(respuesta) {
             document.getElementById("imagen_perfil").src = respuesta;
             document.getElementById("foto_avatar").src = respuesta;
-            alert("success","Foto eliminada","Su foto de perfil se a eliminado");
+            alert(Mensajes.mensajesSeewalert(402),Mensajes.mensajesGlobales(141),Mensajes.mensajesGlobales(142));
         },
         error: function(xhr, status, error) {
             console.log(error);
-            alert("Error","opsss.","Algo ha fallado");
+            alert(Mensajes.mensajesSeewalert(401),Mensajes.mensajesGlobales(102),Mensajes.mensajesGlobales(143));
         }
     });
 }

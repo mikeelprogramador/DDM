@@ -10,6 +10,7 @@ include_once("../../class/class_sessiones.php");
 include_once("../../class/class_token.php");
 include_once("../../class/class_correo.php");
 include_once("../../class/class_login.php");
+include_once("../../class/class_historial.php");
 Session::iniciarSessiones();
 if(Session::verificarSesssiones() == 0 ){
     header("location: ../../index.php");
@@ -73,4 +74,13 @@ if(isset($_GET['busquedaGeneral'])){
     $categorias = "";
     if(isset($_GET['cate']))$categorias = $_GET['cate'];
     echo Vista::mostrarProductos(2,$_GET['busquedaGeneral'],$categorias);
+}
+
+if(isset($_GET['vaciarHistorial'])){
+    if(Historial::contarHistorial($_SESSION['id']) > 0){
+        Model::sqlEliminarHistorial(1,$_SESSION['id']);
+        echo 1;
+    }else{
+        echo 0;
+    }
 }
