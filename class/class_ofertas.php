@@ -2,12 +2,13 @@
 
 class Ofertas {
 
-    public static function verOfertas(){
+    public static function verOfertas($des){
         include_once("../../conf/model_vista.php");
         $salida ="";
         $consulta = ModelVista::sqlverOfertas();
         while($fila = $consulta->fetch_array()){
-            $salida .= "<option value='".$fila[1]."'>Oferta</option>";
+            if($des === 1)$salida .= "<option value='".$fila[1]."'>Oferta</option>";
+            if($des === 2)$salida .= "<option value='".$fila[0]."'>".$fila[1]."</option>";
         }
         return $salida;
     }

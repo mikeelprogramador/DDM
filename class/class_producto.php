@@ -13,13 +13,6 @@ class Productos {
         return $salida; 
     }
     
-    public static function eliminarProducto($id){
-        include_once("../../conf/model.php");
-         $salida = 0;
-         $consulta = Model::sqlEliminarProducto($id);
-         if( $consulta )$salida = 1; //si se elimino correctamnete
-         return $salida; 
-     }
     /**
      * Eliminar comentario
      */

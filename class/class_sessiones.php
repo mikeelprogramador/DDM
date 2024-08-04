@@ -17,18 +17,28 @@ class Session{
     public static function sessionRecapchat(){
         if( !isset($_SESSION['stop']))$_SESSION['stop'] = 0;
     }
+
     public static function sessionToken(){
         if(! isset($_SESSION['token'])) $_SESSION['token'] = "";
     }
+
     public static function sessionCodigo(){
         if(! isset($_SESSION['codigo'])) $_SESSION['codigo'] = "";
     }
+
+    public static function EliminarRango(){
+       if(isset($_SESSION['rango'])){
+            unset($_SESSION['rango']);
+        }
+    }
+
     public static function sessionHistorial(){
         if(! isset($_SESSION['historial'])){
             $_SESSION['historial'] = "";
             return 1;
         } unset($_SESSION['codigo_ejecutado']);
     }
+
     public static function eliminarHistorial(){
         if(isset($_SESSION['historial'])){
             unset($_SESSION['historial']);

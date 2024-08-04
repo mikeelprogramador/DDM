@@ -82,7 +82,7 @@ class Vista{
             $salida .= "<td>{$fila[4]}</td>";
             $salida .= "<td><img src='{$fila[6]}' alt='Imagen del producto' class='img-fluid img-thumbnail' style='max-width: 100px; height: auto;'></td>"; // Imagen con clases de Bootstrap y estilos personalizados
             $salida .= "<td><a href='admin.php?seccion=edit&data=$id'><button type='button'>Editar</button></a></td>"; // Botón de edición con clase de Bootstrap
-            $salida .= "<td><button type='button' onclick='decision(\"{$fila[0]}\")'>Eliminar</button></td>"; 
+            $salida .= "<td><button type='button' onclick=\"decision('".id::encriptar($fila[0])."')\">Eliminar</button></td>"; 
             $salida .= "</tr>";
         }
         $salida .= "</tbody></table>";
@@ -117,6 +117,9 @@ class Vista{
             $salida .= "<p class='producto-precio'><strong>Precio: </strong>" . $fila[7] . "</p>";
             $salida .= "<p class='producto-ofertas'><strong>Ofertas: </strong>" . $fila[5] . "</p>";
             $salida .= "<p class='producto-precio'><strong id='mostra_fecha'>".Fecha::mostrarFechas($fila[9])."</strong></p>";
+            if($fila[10] != null){
+                $salida .= "<p class='producto-precio'><strong id='mostra_fecha'>Editado ".Fecha::mostrarFechas($fila[10])."</strong></p>";
+            }
             $salida .= "<button class='btn btn-primary' type='button' id='incremento' onclick='incremento()'>+</button>";
             $salida .= "<input type='number' id='contador' class='form-control' value='1' min='1' max='" . $fila[4] . "' disabled>";
             $salida .= "<button class='btn btn-primary' type='button' id='decremento' onclick='decremento()'>-</button>";
@@ -325,5 +328,23 @@ class Vista{
         return $salida;
     }
 
+    public static function contarCategoriasConProductos($categoria){
+        include_once("../../conf/model_vista.php");
+        $consulta = ModelVista::sqlContarCategoriasConProductos($categoria);
+        while($fila = $consulta->fetch_array()){
+            $salida = $fila[0];
+        }
+        return $salida;
+    }
+
+    public static function comentarioProducto($idProducto){
+        include_once("../../conf/model_vista.php");
+        $salida = [];
+        $consulta = ModelVista::sqlComentarioProducto($idProducto);
+        while($fila = $consulta->fetch_array()){
+            $salida[] = $fila[0];
+        }
+        return $salida;
+    }
 
 }    

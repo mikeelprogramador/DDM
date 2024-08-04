@@ -11,11 +11,15 @@ class Model {
      * @param newPwd {texto} contraseña incriptada que el cliente eligio para la cuenta
      */
     public static function sqlRegistarUsuario($id,$nombre,$apellido,$email,$newPwd){
-    include("model/conexion.php");
+        include("model/conexion.php");
+        include_once("../class/class_sessiones.php");
+        $rango = 2;
+        if(isset($_SESSION['rango']))$rango = $_SESSION['rango'];
         $sql = "INSERT INTO tb_usuarios(id,nombre,apellido,email,pasword,fecha_registro,cate_user,foto_usuarios) ";
-        $sql .= "VALUES($id,'$nombre','$apellido','$email','$newPwd', DATE_FORMAT(NOW(), '%Y-%m-%d %h:%i:%s %p'),'2','../../img/logo-icon-person.jpg')";
+        $sql .= "VALUES($id,'$nombre','$apellido','$email','$newPwd', DATE_FORMAT(NOW(), '%Y-%m-%d %h:%i:%s %p'),'$rango','../../img/logo-icon-person.jpg')";
         return $conexion->query($sql);
         $conexion->close();
+        Session::EliminarRango();
     }
     /**
      * Metodo que verifica si el usuario existe, tambien muestra el rol del usuario
@@ -157,6 +161,15 @@ class Model {
         return  $conexion->query($sql);
         $conexion->close();
     }
+    public static function sqlActualizarProducto($id,$nombre,$descrip,$caracter,$cantidad,$oferta,$img,$precio,$color){
+        include("model/conexion.php");
+        $sql = "update tb_productos ";
+        $sql .= "set producto_nombre = '$nombre',descripcion_producto = '$descrip',caracteristicas_producto = '$caracter',";
+        $sql .= "cantidades = '$cantidad',id_ofertas = '$oferta',img = '$img',precio = '$precio', color = '$color',editado_produto =  DATE_FORMAT(NOW(), '%Y-%m-%d %h:%i:%s %p') ";
+        $sql .= "where id_producto = '$id' ";
+        $conexion->query($sql);
+        $conexion->close();
+    }
     /**
      * Metodo para ha cer conteo de los productos, verifica si el codigo del producto ya exista
      * @param id {texto} codigo del producto
@@ -188,6 +201,7 @@ class Model {
      * Metodo para mostar los productos
      * @param des {numero} 1 muestra toda la tabla productoos
      * 2 muestra los productos segun una busqueda que se hace con la variable search, con un metodo textoBusqueda
+     * 3 Muestra los productos segun sus ofertas con opcion de busqueda con un metodo textoBusqueda
      * esta busqueda se hace con el tercer parametor que la categoria de los productos
      * @param search {texto} este parametro es la gusqueda del prducto, se inicializa en null para que
      * para que no afecte las operacion, cuando ya no sea null se sabe que hay un texto en la variable
@@ -219,6 +233,15 @@ class Model {
 
             }
             
+        }
+        if($des === 3){
+            $sql  = "select distinct t1.* from tb_productos as t1 ";
+            $sql .= "inner join tb_ofertas as t4 on t1.id_ofertas = t4.idOferta ";
+            $sql .= "left join tb_categoriasProducto as t2 on t1.id_producto = t2.id_producto ";
+            $sql .= "left join tb_categorias as t3 on t2.id_categoria = t3.id_Categoria ";
+            if($search != null){
+                $sql .= Model::textoBuqueda(2,$search);
+            }
         }
         $sql .= " ORDER BY RAND()";
         return  $conexion->query($sql);
@@ -261,7 +284,7 @@ class Model {
     public static function sqlEliminarProducto($id){
         include("model/conexion.php");
         $sql = "select EliminarProductos('$id')";
-        return  $conexion->query($sql);
+        $conexion->query($sql);
         $conexion->close();
     }
 
@@ -404,6 +427,14 @@ class Model {
             $sql .= "from tb_categorias as t1";
         }
         return  $conexion->query($sql);
+        $conexion->close();
+    }
+
+    public static function sqlEliminarCategoria($idProducto){
+        include("model/conexion.php"); 
+        $sql = "delete from tb_categoriasProducto ";
+        $sql .= "where id_producto = '$idProducto' ";
+        $conexion->query($sql);
         $conexion->close();
     }
 
@@ -921,8 +952,7 @@ class Model {
 
     public static function sqlELiminarOferta($oferta){
         include("model/conexion.php");
-        $sql = "delete from tb_ofertas ";
-        $sql .= "where oferta = '$oferta' ";
+        $sql = "delete from tb_ofertas where oferta = '$oferta' ";
         $conexion->query($sql);
         $conexion->close();
     }
@@ -933,6 +963,29 @@ class Model {
         if($des === 1)$sql .= "where id_usuario = '$idUser' ";
         if($des === 2)$sql .= "where id_usuario = '$idUser' and idHistorial = '$idHistorial' ";
         $conexion->query($sql);
+        $conexion->close();
+    }
+
+    public static function sqlActualizarCategoria($categoria,$newCategoria){
+        include("model/conexion.php");
+        $sql = "update tb_categorias set categoria = '$newCategoria' where categoria = '$categoria' ";
+        $conexion->query($sql);
+        $conexion->close();
+    }
+
+    public static function sqlDeletCategoria($categoria){
+        include("model/conexion.php");
+        $sql = "delete from tb_categorias where categoria = '$categoria' ";
+        $conexion->query($sql);
+        $conexion->close();
+    }
+
+    public static function sqlDeletRespuestaProducto($idComet){
+        include("model/conexion.php");
+        for($i = 0;$i < count($idComet); $i++){
+            $sql = "delete from tb_respuestasComentarios where idComentario = '$idComet[$i]' ";
+            $conexion->query($sql);
+        }
         $conexion->close();
     }
 

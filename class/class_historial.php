@@ -19,6 +19,7 @@ class Historial{
     public static function verHistorial($id_user){
         include_once("../../conf/model_vista.php");
         include_once("class_fechas.php");
+        include_once("class_encript.php");
         $salida = '<div class="container mt-4">'; 
         $salida .= '<div class="row">';
         $consulta = ModelVista::sqlVerHistorial($id_user);
@@ -34,7 +35,7 @@ class Historial{
                 $salida .= '<p class="card-text">COP $ '.$fila['precio'].'</p>';
                 $salida .= '<p class="card-text">'.$fila['descripcion_producto'].'</p>'; 
                 $salida .= '<p class="card-text" id="mostra_fecha" >'.Fecha::mostrarFechas($fila['fec_ver']).'</p>'; 
-                $salida .= '<button class="btn btn-primary mt-auto">Eliminar</button>';
+                $salida .= "<button class='btn btn-primary mt-auto' onclick=\"deleteHistorial('".id::encriptar($fila['idHistorial'])."')\" >Eliminar</button>";
                 $salida .= '</div>';
                 $salida .= '</div>';
                 $salida .= '</div>';

@@ -95,6 +95,24 @@ class ModelVista{
         return $conexion->query($sql);
         $conexion->close();
     }
+
+    public static function sqlContarCategoriasConProductos($categoria){
+        include("model/conexion.php");
+        $sql = "select count(*) from tb_categorias as t1 ";
+        $sql .= "inner join tb_categoriasProducto as t2 on t1.id_categoria = t2.id_categoria ";
+        $sql .= "where categoria = '$categoria' ";
+        return $conexion->query($sql);
+        $conexion->close();
+    }
+
+    public static function sqlComentarioProducto($idProducto){
+        include("model/conexion.php");
+        $sql = "select id_comentario from tb_comentarios as t1  ";
+        $sql .= "inner join tb_productos as t2 on t1.id_producto = t2.id_producto ";
+        $sql .= "where t1.id_producto = '$idProducto' ";
+        return $conexion->query($sql);
+        $conexion->close();
+    }
  
 
 
