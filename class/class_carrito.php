@@ -83,7 +83,7 @@ class Carrito{
         $consulta = Model::sqlMostrarCarrito($des,$id_user);
         while($fila = $consulta->fetch_array()){
             $valor = Funciones::intDinero($fila[7]);
-            $salida += $valor*floatval($fila[13]);
+            $salida += $valor*floatval($fila[14]);
         }
         return $salida;
     }
