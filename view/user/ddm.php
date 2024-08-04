@@ -28,7 +28,7 @@ if($seccion == "categorias"){
 //decisiones para las barras de busqueda
 if($seccion == "home")$lugar = 1;
 if($seccion == "categorias")$lugar = 2;
-if($seccion == "historial")$lugar = 3;
+if($seccion == "ofertas")$lugar = 3;
 
 if($seccion == "out"){
   Session::destruirSessiones();

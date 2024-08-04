@@ -27,3 +27,26 @@ function vaciarHistorial(){
         }
     });
 }
+
+function deleteHistorial(historial){
+    var param = {
+        'deleteHistorial': historial
+    };
+    $.ajax({
+        data:param,
+        url: '../controller/controller_user.php',
+        datatype: 'html',
+        method: 'post',
+        success: function(resultado){
+            if(resultado === "0"){
+                location.reload(true);
+            }else{
+                document.getElementById('historial-contenedor').innerHTML = resultado;
+            }
+        },
+        error: function(xhr,status,error){
+            console.log(error);
+        }
+    });
+
+}

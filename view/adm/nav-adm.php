@@ -55,7 +55,7 @@
           </a>
           <ul class="dropdown-menu custom-dropdown">
             <li><a class="dropdown-item" href="admin.php?seccion=ofertas">Ofertas</a></li>
-            <li><a class="dropdown-item" href="#">Categorias</a></li>
+            <li><a class="dropdown-item" href="admin.php?seccion=categoria">Categorias</a></li>
           </ul>
         </li>
         <?php if( Usuarios::verificarPerfil(1,$_SESSION['id']) == 0): ?>
@@ -65,8 +65,7 @@
               </a>
               <ul class="dropdown-menu custom-dropdown">
                 <li><a class="dropdown-item" href="admin.php?seccion=seguimiento_usuarios">Seguimiento de Usuarios</a></li>
-                <li><a class="dropdown-item" href="">Crear Usuario</a></li>
-                <li><a class="dropdown-item" href="#">Actualizar Usuario</a></li>
+                <li><a class="dropdown-item" href="admin.php?seccion=create-user">Crear Usuario</a></li>
               </ul>
             </li>
         <?php endif; ?>

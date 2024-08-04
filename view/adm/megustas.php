@@ -1,3 +1,4 @@
+<a href="admin.php?seccion=perfil">Regresar</a>
 <?php
     $megustas = Vista::verMegustasUsuario($_SESSION['id']);
     if($megustas === 0){
@@ -13,4 +14,3 @@
         <?php
     }
 ?>
-<a href="admin.php?seccion=perfil">Regresar</a>

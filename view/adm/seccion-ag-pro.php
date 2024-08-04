@@ -79,7 +79,10 @@
                     
                     <div class="mb-3">
                         <label for="oferta-pro" class="form-label">Ofertas</label>
-                        <input type="text" class="form-control" id="oferta-pro" name="oferta-pro" placeholder="Crea la oferta">
+                        <select class="form-select" name="oferta">
+                            <option disabled selected>Ofertas</option>
+                            <?php echo Ofertas::verOfertas(2); ?>
+                        </select>
                     </div>
 
                     <div class="mb-3">

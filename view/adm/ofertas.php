@@ -14,7 +14,7 @@
                     <label for="offer-name">Nombre de la Oferta</label>
                     <input type="text" class="form-control" id="offer-name" multiple list="list-offer-name" size="64" placeholder="Ingrese el nombre de la oferta" required>
                     <datalist id="list-offer-name" >
-                        <?php echo Ofertas::verOfertas(); ?>
+                        <?php echo Ofertas::verOfertas(1); ?>
                     </datalist>
                 </div><br>
                 <button type="submit" class="btn btn-primary">Crear Oferta</button>
@@ -35,7 +35,7 @@
                     <label for="update-id">Oferta</label>
                     <input type="text" class="form-control" id="update-name" multiple list="list-update-name"  size="64" placeholder="Ingresa el nombre para buscar la oferta" required oninput="buscarCodigo(event)">
                     <datalist id="list-update-name">
-                    <?php echo Ofertas::verOfertas(); ?>
+                    <?php echo Ofertas::verOfertas(1); ?>
                     </datalist>
                 </div><br>
                 <div class="form-group">
@@ -63,7 +63,7 @@
                     <label for="delete-offer">Oferta</label>
                     <input type="text" class="form-control" id="delete-offer" multiple list="list-delete-offer" placeholder="Ingrese la oferta ha eliminar" required>
                     <datalist id="list-delete-offer">
-                        <?php echo Ofertas::verOfertas(); ?>
+                        <?php echo Ofertas::verOfertas(1); ?>
                     </datalist>
                 </div><br>
                 <button type="submit" class="btn btn-danger">Eliminar Oferta</button>

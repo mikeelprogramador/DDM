@@ -76,6 +76,10 @@ if(isset($_GET['busquedaGeneral'])){
     echo Vista::mostrarProductos(2,$_GET['busquedaGeneral'],$categorias);
 }
 
+if(isset($_GET['busquedaOfertas'])){
+    echo Vista::mostrarProductos(3,$_GET['busquedaOfertas']);
+}
+
 if(isset($_GET['vaciarHistorial'])){
     if(Historial::contarHistorial($_SESSION['id']) > 0){
         Model::sqlEliminarHistorial(1,$_SESSION['id']);
@@ -83,4 +87,10 @@ if(isset($_GET['vaciarHistorial'])){
     }else{
         echo 0;
     }
+}
+
+if(isset($_POST['deleteHistorial'])){
+    $idHistoiral = id::desencriptar($_POST['deleteHistorial']);
+    Model::sqlEliminarHistorial(2,$_SESSION['id'],$idHistoiral);
+    echo Historial::verHistorial($_SESSION['id']);
 }

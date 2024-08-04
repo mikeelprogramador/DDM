@@ -90,11 +90,11 @@ function eliminarFotoPerfil(des){
         success: function(respuesta) {
             document.getElementById("imagen_perfil").src = respuesta;
             document.getElementById("foto_avatar").src = respuesta;
-            alert(Mensajes.mensajesSeewalert(402),Mensajes.mensajesGlobales(141),Mensajes.mensajesGlobales(142));
+            alertNormales(Mensajes.mensajesSeewalert(402),Mensajes.mensajesGlobales(141),Mensajes.mensajesGlobales(142));
         },
         error: function(xhr, status, error) {
             console.log(error);
-            alert(Mensajes.mensajesSeewalert(401),Mensajes.mensajesGlobales(102),Mensajes.mensajesGlobales(143));
+            alertNormales(Mensajes.mensajesSeewalert(401),Mensajes.mensajesGlobales(102),Mensajes.mensajesGlobales(143));
         }
     });
 }

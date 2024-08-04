@@ -169,7 +169,7 @@ function cargarRespuesta(idcomentario,lugar){
     var comentario = document.getElementById(lugar).value;
     var mensaje = document.getElementById('textRespuesta'+idcomentario);
     if(comentario === ""){
-        alert(Mensajes.mensajesSeewalert(401),Mensajes.mensajesGlobales(102),Mensajes.mensajesGlobales(113))
+        alertNormales(Mensajes.mensajesSeewalert(401),Mensajes.mensajesGlobales(102),Mensajes.mensajesGlobales(113))
     }else{
         var param = {
             'respuestaCome':'true',

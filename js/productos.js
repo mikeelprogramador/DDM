@@ -25,25 +25,32 @@ function buscarProductos(des,categoria = null){
     if(des === 0){
         Url = '../controller/controller_admin.php';
         ubicacion = 'subContainer';
-        mensaje = Mensajes.mensajesProductos(307);
+        mensaje = Mensajes.mensajesProductos(307,texto);
     }
     if(des === 1 ){
         Url = '../controller/controller_user.php';
         ubicacion = 'homeProductos';
-        mensaje = Mensajes.mensajesProductos(307);
+        mensaje = Mensajes.mensajesProductos(307,texto);
     }
     if(des === 2 ){
         Url = '../controller/controller_user.php?cate='+categoria;
         ubicacion = 'productosCategorias';
-        mensaje = Mensajes.mensajesProductos(308);
+        mensaje = Mensajes.mensajesProductos(308,texto,categoria);
 
     }
-    var param = {
-        'busquedaGeneral': texto,
-        
+    if(des === 3 ){
+        Url = '../controller/controller_user.php';
+        ubicacion = 'ofertas-contenedor';
+        mensaje = Mensajes.mensajesProductos(312,texto);
     }
-    if(categoria != null){
-        
+    if(des === 0 || des === 1 || des === 2){
+        var param = {
+            'busquedaGeneral': texto,
+        };
+    }else{
+        var param = {
+            'busquedaOfertas': texto,
+        };
     }
 
     $.ajax({
@@ -75,7 +82,7 @@ function pulsar(event){
 
 function eliminar(id){;
     var param = {
-        'id': id
+        'deleteProducto': id
     }
 
     $.ajax({

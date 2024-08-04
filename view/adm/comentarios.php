@@ -1,4 +1,4 @@
-<a href="ddm.php?seccion=perfil">Regresar</a>
+<a href="admin.php?seccion=perfil">Regresar</a>
 <!-- <link rel="stylesheet" href="../../css/stylo6.css"> -->
 <?php
     $comentarios =  Comentarios::verComentariosUsuario(1,$_SESSION['id']);

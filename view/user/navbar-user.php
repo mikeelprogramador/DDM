@@ -46,7 +46,7 @@
         </li>
         
         <li class="nav-item">
-          <a class="nav-link" href="#">Ofertas</a>
+          <a class="nav-link" href="ddm.php?seccion=ofertas">Ofertas</a>
         </li>
 
         <li class="nav-item dropdown">
@@ -74,7 +74,7 @@
           </li>
         </ul>
       </div>
-      <?php if($seccion == "home" ||  $seccion == "categorias") :?>
+      <?php if($seccion == "home" ||  $seccion == "categorias" ||  $seccion == "ofertas") :?>
           <form class="d-flex" role="search">
             <input class="form-control me-2" id="barra-search" type="search" placeholder="Buscar productos" aria-label="Search" onkeypress="pulsar(event)">
             <button class="btn btn-outline-success " type="button" id="boton"  onclick="buscarProductos(<?php echo $lugar;?><?php echo ',';?>'<?php if($seccion == 'categorias')echo $categorias; ?>')">Buscar</button>

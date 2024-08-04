@@ -28,3 +28,18 @@ if($seccion == "out"){
 }
 
 if( isset($_GET['menPro']) )echo Funciones::alertas($_GET['menPro'],1);
+
+if(isset($_GET['actualizado'])){
+  ?><script>window.alert(Mensajes.mensajesGlobales(152));</script><?php
+}
+
+if(isset($_GET['correct'])){
+  ?><script>window.alert(Mensajes.mensajesGlobales(153));</script><?php
+}
+
+if(isset($_GET['error'])){
+  ?><script>window.alert(Mensajes.mensajesGlobales(154));</script><?php
+}
+
+
+

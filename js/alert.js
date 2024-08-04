@@ -25,19 +25,19 @@ function alertPro(mensaje){
 
 function alertCarrito(des){
     if(des === "1" ){
-        alert(Mensajes.mensajesSeewalert(402),Mensajes.mensajesGlobales(103),Mensajes.mensajesCarrito(201));
+        alertNormales(Mensajes.mensajesSeewalert(402),Mensajes.mensajesGlobales(103),Mensajes.mensajesCarrito(201));
     }
     if(des === "2" ){
-        alert(Mensajes.mensajesSeewalert(401), Mensajes.mensajesGlobales(101), Mensajes.mensajesCarrito(202));
+        alertNormales(Mensajes.mensajesSeewalert(401), Mensajes.mensajesGlobales(101), Mensajes.mensajesCarrito(202));
     }
     if( des === "3" ){
-        alert(Mensajes.mensajesSeewalert(401), Mensajes.mensajesGlobales(101),Mensajes.mensajesCarrito(203));
+        alertNormales(Mensajes.mensajesSeewalert(401), Mensajes.mensajesGlobales(101),Mensajes.mensajesCarrito(203));
     }
     if( des === "4" ){
-        alert(Mensajes.mensajesSeewalert(401),Mensajes.mensajesGlobales(101),Mensajes.mensajesCarrito(204));
+        alertNormales(Mensajes.mensajesSeewalert(401),Mensajes.mensajesGlobales(101),Mensajes.mensajesCarrito(204));
     }
     if( des === "5" ){
-        alert(Mensajes.mensajesSeewalert(401),Mensajes.mensajesGlobales(101),Mensajes.mensajesCarrito(205));
+        alertNormales(Mensajes.mensajesSeewalert(401),Mensajes.mensajesGlobales(101),Mensajes.mensajesCarrito(205));
     }
 }
 
@@ -58,4 +58,6 @@ function verificacion(mensaje){
     }
 
 }
+
+
 

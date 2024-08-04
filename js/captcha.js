@@ -53,7 +53,7 @@ function generarToken(longitud) {
 function validarFormulario() {
     var terminos = document.getElementById('terminos');
     if (!terminos.checked) {
-        alert(Mensajes.mensajesSeewalert(401),Mensajes.mensajesGlobales(101),Mensajes.mensajesGlobales(110));
+        alertNormales(Mensajes.mensajesSeewalert(401),Mensajes.mensajesGlobales(101),Mensajes.mensajesGlobales(110));
         return false;
     }
     return true;

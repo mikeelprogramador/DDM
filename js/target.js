@@ -53,7 +53,10 @@ function createCategoria(){
     document.getElementById('create-catego').style.display = 'block';
 }
 
-function guardarCategoria(){
+function guardarCategoria(des = null,event = null){
+    if(des === 1){
+        event.preventDefault();
+    }
     var categoria = document.getElementById('text-catego').value;
     var param = {
         'createCategoria':true,
@@ -79,3 +82,68 @@ function guardarCategoria(){
         }
     })
  }
+
+function actualizarCategoria(event){
+    event.preventDefault();
+    var param = {
+        'updateCategoria':'1',
+        'categoria': document.getElementById('update-cate').value,
+        'newCategoria': document.getElementById('update-cate-new').value
+    };
+
+    $.ajax({
+        data:param,
+        url: '../controller/controller_admin.php',
+        datatype: 'texto',
+        method:'post',
+        success: function(respuesta){
+            if(respuesta === "1"){
+                setTimeout(function(){
+                    window.alert(Mensajes.mensajesGlobales(148));
+                },1000);
+            }
+            if(respuesta === "0"){
+                setTimeout(function(){
+                    window.alert(Mensajes.mensajesGlobales(149));
+                },1000);
+            }
+        },
+        error: function(xhr,status,erro){
+            console.log(respuesta);
+        }
+    });
+}
+
+function eliminarCategoria(event){
+    event.preventDefault();
+    var param = {
+        'deleteCategroia':document.getElementById('delete-cate').value
+    };
+
+    $.ajax({
+        data:param,
+        url: '../controller/controller_admin.php',
+        datatype: 'texto',
+        method:'post',
+        success: function(respuesta){
+            if(respuesta === "1"){
+                setTimeout(function(){
+                    window.alert(Mensajes.mensajesGlobales(150));
+                },1000);
+            }
+            if(respuesta === "-1"){
+                setTimeout(function(){
+                    window.alert(Mensajes.mensajesGlobales(151));
+                },1000);
+            }
+            if(respuesta === "0"){
+                setTimeout(function(){
+                    window.alert(Mensajes.mensajesGlobales(149));
+                },1000);
+            }
+        },
+        error: function(xhr,status,erro){
+            console.log(respuesta);
+        }
+    });
+}

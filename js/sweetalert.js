@@ -1,5 +1,5 @@
 
-function alert(iconText,titleText,text){
+function alertNormales(iconText,titleText,text){
     Swal.fire({
         icon: iconText,
         title: titleText,

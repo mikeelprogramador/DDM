@@ -10,3 +10,4 @@
     <script src="../../js/texto.js"></script>
     <script src="../../js/correo.js"></script>
     <script src="../../js/historial.js"></script>
+    <script src="../../js/sweetalert.js"></script>

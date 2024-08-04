@@ -146,6 +146,27 @@ class Mensajes {
         if(des === 147){
             salida = "Tu historial ya esta vacio";
         }
+        if(des === 148){
+            salida = "La categoria se actualiza correctamente.";
+        }
+        if(des === 149){
+            salida = "No existe es categoria";
+        }
+        if(des === 150){
+            salida = "La categoria se elimino correctamnete";
+        }
+        if(des === 151){
+            salida = "No se puede eliminar esta categoria por que contiene productos";
+        }
+        if(des === 152){
+            salida = "El producto se actualizo correctamente";
+        }
+        if(des === 153){
+            salida = "Cuenta creada correctamente";
+        }
+        if(des === 154){
+            salida = "No se puedo crear la cuenta";
+        }
         return salida;
     }
 
@@ -203,12 +224,8 @@ class Mensajes {
         }
         if(des === 311){
             salida = "La imagen no cumple los estandares (formato y/o tamaño)";
-        }
-        if(des === 312){
-            salida = "La imagen no cumple los estandares (formato y/o tamaño)";
-        }
-        if(des === 313){
-            salida = "La imagen no cumple los estandares (formato y/o tamaño)";
+        }if(des === 312){
+            salida = "El porducto "+text+" no Contiene una oferta";
         }
 
         return salida;
