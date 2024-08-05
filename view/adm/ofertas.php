@@ -1,4 +1,4 @@
-
+<link rel="stylesheet" href="../../css/card.css">
 <div class="container mt-5">
     <h1 class="mb-4">Gestión de Ofertas</h1>
 

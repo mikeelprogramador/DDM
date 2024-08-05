@@ -1,6 +1,6 @@
-<!-- <link rel="stylesheet" href="../../css/stylo3.css"> -->
-<h2 class="text-center text-primary">Crear Cuenta</h2>
-<form action="../controller/controller_admin.php?createUsuario" method="post" onsubmit="return validateForm()">
+<link rel="stylesheet" href="../../css/usuario_creado.css">
+<p><h2>Crear cuenta</h2></p>
+<center><form action="../controller/controller_admin.php?createUsuario" method="post" onsubmit="return validateForm()">
     <div class="form-group">
         <label for="nom">Nombre</label>
         <input type="text" class="form-control" id="nom" name="nom" placeholder="Ingrese tu nombre" required>
@@ -33,4 +33,4 @@
     <div id="error" class="error"></div>
     <br>
     <button type="submit" class="btn btn-primary">Crear Cuenta</button>
-</form>
+</form></center>

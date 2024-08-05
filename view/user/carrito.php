@@ -14,10 +14,13 @@
             <?php echo $carrito ?>
         </div>
         <div class="totales">
+            <h3>Total:</h3>
             <div class="dinero" id="dinero">
-                Total:
+                
                 <?php echo Funciones::strDinero(Carrito::dinero(1, $_SESSION['id'])); ?>
+               
             </div>
+            
             <a class="btn-comprar" href="../../descripcion/shopping/compras.php?seccion=ubicacion&http=<?php echo $_SESSION['token']; ?>&estado=compraMax">Comprar todo</a>
         </div>
         <?php

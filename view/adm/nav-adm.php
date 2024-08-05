@@ -22,7 +22,7 @@
 
   <nav class="navbar navbar-expand-lg bg-gris-oscuro custom-navbar" id="nav">
   <div class="container-fluid">
-    <img src="../../img/logo.png" alt="">
+    <img src="../../img/Imagen3.png" alt="">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -112,5 +112,29 @@
 
   <?php include("jscriptAdmin.php");?>
 
+  <footer class="footer">
+    <div class="container_footer text-center">
+      <div class="footer-content">
+        <p>&copy; <?php echo date("Y"); ?> DDM. Empresa de marketing</p>
+        <p>
+          <a href="#" class="text-white footer-link">Términos y condiciones</a>
+        </p>
+      </div>
+      <div class="footer-contact">
+        <p>Contáctanos:</p>
+        <p>
+          <p>Correo: maicolsanchez211@gmail.com</p> <br>
+          <p>Teléfono: +57 3185049904</p> 
+        </p>
+      </div>
+      <div class="footer-contact">
+        <p>Contáctanos:</p>
+        <p>
+          <p>Correo: judacas135@gmail.com</p> <br>
+          <p>Teléfono: +57 3219612850</p> 
+        </p>
+      </div>
+    </div>
+  </footer>
   </body>
 </html>

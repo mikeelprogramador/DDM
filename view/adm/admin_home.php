@@ -1,5 +1,4 @@
-
-<br>
+<link rel="stylesheet" href="../../css/card.css">
   <div class="productos">
     <p class="texto">
     <br>

@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="../../css/card.css">
 <?php
   $productos = Vista::mostrarProductos(2,'',$_GET['cate']);
   if($productos == 0){
