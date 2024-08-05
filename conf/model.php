@@ -990,5 +990,13 @@ class Model {
     }
 
 
+    public static function sqlTotalVentas(){
+        include("model/conexion.php");
+        $sql = "select total_compra from  tb_compras ";
+        return $conexion->query($sql);
+        $conexion->close();
+    }
+
+
 
 }

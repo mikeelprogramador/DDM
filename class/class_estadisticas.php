@@ -27,6 +27,17 @@ class Estadisticas {
       return $salida;
     }
 
+    public static function totalVentas(){
+      include_once("../../conf/model.php");
+      include_once("class_funciones.php");
+      $total = 0;
+      $consulta = Model::sqlTotalVentas();
+      while($fila = $consulta->fetch_array()){
+        $total += Funciones::intDinero($fila[0]);
+      }
+      return "['Ingresos',".$total.", '#b87333'],";
+    }
+
 }
 // ["Prodcutos", 8.94, "#b87333"],
 // ["Silver", 10.49, "silver"],
