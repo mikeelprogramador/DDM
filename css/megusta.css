@@ -1,48 +1,18 @@
-
-
 a {
-    display: inline-block;
-    padding: 10px 20px;
+    text-decoration: none;
+    color: inherit;
+}
+button {
     background-color: #28a745;
     color: white;
-    text-decoration: none;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
     border-radius: 5px;
     transition: background-color 0.3s ease;
+    margin-left: 10px;
+    height: 50px;
 }
-
-p {
-    text-align: center;
-    font-size: 24px;
-    color: #333;
-    margin: 20px 0;
-    font-weight: bold;
-    position: relative;
-}
-
-p::before {
-    content: "";
-    position: absolute;
-    left: 50%;
-    bottom: -10px;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 4px;
-    background-color: #28a745;
-    border-radius: 2px;
-}
-
-p::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    bottom: -20px;
-    transform: translateX(-50%);
-    width: 50px;
-    height: 2px;
-    background-color: #e9ecef;
-    border-radius: 1px;
-}
-
 
 .megustascontainer {
     display: flex;

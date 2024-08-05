@@ -1,43 +1,4 @@
-.user-table {
-  max-width: 100%;
-  width: 100%;
-  margin: 20px auto;
-  padding: 20px;
-  background-color: #f8f9fa;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  overflow-x: auto;
-  }
-  
-.user-table th,
-.user-table td {
-    padding: 12px 15px;
-    border: 1px solid #ddd;
-}
 
-.user-table th {
-    background-color: #f2f2f2;
-    color: #b34f16;
-}
-
-.user-table tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-.user-table tr:hover {
-    background-color: #f1f1f1;
-}
-
-@media (max-width: 768px) {
-    .user-table {
-        padding: 10px;
-        overflow-x: auto; /* Asegura el scroll horizontal en dispositivos móviles */
-    }
-    .user-table th,
-    .user-table td {
-        font-size: 0.9rem;
-    }
-}
 button{
     display: inline-block;
     font-weight: bold;
@@ -58,8 +19,7 @@ a {
 }
 
 .productos{
-    background-color: #DCA650;
-    
+    background: linear-gradient(rgb(209,157,87),rgba(221, 221, 107, 0.822),rgb(209,157,87));
     position:relative;
     width: 100%; 
     

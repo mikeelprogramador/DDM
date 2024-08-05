@@ -8,8 +8,9 @@
     color: aliceblue;
 }
 .body{
-    background-color: white ; 
-    
+    background: linear-gradient(rgb(209,157,87),rgba(221, 221, 107, 0.822),rgb(209,157,87));
+    position:relative;
+    width: 100%; 
 }
 .offer {
     display: none;
