@@ -45,6 +45,8 @@ if(isset($_GET['reset'])){
   <body class="body">
   <div class="form-container">
         <h2>Inicio de Sesión</h2>
+        <img src="img/Imagen3.png" alt="Logo">
+        <hr>
         <form action="view/controller/controller_login.php?log=1" method="post">
           <input type="text" name="email" placeholder="Correo" required>
             <div style="position: relative;">

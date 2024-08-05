@@ -44,7 +44,10 @@ include_once("class/class_sessiones.php");
     if(isset($_GET['recuperarContraseña'])){
     ?>
     <div class="save-passwrd">
+    <img src="img/Imagen3.png" alt="Logo">
+    <hr>
         <p><h4>A continuacion enviaremos un correo para recuperar su contraseñe</h4></p>
+        
         <p class="dato" id="dato"></p>
         <form action="../controller/controller_login.php?saveDato" method="post" onsubmit="enviarCorreo(event,2)">
         <label for="">Por favor digite su Correo</label>

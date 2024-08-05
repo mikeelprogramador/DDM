@@ -33,6 +33,8 @@ if( isset($_GET['men'])){
   <div class="container">
     
     <h1>Términos y Condiciones de Uso</h1>
+    <center><img src="img/Imagen3.png" alt="Logo"></center>
+    <hr>
 
     <p>Última actualización: 8/07/2024</p>
 

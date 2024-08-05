@@ -31,6 +31,8 @@ if( isset($_GET['men']) && $_GET['men'] == "-1error" || isset($_GET['men']) && $
     
   <div class="container">
         <h2 style="color: #9e7a40;">Registro</h2>
+        <center><img src="img/Imagen3.png" alt="Logo"></center>
+        <hr>
         <form action="view/controller/controller_login.php?log=0" method="post" onsubmit="return validateForm()">
             <input type="text" name="nom" placeholder="Ingrese tu nombre" required>
             <input type="text" name="apellido" placeholder="Apellido" required>

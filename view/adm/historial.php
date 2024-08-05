@@ -1,6 +1,7 @@
 <link rel="stylesheet" href="../../css/historial_u.css">
+<br>
 <div class="btn-container">
-    <a href="ddm.php?seccion=perfil"><button>Regresar</button></a>
+    <a href="admin.php?seccion=perfil"><button>Regresar</button></a>
     <button onclick="vaciarHistorial()">Vaciar historial</button>
 </div>
 <br><br>
