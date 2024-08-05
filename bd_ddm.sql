@@ -1,4 +1,4 @@
--- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: bd_ddm
 -- ------------------------------------------------------
@@ -67,7 +67,7 @@ CREATE TABLE `tb_carypro` (
 
 LOCK TABLES `tb_carypro` WRITE;
 /*!40000 ALTER TABLE `tb_carypro` DISABLE KEYS */;
-INSERT INTO `tb_carypro` VALUES (18,4,'1938',1);
+INSERT INTO `tb_carypro` VALUES (18,4,'1938',4);
 /*!40000 ALTER TABLE `tb_carypro` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -185,7 +185,7 @@ CREATE TABLE `tb_compras` (
 
 LOCK TABLES `tb_compras` WRITE;
 /*!40000 ALTER TABLE `tb_compras` DISABLE KEYS */;
-INSERT INTO `tb_compras` VALUES (1,3,'Guaviare','San José del Guaviare',2147483647,'villa andrea','calel 26','2024-07-11 18:40:20','Pepito','pepito@gmail.com',''),(8,3,'Guaviare','San Jose del Guaviare',2147483647,'villa andrea','calel 26','2024-07-11 19:44:05','Pepito','pepito@gmail.com','800000'),(12,3,'Guaviare','San Jose del Guaviare',2147483647,'villa andrea','calel 26','2024-07-27 02:05:12 PM','Pepito','mike@gmail.com','3.220,00'),(13,4,'Guaviare','San Jose del Guaviare',2147483647,'Divino Niño','Calle 18#28-50','2024-07-30 11:40:07 AM','jhon hnery','henryjhon10@gmail.com','75.540,00');
+INSERT INTO `tb_compras` VALUES (1,3,'Guaviare','San José del Guaviare',2147483647,'villa andrea','calel 26','2024-07-11 18:40:20','Pepito','pepito@gmail.com','50.000,00'),(8,3,'Guaviare','San Jose del Guaviare',2147483647,'villa andrea','calel 26','2024-06-11 19:44:05','Pepito','pepito@gmail.com','80.000,00'),(12,3,'Guaviare','San Jose del Guaviare',2147483647,'villa andrea','calel 26','2024-06-27 02:05:12 PM','Pepito','mike@gmail.com','3.220,00'),(13,4,'Guaviare','San Jose del Guaviare',2147483647,'Divino Niño','Calle 18#28-50','2024-05-30 11:40:07 AM','jhon hnery','henryjhon10@gmail.com','75.540,00');
 /*!40000 ALTER TABLE `tb_compras` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -269,7 +269,7 @@ CREATE TABLE `tb_historial` (
 
 LOCK TABLES `tb_historial` WRITE;
 /*!40000 ALTER TABLE `tb_historial` DISABLE KEYS */;
-INSERT INTO `tb_historial` VALUES (25,4,'21','2024-07-30 11:39:16 AM'),(36,2,'1938','2024-07-31 03:17:30 PM'),(60,1,'1938','2024-08-03 11:58:36 PM'),(61,1,'1938','2024-08-04 12:18:22 AM');
+INSERT INTO `tb_historial` VALUES (25,4,'21','2024-07-30 11:39:16 AM'),(36,2,'1938','2024-07-31 03:17:30 PM');
 /*!40000 ALTER TABLE `tb_historial` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -337,7 +337,7 @@ CREATE TABLE `tb_ofertas` (
   `idOferta` int(11) NOT NULL AUTO_INCREMENT,
   `oferta` varchar(150) NOT NULL,
   PRIMARY KEY (`idOferta`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -484,7 +484,7 @@ CREATE TABLE `tb_usuarios` (
 
 LOCK TABLES `tb_usuarios` WRITE;
 /*!40000 ALTER TABLE `tb_usuarios` DISABLE KEYS */;
-INSERT INTO `tb_usuarios` VALUES (1,'Maicol','Sánchez','mike','$2y$12$rntySKkO5pXWOuYXt3ZgyeK/6uFn2TUvdsuk/3ipH4u.cliyu9Q8K','2024-07-11 12:14:50',0,'Activo','../../img_user/planeta-tierra-vista-desde-la-luna_1280x720_xtrafondos.com.jpg'),(2,'Juan','Castañeda','juan','$2y$12$Y36HfLAZPySG/WML6xTXoeG6Dy7L6UYHsF//zWmFhFLbkct.eYtbS','2024-07-11 12:22:28',1,'Inactivo','../../img/logo-icon-person.jpg'),(3,'Pepito','perez','pepito','$2y$12$T6zUm36IoM1EerOJvym.1.YoVkrVPKLtCAFdZKRMkSFQOP5jqHLgO','2024-07-11 16:56:14',2,'Inactivo','../../img_user/perfil.jpg'),(4,'jhon hnery','sanchezerazo','henryjhon10@gmail.com','$2y$12$XqG7WRSr3U1xOgd9NIIK7uJefBQj9ZGe7lqBS4DcK/WJiIRMUiIWm','2024-07-30 11:38:25 AM',2,'Inactivo','../../img_user/perfil.jpg');
+INSERT INTO `tb_usuarios` VALUES (1,'Maicol','Sánchez','mike','$2y$12$rntySKkO5pXWOuYXt3ZgyeK/6uFn2TUvdsuk/3ipH4u.cliyu9Q8K','2024-07-11 12:14:50',0,'Inactivo','../../img_user/planeta-tierra-vista-desde-la-luna_1280x720_xtrafondos.com.jpg'),(2,'Juan','Castañeda','juan','$2y$12$Y36HfLAZPySG/WML6xTXoeG6Dy7L6UYHsF//zWmFhFLbkct.eYtbS','2024-07-11 12:22:28',1,'Inactivo','../../img/logo-icon-person.jpg'),(3,'Pepito','perez','pepito','$2y$12$T6zUm36IoM1EerOJvym.1.YoVkrVPKLtCAFdZKRMkSFQOP5jqHLgO','2024-07-11 16:56:14',2,'Activo','../../img_user/perfil.jpg'),(4,'jhon hnery','sanchezerazo','henryjhon10@gmail.com','$2y$12$XqG7WRSr3U1xOgd9NIIK7uJefBQj9ZGe7lqBS4DcK/WJiIRMUiIWm','2024-07-30 11:38:25 AM',2,'Inactivo','../../img_user/perfil.jpg');
 /*!40000 ALTER TABLE `tb_usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -564,4 +564,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-08-04  1:42:18
+-- Dump completed on 2024-08-05 10:40:36

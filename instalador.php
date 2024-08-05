@@ -13,6 +13,7 @@ if($conexion -> connect_error){
 $base = "bd_ddm";
 $sql_create_bd = "CREATE DATABASE IF NOT EXISTS $base";
 
+
 if($conexion->query($sql_create_bd) == true ){
 
     $ruta_base = 'bd_ddm.sql';
@@ -22,8 +23,16 @@ if($conexion->query($sql_create_bd) == true ){
 
     // Ejecutar múltiples consultas separadas por punto y coma
     if ($conexion2->multi_query($sql)) {
+        
+        do {
+            // Almacena el resultado si es necesario
+            if ($result = $conexion2->store_result()) {
+                $result->free(); // Libera el resultado para la siguiente consulta
+            }
+        } while ($conexion2->more_results() && $conexion2->next_result());
         unlink('instalador.php');
         header("location: index.php");
+        exit();
     } else {
         echo "Error al importar la base de datos: " ;
     }
@@ -32,3 +41,6 @@ if($conexion->query($sql_create_bd) == true ){
 }else{
     echo "Verifca si la base ya existe";
 }
+$conexion->close();
+$conexion2->close();
+
