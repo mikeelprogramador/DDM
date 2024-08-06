@@ -100,3 +100,7 @@ if(isset($_POST['respuestaCome']) && $_POST['respuestaCome'] == 'true' ){
     Model::ResponderComentario($_POST['idComet'],$comentario,$_SESSION['id']);
     echo Comentarios::verRespuestas($_POST['idComet'],$_SESSION['id']);
 }
+ if(isset($_POST['deletRespuesta'])){
+    Model::sqlDeleteRespuesta($_POST['deletRespuesta']);
+    echo 1;
+ }

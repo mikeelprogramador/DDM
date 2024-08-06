@@ -99,6 +99,29 @@ function eliminarFotoPerfil(des){
     });
 }
 
+function deleteCuenta(des){
+    if(des === 1){
+        alertdelet(Mensajes.mensajesSeewalert(404),Mensajes.mensajesGlobales(132),Mensajes.mensajesGlobales(155),2);
+    }
+    if(des === 2){
+        $.ajax({
+            url: '../controller/controller_user.php?deleteCuenta',
+            datatype: 'texto',
+            success: function(respuesta){
+                console.log(respuesta);
+                if(respuesta === "1"){
+                    window.location.replace('../../login.php');
+                }
+            },
+            error: function(xhr,status,error){
+                console.log(error);
+            }
+        });
+    }
+}
+
+
+
 
 
 

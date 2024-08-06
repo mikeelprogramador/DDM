@@ -1,4 +1,4 @@
--- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: bd_ddm
 -- ------------------------------------------------------
@@ -28,7 +28,7 @@ CREATE TABLE `tb_carrito` (
   PRIMARY KEY (`id_carrito`),
   KEY `id_usuario` (`id_usuario`),
   CONSTRAINT `tb_carrito_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `tb_usuarios` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -37,7 +37,7 @@ CREATE TABLE `tb_carrito` (
 
 LOCK TABLES `tb_carrito` WRITE;
 /*!40000 ALTER TABLE `tb_carrito` DISABLE KEYS */;
-INSERT INTO `tb_carrito` VALUES (4,3),(14,4);
+INSERT INTO `tb_carrito` VALUES (4,3);
 /*!40000 ALTER TABLE `tb_carrito` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -58,7 +58,7 @@ CREATE TABLE `tb_carypro` (
   KEY `id_producto` (`id_producto`),
   CONSTRAINT `tb_carypro_ibfk_1` FOREIGN KEY (`id_carrito`) REFERENCES `tb_carrito` (`id_carrito`),
   CONSTRAINT `tb_carypro_ibfk_2` FOREIGN KEY (`id_producto`) REFERENCES `tb_productos` (`id_producto`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -67,7 +67,6 @@ CREATE TABLE `tb_carypro` (
 
 LOCK TABLES `tb_carypro` WRITE;
 /*!40000 ALTER TABLE `tb_carypro` DISABLE KEYS */;
-INSERT INTO `tb_carypro` VALUES (18,4,'1938',4);
 /*!40000 ALTER TABLE `tb_carypro` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -111,7 +110,7 @@ CREATE TABLE `tb_categoriasproducto` (
   KEY `id_categoria` (`id_categoria`),
   CONSTRAINT `tb_categoriasproducto_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `tb_productos` (`id_producto`),
   CONSTRAINT `tb_categoriasproducto_ibfk_2` FOREIGN KEY (`id_categoria`) REFERENCES `tb_categorias` (`id_categoria`)
-) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -120,7 +119,7 @@ CREATE TABLE `tb_categoriasproducto` (
 
 LOCK TABLES `tb_categoriasproducto` WRITE;
 /*!40000 ALTER TABLE `tb_categoriasproducto` DISABLE KEYS */;
-INSERT INTO `tb_categoriasproducto` VALUES (1,'21',1),(26,'21',7),(35,'1938',5),(36,'1938',6),(37,'1938',7);
+INSERT INTO `tb_categoriasproducto` VALUES (45,'1938',6),(46,'1938',7),(47,'21',1),(48,'21',7);
 /*!40000 ALTER TABLE `tb_categoriasproducto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -143,7 +142,7 @@ CREATE TABLE `tb_comentarios` (
   KEY `id_usuario` (`id_usuario`),
   CONSTRAINT `tb_comentarios_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `tb_productos` (`id_producto`),
   CONSTRAINT `tb_comentarios_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `tb_usuarios` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=79 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -152,7 +151,7 @@ CREATE TABLE `tb_comentarios` (
 
 LOCK TABLES `tb_comentarios` WRITE;
 /*!40000 ALTER TABLE `tb_comentarios` DISABLE KEYS */;
-INSERT INTO `tb_comentarios` VALUES (30,'soy un comentario','2024-07-25 08:14:33 AM','21',3,NULL),(58,'soy un comentario','2024-07-25 01:47:40 PM','22',3,NULL),(61,'este producto es genial ','2024-07-25 02:02:31 PM','22',1,NULL),(62,'castañeda es un hp','2024-07-25 02:15:52 PM','21',1,NULL),(64,'Estas siendo vigilado mi querido Castañeda','2024-07-27 05:35:08 PM','22',3,'2024-07-30 10:25:44 AM'),(74,'soy pepito castañeda y soy nieto de sergio ramos','2024-07-28 09:21:40 PM','22',3,'2024-07-30 10:56:53 AM'),(76,'Quien fue el que subió este producto?','2024-07-30 11:47:21 AM','1938',1,'2024-07-31 03:22:55 PM'),(77,'Me parece una ofensa que este producto contenga mi cara >:(','2024-07-31 02:47:55 PM','1938',3,NULL);
+INSERT INTO `tb_comentarios` VALUES (2,'que tal','2024-08-05 09:16:50 PM','21',2,NULL);
 /*!40000 ALTER TABLE `tb_comentarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -176,7 +175,7 @@ CREATE TABLE `tb_compras` (
   `correo` varchar(200) NOT NULL,
   `total_compra` varchar(100) NOT NULL,
   PRIMARY KEY (`id_compra`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -185,7 +184,7 @@ CREATE TABLE `tb_compras` (
 
 LOCK TABLES `tb_compras` WRITE;
 /*!40000 ALTER TABLE `tb_compras` DISABLE KEYS */;
-INSERT INTO `tb_compras` VALUES (1,3,'Guaviare','San José del Guaviare',2147483647,'villa andrea','calel 26','2024-07-11 18:40:20','Pepito','pepito@gmail.com','50.000,00'),(8,3,'Guaviare','San Jose del Guaviare',2147483647,'villa andrea','calel 26','2024-06-11 19:44:05','Pepito','pepito@gmail.com','80.000,00'),(12,3,'Guaviare','San Jose del Guaviare',2147483647,'villa andrea','calel 26','2024-06-27 02:05:12 PM','Pepito','mike@gmail.com','3.220,00'),(13,4,'Guaviare','San Jose del Guaviare',2147483647,'Divino Niño','Calle 18#28-50','2024-05-30 11:40:07 AM','jhon hnery','henryjhon10@gmail.com','75.540,00');
+INSERT INTO `tb_compras` VALUES (1,3,'Guaviare','San José del Guaviare',2147483647,'villa andrea','calel 26','2024-07-11 18:40:20','Pepito','pepito@gmail.com','50.000,00'),(8,3,'Guaviare','San Jose del Guaviare',2147483647,'villa andrea','calel 26','2024-06-11 19:44:05','Pepito','pepito@gmail.com','80.000,00'),(12,3,'Guaviare','San Jose del Guaviare',2147483647,'villa andrea','calel 26','2024-05-27 02:05:12 PM','Pepito','mike@gmail.com','3.220,00'),(13,4,'Guaviare','San Jose del Guaviare',2147483647,'Divino Niño','Calle 18#28-50','2024-07-30 11:40:07 AM','jhon hnery','henryjhon10@gmail.com','75.540,00'),(31,3,'Guaviare','Calamar',2147483647,'villa andrea','calel 26','2024-08-05 10:46:01 PM','pepito','pepito@gmail.com','2.500,00'),(32,3,'Guaviare','Calamar',2147483647,'villa andrea','calel 26','2024-08-05 10:51:48 PM','pepito','pepito@gmail.com','11.900,00');
 /*!40000 ALTER TABLE `tb_compras` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -230,7 +229,7 @@ CREATE TABLE `tb_facturas` (
   PRIMARY KEY (`id_factura`),
   KEY `id_compra` (`id_compra`),
   CONSTRAINT `tb_facturas_ibfk_1` FOREIGN KEY (`id_compra`) REFERENCES `tb_compras` (`id_compra`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -239,7 +238,7 @@ CREATE TABLE `tb_facturas` (
 
 LOCK TABLES `tb_facturas` WRITE;
 /*!40000 ALTER TABLE `tb_facturas` DISABLE KEYS */;
-INSERT INTO `tb_facturas` VALUES (1,1,'1','computadora',1,'1.200.000,00'),(6,8,'121212','GTA VI',4,'0,00'),(7,8,'12','computadora2',4,'200.000,00'),(10,12,'22','cepillo de ropa',1,'3.220,00'),(11,13,'21','silbato',3,'75.540,00');
+INSERT INTO `tb_facturas` VALUES (1,1,'1','computadora',1,'1.200.000,00'),(6,8,'121212','GTA VI',4,'0,00'),(7,8,'12','computadora2',4,'200.000,00'),(10,12,'22','cepillo de ropa',1,'3.220,00'),(11,13,'21','silbato',3,'75.540,00'),(20,31,'1938','cuto',1,'2.500,00'),(21,32,'1938','cuto',2,'5.000,00'),(22,32,'21','silbato',2,'6.900,00');
 /*!40000 ALTER TABLE `tb_facturas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -260,7 +259,7 @@ CREATE TABLE `tb_historial` (
   KEY `id_producto` (`id_producto`),
   CONSTRAINT `tb_historial_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `tb_usuarios` (`id`),
   CONSTRAINT `tb_historial_ibfk_2` FOREIGN KEY (`id_producto`) REFERENCES `tb_productos` (`id_producto`)
-) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -269,7 +268,7 @@ CREATE TABLE `tb_historial` (
 
 LOCK TABLES `tb_historial` WRITE;
 /*!40000 ALTER TABLE `tb_historial` DISABLE KEYS */;
-INSERT INTO `tb_historial` VALUES (25,4,'21','2024-07-30 11:39:16 AM'),(36,2,'1938','2024-07-31 03:17:30 PM');
+INSERT INTO `tb_historial` VALUES (3,2,'21','2024-08-05 09:16:29 PM'),(4,3,'21','2024-08-05 09:24:07 PM'),(15,3,'1938','2024-08-05 10:37:45 PM'),(16,3,'21','2024-08-05 10:37:52 PM'),(17,3,'21','2024-08-05 10:41:48 PM'),(18,3,'1938','2024-08-05 10:41:55 PM'),(19,3,'1938','2024-08-05 10:45:42 PM'),(20,3,'1938','2024-08-05 10:46:19 PM'),(21,3,'1938','2024-08-05 10:46:25 PM'),(22,3,'22','2024-08-05 10:46:30 PM'),(23,3,'21','2024-08-05 10:46:34 PM'),(24,3,'1938','2024-08-05 10:50:47 PM'),(25,3,'21','2024-08-05 10:51:00 PM'),(26,2,'22','2024-08-05 10:53:28 PM'),(27,2,'21','2024-08-05 10:53:42 PM');
 /*!40000 ALTER TABLE `tb_historial` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -286,7 +285,7 @@ CREATE TABLE `tb_historial_productos` (
   `id_producto` varchar(10) NOT NULL,
   `fecha_eli` varchar(150) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -295,7 +294,7 @@ CREATE TABLE `tb_historial_productos` (
 
 LOCK TABLES `tb_historial_productos` WRITE;
 /*!40000 ALTER TABLE `tb_historial_productos` DISABLE KEYS */;
-INSERT INTO `tb_historial_productos` VALUES (1,'Se Creo el producto: silbato','Codigo: 50','2024-07-18 07:33:22 AM'),(2,'Se ilimino el producto: silbato','Codigo: 50','2024-07-18 07:35:01 AM'),(3,'Se Creo el producto: cepillo de ropa','Codigo: 22','2024-07-19 08:13:48 AM'),(4,'Se Creo el producto: cepillo de dientes','Codigo: 25','2024-07-19 09:22:46 AM'),(5,'Se ilimino el producto: cepillo de dientes','Codigo: 25','2024-07-19 09:40:23 AM'),(6,'Se Creo el producto: cepillo de dientes','Codigo: 25','2024-07-19 09:41:12 AM'),(7,'Se ilimino el producto: cepillo de dientes','Codigo: 25','2024-07-19 09:41:26 AM'),(8,'Se Creo el producto: cepillo de dientes','Codigo: 25','2024-07-19 09:41:54 AM'),(9,'Se ilimino el producto: cepillo de dientes','Codigo: 25','2024-07-19 09:42:08 AM'),(10,'Se Creo el producto: cepillo de dientes','Codigo: 25','2024-07-19 09:53:52 AM'),(11,'Se ilimino el producto: cepillo de dientes','Codigo: 25','2024-07-19 09:54:12 AM'),(12,'Se Creo el producto: cuto','Codigo: 19','2024-07-30 11:44:44 AM'),(13,'Se Creo el producto: prubea','Codigo: 23','2024-08-01 10:59:52 AM'),(14,'Se ilimino el producto: silbato','Codigo: 23','2024-08-04 01:02:53 AM');
+INSERT INTO `tb_historial_productos` VALUES (1,'Se Creo el producto: silbato','Codigo: 50','2024-07-18 07:33:22 AM'),(2,'Se ilimino el producto: silbato','Codigo: 50','2024-07-18 07:35:01 AM'),(3,'Se Creo el producto: cepillo de ropa','Codigo: 22','2024-07-19 08:13:48 AM'),(4,'Se Creo el producto: cepillo de dientes','Codigo: 25','2024-07-19 09:22:46 AM'),(5,'Se ilimino el producto: cepillo de dientes','Codigo: 25','2024-07-19 09:40:23 AM'),(6,'Se Creo el producto: cepillo de dientes','Codigo: 25','2024-07-19 09:41:12 AM'),(7,'Se ilimino el producto: cepillo de dientes','Codigo: 25','2024-07-19 09:41:26 AM'),(8,'Se Creo el producto: cepillo de dientes','Codigo: 25','2024-07-19 09:41:54 AM'),(9,'Se ilimino el producto: cepillo de dientes','Codigo: 25','2024-07-19 09:42:08 AM'),(10,'Se Creo el producto: cepillo de dientes','Codigo: 25','2024-07-19 09:53:52 AM'),(11,'Se ilimino el producto: cepillo de dientes','Codigo: 25','2024-07-19 09:54:12 AM'),(12,'Se Creo el producto: cuto','Codigo: 19','2024-07-30 11:44:44 AM'),(13,'Se Creo el producto: prubea','Codigo: 23','2024-08-01 10:59:52 AM'),(14,'Se ilimino el producto: silbato','Codigo: 23','2024-08-04 01:02:53 AM'),(15,'Se Creo el producto: prueba','Codigo: 55','2024-08-05 08:31:56 PM'),(16,'Se ilimino el producto: prueba','Codigo: 55','2024-08-05 08:32:06 PM'),(17,'Se Creo el producto: prueba','Codigo: 55','2024-08-05 08:34:14 PM'),(18,'Se ilimino el producto: prueba','Codigo: 55','2024-08-05 08:34:21 PM'),(19,'Se Creo el producto: prueba','Codigo: 55','2024-08-05 08:35:08 PM'),(20,'Se ilimino el producto: prueba','Codigo: 55','2024-08-05 08:35:30 PM');
 /*!40000 ALTER TABLE `tb_historial_productos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -337,7 +336,7 @@ CREATE TABLE `tb_ofertas` (
   `idOferta` int(11) NOT NULL AUTO_INCREMENT,
   `oferta` varchar(150) NOT NULL,
   PRIMARY KEY (`idOferta`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -379,51 +378,9 @@ CREATE TABLE `tb_productos` (
 
 LOCK TABLES `tb_productos` WRITE;
 /*!40000 ALTER TABLE `tb_productos` DISABLE KEYS */;
-INSERT INTO `tb_productos` VALUES ('1938','cuto','cuto lindo negro bello ,juguete sexual','bonito',7,3,'../../fotos/perfil.jpg','2.500,00','negro pasion','2024-07-30 11:44:44 AM','2024-08-04 01:09:42 AM'),('21','silbato','silbato de profesional','silbato de arbitro profesional',5,0,'../../fotos/descarga.jfif','25.180,00','azul','2024-07-19 08:10:57 AM',NULL),('22','cepillo de ropa','cepillo para lavar la ropa','es un muy buen cepillo ',0,0,'../../fotos/images (1).jfif','3.220,00','verde','2024-07-19 08:13:48 AM',NULL);
+INSERT INTO `tb_productos` VALUES ('1938','cuto','cuto lindo negro bello ,juguete sexual','bonito',8,0,'../../fotos/perfil.jpg','2.500,00','negro pasion','2024-07-30 11:44:44 AM','2024-08-05 10:50:10 PM'),('21','silbato','silbato de profesional','silbato de arbitro profesional',8,8,'../../fotos/descarga.jfif','3.450,00','azul','2024-07-19 08:10:57 AM','2024-08-05 10:50:18 PM'),('22','cepillo de ropa','cepillo para lavar la ropa','es un muy buen cepillo ',0,0,'../../fotos/images (1).jfif','3.220,00','verde','2024-07-19 08:13:48 AM',NULL);
 /*!40000 ALTER TABLE `tb_productos` ENABLE KEYS */;
 UNLOCK TABLES;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 trigger crearProducto
-after insert on 
-tb_productos
-for each row begin 
-	 insert into tb_historial_productos()
-     value(null,concat("Se Creo el producto: ", new.producto_nombre),concat("Codigo: ",new.id_producto),DATE_FORMAT(NOW(), '%Y-%m-%d %h:%i:%s %p'));
-end */;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 trigger eliminarProducto
-after delete on 
-tb_productos
-for each row begin 
-	 insert into tb_historial_productos()
-     value(null,concat("Se ilimino el producto: ", old.producto_nombre),concat("Codigo: ",old.id_producto),DATE_FORMAT(NOW(), '%Y-%m-%d %h:%i:%s %p'));
-end */;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
 -- Table structure for table `tb_respuestascomentarios`
@@ -444,7 +401,7 @@ CREATE TABLE `tb_respuestascomentarios` (
   KEY `idUsuario` (`idUsuario`),
   CONSTRAINT `tb_respuestascomentarios_ibfk_1` FOREIGN KEY (`idComentario`) REFERENCES `tb_comentarios` (`id_comentario`),
   CONSTRAINT `tb_respuestascomentarios_ibfk_2` FOREIGN KEY (`idUsuario`) REFERENCES `tb_usuarios` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -453,7 +410,7 @@ CREATE TABLE `tb_respuestascomentarios` (
 
 LOCK TABLES `tb_respuestascomentarios` WRITE;
 /*!40000 ALTER TABLE `tb_respuestascomentarios` DISABLE KEYS */;
-INSERT INTO `tb_respuestascomentarios` VALUES (1,64,'Esto es una repuesta',3,'2024-07-25 08:14:33 AM',NULL),(4,64,'att figueroa',3,'2024-07-30 11:28:18 AM',NULL),(6,77,'tranquilo, administración esta solucionado el problema. ',1,'2024-07-31 03:10:19 PM',NULL),(7,77,'La solución es que se cambie de rostro mi querido amigo, no es por ofenderlo peor usted es muy feo',2,'2024-07-31 03:18:11 PM',NULL),(8,77,'att mike',1,'2024-07-31 03:29:04 PM',NULL);
+INSERT INTO `tb_respuestascomentarios` VALUES (1,1,'bien y tu ',2,'2024-08-05 09:17:18 PM',NULL);
 /*!40000 ALTER TABLE `tb_respuestascomentarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -465,7 +422,7 @@ DROP TABLE IF EXISTS `tb_usuarios`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tb_usuarios` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(60) NOT NULL,
   `apellido` varchar(60) NOT NULL,
   `email` varchar(260) NOT NULL,
@@ -475,7 +432,7 @@ CREATE TABLE `tb_usuarios` (
   `status_user` varchar(10) DEFAULT NULL,
   `foto_usuarios` varchar(250) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -484,7 +441,7 @@ CREATE TABLE `tb_usuarios` (
 
 LOCK TABLES `tb_usuarios` WRITE;
 /*!40000 ALTER TABLE `tb_usuarios` DISABLE KEYS */;
-INSERT INTO `tb_usuarios` VALUES (1,'Maicol','Sánchez','mike','$2y$12$rntySKkO5pXWOuYXt3ZgyeK/6uFn2TUvdsuk/3ipH4u.cliyu9Q8K','2024-07-11 12:14:50',0,'Inactivo','../../img_user/planeta-tierra-vista-desde-la-luna_1280x720_xtrafondos.com.jpg'),(2,'Juan','Castañeda','juan','$2y$12$Y36HfLAZPySG/WML6xTXoeG6Dy7L6UYHsF//zWmFhFLbkct.eYtbS','2024-07-11 12:22:28',1,'Inactivo','../../img/logo-icon-person.jpg'),(3,'Pepito','perez','pepito','$2y$12$T6zUm36IoM1EerOJvym.1.YoVkrVPKLtCAFdZKRMkSFQOP5jqHLgO','2024-07-11 16:56:14',2,'Activo','../../img_user/perfil.jpg'),(4,'jhon hnery','sanchezerazo','henryjhon10@gmail.com','$2y$12$XqG7WRSr3U1xOgd9NIIK7uJefBQj9ZGe7lqBS4DcK/WJiIRMUiIWm','2024-07-30 11:38:25 AM',2,'Inactivo','../../img_user/perfil.jpg');
+INSERT INTO `tb_usuarios` VALUES (1,'mike','sanchez','mike@gmail.com','$2y$12$mUSwt.wc2rBxRwh5A7MsO.uKtqo3XhTxnYnFXFW01NyZJitdd10h2','2024-08-05 10:09:10 PM',0,'Inactivo','../../img_user/planeta-tierra-vista-desde-la-luna_1280x720_xtrafondos.com.jpg'),(2,'juan','Ramos','juan@gmail.com','$2y$12$NTm7Ax3sNLTS9RsSESRNxu9DR2Fof0OaU3uoZ6uw97.Hs/Dt8F6IC','2024-08-05 10:11:20 PM',1,'Inactivo','../../img_user/perfil.jpg'),(3,'pepito','perez','pepito@gmail.com','$2y$12$wunWT3AaPnKhqKB5ccNLNOqEtXzIra9HtL1K96t4di8VRUK492uTy','2024-08-05 10:11:51 PM',2,'Inactivo','../../img_user/perfil.jpg');
 /*!40000 ALTER TABLE `tb_usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -505,7 +462,7 @@ CREATE TABLE `tb_valoracion` (
   KEY `id_usuario` (`id_usuario`),
   CONSTRAINT `tb_valoracion_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `tb_productos` (`id_producto`),
   CONSTRAINT `tb_valoracion_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `tb_usuarios` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -514,46 +471,9 @@ CREATE TABLE `tb_valoracion` (
 
 LOCK TABLES `tb_valoracion` WRITE;
 /*!40000 ALTER TABLE `tb_valoracion` DISABLE KEYS */;
-INSERT INTO `tb_valoracion` VALUES (2,'21',3,'0'),(5,'21',2,'0'),(13,'21',1,'0'),(15,'22',3,'1');
+INSERT INTO `tb_valoracion` VALUES (1,'1938',3,'0'),(2,'21',3,'0');
 /*!40000 ALTER TABLE `tb_valoracion` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Dumping events for database 'bd_ddm'
---
-
---
--- Dumping routines for database 'bd_ddm'
---
-/*!50003 DROP FUNCTION IF EXISTS `EliminarProductos` */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` FUNCTION `EliminarProductos`(id VARCHAR(10)) RETURNS int(11)
-BEGIN
-    DECLARE id_pro VARCHAR(10);
-    SET id_pro = id;
-
-    DELETE FROM tb_comentarios WHERE id_producto = id_pro;
-    DELETE FROM tb_historial WHERE id_producto = id_pro;
-    DELETE FROM tb_categoriasProducto WHERE id_producto = id_pro;
-    DELETE FROM tb_valoracion WHERE id_producto = id_pro;
-    DELETE FROM tb_carypro WHERE id_producto = id_pro;
-    DELETE FROM tb_productos WHERE id_producto = id_pro;
-
-    RETURN 1;
-END ;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -564,4 +484,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-08-05 10:40:36
+-- Dump completed on 2024-08-05 22:56:09

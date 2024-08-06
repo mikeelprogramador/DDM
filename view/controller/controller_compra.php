@@ -67,10 +67,10 @@ if(isset($_GET['estado']) && $_GET['estado'] == "comprando" && isset($_GET['iden
         $precios =  explode(" ",Compras::datosDeCompra(4,$id_user));//Combirtir en una array para saber cuantos productos hay
 
         if(Compras::produCompra($id_compra,$id_productos,$cantidades,$precios,) == 1){
-            $carrito = Carrito::buscarCarrito($id_user);
-            Model::sqlVaciarCarrito($carrito);
             Model::sqlActualizarCantidadesMAx($id_productos,$cantidades);
             Model::sqlActualizarTotalCompra($id_compra,$id_user);
+            $carrito = Carrito::buscarCarrito($id_user);
+            Model::sqlVaciarCarrito($carrito);
            header("location: ../../view/user/ddm.php");
            exit();
 

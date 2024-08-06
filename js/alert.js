@@ -39,6 +39,9 @@ function alertCarrito(des){
     if( des === "5" ){
         alertNormales(Mensajes.mensajesSeewalert(401),Mensajes.mensajesGlobales(101),Mensajes.mensajesCarrito(205));
     }
+    if( des === "6" ){
+        alertNormales(Mensajes.mensajesSeewalert(401),Mensajes.mensajesGlobales(101),Mensajes.mensajesCarrito(206));
+    }
 }
 
 function verificacion(mensaje){

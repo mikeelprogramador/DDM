@@ -30,7 +30,7 @@ if(isset($_GET['busquedaGeneral'])){
 if(isset($_GET['deleteProducto']) ){
   $id = id::desencriptar($_GET['deleteProducto']);
   $idComet = Vista::comentarioProducto($id);
-  if($idComet[0] != 0){
+  if(!empty($idComet)){
     Model::sqlDeletRespuestaProducto($idComet);
   }
   Model::sqlEliminarProducto($id);

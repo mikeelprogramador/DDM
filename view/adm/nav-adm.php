@@ -45,8 +45,8 @@
           </a>
           <ul class="dropdown-menu custom-dropdown">
             <li><a class="dropdown-item" href="admin.php?estadisticas=ventas&seccion=estadisticas">Estadisticas de Ventas</a></li>
-            <li><a class="dropdown-item" href="admin.php?estadisticas=satisfaccion&seccion=estadisticas">Satisfaccion</a></li>
-            <li><a class="dropdown-item" href="admin.php?estadisticas=ingresos&seccion=estadisticas">Ingresos</a></li>
+            <li><a class="dropdown-item" href="admin.php?estadisticas=ingresosMes&seccion=estadisticas">Ingresos Mes</a></li>
+            <li><a class="dropdown-item" href="admin.php?estadisticas=ingresosTotales&seccion=estadisticas">Ingresos Totales</a></li>
           </ul>
         </li>
         <li class="nav-item dropdown">

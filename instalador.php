@@ -23,13 +23,6 @@ if($conexion->query($sql_create_bd) == true ){
 
     // Ejecutar múltiples consultas separadas por punto y coma
     if ($conexion2->multi_query($sql)) {
-        
-        do {
-            // Almacena el resultado si es necesario
-            if ($result = $conexion2->store_result()) {
-                $result->free(); // Libera el resultado para la siguiente consulta
-            }
-        } while ($conexion2->more_results() && $conexion2->next_result());
         unlink('instalador.php');
         header("location: index.php");
         exit();

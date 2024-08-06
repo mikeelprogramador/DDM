@@ -33,6 +33,9 @@ function alertdelet(iconText, titleText,text,des){
             if(des == 1 ){
                 eliminarFotoPerfil(1)
             }
+            if(des === 2){
+                deleteCuenta(2);
+            }
         }
       });
 }

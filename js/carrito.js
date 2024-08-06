@@ -78,8 +78,13 @@ function eliminarDelCarrito(id){
         datatype: 'html',
         method: 'get',
         success: function(respuesta){
+            console.log(respuesta);
             actualizarDinero();
-            document.getElementById('carrito').innerHTML = respuesta;
+            if(respuesta === "0"){
+                location.reload(true);
+            }else{
+                document.getElementById('carrito').innerHTML = respuesta;
+            }
         },
         error: function(xhr,status,error){
             console.log(error);

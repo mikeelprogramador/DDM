@@ -4,6 +4,7 @@ include_once("../../class/class_carrito.php");
 include_once("../../class/class_encript.php");
 include_once("../../class/class_sessiones.php");
 include_once("../../class/class_user.php");
+include_once("../../class/class_funciones.php");
 include_once("../../class/class_historial.php");
 include_once("../../class/class_compra.php");
 include_once("../../class/class_comentarios.php");
@@ -23,6 +24,10 @@ if( isset( $_GET[ 'seccion' ] )) $seccion = $_GET[ 'seccion' ];
 
 if($seccion == "categorias"){
   if(isset($_GET['cate']))$categorias = $_GET['cate'];
+}
+
+if(isset($_GET['error'])){
+  if($_GET['error'] === "direccion")echo Funciones::alertas(6,3);
 }
 
 //decisiones para las barras de busqueda

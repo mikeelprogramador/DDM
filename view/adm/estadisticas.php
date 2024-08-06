@@ -30,13 +30,10 @@
   </script>
 <?php endif ?>
 
-<!-- Satisfaaccion de lso clientes -->
-<?php if(isset($_GET['estadisticas']) && $_GET['estadisticas'] === "satisfaccion"):?>
-<?php endif ?>
-
 
 <!-- Ingresos totales -->
-<?php if(isset($_GET['estadisticas']) && $_GET['estadisticas'] === "ingresos"):?>
+<?php if(isset($_GET['estadisticas']) && $_GET['estadisticas'] === "ingresosTotales"):?>
+<div class="contenedor-ingresosTomales">
   <script type="text/javascript">
     google.charts.load("current", {packages:['corechart']});
     google.charts.setOnLoadCallback(drawChart);
@@ -65,6 +62,45 @@
       chart.draw(view, options);
     }
   </script>
+</div>
+
+<?php endif ?>
+
+
+
+<!-- Ingresos Mes -->
+<?php if(isset($_GET['estadisticas']) && $_GET['estadisticas'] === "ingresosMes"):?>
+
+<div class="contenedor-ingresos-por-meses">
+<script type="text/javascript">
+    google.charts.load("current", {packages:['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+      var data = google.visualization.arrayToDataTable([
+        ["Element", "Compras por mes", { role: "style" } ],
+        <?php echo Estadisticas::ventasPormeses(2024);?>
+      ]);
+
+      var view = new google.visualization.DataView(data);
+      view.setColumns([0, 1,
+      { calc: "stringify",
+        sourceColumn: 1,
+        type: "string",
+        role: "annotation" },
+      2]);
+
+      var options = {
+        title: "ingresos por mes",
+        width: 600,
+        height: 400,
+        bar: {groupWidth: "95%"},
+        legend: { position: "none" },
+      };
+      var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
+      chart.draw(view, options);
+    }
+  </script>
+</div>
 <?php endif ?>
 
 

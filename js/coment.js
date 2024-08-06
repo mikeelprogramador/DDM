@@ -185,13 +185,13 @@ function cargarRespuesta(idcomentario,lugar){
                 mensaje.innerHTML = Mensajes.mensajesGlobales(114);
             },
             success: function(respuesta){
-                console.log(respuesta);
                 setTimeout(function(){
                     mensaje.innerHTML = Mensajes.mensajesGlobales(115);
                 },3000)
                 setTimeout(function(){
                     mensaje.innerHTML = Mensajes.mensajesGlobales(0);
                     document.getElementById('RespuestasComentario'+idcomentario).innerHTML = respuesta;
+                    location.reload(true);
                 },5000)
             }
         });
@@ -243,6 +243,26 @@ function actualizarComentario(lugar,texto,idPro,idComet){
             }
         });
     }
+}
+
+function eliminarRespuesta(respuesta){
+    var param = {
+        'deletRespuesta':respuesta
+    }
+    $.ajax({
+        data: param,
+        url: '../../view/controller/controller_producto.php',
+        datatype: 'html',
+        method: 'post',
+        success: function(respuesta){
+            if(respuesta === "1"){
+                location.reload(true);
+            }
+        },
+        error: function(xhr,status,error){
+            console.log(error);
+        }
+    })
 }
 
 

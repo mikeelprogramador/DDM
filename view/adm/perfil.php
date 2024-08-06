@@ -33,8 +33,12 @@
       Eliminar foto
     </div>
   <!-- contenedor 4 -->
-  <div onmouseenter='cambiarMouse(this)'>
-      Eliminar Cuenta
+  <div class="option" onclick="DatosUsuario()">
+    Cambiar datos
+  </div>
+  <!-- contenedor 5 -->
+  <div class="option" onclick="deleteCuenta(1);">
+    Eliminar Cuenta
   </div>
 
 </div>

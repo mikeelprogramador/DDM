@@ -33,7 +33,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="cantidades" class="form-label">Cantidades</label>
-                            <input type="number" class="form-control" id="cantidades" name="cantidad_pro" value="<?php echo (Productos::detallesDelProducto(4, id::desencriptar($_GET['data']))); ?>">
+                            <input type="number" class="form-control" id="cantidades" name="cantidad_pro" min=1 value="<?php echo (Productos::detallesDelProducto(4, id::desencriptar($_GET['data']))); ?>">
                         </div>
                         <div class="mb-3">
                             <label for="cantidades" class="form-label">Categorias</label>

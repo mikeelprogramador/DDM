@@ -37,8 +37,35 @@ BEGIN
 END;
 // DELIMITER ;
 
+SET FOREIGN_KEY_CHECKS = 0;
 
-select ( select MONTH(fecha_de_compra)) as meses ,total_compra,fecha_de_compra from  tb_compras
-WHERE MONTH(fecha_de_compra) = 1 or MONTH(fecha_de_compra) = 2 or MONTH(fecha_de_compra) = 3 or
-MONTH(fecha_de_compra) = 4 or MONTH(fecha_de_compra) = 5 or MONTH(fecha_de_compra) = 6 or MONTH(fecha_de_compra) = 7 or MONTH(fecha_de_compra) = 8 or
-MONTH(fecha_de_compra) = 9 or MONTH(fecha_de_compra) = 10 or MONTH(fecha_de_compra) = 11 or MONTH(fecha_de_compra) = 12 ;
+Aviso importante 
+//Cuidado no copiar en reparo
+DELIMITER //
+
+CREATE FUNCTION EliminarUsuario(id int) RETURNS INT
+BEGIN
+    DECLARE id_user int;
+    SET id_user = id;
+
+    -- Eliminar registros en tablas dependientes en el orden correcto
+    delete from tb_comentarios where id_usuario = id_user;
+    delete from  tb_respuestascomentarios where idUsuario = id_user;
+    delete from  tb_carrito where id_usuario = id_user;
+    delete from  tb_historial where id_usuario = id_user;
+    delete from  tb_valoracion where id_usuario = id_user;
+
+    -- Finalmente, eliminar el usuario
+    RETURN 1;
+END;
+//
+DELIMITER ;
+	
+drop function EliminarUsuario;
+select EliminarUsuario(1);
+select * from tb_usuarios;
+
+select EliminarProductos('55');
+
+
+set sql_safe_updates = 0;

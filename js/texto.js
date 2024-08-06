@@ -166,6 +166,8 @@ class Mensajes {
         }
         if(des === 154){
             salida = "No se puedo crear la cuenta";
+        }if(des === 155){
+            salida = "Estas seguro de eliminar esta cuenta?";
         }
         return salida;
     }
@@ -187,6 +189,10 @@ class Mensajes {
         if(des === 205){
             salida = "No puedes comprar con esta cuenta";
         }
+        if(des === 206){
+            salida = "No se encontro una direccion";
+        }
+        
         return salida;
     }
 
