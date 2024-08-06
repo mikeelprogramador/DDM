@@ -8,7 +8,7 @@ include_once('../../class/class_token.php');
 include_once('../../class/class_correo.php');
 include_once('../../conf/model.php');
 Session::iniciarSessiones();
-
+ //Inico de sesio de usuario
 if( isset($_GET['log']) && $_GET['log'] == 1){
     $email = Funciones::vacunaXxs($_POST['email']);
     $password = Funciones::vacunaXxs($_POST['clave']);
@@ -37,7 +37,7 @@ if( isset($_GET['log']) && $_GET['log'] == 1){
     }
 
 }
-
+//Registro de usuario
 if( isset($_GET['log']) && $_GET['log'] == 0){
 
     $email = Funciones::vacunaXxs($_POST['email']);

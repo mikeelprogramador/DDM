@@ -6,7 +6,9 @@ Session::iniciarSessiones();
 if( isset($_GET['men']) && $_GET['men'] == "-1error" || isset($_GET['men']) && $_GET['men'] == "-1error"  ){
   echo Funciones::alertas($_GET['men'],2);
 }
-?>
+if(isset($_GET['terminos'])):?>
+<script>window.alert("Acepta los terminos y condiciones")</script>
+<?php endif; ?>
 
 <!doctype html>
 <html lang="en">
@@ -33,7 +35,7 @@ if( isset($_GET['men']) && $_GET['men'] == "-1error" || isset($_GET['men']) && $
         <h2 style="color: #9e7a40;">Registro</h2>
         <center><img src="img/Imagen3.png" alt="Logo"></center>
         <hr>
-        <form action="view/controller/controller_login.php?log=0" method="post" onsubmit="return validateForm()">
+        <form action="view/controller/controller_login.php?log=0" method="post" onsubmit="validateForm(event)">
             <input type="text" name="nom" placeholder="Ingrese tu nombre" required>
             <input type="text" name="apellido" placeholder="Apellido" required>
             <input type="text" name="email" placeholder="Correo" required>
@@ -51,7 +53,7 @@ if( isset($_GET['men']) && $_GET['men'] == "-1error" || isset($_GET['men']) && $
         <center><p>¿Ya te has registrado?
           Inicia sesión por favor
         </p></center>
-        <a href="terminos.php" style="color: #9e7a40; text-decoration: none;"><input type="checkbox"> Terminos y condiciones</a>
+        <a href="terminos.php" style="color: #9e7a40; text-decoration: none;"><input type="checkbox" id="terminos"> Terminos y condiciones</a>
         <a href="login.php" style="color: #9e7a40; text-decoration: none;">Iniciar sesión</a>
     </div>
     

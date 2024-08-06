@@ -16,6 +16,7 @@ if($_SESSION['stop'] > 2){
 if(isset($_GET['reset'])){
   $_SESSION['stop'] = 0;
   header("location: index.php");
+  exit();
 }
  
 

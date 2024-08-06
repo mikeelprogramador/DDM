@@ -21,8 +21,7 @@
             <button> <a href="admin.php?seccion=admin_home">Volver</a> </button>
         </div>
     </div>
-   
-    <script src="../../js/your-script.js"></script>
+
 </body>
 </html>
   

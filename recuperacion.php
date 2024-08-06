@@ -71,5 +71,6 @@ include_once("class/class_sessiones.php");
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
 <script src="js/user.js"></script>
 <script src="js/correo.js"></script>
+<script src="js/texto.js"></script>
 </body>
 </html>

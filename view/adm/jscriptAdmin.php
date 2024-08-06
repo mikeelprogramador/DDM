@@ -11,3 +11,4 @@
     <script src="../../js/correo.js"></script>
     <script src="../../js/historial.js"></script>
     <script src="../../js/sweetalert.js"></script>
+    <script src="../../js/adm.js"></script>

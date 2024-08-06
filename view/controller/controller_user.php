@@ -96,8 +96,15 @@ if(isset($_POST['deleteHistorial'])){
 }
 
 if(isset($_GET['deleteCuenta'])){
-    Model::sqlEliminarDatosUsuario($_SESSION['id']);
-    Model::sqlelimiarUsuario($_SESSION['id']);
-    Session::destruirSessiones();
-    echo 1;
+    $id_user = $_SESSION['id'];
+    $carrito = Carrito::buscarCarrito($id_user);
+    Model::sqlVaciarCarrito($carrito);
+    Model::sqlelimiarUsuario(1,$id_user);
+    Model::sqlelimiarUsuario(2,$id_user);
+    Model::sqlelimiarUsuario(3,$id_user);
+    Model::sqlelimiarUsuario(4,$id_user);
+    Model::sqlelimiarUsuario(5,$id_user);
+    Model::sqlelimiarUsuario(6,$id_user);
+    echo Session::destruirSessiones(1);
+    
 }
