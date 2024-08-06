@@ -86,8 +86,7 @@ class Comentarios {
             $salida .= "<p class='comentario'>". $fila[2]."</p><br>";
             $salida .= "<div class='button-container'>"; 
             if ($fila[4] == $id_user) {
-                $salida .= "<button>Editar</button>";
-                $salida .= "<button onclick='eliminarComentario(\"$fila[5]\")'>Eliminar</button>";
+                $salida .= "<button onclick=\"eliminarRespuesta(".$fila[5].")\">Eliminar</button>";
             }
             $salida .= "</div>";//cierre de la button-container
             $salida .= "</div>";

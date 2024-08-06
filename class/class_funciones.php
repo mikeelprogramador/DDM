@@ -24,7 +24,7 @@ class Funciones{
     }
 
 
-    public static function alertas($mensaje,$alerta,$id = null){
+    public static function alertas($mensaje,$alerta){
       include_once("class_producto.php");
       if($alerta == 1)$function = "alertPro";
       if($alerta == 2)$function = "verificacion";

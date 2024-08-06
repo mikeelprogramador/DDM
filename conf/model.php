@@ -10,13 +10,13 @@ class Model {
      * @param email {tetxo} correo  que el cliente elige para la cuenta.
      * @param newPwd {texto} contraseña incriptada que el cliente eligio para la cuenta
      */
-    public static function sqlRegistarUsuario($id,$nombre,$apellido,$email,$newPwd){
+    public static function sqlRegistarUsuario($nombre,$apellido,$email,$newPwd){
         include("model/conexion.php");
         include_once("../class/class_sessiones.php");
         $rango = 2;
         if(isset($_SESSION['rango']))$rango = $_SESSION['rango'];
-        $sql = "INSERT INTO tb_usuarios(id,nombre,apellido,email,pasword,fecha_registro,cate_user,foto_usuarios) ";
-        $sql .= "VALUES($id,'$nombre','$apellido','$email','$newPwd', DATE_FORMAT(NOW(), '%Y-%m-%d %h:%i:%s %p'),'$rango','../../img/logo-icon-person.jpg')";
+        $sql = "INSERT INTO tb_usuarios(nombre,apellido,email,pasword,fecha_registro,cate_user,foto_usuarios) ";
+        $sql .= "VALUES('$nombre','$apellido','$email','$newPwd', DATE_FORMAT(NOW(), '%Y-%m-%d %h:%i:%s %p'),'$rango','../../img/logo-icon-person.jpg')";
         return $conexion->query($sql);
         $conexion->close();
         Session::EliminarRango();
@@ -665,8 +665,8 @@ class Model {
     public static function sqlCountCompras(){
         include("model/conexion.php");
         $sql = "select id_compra  from tb_compras order by id_compra desc limit 1;";
-         return  $conexion->query($sql);
-         $conexion->close();
+        return  $conexion->query($sql);
+        $conexion->close();
     }
 
     /**
@@ -692,8 +692,8 @@ class Model {
      */
     public static function sqlProduCompra($id_compra,$id_pro,$cantidad,$precio){
         include("model/conexion.php");
-        include_once("../class/class_funciones");
-        include_once("../class/class_productophp");
+        include_once("../../class/class_funciones.php");
+        include_once("../../class/class_producto.php");
         $sql = "INSERT INTO tb_facturas(id_compra,id_producto,producto,cantidades,sub_valor)values";
         $limite = count($id_pro)-1;
         for($i = 0;$i <$limite; $i ++){
@@ -783,7 +783,7 @@ class Model {
      * mejorar sintaxis
      */
     public static function sqlActualizarCantidadesMax($id_pro,$cantidad){
-         include("model/conexion.php");
+        include("model/conexion.php");
         $limite = count($id_pro)-1;
         for($i = 0;$i <$limite; $i ++){
             $can = intval($cantidad[$i]);
@@ -792,8 +792,8 @@ class Model {
             $sql .="set cantidades = cantidades - '$can' ";
             $sql .="where id_producto = '$pro'";
             $conexion->query($sql);
-            $conexion->close();
         }
+        $conexion->close();
     }
 
     /**
@@ -994,6 +994,25 @@ class Model {
         include("model/conexion.php");
         $sql = "select total_compra from  tb_compras ";
         return $conexion->query($sql);
+        $conexion->close();
+    }
+
+    public static function sqlDeleteRespuesta($idRespuesta){
+        include("model/conexion.php");
+        $sql = "delete from tb_respuestascomentarios where idRespuesta = '$idRespuesta' ";
+        $conexion->query($sql);
+        $conexion->close();
+    }
+    public static function sqlEliminarDatosUsuario($idUser){
+        include("model/conexion.php");
+        $sql = "select EliminarUsuario('$idUser') ";
+        $conexion->query($sql);
+        $conexion->close();
+    }
+    public static function sqlelimiarUsuario($idUser){
+        include("model/conexion.php");
+        $sql = " delete from tb_usuarios where id = '$idUser' ";
+        $conexion->query($sql);
         $conexion->close();
     }
 
