@@ -57,13 +57,17 @@ class Session{
     /**
      * Metodo para eliminar las sessiones
      */
-    public static function destruirSessiones(){
+    public static function destruirSessiones($des = null){
         include_once("class_user.php");
         Usuarios::actualizarEstadoUser(2, $_SESSION['id']);
         session_destroy();
         setcookie(session_name(), "", time() - 3600, "/");
-        header("location: ../../index.php");
-        exit();
+        if($des === 1){
+            return "../../index.php";
+        }else{
+            header("location: ../../index.php");
+            exit();
+        }
     }
 
 }

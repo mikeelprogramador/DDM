@@ -253,6 +253,7 @@ class Vista{
 
     public static function verUsuarios() {
         include_once("../../conf/model.php");
+        include_once("class_encript.php");
         $consulta = Model::sqlCraerIdUsuario(2);
         $salida = '<div class="table-responsive">';
         $salida .= '<table class="user-table">';
@@ -263,11 +264,13 @@ class Vista{
         $salida .= '<th>Fecha de Registro</th>';
         $salida .= '<th>Rol</th>';
         $salida .= '<th>Extra</th>';
+        $salida .= '<th>Editar</th>';
         $salida .= '</tr>';
         $salida .= '</thead>';
         $salida .= '<tbody>';
     
         while($fila = $consulta->fetch_array()) {
+            $id = id::encriptar($fila[0]);
             $salida .= '<tr>'; 
             $salida .= '<td>' . htmlspecialchars($fila[1]) . ' ' . htmlspecialchars($fila[2]) . '</td>';
             $salida .= '<td>' . htmlspecialchars($fila[3]) . '</td>';
@@ -278,6 +281,7 @@ class Vista{
             if($fila[6] == 2) $salida .= 'Cliente';
             $salida .= '</td>';
             $salida .= '<td>' . htmlspecialchars($fila[7]) . '</td>';
+            $salida .= "<td><input type=button value='Editar Rol' onclick=\"editarRol('".$id."')\"> </td>";
             $salida .= '</tr>';
         }
     

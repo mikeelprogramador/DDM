@@ -123,6 +123,8 @@ class ModelVista{
         return $conexion->query($sql);
         $conexion->close();
     }
+
+
  
 
 

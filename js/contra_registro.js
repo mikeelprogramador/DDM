@@ -17,11 +17,17 @@ document.getElementById('toggle-password').addEventListener('click', function ()
     this.src = type === 'password' ? 'img/ojo1.png' : 'img/ojo2.png';
   });
   
-  function validateForm() {
+  function validateForm(event) {
     var password = document.getElementById("clave").value;
     var confirmPassword = document.getElementById("confirm_clave").value;
     var error = document.getElementById("error");
   
+    var terminos = document.getElementById('terminos');
+    if(!terminos.checked){
+      event.preventDefault();
+      window.location.replace('check-in.php?terminos')
+    }
+
     if (password !== confirmPassword) {
         error.textContent = "Las contraseñas no coinciden.";
         return false;

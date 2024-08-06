@@ -7,6 +7,7 @@ $id = id::desencriptar($_GET['code']);
 $can = Vista::factura(9,$_SESSION['id'],$id,'total');
 $total =Vista::factura(12,$_SESSION['id'],$id,'total');
 
+ob_start();
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -32,7 +33,8 @@ $total =Vista::factura(12,$_SESSION['id'],$id,'total');
                 <!-- Fila #1 -->
                 <div class="row">
                     <!-- Columna #1 -->
-                    <div class="col-md"><img src="../img/logo.png" alt="" height="120px"></div>
+                    <!-- <div class="col-md"><img src="../img/imagen3.png" alt="" height="120px"></div> -->
+                    <div class="col-md"><img src="http.//localhost/DDM/img/imagen3.png" alt="" height="120px"></div>
                     <!-- Columna #2 -->
                     <div class="col-md">
                         <ul>
@@ -116,17 +118,11 @@ $total =Vista::factura(12,$_SESSION['id'],$id,'total');
                     <div class="row"><b>R.U.T: 58.898.88</b></div>
                     <div class="row"><b>Fecha: <?php echo Vista::factura(2,$_SESSION['id'],$id); ?></b></div>
                     <div class="row"><b>Recinto: San José del Guaviare</b></div>
-                    <input class="firmar" type="text"><br>
-                    <b>FIRMA</b>
                     <hr>
                     <br>
                 </div>
                 <br><br>
-            </div>
-            <a href="../view/user/ddm.php?seccion=compras">
-                <input class="button" type="button" value="Regresar">
-            </a>
-            
+            </div>         
         </center>
         <br>
     </div>
@@ -136,3 +132,38 @@ $total =Vista::factura(12,$_SESSION['id'],$id,'total');
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
+<?php
+$facturaHTML = ob_get_clean();
+echo $facturaHTML;
+
+// require_once('../tcpdf/tcpdf.php'); // Ajusta la ruta según tu instalación
+
+// // Crear una nueva instancia de TCPDF
+// $pdf = new TCPDF();
+
+// // Establecer información del documento
+// $pdf->SetCreator(PDF_CREATOR);
+// $pdf->SetAuthor('Tu Nombre');
+// $pdf->SetTitle('Título del PDF');
+// $pdf->SetSubject('Asunto del PDF');
+// $pdf->SetKeywords('TCPDF, PDF, example, test, guide');
+
+// // Establecer el margen
+// $pdf->SetMargins(15, 15, 15);
+
+// // Añadir una página
+// $pdf->AddPage();
+
+// // Contenido HTML
+// $html = '
+// <h1>Hola Mundo</h1>
+// <p>Este es un ejemplo de cómo convertir HTML a PDF usando TCPDF en PHP.</p>
+// ';
+
+// // Imprimir texto con HTML
+// $pdf->writeHTML($html, true, false, true, false, '');
+
+// // Cerrar y guardar el PDF en el servidor
+// $pdf->Output('documento.pdf', 'I'); // 'I' para visualizar en navegador, 'D' para descargar, 'F' para guardar en servidor
+?>
+

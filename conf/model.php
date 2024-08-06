@@ -34,7 +34,10 @@ class Model {
     }
     /**
      * Metodo para buscar o contra los usuarios
-     * @param des {number} decisiones para el sql 1:realiza un conteo 2:busca el usuario por el correo 3: busca a la persona por el ahi.
+     * @param des {number} decisiones para el sql 1:realiza un conteo 
+     * 2:busca el usuario por el correo 
+     * 3: busca a la persona por el ahi.
+     * 4 busca la actividad del usuario si esta activo o inactivo
      * @param valor {texto}  es el dato que se buscara en el sql, puede ser el correo o el codigo del usuario.
      */
     public static function sqlUsuario($des,$valor){
@@ -1003,19 +1006,18 @@ class Model {
         $conexion->query($sql);
         $conexion->close();
     }
-    public static function sqlEliminarDatosUsuario($idUser){
-        include("model/conexion.php");
-        $sql = "select EliminarUsuario('$idUser') ";
-        $conexion->query($sql);
-        $conexion->close();
-    }
-    public static function sqlelimiarUsuario($idUser){
-        include("model/conexion.php");
-        $sql = " delete from tb_usuarios where id = '$idUser' ";
-        $conexion->query($sql);
-        $conexion->close();
-    }
 
+    public static function sqlelimiarUsuario($des,$idUser){
+        include("model/conexion.php");
+        if($des === 1)$sql = "delete from tb_comentarios where id_usuario = '$idUser' ";
+        if($des === 2)$sql = "delete from tb_respuestascomentarios where idUsuario = '$idUser' ";
+        if($des === 3)$sql = "delete from tb_carrito where id_usuario = '$idUser' ";
+        if($des === 4)$sql = "delete from tb_historial where id_usuario = '$idUser' ";
+        if($des === 5)$sql = "delete from tb_valoracion where id_usuario = '$idUser'";
+        if($des === 6)$sql = "delete from tb_usuarios where id = '$idUser' ";
+        $conexion->query($sql);
+        $conexion->close();
+    }
 
 
 }

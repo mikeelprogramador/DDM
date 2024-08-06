@@ -108,10 +108,8 @@ function deleteCuenta(des){
             url: '../controller/controller_user.php?deleteCuenta',
             datatype: 'texto',
             success: function(respuesta){
-                console.log(respuesta);
-                if(respuesta === "1"){
-                    window.location.replace('../../login.php');
-                }
+                window.location.href = respuesta;
+                
             },
             error: function(xhr,status,error){
                 console.log(error);
