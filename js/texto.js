@@ -84,7 +84,7 @@ class Mensajes {
             salida = "Actualizando..";
         }
         if(des === 127){
-            salida = "Oferta actaulizada";
+            salida = "Oferta actualizada";
         }
         if(des === 128){
             salida = "Eliminando...";
@@ -168,6 +168,9 @@ class Mensajes {
             salida = "No se puedo crear la cuenta";
         }if(des === 155){
             salida = "Estas seguro de eliminar esta cuenta?";
+        }
+        if(des === 156){
+            salida = "El usuario se actualizo correctamente";
         }
         return salida;
     }

@@ -24,7 +24,7 @@ if(isset($_GET['estado']) && $_GET['estado'] == "compraMax"){
 }
 
 if(isset($_GET['estado']) && $_GET['estado'] == "compraUni"){
-    $_SESSION['url']  ="../acerca_del_producto/product.php?http=". $_SESSION['token']."&data=".$_GET['data']."";
+    $_SESSION['url']  ="../../descripcion/acerca_del_producto/product.php?http=". $_SESSION['token']."&data=".$_GET['data']."";
     $url = "compras.php?seccion=ubicacion&http=". $_SESSION['token']."&data=".$_GET['data']."&estado=compraUni";
     $action = "../../view/controller/controller_compra.php?estado=compraUni&data=".$_GET['data']."";
 }

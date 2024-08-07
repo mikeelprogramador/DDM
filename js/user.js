@@ -57,13 +57,10 @@ function cambiarDato(des){
     if(des === 1){
         document.getElementById('mensajeCorreo').innerHTML = Mensajes.mensajesGlobales(136);
     }
-    if(des === 2){
-        document.getElementById('mensajeCorreo').innerHTML = Mensajes.mensajesGlobales(137);
-    }
 }
 
-function devolver(){
-    document.getElementById('cambio').style.display = 'none';
+function devolver(lugar){
+    document.getElementById(lugar).style.display = 'none';
     document.getElementById('sub-contenedor').style.display = 'block';
     
 }
@@ -118,6 +115,72 @@ function deleteCuenta(des){
     }
 }
 
+function datosUsuario(){
+    document.getElementById('sub-contenedor').style.display = 'none';
+    document.getElementById('datos-usuario').style.display = 'block';
+}
+
+function habilitarActu(des){
+    var boton1 = document.getElementById('habiliatarActualizacion');
+    var boton2 = document.getElementById('regresar');
+    var boton3 = document.getElementById('actualizar');
+    var boton4 = document.getElementById('cancelar');
+    var texto1 = document.getElementById('actualizarNombre');
+    var texto2 = document.getElementById('actualizarApellido');
+    var texto3 = document.getElementById('actualizarEmail');
+    if(des === 1){
+        boton1.style.display = 'none';
+        boton2.style.display = 'none';
+        boton3.style.display = 'block';
+        boton4.style.display = 'block';
+        texto1.disabled = false;
+        texto2.disabled = false;
+        texto3.disabled = false;
+    }
+    if(des === 2){
+        boton1.style.display = 'block';
+        boton2.style.display = 'block';
+        boton3.style.display = 'none';
+        boton4.style.display = 'none';
+        texto1.disabled = true;
+        texto2.disabled = true;
+        texto3.disabled = true;
+    }
+}
+
+function actualizarDatos(){
+    var texto1 = document.getElementById('actualizarNombre');
+    var texto2 = document.getElementById('actualizarApellido');
+    var texto3 = document.getElementById('actualizarEmail');
+    var param = {
+        'name': texto1.value,
+        'lastname': texto2.value,
+        'email':texto3.value
+    };
+    $.ajax({
+        data:param,
+        url: '../controller/controller_user.php?actualizarUsuario',
+        datatype: 'texto',
+        method: 'post',
+        success: function(respuesta){
+            console.log(respuesta);
+            if(respuesta === "0"){
+                setTimeout(function(){
+                    window.alert(Mensajes.mensajesGlobales(106));
+                },2000)
+            }
+            if(respuesta === "1"){
+                setTimeout(function(){
+                    window.alert(Mensajes.mensajesGlobales(156));
+                    location.reload(true);
+                },1500);
+            }
+        },
+        error: function(xhr,status,error){
+            console.log(error);
+        }
+    })
+}
 
 
 

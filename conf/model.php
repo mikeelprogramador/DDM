@@ -1019,5 +1019,14 @@ class Model {
         $conexion->close();
     }
 
+    public static function sqlActauluizarUsuario($idUser,$nombre,$apellido,$correo){
+        include("model/conexion.php");
+        $sql = "update tb_usuarios ";
+        $sql .= "set nombre = '$nombre', apellido = '$apellido', email = '$correo' ";
+        $sql .= "where id = '$idUser' ";
+        $conexion->query($sql);
+        $conexion->close();
+    }
+
 
 }

@@ -32,4 +32,23 @@ class Usuarios{
         }
         return $salida;
     }
+    public static function datosUsuario($des,$id_user){
+        include_once("../../conf/model.php");
+        $consulta = Model::sqlUsuario(3,$id_user);
+        while($fila = $consulta->fetch_array()){
+            if($des === 1){
+                $salida = $fila[1];
+            }
+            if($des === 2){
+                $salida = $fila[2];
+            }
+            if($des === 3){
+                $salida = $fila[3];
+            }
+            if($des === 4){
+                $salida = $fila[4];
+            }
+        }
+        return $salida;
+    }
 }
