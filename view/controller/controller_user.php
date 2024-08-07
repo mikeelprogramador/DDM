@@ -108,3 +108,25 @@ if(isset($_GET['deleteCuenta'])){
     echo Session::destruirSessiones(1);
     
 }
+
+if(isset($_GET['actualizarUsuario'])){
+    $metodo = 0;
+    $nombre = Funciones::vacunaXxs($_POST['name']);
+    $apellido = Funciones::vacunaXxs($_POST['lastname']);
+    $correo = Funciones::vacunaXxs($_POST['email']);
+    if(Login::encontrarUsuario(1,$correo) == 1){
+        if(Usuarios::datosUsuario(3,$_SESSION['id']) === $correo){
+            $metodo = 1;
+        }else{
+            echo 0;
+        }
+    }else{
+        $metodo = 1;
+    }
+    if($metodo === 1){
+        Model::sqlActauluizarUsuario($_SESSION['id'],$nombre,$apellido,$correo);
+        echo 1;
+    }
+
+
+}
