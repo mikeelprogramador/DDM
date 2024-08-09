@@ -6,17 +6,23 @@ include_once("../../class/class_user.php");
 include_once("../../class/class_funciones.php");
 include_once("../../class/class_historial.php");
 include_once("../../class/class_comentarios.php");
+include_once("../../class/class_producto.php");
 
 Session::iniciarSessiones();
 if(Session::verificarSesssiones() == 0 ){
     header("location: ../../index.php");
     exit();
 }
-if( !isset($_GET['http'])){
+if(!isset($_GET['http'])){
     header("location: ../../erro.php");
     exit();
 }
 if($_GET['http'] != $_SESSION['token']){
+    header("location: ../../erro.php");
+    exit();
+}
+
+if(Productos::detallesDelProducto(0,id::desencriptar($_GET['data'])) === ""){
     header("location: ../../erro.php");
     exit();
 }

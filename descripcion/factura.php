@@ -7,7 +7,6 @@ $id = id::desencriptar($_GET['code']);
 $can = Vista::factura(9,$_SESSION['id'],$id,'total');
 $total =Vista::factura(12,$_SESSION['id'],$id,'total');
 
-ob_start();
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -122,6 +121,13 @@ ob_start();
                     <br>
                 </div>
                 <br><br>
+                <?php if(isset($_GET['ContinuarCompra'])) :?>
+                    <button><a href="#">siguiente</a></button>
+                <?php endif;
+                if(isset($_GET['verfactura'])) :?>
+                    <button><a href="../view/user/ddm.php?seccion=compras">Regresar</a></button>
+                <?php endif; ?>
+
             </div>         
         </center>
         <br>
@@ -133,37 +139,3 @@ ob_start();
 </body>
 </html>
 <?php
-$facturaHTML = ob_get_clean();
-echo $facturaHTML;
-
-// require_once('../tcpdf/tcpdf.php'); // Ajusta la ruta según tu instalación
-
-// // Crear una nueva instancia de TCPDF
-// $pdf = new TCPDF();
-
-// // Establecer información del documento
-// $pdf->SetCreator(PDF_CREATOR);
-// $pdf->SetAuthor('Tu Nombre');
-// $pdf->SetTitle('Título del PDF');
-// $pdf->SetSubject('Asunto del PDF');
-// $pdf->SetKeywords('TCPDF, PDF, example, test, guide');
-
-// // Establecer el margen
-// $pdf->SetMargins(15, 15, 15);
-
-// // Añadir una página
-// $pdf->AddPage();
-
-// // Contenido HTML
-// $html = '
-// <h1>Hola Mundo</h1>
-// <p>Este es un ejemplo de cómo convertir HTML a PDF usando TCPDF en PHP.</p>
-// ';
-
-// // Imprimir texto con HTML
-// $pdf->writeHTML($html, true, false, true, false, '');
-
-// // Cerrar y guardar el PDF en el servidor
-// $pdf->Output('documento.pdf', 'I'); // 'I' para visualizar en navegador, 'D' para descargar, 'F' para guardar en servidor
-?>
-

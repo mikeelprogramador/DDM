@@ -20,7 +20,7 @@ class Compras{
             $salida .= "<p class='compra-fecha'>Compra realizada ".Fecha::mostrarFechas($fila['fecha_de_compra'])."</p>";
             $salida .= "</div>";
             $salida .= "<div class='compra-opciones'>";
-            $salida .= "<a class='compra-factura' href='../../descripcion/factura.php?code=".$compra."'>Ver factura</a>";
+            $salida .= "<a class='compra-factura' href='../../descripcion/factura.php?code=".$compra."&verfactura'>Ver factura</a>";
             $salida .= "</div>";
             $salida .= "</div>";
         }

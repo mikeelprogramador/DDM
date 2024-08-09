@@ -395,6 +395,7 @@ class Model {
     public static function sqlDetallesDelProducto($des,$id_pro){
         include("model/conexion.php");
         $tabla = "tb_productos";
+        if($des == 0)$dato = "id_producto";
         if($des == 1)$dato = "producto_nombre";
         if($des == 2)$dato = "descripcion_producto";
         if($des == 3)$dato = "caracteristicas_producto";
@@ -1023,6 +1024,15 @@ class Model {
         include("model/conexion.php");
         $sql = "update tb_usuarios ";
         $sql .= "set nombre = '$nombre', apellido = '$apellido', email = '$correo' ";
+        $sql .= "where id = '$idUser' ";
+        $conexion->query($sql);
+        $conexion->close();
+    }
+
+    public static function sqlActualizarRol($idUser,$rol){
+        include("model/conexion.php");
+        $sql = "update tb_usuarios ";
+        $sql .= "set cate_user = '$rol' ";
         $sql .= "where id = '$idUser' ";
         $conexion->query($sql);
         $conexion->close();

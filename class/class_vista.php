@@ -281,12 +281,22 @@ class Vista{
             if($fila[6] == 2) $salida .= 'Cliente';
             $salida .= '</td>';
             $salida .= '<td>' . htmlspecialchars($fila[7]) . '</td>';
-            $salida .= "<td><input type=button value='Editar Rol' onclick=\"editarRol('".$id."')\"> </td>";
+            $salida .= "<td><input type=button value='Editar Rol' onclick=\"rol('".$id."')\"> </td>";
             $salida .= '</tr>';
         }
     
         $salida .= '</tbody>';
         $salida .= '</table>';
+        $salida .= '</div>'; 
+
+        //contendor para editar el rango
+        $salida .= "<div class='conteinar-rango' id='rango'>";
+        $salida .= "<select id='nuevoRango'>";
+        $salida .= "<option disabled selected>Rango</option>";
+        $salida .= "<option value='1'>Admin</option>";
+        $salida .= "<option value='2'>Ciente</option>";
+        $salida .= "</select>";
+        $salida .= "<button onclick=\"editarRol()\">Cargar Nuevo rango</button>";
         $salida .= '</div>'; 
     
         return $salida;

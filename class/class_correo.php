@@ -56,10 +56,15 @@ class Correo{
         if($des == 1 )$id = Login::encontrarUsuario(2,$correo);
         if($des == 2 )$id = $_SESSION['id'];
         $nombre = Usuarios::verificarPerfil(2,$id);
-        $passwordNueva = Encriptar::codificar(1,$codigo);
-        Model::sqlCambiarPassword($passwordNueva,$id);
-        $html = Funciones::htmlRecuperarContraseña($nombre,id::encriptar($id),$codigo);
-        return Correo::correo($_POST['correo'],"Recperacion de clave",$html);
+        if($des === 3){
+            
+        }else{
+            $passwordNueva = Encriptar::codificar(1,$codigo);
+            Model::sqlCambiarPassword($passwordNueva,$id);
+            $html = Funciones::htmlRecuperarContraseña($nombre,id::encriptar($id),$codigo);
+            $mensaje = "Recuperacion de Clave";
+        }
+        return Correo::correo($correo,$mensaje,$html);
     }
 
 }

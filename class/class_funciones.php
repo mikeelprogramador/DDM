@@ -63,54 +63,77 @@ class Funciones{
     }
 
     public static function htmlRecuperarContraseña($nombre,$id_user,$token){
-        $html = '
+        $url = str_replace($_SERVER['DOCUMENT_ROOT'], '', __DIR__);
+        $url = str_replace('\\', '/', $url);
+        $url = str_replace('C:/xampp/htdocs/','http://localhost/',$url);
+        $url = $url.' /../recuperacion.php?datause='.$id_user;
+        $html = ' 
         <!DOCTYPE html>
         <html lang="es">
         <head>
-          <meta charset="UTF-8">
-          <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <title>Recuperar clave</title>
-          <style>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Recuperacion de Clave</title>
+        <style>
             body {
-              font-family: Arial, sans-serif;
-              background-color: #f0f0f0;
-              text-align: center;
-              padding: 20px;
+                font-family: Arial, sans-serif;
+                background-color: #f4f4f9;
+                color: #333;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
             }
             .container {
-              max-width: 600px;
-              margin: 0 auto;
-              background-color: #ffffff;
-              padding: 20px;
-              border-radius: 8px;
-              box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                max-width: 600px;
+                width: 100%;
+                background-color: #ffffff;
+                padding: 30px;
+                border-radius: 8px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                text-align: center;
             }
-            img {
-              max-width: 100%;
-              height: auto;
-              margin-bottom: 20px;
+            h1 {
+                color: #333;
+                margin-bottom: 20px;
+            }
+            p {
+                font-size: 16px;
+                margin: 10px 0;
+            }
+            .highlight {
+                font-weight: bold;
             }
             a {
-              color: #007bff;
-              text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                padding: 10px 20px;
+                margin-top: 20px;
+                color: #ffffff;
+                background-color: #007bff;
+                color: while;
+                text-decoration: none;
+                border-radius: 4px;
+                transition: background-color 0.3s;
             }
             a:hover {
-              text-decoration: underline;
+                background-color: #0056b3;
             }
-          </style>
-        </head>
-        <body>
-        
-        <div class="container">
-          <img src="https://drive.google.com/file/d/1PY-QgfjBiYczDnqJ5SDY3k69REWB2uJI/view?usp=drive_link" alt="Imagen de recuperar clave">
-          <P>Bienvenido '.$nombre.'</P>
-            Este es el metodo de recuperacion de tu clave
-          <p>Nueva clave: '.$token.' </p>
-          <a href="localhost/DDM/recuperacion.php?datause='.$id_user.'">Cambiar clave</a>
-        </div>
-        
-        </body>
-        </html>
+        </style>
+      </head>
+      <body>
+      <div class="container">
+          <h1>Hola, '.$nombre.'</h1>
+          <p>Has solicitado recuperar tu clave. Para completar el proceso, por favor haz clic en el enlace a continuacion para establecer una nueva clave.</p>
+          <p class="highlight">Nueva clave: '.$token.'</p>
+          <a href="'.$url.'">Establecer nueva clave</a>
+          <p>Si no solicitaste la recuperacion de clave, por favor ignora este correo.</p>
+      </div>
+
+      </body>
+      </html>
     ';
 
     return $html;

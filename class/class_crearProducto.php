@@ -57,7 +57,7 @@ class CrearProducto{
             if (extension_loaded('gd')) {
                 // Redimensionar la imagen
                 $redimension = new claviska\SimpleImage($src);
-                $redimension->resize(400,500);
+                $redimension->resize(400,550);
                 $redimension->toFile($src); 
             }
             if ($des == 1) $salida = "../../fotos/" . $nombre;  
