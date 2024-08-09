@@ -172,6 +172,18 @@ class Mensajes {
         if(des === 156){
             salida = "El usuario se actualizo correctamente";
         }
+        if(des === 157){
+            salida = "tienes que seleccionar un rango primero";
+        }
+        if(des === 158){
+            salida = "No puedes actualizar este perfil";
+        }
+        if(des === 159){
+            salida = "No se puedo actualizar el rango intenta mas tarde";
+        }
+        if(des === 160){
+            salida = "Rango actualizado ";
+        }
         return salida;
     }
 

@@ -61,7 +61,7 @@
 <!-- cambio de correo o de contraseñas -->
 <div id="cambio">
   <div id="mensaje"></div>
-  <p id="mensajeCorreo"></p
+  <p id="mensajeCorreo"></p>
   <p id="dato"></p>
   <form action="../controller/controller_user.php?saveDato" method="post" onsubmit="enviarCorreo(event,1)">
     <label for="correo">Correo</label>

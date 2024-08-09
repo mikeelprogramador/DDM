@@ -28,10 +28,11 @@ function enviarCorreo(event,des){
                     correo.value = Mensajes.mensajesGlobales(0);
                     texto.innerHTML = Mensajes.mensajesGlobales(120);
                     texto.style.backgroundColor = '#4CAF50';
-                }
-                
-                if(respuesta === "1" || respuesta === "not exist"){ 
+                }else if(respuesta === "1" || respuesta === "not exist"){ 
                     texto.innerHTML = Mensajes.mensajesGlobales(121);
+                    texto.style.backgroundColor = '#f44336'; 
+                }else{
+                    texto.innerHTML = Mensajes.mensajesGlobales(101);
                     texto.style.backgroundColor = '#f44336'; 
                 }
                 

@@ -93,9 +93,6 @@
 
   </div>
 
-  <?php include("jscriptUser.php") ?>
-
-
 
   <footer class="footer">
     <div class="container_footer text-center">
@@ -122,9 +119,8 @@
     </div>
   </footer>
 
-
-
+  <?php include("jscriptUser.php") ?>
 
   </body>
-  
+
 </html>

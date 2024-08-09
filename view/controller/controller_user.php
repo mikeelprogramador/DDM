@@ -55,6 +55,7 @@ if(isset($_GET['eliminarDelCarrito']) && $_GET['eliminarDelCarrito'] == true){
     echo Vista::mostrarCarrito(1, $_SESSION['id']);
 }
 
+//Recuperacion de contraseña
 if(isset($_GET['saveDato'])){
     $_SESSION['codigo'] = token::Obtener_token(10);
     if(Login::buscarUsuariosCorreoId($_POST['correo'],$_SESSION['id']) == 0){
@@ -64,22 +65,26 @@ if(isset($_GET['saveDato'])){
     }
 }
 
+//Cambiar foto 
 if(isset($_GET['cambiarFoto'])){
     $img = '../../img/logo-icon-person.jpg';
     Usuarios::cargarImagen($img,$_SESSION['id']);
     echo $img;
 }
 
+//Buscar productos por categoria,nombre,descripcion etc
 if(isset($_GET['busquedaGeneral'])){
     $categorias = "";
     if(isset($_GET['cate']))$categorias = $_GET['cate'];
     echo Vista::mostrarProductos(2,$_GET['busquedaGeneral'],$categorias);
 }
 
+//Buscar productos por usu ofertas
 if(isset($_GET['busquedaOfertas'])){
     echo Vista::mostrarProductos(3,$_GET['busquedaOfertas']);
 }
 
+//Vaciar el hisotrial
 if(isset($_GET['vaciarHistorial'])){
     if(Historial::contarHistorial($_SESSION['id']) > 0){
         Model::sqlEliminarHistorial(1,$_SESSION['id']);

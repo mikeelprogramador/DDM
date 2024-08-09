@@ -247,3 +247,24 @@ if(isset($_GET['createUsuario'])){
     exit();
   }
 }
+
+if(isset($_POST['datoUsuario'])){
+  if(isset($_SESSION['usuarioRango'])&& $_SESSION['usuarioRango'] != ""){
+    $idUser = id::desencriptar($_SESSION['usuarioRango']);
+    if(Usuarios::verificarPerfil(1,$idUser) === "0"){
+      echo  0;
+    }else{
+      Model::sqlActualizarRol($idUser,$_POST['rango']);
+      echo  1;
+    }
+  }else{
+    echo  -1;
+  }
+  $_SESSION['usuarioRango'] = "";
+}
+
+
+if(isset($_POST['UsuarioEditar'])){
+  $_SESSION['usuarioRango'] = $_POST['UsuarioEditar'];
+  echo 1;
+}

@@ -71,7 +71,7 @@ if(isset($_GET['estado']) && $_GET['estado'] == "comprando" && isset($_GET['iden
             Model::sqlActualizarTotalCompra($id_compra,$id_user);
             $carrito = Carrito::buscarCarrito($id_user);
             Model::sqlVaciarCarrito($carrito);
-           header("location: ../../view/user/ddm.php");
+           header("location: ../../descripcion/factura.php?code=".id::encriptar($id_compra)."&ContinuarCompra");
            exit();
 
         }else{
