@@ -4,7 +4,12 @@
     <br>
     <div class="subContainer" id="subContainer">
         <?php
-          echo Vista::mostrarProductos(1);
+          $productos = Vista::mostrarProductos(1);
+          if($productos === 0){
+            echo "No hay productos";
+          }else{
+            echo $productos;
+          }
         ?>
     </div>
     </p> 

@@ -51,7 +51,7 @@ if(isset($_GET['reset'])){
         <form action="view/controller/controller_login.php?log=1" method="post">
           <input type="text" name="email" placeholder="Correo" required>
             <div style="position: relative;">
-                <input type="password" id="password" name="clave" placeholder="Contraseña" required style="padding-right: 30px;">
+                <input type="password" id="clave" name="clave" placeholder="Contraseña" required style="padding-right: 30px;">
                 <img id="toggle-password" class="toggle-password" src="img/ojo1.png" alt="Mostrar contraseña" style="width: 10%;">
             </div>
             <br><br>
@@ -73,5 +73,6 @@ if(isset($_GET['reset'])){
 <script src="js/alert.js"></script>
 <script src="js/texto.js"></script>
 <script src="js/sweetalert.js"></script>
+<script src="js/contra_registro.js"></script>
 </body>
 </html>

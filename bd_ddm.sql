@@ -90,7 +90,7 @@ CREATE TABLE `tb_categorias` (
 
 LOCK TABLES `tb_categorias` WRITE;
 /*!40000 ALTER TABLE `tb_categorias` DISABLE KEYS */;
-INSERT INTO `tb_categorias` VALUES (1,'Ropa'),(2,'Aseo hogar'),(3,'Aseo personal'),(5,'Tecnologia'),(6,'Computadoras'),(7,'juguetes'),(8,'Electrodomésticos');
+INSERT INTO `tb_categorias` VALUES (1,'Accesorios para celular'),(2,'Electrónica'),(3,'Gorras'),(4,'Ropa'),(5,'Hogar'),(6,'Cocina'),(7,'Calzado'),(8,'Videojuegos');
 /*!40000 ALTER TABLE `tb_categorias` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -110,7 +110,7 @@ CREATE TABLE `tb_categoriasproducto` (
   KEY `id_categoria` (`id_categoria`),
   CONSTRAINT `tb_categoriasproducto_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `tb_productos` (`id_producto`),
   CONSTRAINT `tb_categoriasproducto_ibfk_2` FOREIGN KEY (`id_categoria`) REFERENCES `tb_categorias` (`id_categoria`)
-) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=78 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -119,7 +119,7 @@ CREATE TABLE `tb_categoriasproducto` (
 
 LOCK TABLES `tb_categoriasproducto` WRITE;
 /*!40000 ALTER TABLE `tb_categoriasproducto` DISABLE KEYS */;
-INSERT INTO `tb_categoriasproducto` VALUES (45,'1938',6),(46,'1938',7),(47,'21',1),(48,'21',7);
+INSERT INTO `tb_categoriasproducto` VALUES (57,'01',1),(58,'01',2),(59,'3',2),(60,'4',5),(61,'4',6),(62,'5',1),(63,'5',2),(64,'2',3),(65,'2',4),(66,'6',7),(67,'7',2),(68,'7',8),(69,'8',2),(70,'8',8),(74,'9',2),(75,'9',5),(76,'9',6),(77,'10',4);
 /*!40000 ALTER TABLE `tb_categoriasproducto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -142,7 +142,7 @@ CREATE TABLE `tb_comentarios` (
   KEY `id_usuario` (`id_usuario`),
   CONSTRAINT `tb_comentarios_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `tb_productos` (`id_producto`),
   CONSTRAINT `tb_comentarios_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `tb_usuarios` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -151,7 +151,6 @@ CREATE TABLE `tb_comentarios` (
 
 LOCK TABLES `tb_comentarios` WRITE;
 /*!40000 ALTER TABLE `tb_comentarios` DISABLE KEYS */;
-INSERT INTO `tb_comentarios` VALUES (2,'que tal','2024-08-05 09:16:50 PM','21',2,NULL);
 /*!40000 ALTER TABLE `tb_comentarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -259,7 +258,7 @@ CREATE TABLE `tb_historial` (
   KEY `id_producto` (`id_producto`),
   CONSTRAINT `tb_historial_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `tb_usuarios` (`id`),
   CONSTRAINT `tb_historial_ibfk_2` FOREIGN KEY (`id_producto`) REFERENCES `tb_productos` (`id_producto`)
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -268,7 +267,7 @@ CREATE TABLE `tb_historial` (
 
 LOCK TABLES `tb_historial` WRITE;
 /*!40000 ALTER TABLE `tb_historial` DISABLE KEYS */;
-INSERT INTO `tb_historial` VALUES (3,2,'21','2024-08-05 09:16:29 PM'),(4,3,'21','2024-08-05 09:24:07 PM'),(15,3,'1938','2024-08-05 10:37:45 PM'),(16,3,'21','2024-08-05 10:37:52 PM'),(17,3,'21','2024-08-05 10:41:48 PM'),(18,3,'1938','2024-08-05 10:41:55 PM'),(19,3,'1938','2024-08-05 10:45:42 PM'),(20,3,'1938','2024-08-05 10:46:19 PM'),(21,3,'1938','2024-08-05 10:46:25 PM'),(22,3,'22','2024-08-05 10:46:30 PM'),(23,3,'21','2024-08-05 10:46:34 PM'),(24,3,'1938','2024-08-05 10:50:47 PM'),(25,3,'21','2024-08-05 10:51:00 PM'),(26,2,'22','2024-08-05 10:53:28 PM'),(27,2,'21','2024-08-05 10:53:42 PM'),(28,3,'1938','2024-08-06 09:48:16 PM'),(29,3,'21','2024-08-06 10:26:33 PM'),(30,3,'1938','2024-08-06 10:31:35 PM'),(31,3,'22','2024-08-06 10:31:39 PM'),(32,3,'1938','2024-08-07 09:43:26 AM');
+INSERT INTO `tb_historial` VALUES (1,1,'01','2024-08-11 08:06:51 AM'),(2,1,'01','2024-08-11 08:07:42 AM'),(3,1,'01','2024-08-11 08:15:44 AM'),(4,1,'2','2024-08-11 08:16:03 AM'),(5,1,'3','2024-08-11 08:17:57 AM'),(6,1,'2','2024-08-11 08:24:20 AM'),(7,1,'9','2024-08-11 08:43:36 AM');
 /*!40000 ALTER TABLE `tb_historial` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -285,7 +284,7 @@ CREATE TABLE `tb_historial_productos` (
   `id_producto` varchar(10) NOT NULL,
   `fecha_eli` varchar(150) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -294,7 +293,7 @@ CREATE TABLE `tb_historial_productos` (
 
 LOCK TABLES `tb_historial_productos` WRITE;
 /*!40000 ALTER TABLE `tb_historial_productos` DISABLE KEYS */;
-INSERT INTO `tb_historial_productos` VALUES (1,'Se Creo el producto: silbato','Codigo: 50','2024-07-18 07:33:22 AM'),(2,'Se ilimino el producto: silbato','Codigo: 50','2024-07-18 07:35:01 AM'),(3,'Se Creo el producto: cepillo de ropa','Codigo: 22','2024-07-19 08:13:48 AM'),(4,'Se Creo el producto: cepillo de dientes','Codigo: 25','2024-07-19 09:22:46 AM'),(5,'Se ilimino el producto: cepillo de dientes','Codigo: 25','2024-07-19 09:40:23 AM'),(6,'Se Creo el producto: cepillo de dientes','Codigo: 25','2024-07-19 09:41:12 AM'),(7,'Se ilimino el producto: cepillo de dientes','Codigo: 25','2024-07-19 09:41:26 AM'),(8,'Se Creo el producto: cepillo de dientes','Codigo: 25','2024-07-19 09:41:54 AM'),(9,'Se ilimino el producto: cepillo de dientes','Codigo: 25','2024-07-19 09:42:08 AM'),(10,'Se Creo el producto: cepillo de dientes','Codigo: 25','2024-07-19 09:53:52 AM'),(11,'Se ilimino el producto: cepillo de dientes','Codigo: 25','2024-07-19 09:54:12 AM'),(12,'Se Creo el producto: cuto','Codigo: 19','2024-07-30 11:44:44 AM'),(13,'Se Creo el producto: prubea','Codigo: 23','2024-08-01 10:59:52 AM'),(14,'Se ilimino el producto: silbato','Codigo: 23','2024-08-04 01:02:53 AM'),(15,'Se Creo el producto: prueba','Codigo: 55','2024-08-05 08:31:56 PM'),(16,'Se ilimino el producto: prueba','Codigo: 55','2024-08-05 08:32:06 PM'),(17,'Se Creo el producto: prueba','Codigo: 55','2024-08-05 08:34:14 PM'),(18,'Se ilimino el producto: prueba','Codigo: 55','2024-08-05 08:34:21 PM'),(19,'Se Creo el producto: prueba','Codigo: 55','2024-08-05 08:35:08 PM'),(20,'Se ilimino el producto: prueba','Codigo: 55','2024-08-05 08:35:30 PM'),(21,'Se ilimino el producto: Prueba','Codigo: 05','2024-08-08 08:35:26 AM'),(22,'Se Creo el producto: prueba','Codigo: 05','2024-08-08 08:35:44 AM'),(23,'Se ilimino el producto: prueba','Codigo: 05','2024-08-08 08:36:34 AM'),(24,'Se Creo el producto: Prueba','Codigo: 05','2024-08-08 08:37:00 AM'),(25,'Se ilimino el producto: Prueba','Codigo: 05','2024-08-08 08:37:57 AM');
+INSERT INTO `tb_historial_productos` VALUES (1,'Se Creo el producto: silbato','Codigo: 50','2024-07-18 07:33:22 AM'),(2,'Se ilimino el producto: silbato','Codigo: 50','2024-07-18 07:35:01 AM'),(3,'Se Creo el producto: cepillo de ropa','Codigo: 22','2024-07-19 08:13:48 AM'),(4,'Se Creo el producto: cepillo de dientes','Codigo: 25','2024-07-19 09:22:46 AM'),(5,'Se ilimino el producto: cepillo de dientes','Codigo: 25','2024-07-19 09:40:23 AM'),(6,'Se Creo el producto: cepillo de dientes','Codigo: 25','2024-07-19 09:41:12 AM'),(7,'Se ilimino el producto: cepillo de dientes','Codigo: 25','2024-07-19 09:41:26 AM'),(8,'Se Creo el producto: cepillo de dientes','Codigo: 25','2024-07-19 09:41:54 AM'),(9,'Se ilimino el producto: cepillo de dientes','Codigo: 25','2024-07-19 09:42:08 AM'),(10,'Se Creo el producto: cepillo de dientes','Codigo: 25','2024-07-19 09:53:52 AM'),(11,'Se ilimino el producto: cepillo de dientes','Codigo: 25','2024-07-19 09:54:12 AM'),(12,'Se Creo el producto: cuto','Codigo: 19','2024-07-30 11:44:44 AM'),(13,'Se Creo el producto: prubea','Codigo: 23','2024-08-01 10:59:52 AM'),(14,'Se ilimino el producto: silbato','Codigo: 23','2024-08-04 01:02:53 AM'),(15,'Se Creo el producto: prueba','Codigo: 55','2024-08-05 08:31:56 PM'),(16,'Se ilimino el producto: prueba','Codigo: 55','2024-08-05 08:32:06 PM'),(17,'Se Creo el producto: prueba','Codigo: 55','2024-08-05 08:34:14 PM'),(18,'Se ilimino el producto: prueba','Codigo: 55','2024-08-05 08:34:21 PM'),(19,'Se Creo el producto: prueba','Codigo: 55','2024-08-05 08:35:08 PM'),(20,'Se ilimino el producto: prueba','Codigo: 55','2024-08-05 08:35:30 PM'),(21,'Se ilimino el producto: Prueba','Codigo: 05','2024-08-08 08:35:26 AM'),(22,'Se Creo el producto: prueba','Codigo: 05','2024-08-08 08:35:44 AM'),(23,'Se ilimino el producto: prueba','Codigo: 05','2024-08-08 08:36:34 AM'),(24,'Se Creo el producto: Prueba','Codigo: 05','2024-08-08 08:37:00 AM'),(25,'Se ilimino el producto: Prueba','Codigo: 05','2024-08-08 08:37:57 AM'),(26,'Se ilimino el producto: silbato','Codigo: 21','2024-08-11 07:59:26 AM'),(27,'Se ilimino el producto: cepillo de ropa','Codigo: 22','2024-08-11 07:59:29 AM'),(28,'Se ilimino el producto: cuto','Codigo: 19','2024-08-11 07:59:31 AM'),(29,'Se Creo el producto: Auriculares Auraluxe Harmony 360','Codigo: 01','2024-08-11 08:06:42 AM'),(30,'Se Creo el producto: Gorra Capitán Trendy Flex','Codigo: 2','2024-08-11 08:14:46 AM'),(31,'Se Creo el producto: Teclado TechStorm Quantum X','Codigo: 3','2024-08-11 08:17:53 AM'),(32,'Se Creo el producto: Juego de ollas Culinary Elite Pro Set','Codigo: 4','2024-08-11 08:20:15 AM'),(33,'Se Creo el producto: Auriculares  EchoWave Precision 100','Codigo: 5','2024-08-11 08:21:47 AM'),(34,'Se Creo el producto: Zapatillas Vortex Glide X','Codigo: 6','2024-08-11 08:33:55 AM'),(35,'Se Creo el producto: Xbox 360','Codigo: 7','2024-08-11 08:36:16 AM'),(36,'Se Creo el producto: PlayStation 5','Codigo: 8','2024-08-11 08:37:45 AM'),(37,'Se Creo el producto: Nevera FrostMaster Elite 500','Codigo: 9','2024-08-11 08:43:27 AM'),(38,'Se Creo el producto: Disfraz de Hulk ','Codigo: 10','2024-08-11 08:47:36 AM');
 /*!40000 ALTER TABLE `tb_historial_productos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -378,7 +377,7 @@ CREATE TABLE `tb_productos` (
 
 LOCK TABLES `tb_productos` WRITE;
 /*!40000 ALTER TABLE `tb_productos` DISABLE KEYS */;
-INSERT INTO `tb_productos` VALUES ('1938','cuto','cuto lindo negro bello ,juguete sexual','bonito',7,0,'../../fotos/perfil.jpg','2.500,00','negro pasion','2024-07-30 11:44:44 AM','2024-08-05 10:50:10 PM'),('21','silbato','silbato de profesional','silbato de arbitro profesional',8,8,'../../fotos/descarga.jfif','3.450,00','azul','2024-07-19 08:10:57 AM','2024-08-05 10:50:18 PM'),('22','cepillo de ropa','cepillo para lavar la ropa','es un muy buen cepillo ',0,0,'../../fotos/images (1).jfif','3.220,00','verde','2024-07-19 08:13:48 AM',NULL);
+INSERT INTO `tb_productos` VALUES ('01','Auriculares Auraluxe Harmony 360','¡Descubre los Auraluxe Harmony 360! Estos auriculares de última generación están diseñados para ofrecer una experiencia auditiva incomparable. Con la tecnología','Sonido Hi-Fi: Drivers de 40mm para un audio nítido y graves profundos.Cancelación de Ruido Activa: Reduce el ruido ambiental en un 95% para una experiencia inmersiva.Conectividad Bluetooth 5.3: Conexión estable y rápida, hasta 30 horas de batería continua.Comodidad Ergonómica: Almohadillas de memoria que se ajustan a la forma de tus oídos para un uso prolongado sin molestias.Control Táctil: Ajusta el volumen, cambia de pista y responde llamadas con un simple toque.Eleva tu experiencia ',25,0,'../../fotos/cascos.jpg','172.500,00','Blanco','2024-08-11 08:06:42 AM','2024-08-11 08:15:57 AM'),('10','Disfraz de Hulk ','Transforma tu fiesta con el Hulk Smash Deluxe Costume! Este disfraz ofrece una transformación impresionante y llena de fuerza.','Traje Completo: Incluye el icónico traje verde musculoso con detalles en 3D para un look auténtico y poderoso.\r\nMáscara Detallada: Máscara de latex con características realistas del rostro del Hulk, incluyendo cabello sintético.\r\nGuantes y Botas: Accesorios que complementan el disfraz, haciendo que tu transformación sea completa.\r\nCómodo y Ajustable: Material elástico que se adapta a diferentes tamaños y proporciona comodidad durante todo el evento.',15,0,'../../fotos/disfraz hulk.jpg','117.600,00','verde','2024-08-11 08:47:36 AM',NULL),('2','Gorra Capitán Trendy Flex','La Capitán Trendy Aura es la gorra que redefine el estilo urbano. Diseñada para destacar, combina tecnología y moda para llevar tu look al siguiente nivel.','Ajuste Personalizable: Cierre de velcro para un fit exacto y cómodo.Tela Breathable: Mezcla de lino y microfibra que mantiene tu cabeza fresca y ventilada.Visera Inteligente: Protección UV con absorción de impactos, ideal para tus días más activos.Estilo Futurista: Logo con detalles holográficos que cambian de color según la luz, y acabados en relieve que marcan la diferencia.',105,0,'../../fotos/gorra.jpg','105.000,00','Amarillo','2024-08-11 08:14:46 AM','2024-08-11 08:24:14 AM'),('3','Teclado TechStorm Quantum X','\r\nEl TechStorm Quantum X transforma tu experiencia de tecleo con un diseño que mezcla innovación y estilo. Ideal para gamers y profesionales que buscan lo mejor','Switches de Alta Respuesta: Mecánicos con retroalimentación táctil para una escritura rápida y precisa.\r\nRetroiluminación RGB: Personaliza cada tecla con una amplia gama de colores y efectos dinámicos.\r\nConstrucción Robusta: Chasis de aluminio y teclas duraderas para un rendimiento sólido y una larga vida útil.\r\nReposamuñecas Ergonómico: Comodidad prolongada con soporte acolchado para sesiones largas de escritura o juego.',40,0,'../../fotos/teclado.jpg','142.380,00','Negro','2024-08-11 08:17:53 AM',NULL),('4','Juego de ollas Culinary Elite Pro Set','Culinary Elite Pro Set, el juego de ollas que lleva tu cocina al siguiente nivel. Perfecto para chefs caseros que buscan calidad y rendimiento excepcionales.','Acero Inoxidable de Alta Calidad: Resistente y duradero, distribuye el calor de manera uniforme.\r\nTapa de Vidrio Temperado: Con salida de vapor y borde de acero inoxidable para una visión clara sin perder calor.\r\nMango Ergonómico: Mangos con diseño antideslizante y resistentes al calor para un manejo cómodo y seguro.\r\nCompatibilidad Universal: Adecuado para todo tipo de estufas, incluyendo inducción.',30,0,'../../fotos/juego de ollas.webp','450.000,00','Negro','2024-08-11 08:20:15 AM',NULL),('5','Auriculares  EchoWave Precision 100','Conquista el sonido con los EchoWave Precision 100. Estos auriculares con cable están diseñados para quienes buscan una experiencia auditiva inigualable y un es','Sonido de Alta Fidelidad: Drivers de 50mm para una claridad acústica excepcional y graves profundos.\r\nConexión de 3.5mm: Compatibilidad universal con todos tus dispositivos, desde teléfonos hasta computadoras.\r\nDiseño Ergonómico: Almohadillas de espuma con memoria y diadema ajustable para un ajuste cómodo durante horas.\r\nMicrófono Integrado: Controla tu música y atiende llamadas con un micrófono claro y accesible en el cable.',50,0,'../../fotos/auriculares.png','15.000,00','Negro','2024-08-11 08:21:47 AM',NULL),('6','Zapatillas Vortex Glide X','Las Vortex Glide X son las zapatillas que redefinen tu comodidad y estilo. Perfectas para cualquier ocasión, desde entrenamientos intensos hasta salidas casuale','Amortiguación Avanzada: Tecnología de absorción de impactos en la suela para una pisada suave y cómoda.\r\nMaterial Transpirable: Parte superior de malla técnica que mantiene tus pies frescos y secos.\r\nDiseño Ergonómico: Plantilla contorneada que se ajusta a la forma de tu pie para un soporte personalizado.\r\nSuela Antideslizante: Tracción optimizada para estabilidad en cualquier superficie.',25,0,'../../fotos/zapatillas.webp','207.000,00','Blanco con Negro','2024-08-11 08:33:55 AM',NULL),('7','Xbox 360','Disfruta la experiencia de gaming con el Xbox 360. Esta consola sigue siendo un clásico para jugadores de todas las edades.','Extensa Biblioteca de Juegos: Accede a una vasta colección de títulos, desde aventuras épicas hasta emocionantes shooters.\r\nXbox Live: Conéctate con amigos y jugadores de todo el mundo para partidas en línea y contenido descargable.\r\nReproductor de Medios: Disfruta de DVDs y música con opciones de entretenimiento versátiles.\r\nDiseño Compacto: Elegante y fácil de integrar en cualquier configuración de entretenimiento.',20,0,'../../fotos/xbox360.webp','446.250,00','negro','2024-08-11 08:36:16 AM',NULL),('8','PlayStation 5','Eleva tu experiencia de gaming con el PlayStation 5. La consola que redefine el entretenimiento interactivo con tecnología de vanguardia y un diseño futurista.','Gráficos Ultra HD: Procesador potente y tarjeta gráfica avanzada para imágenes nítidas y realistas en 4K.\r\nCarga Rápida: Disco SSD de alta velocidad que reduce los tiempos de carga y mejora el rendimiento.\r\nDualSense Controller: Mandos con retroalimentación háptica y gatillos adaptativos que ofrecen una inmersión sin precedentes.\r\nAudio 3D: Sonido envolvente que te sumerge en el corazón de la acción',15,0,'../../fotos/ps5.webp','1.150.000,00','Blanco','2024-08-11 08:37:45 AM',NULL),('9','Nevera FrostMaster Elite 500','Transforma tu cocina con la FrostMaster Elite 500. Esta nevera ofrece eficiencia y estilo, manteniendo tus alimentos frescos y organizados.','Tecnología de Enfriamiento Avanzada: Sistema de refrigeración de última generación que asegura una temperatura uniforme y eficiente.Diseño de Puerta Francesa: Elegante y funcional, con compartimientos de fácil acceso y estantes ajustables.Control de Temperatura Digital: Pantalla LED para ajustes precisos y monitoreo constante.Cajón de Congelación Rápida: Ideal para almacenar y mantener alimentos congelados a la perfección.',15,0,'../../fotos/nevera.webp','1.380.000,00','Negro','2024-08-11 08:43:27 AM','2024-08-11 08:43:47 AM');
 /*!40000 ALTER TABLE `tb_productos` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -443,7 +442,7 @@ CREATE TABLE `tb_respuestascomentarios` (
   KEY `idUsuario` (`idUsuario`),
   CONSTRAINT `tb_respuestascomentarios_ibfk_1` FOREIGN KEY (`idComentario`) REFERENCES `tb_comentarios` (`id_comentario`),
   CONSTRAINT `tb_respuestascomentarios_ibfk_2` FOREIGN KEY (`idUsuario`) REFERENCES `tb_usuarios` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -452,7 +451,6 @@ CREATE TABLE `tb_respuestascomentarios` (
 
 LOCK TABLES `tb_respuestascomentarios` WRITE;
 /*!40000 ALTER TABLE `tb_respuestascomentarios` DISABLE KEYS */;
-INSERT INTO `tb_respuestascomentarios` VALUES (1,1,'bien y tu ',2,'2024-08-05 09:17:18 PM',NULL);
 /*!40000 ALTER TABLE `tb_respuestascomentarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -483,7 +481,7 @@ CREATE TABLE `tb_usuarios` (
 
 LOCK TABLES `tb_usuarios` WRITE;
 /*!40000 ALTER TABLE `tb_usuarios` DISABLE KEYS */;
-INSERT INTO `tb_usuarios` VALUES (1,'mike','sanchez','mike@gmail.com','$2y$12$mUSwt.wc2rBxRwh5A7MsO.uKtqo3XhTxnYnFXFW01NyZJitdd10h2','2024-08-05 10:09:10 PM',0,'Inactivo','../../img_user/planeta-tierra-vista-desde-la-luna_1280x720_xtrafondos.com.jpg'),(2,'juan','Ramos','juan@gmail.com','$2y$12$NTm7Ax3sNLTS9RsSESRNxu9DR2Fof0OaU3uoZ6uw97.Hs/Dt8F6IC','2024-08-05 10:11:20 PM',1,'Activo','../../img_user/perfil.jpg'),(3,'pepito','perez','pepito@gmail.com','$2y$12$wunWT3AaPnKhqKB5ccNLNOqEtXzIra9HtL1K96t4di8VRUK492uTy','2024-08-05 10:11:51 PM',2,'Inactivo','../../img_user/perfil.jpg');
+INSERT INTO `tb_usuarios` VALUES (1,'mike','sanchez','mike@gmail.com','$2y$12$mUSwt.wc2rBxRwh5A7MsO.uKtqo3XhTxnYnFXFW01NyZJitdd10h2','2024-08-05 10:09:10 PM',0,'Inactivo','../../img_user/planeta-tierra-vista-desde-la-luna_1280x720_xtrafondos.com.jpg'),(2,'juan','Ramos','juan@gmail.com','$2y$12$NTm7Ax3sNLTS9RsSESRNxu9DR2Fof0OaU3uoZ6uw97.Hs/Dt8F6IC','2024-08-05 10:11:20 PM',0,'Inactivo','../../img_user/perfil.jpg'),(3,'pepito','perez','pepito@gmail.com','$2y$12$wunWT3AaPnKhqKB5ccNLNOqEtXzIra9HtL1K96t4di8VRUK492uTy','2024-08-05 10:11:51 PM',2,'Inactivo','../../img_user/perfil.jpg');
 /*!40000 ALTER TABLE `tb_usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -504,7 +502,7 @@ CREATE TABLE `tb_valoracion` (
   KEY `id_usuario` (`id_usuario`),
   CONSTRAINT `tb_valoracion_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `tb_productos` (`id_producto`),
   CONSTRAINT `tb_valoracion_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `tb_usuarios` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -513,7 +511,6 @@ CREATE TABLE `tb_valoracion` (
 
 LOCK TABLES `tb_valoracion` WRITE;
 /*!40000 ALTER TABLE `tb_valoracion` DISABLE KEYS */;
-INSERT INTO `tb_valoracion` VALUES (1,'1938',3,'0'),(2,'21',3,'0');
 /*!40000 ALTER TABLE `tb_valoracion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -563,4 +560,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-08-08  8:39:45
+-- Dump completed on 2024-08-11  8:48:27

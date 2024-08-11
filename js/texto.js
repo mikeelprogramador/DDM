@@ -184,6 +184,9 @@ class Mensajes {
         if(des === 160){
             salida = "Rango actualizado ";
         }
+        if(des === 161){
+            salida = "El codigo no coincide intenta mas tarde ";
+        }
         return salida;
     }
 

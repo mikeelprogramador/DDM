@@ -86,3 +86,13 @@ if(isset($_GET['cambioPasswprd'])){
         echo "la contrasña no coincide";
     }
 }
+
+if(isset($_GET['autenticacion'])){
+    $_SESSION['autenticacion'] = token::Obtener_token(8);
+    $email = Funciones::vacunaXxs($_POST['email']);
+    if(Correo::enviarCorreo(3,$email, $_SESSION['autenticacion']) === 0){
+        echo $_SESSION['autenticacion'];
+    }else{
+        echo 1;
+    }
+}
