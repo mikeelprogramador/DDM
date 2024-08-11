@@ -317,7 +317,7 @@ input[type="submit"]:hover {
 button {
     background-color: transparent; /* Color de fondo transparente */
     color: black; /* Color del texto negro */
-    border: 1px solid #007bff; /* Borde azul para visibilidad */
+    border: 1px solid #c29349; /* Borde azul para visibilidad */
     border-radius: 4px; /* Bordes redondeados */
     padding: 4px 8px; /* Espaciado interno reducido para botones estrechos */
     margin: 2px; /* Espacio alrededor del botón */
@@ -327,7 +327,7 @@ button {
 }
 
 button:hover {
-    background-color: #007bff; /* Color de fondo azul al pasar el ratón */
+    background-color: #c29349; /* Color de fondo azul al pasar el ratón */
     color: white; /* Color del texto blanco en hover */
 }
 
@@ -343,4 +343,72 @@ button:focus {
 }
 .RespuestasComentario{
     display: none;
+}
+.producto-contenedor {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+
+.producto-refe {
+    margin-bottom: 20px;
+}
+
+.comentarios {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+#coment {
+    max-height: 400px; /* Limita la altura máxima del contenedor de comentarios */
+    overflow-y: auto;  /* Permite el desplazamiento vertical si se excede la altura */
+    overflow-x: hidden; /* Oculta cualquier desbordamiento horizontal */
+    word-wrap: break-word; /* Rompe las palabras largas para evitar desbordamientos horizontales */
+    margin-top: 20px;
+}
+
+.comentario-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#comentario {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+#coment p {
+    padding: 10px;
+    background-color: #f1f1f1;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    word-wrap: break-word; /* Evita que las palabras largas sobresalgan */
+}
+
+.btn-regresar {
+    padding: 10px 15px;
+    background-color: #c29349;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-regresar:hover {
+    background-color: #c29349;
 }

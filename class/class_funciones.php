@@ -76,51 +76,54 @@ class Funciones{
         <title>Recuperacion de Clave</title>
         <style>
             body {
-                font-family: Arial, sans-serif;
-                background-color: #f4f4f9;
-                color: #333;
-                margin: 0;
-                padding: 0;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                height: 100vh;
-            }
-            .container {
-                max-width: 600px;
-                width: 100%;
-                background-color: #ffffff;
-                padding: 30px;
-                border-radius: 8px;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-                text-align: center;
-            }
-            h1 {
-                color: #333;
-                margin-bottom: 20px;
-            }
-            p {
-                font-size: 16px;
-                margin: 10px 0;
-            }
-            .highlight {
-                font-weight: bold;
-            }
-            a {
-                display: inline-block;
-                font-size: 16px;
-                padding: 10px 20px;
-                margin-top: 20px;
-                color: #ffffff;
-                background-color: #007bff;
-                color: while;
-                text-decoration: none;
-                border-radius: 4px;
-                transition: background-color 0.3s;
-            }
-            a:hover {
-                background-color: #0056b3;
-            }
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            max-width: 500px;
+            width: 100%;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #444;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 16px;
+            margin: 10px 0;
+            line-height: 1.5;
+        }
+        .highlight {
+            font-weight: bold;
+            color: #c29349;
+        }
+        a {
+            display: inline-block;
+            font-size: 16px;
+            padding: 12px 25px;
+            margin-top: 20px;
+            color: #ffffff;
+            background-color: #c29349;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        a:hover {
+            background-color: #a97732;
+            color: #ffffff;
+        }
         </style>
       </head>
       <body>

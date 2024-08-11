@@ -73,4 +73,19 @@ form input[type="submit"]:hover {
 .save-passwrd a:hover {
     text-decoration: underline;
 }
+/* Responsividad para dispositivos móviles */
+@media (max-width: 768px) {
+    body {
+        padding: 20px;
+    }
 
+    .save-passwrd {
+        width: 100%;
+        padding: 15px;
+    }
+
+    form {
+        width: 100%;
+        padding: 15px;
+    }
+}
