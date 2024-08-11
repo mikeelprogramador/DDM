@@ -47,7 +47,7 @@ if( isset($_GET['men'])){
           y condiciones o cualquier parte de estos términos y condiciones, 
           no debes usar este sitio web.</p>
 
-    <h2>2. Uso del Sitio Web</h2>
+    <h3>2. Uso del Sitio Web</h3>
 
     <p>El uso de este sitio web está sujeto a las siguientes condiciones:</p>
 
@@ -61,27 +61,34 @@ if( isset($_GET['men'])){
             no podemos garantizar la seguridad de los datos transmitidos a través de Internet.</li>
     </ul>
 
-    <h2>3. Política de Privacidad</h2>
+    <h3>3. Política de Privacidad</h3>
 
     <p>Nuestra política de privacidad detalla cómo manejamos los datos
          personales que recopilamos de los usuarios de este sitio web.
           Al utilizar este sitio web, aceptas el uso de tus datos personales
            de acuerdo con nuestra política de privacidad.</p>
 
-    <h2>4. Propiedad Intelectual</h2>
+    <h3>4. Propiedad Intelectual</h3>
 
     <p>Los derechos de propiedad intelectual en este sitio web y los
          materiales contenidos en este sitio web son propiedad de 
          nosotros o nuestros licenciatarios. Todos estos derechos están reservados.</p>
 
-    <h2>5. Ley Aplicable y Jurisdicción</h2>
+    <h3>5. Ley Aplicable y Jurisdicción</h3>
 
     <p>Estos términos y condiciones se regirán e interpretarán de
-         acuerdo con las leyes de [tu país]. Cualquier disputa relacionada 
+         acuerdo con las leyes de <b>Colombia.</b> Cualquier disputa relacionada 
          con estos términos y condiciones estará sujeta a la jurisdicción 
-         exclusiva de los tribunales de [tu país].</p>
+         exclusiva de los tribunales de <b>Colombia.</b></p>
 
     <p>Si tienes alguna pregunta sobre estos términos y condiciones, por favor .</p>
+    <b>Contáctanos:<br>
+    Correo: maicolsanchez211@gmail.com <br>
+    Teléfono: +57 3185049904 <br>
+
+    Contáctanos:<br> 
+    Correo: judacas135@gmail.com <br>
+    Teléfono: +57 3219612850</b> <br><br>
 
     <p>Fecha de la última actualización: 8/07/2024</p>
     <a href="check-in.php">Regresar</a>

@@ -21,15 +21,15 @@
 <!-- contenedor obsiones de usuario -->
 <div class="sub-contenedor" id="sub-contenedor">
   <!-- contendor 1 -->
-  <div onmouseenter='cambiarMouse(this)' onclick="cambiarDato(1)">
+  <div class="option" onclick="cambiarDato(1)">
     Cambiar contraseña
   </div>
   <!-- contenedor 2 -->
-    <div onmouseenter='cambiarMouse(this)' onclick="cambiarDato(2)">
+    <div class="option" onclick="cambiarDato(2)">
       Cambiar Correo
     </div>
   <!-- conteneodor 3 -->
-    <div onmouseenter='cambiarMouse(this)' onclick="eliminarFoto();">
+    <div class="option" onclick="eliminarFoto();">
       Eliminar foto
     </div>
   <!-- contenedor 4 -->
@@ -53,7 +53,7 @@
     <input type="text" id="correo" name="correo" placeholder="email@gmail.com" required> 
     <input type="submit">
   </form>
-  <button onclick="devolver()">Regresar</button>
+  <button class="btn btn-secondary" onclick="devolver('cambio')">Regresar</button>
 
 </div>
 
@@ -71,7 +71,7 @@
 </div>
 
 
-</div>
+</div> <br><br>
 
 
 
