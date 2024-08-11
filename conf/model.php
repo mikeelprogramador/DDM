@@ -928,10 +928,17 @@ class Model {
         $conexion->close();
     }
 
-    public static function sqlBuscarOfertas($idOferta){
+    public static function sqlBuscarOfertas($des,$oferta){
         include("model/conexion.php");
-        $sql = "select idOferta from tb_ofertas ";
-        $sql .= "where oferta = '$idOferta'";
+        if($des === 1 ){
+            $dato = "idOferta";
+            $busqueda = "oferta";
+        }
+        if($des === 2 ){
+            $dato = "oferta";
+            $busqueda = "idOferta";
+        }
+        $sql = "select $dato from tb_ofertas where $busqueda = '$oferta' ";
         return $conexion->query($sql);
         $conexion->close();
     }

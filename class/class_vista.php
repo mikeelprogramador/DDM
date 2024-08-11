@@ -97,6 +97,7 @@ class Vista{
         include_once("clasS_producto.php");
         include_once("class_encript.php");
         include_once("class_fechas.php");
+        include_once("class_ofertas.php");
     
         $salida = "";
         $consulta = Model::sqlverificarProducto($id, 1);
@@ -115,7 +116,7 @@ class Vista{
             $salida .= "<p class='producto-colores'><strong>Cantidades disponibles: </strong>" . $fila[4] . "</p>";
             $salida .= "<p class='producto-cantidad'><strong>Colores </strong>" . $fila[8] . "</p>";
             $salida .= "<p class='producto-precio'><strong>Precio: </strong>" . $fila[7] . "</p>";
-            $salida .= "<p class='producto-ofertas'><strong>Ofertas: </strong>" . $fila[5] . "</p>";
+            $salida .= "<p class='producto-ofertas'><strong>Ofertas: </strong>" . Ofertas::NombresOfertas($fila[5]) . "</p>";
             $salida .= "<p class='producto-precio'><strong id='mostra_fecha'>".Fecha::mostrarFechas($fila[9])."</strong></p>";
             if($fila[10] != null){
                 $salida .= "<p class='producto-precio'><strong id='mostra_fecha'>Editado ".Fecha::mostrarFechas($fila[10])."</strong></p>";

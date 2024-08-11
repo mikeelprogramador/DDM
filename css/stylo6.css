@@ -253,12 +253,13 @@ input[type="submit"]:hover {
 /*comentarios*/
 .avatar-container {
     display: flex;
-    align-items: center;
+    align-items: flex-start; /* Cambiado para alinear los items al inicio */
     background-color: #fff; /* Fondo blanco opcional para el contenedor */
     border-radius: 8px; /* Bordes redondeados opcionales */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra opcional */
     padding: 10px;
     margin-bottom: 20px; /* Espacio inferior opcional entre comentarios */
+    flex-wrap: wrap; /* Permite que los elementos se ajusten en múltiples líneas */
 }
 
 .avatar {
@@ -269,7 +270,7 @@ input[type="submit"]:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #fcf801; /* Color de fondo opcional */
+    background-color: transparent; /* Color de fondo opcional */
     margin-right: 15px; /* Espacio entre el círculo y el texto */
 }
 
@@ -282,31 +283,26 @@ input[type="submit"]:hover {
 .usuario-container {
     display: flex;
     flex-direction: column; /* Organiza el texto en una columna */
+    flex-grow: 1; /* Permite que el contenedor de usuario crezca para ocupar espacio disponible */
 }
 
 .nombre-tiempo-container {
     display: flex;
     align-items: center; /* Alinea los elementos verticalmente */
-    margin-bottom: 5px; /* Espacio inferior para separar del comentario */
 }
 
 .nombre {
     font-size: 14px; /* Ajusta el tamaño del texto según el tamaño del círculo */
-    color: #333; /* Color del texto */
-    margin: 0; /* Elimina márgenes para ajuste fino */
-    margin-right: 10px; /* Espacio entre nombre y tiempo */
 }
 
 .tiempo {
     font-size: 14px; /* Ajusta el tamaño del texto */
-    color: #666; /* Color del texto */
-    margin: 0; /* Elimina márgenes para ajuste fino */
 }
 
 .comentario {
     font-size: 15px; /* Ajusta el tamaño del comentario */
-    color: #666; /* Color del comentario */
     margin: 5px 0 0 0; /* Espacio superior para separar del nombre-tiempo */
+    word-wrap: break-word; /* Evita el desbordamiento de palabras largas */
 }
 
 .button-container {
@@ -317,7 +313,7 @@ input[type="submit"]:hover {
 button {
     background-color: transparent; /* Color de fondo transparente */
     color: black; /* Color del texto negro */
-    border: 1px solid #c29349; /* Borde azul para visibilidad */
+    border: 1px solid #c29349; /* Borde  para visibilidad */
     border-radius: 4px; /* Bordes redondeados */
     padding: 4px 8px; /* Espaciado interno reducido para botones estrechos */
     margin: 2px; /* Espacio alrededor del botón */
@@ -327,7 +323,7 @@ button {
 }
 
 button:hover {
-    background-color: #c29349; /* Color de fondo azul al pasar el ratón */
+    background-color: #c29349; /* Color de fondo  al pasar el ratón */
     color: white; /* Color del texto blanco en hover */
 }
 
@@ -394,7 +390,6 @@ button:focus {
 
 #coment p {
     padding: 10px;
-    background-color: #f1f1f1;
     border-radius: 4px;
     margin-bottom: 10px;
     word-wrap: break-word; /* Evita que las palabras largas sobresalgan */

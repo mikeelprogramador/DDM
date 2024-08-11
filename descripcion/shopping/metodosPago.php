@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="../../css/style-pago.css">
 <?php 
 if(!isset($_GET['pagoPor'])){
-    header("location: ../../erro.php");
+    header("location: ../../error.php");
 }
 
 if($_GET['pagoPor'] == "efectivo") :?>

@@ -15,7 +15,7 @@ class Ofertas {
 
     public static function buscarOfertas($idOferta){
         include_once("../../conf/model.php");
-        $consulta = Model::sqlBuscarOfertas($idOferta);
+        $consulta = Model::sqlBuscarOfertas(1,$idOferta);
         if($consulta->num_rows === 0){
             $salida = "Not exist";
         }else{
@@ -31,6 +31,19 @@ class Ofertas {
         $consulta = ModelVista::sqlContarOfertas($oferta);
         while($fila = $consulta->fetch_array()){
             $salida = $fila[0];
+        }
+        return $salida;
+    }
+
+    public static function NombresOfertas($oferta){
+        include_once("../../conf/model.php");
+        $consulta = Model::sqlBuscarOfertas(2,$oferta);
+        if($consulta->num_rows === 0){
+            $salida = "No tiene oferta";
+        }else{
+            while($fila = $consulta->fetch_array()){
+                $salida = $fila[0];
+            }
         }
         return $salida;
     }

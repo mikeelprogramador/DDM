@@ -55,10 +55,11 @@ class Correo{
         Session::iniciarSessiones();
         if($des == 1 )$id = Login::encontrarUsuario(2,$correo);
         if($des == 2 )$id = $_SESSION['id'];
-        $nombre = Usuarios::verificarPerfil(2,$id);
         if($des === 3){
-            
+            $html = Funciones::htmlRegistro($correo,$codigo);
+            $mensaje = "Registro DDM";
         }else{
+            $nombre = Usuarios::verificarPerfil(2,$id);
             $passwordNueva = Encriptar::codificar(1,$codigo);
             Model::sqlCambiarPassword($passwordNueva,$id);
             $html = Funciones::htmlRecuperarContraseña($nombre,id::encriptar($id),$codigo);

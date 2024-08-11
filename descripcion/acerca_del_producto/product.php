@@ -14,16 +14,16 @@ if(Session::verificarSesssiones() == 0 ){
     exit();
 }
 if(!isset($_GET['http'])){
-    header("location: ../../erro.php");
+    header("location: ../../error.php");
     exit();
 }
 if($_GET['http'] != $_SESSION['token']){
-    header("location: ../../erro.php");
+    header("location: ../../error.php");
     exit();
 }
 
 if(Productos::detallesDelProducto(0,id::desencriptar($_GET['data'])) === ""){
-    header("location: ../../erro.php");
+    header("location: ../../error.php");
     exit();
 }
 
