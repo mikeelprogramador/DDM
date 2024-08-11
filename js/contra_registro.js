@@ -38,16 +38,23 @@ document.getElementById('toggle-password').addEventListener('click', function ()
         url: 'view/controller/controller_login.php?autenticacion',
         datatype: 'texto',
         method: 'post',
+        beforeSend: function(){
+          cargando(Mensajes.mensajesGlobales(162));
+        },
         success: function(respuesta){
           console.log(respuesta);
           if(respuesta === "1"){
-            window.alert(Mensajes.mensajesGlobales(121));
+            setTimeout(function(){
+              window.alert(Mensajes.mensajesGlobales(121));
+            },1000);
           }else{
-            Recaptcha(2,respuesta).then((salida) => {
-              if(salida === true){
-                form.submit();
-              }
-            });
+            setTimeout(function(){
+              Recaptcha(2,respuesta).then((salida) => {
+                if(salida === true){
+                  form.submit();
+                }
+              });
+            },1000);
           }
         },
         error: function(xhr,status,error){

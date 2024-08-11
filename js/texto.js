@@ -187,6 +187,9 @@ class Mensajes {
         if(des === 161){
             salida = "El codigo no coincide intenta mas tarde ";
         }
+        if(des === 162){
+            salida = "Verificando los datos ";
+        }
         return salida;
     }
 
