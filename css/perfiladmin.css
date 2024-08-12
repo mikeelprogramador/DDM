@@ -153,213 +153,214 @@ form input[type="submit"]:hover {
     background-color: white;
 }
 #cambio{
-    display:none;/* Estilo para la tarjeta de perfil y contenedores */
-    .container, .container1, .container2, .container3 {
-        background-color: white;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(141, 51, 51, 0.1);
-        padding: 20px;
-        margin-top: 20px;
-        max-width: 800px;
-        margin-left: auto;
-        margin-right: auto;
-        transition: background-color 0.3s ease, transform 0.3s ease;
+    display:none;/* Estilo para la tarjeta de perfil y contenedores */ 
+}
+
+.container, .container1, .container2, .container3 {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(141, 51, 51, 0.1);
+    padding: 20px;
+    margin-top: 20px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+
+.container:hover, .container1:hover, .container2:hover, .container3:hover {
+    background-color: #e6e6e6;
+    transform: scale(1.02);
+}
+
+/* Estilo para la imagen de perfil */
+.circle {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    border: 2px solid #B34F16;
+}
+
+.circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.circle:hover {
+    opacity: 0.9;
+}
+
+/* Estilo para los botones */
+.btn {
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-top: 10px;
+}
+
+.btn-primary {
+    background-color: #B34F16;
+    border-color: #B34F16;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #8A3A11;
+    transform: scale(1.05);
+}
+
+.btn-secondary {
+    background-color: #e6e6e6;
+    border-color: #e6e6e6;
+    color: #B34F16;
+}
+
+.btn-secondary:hover {
+    background-color: #B34F16;
+    color: #fff;
+    transform: scale(1.05);
+}
+
+/* Estilo para los inputs */
+.form-control {
+    border: 1px solid #B34F16;
+    border-radius: 4px;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+.form-control:disabled {
+    background-color: #f5f5f5;
+}
+
+/* Estilo para las etiquetas */
+.form-label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+/* Estilo para formularios */
+form {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    max-width: 100%;
+}
+
+form input[type="password"],
+form input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+form input[type="submit"] {
+    background-color: #c29349;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+}
+
+form input[type="submit"]:hover {
+    background-color: #a87d35;
+}
+
+/* Estilo para el contenedor de cambio de contraseña y correo */
+.save-passwrd {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 340px;
+    max-width: 100%;
+    text-align: center;
+}
+
+.save-passwrd p {
+    margin-top: 10px;
+    color: black;
+}
+
+.save-passwrd a {
+    display: inline-block;
+    margin-top: 20px;
+    color: #c29349;
+    text-decoration: none;
+}
+
+.save-passwrd a:hover {
+    text-decoration: underline;
+}
+
+/* Estilo para las opciones de usuario */
+.sub-contenedor {
+    display: none;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Contenedores dentro de sub-contenedor */
+.sub-contenedor > .option {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.sub-contenedor > .option:hover {
+    background-color: #e6e6e6;
+    transform: scale(1.02);
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
     }
-    
-    .container:hover, .container1:hover, .container2:hover, .container3:hover {
-        background-color: #e6e6e6;
-        transform: scale(1.02);
-    }
-    
-    /* Estilo para la imagen de perfil */
-    .circle {
-        width: 150px;
-        height: 150px;
-        border-radius: 50%;
-        overflow: hidden;
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 0 auto;
-        border: 2px solid #B34F16;
-    }
-    
-    .circle img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        cursor: pointer;
-    }
-    
-    .circle:hover {
-        opacity: 0.9;
-    }
-    
-    /* Estilo para los botones */
+
     .btn {
-        border-radius: 5px;
-        padding: 10px 20px;
-        font-size: 16px;
-        font-weight: bold;
-        transition: background-color 0.3s ease, transform 0.3s ease;
-        margin-top: 10px;
-    }
-    
-    .btn-primary {
-        background-color: #B34F16;
-        border-color: #B34F16;
-        color: #fff;
-    }
-    
-    .btn-primary:hover {
-        background-color: #8A3A11;
-        transform: scale(1.05);
-    }
-    
-    .btn-secondary {
-        background-color: #e6e6e6;
-        border-color: #e6e6e6;
-        color: #B34F16;
-    }
-    
-    .btn-secondary:hover {
-        background-color: #B34F16;
-        color: #fff;
-        transform: scale(1.05);
-    }
-    
-    /* Estilo para los inputs */
-    .form-control {
-        border: 1px solid #B34F16;
-        border-radius: 4px;
-        padding: 10px;
         width: 100%;
-        box-sizing: border-box;
-        font-size: 14px;
-    }
-    
-    .form-control:disabled {
-        background-color: #f5f5f5;
-    }
-    
-    /* Estilo para las etiquetas */
-    .form-label {
-        font-weight: bold;
-        margin-bottom: 5px;
-        display: block;
-    }
-    
-    /* Estilo para formularios */
-    form {
-        background: #ffffff;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        width: 300px;
-        max-width: 100%;
-    }
-    
-    form input[type="password"],
-    form input[type="text"] {
-        width: 100%;
-        padding: 10px;
-        margin-top: 5px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-sizing: border-box;
-    }
-    
-    form input[type="submit"] {
-        background-color: #c29349;
-        color: white;
-        padding: 10px;
-        border: none;
-        cursor: pointer;
-        width: 100%;
-        margin-top: 10px;
-    }
-    
-    form input[type="submit"]:hover {
-        background-color: #a87d35;
-    }
-    
-    /* Estilo para el contenedor de cambio de contraseña y correo */
-    .save-passwrd {
-        background: #ffffff;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        width: 340px;
-        max-width: 100%;
-        text-align: center;
-    }
-    
-    .save-passwrd p {
-        margin-top: 10px;
-        color: black;
-    }
-    
-    .save-passwrd a {
-        display: inline-block;
-        margin-top: 20px;
-        color: #c29349;
-        text-decoration: none;
-    }
-    
-    .save-passwrd a:hover {
-        text-decoration: underline;
-    }
-    
-    /* Estilo para las opciones de usuario */
-    .sub-contenedor {
-        display: none;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-    
-    /* Contenedores dentro de sub-contenedor */
-    .sub-contenedor > .option {
         margin-bottom: 10px;
-        padding: 10px;
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        background-color: white;
-        cursor: pointer;
-        transition: background-color 0.3s ease, transform 0.3s ease;
     }
-    
-    .sub-contenedor > .option:hover {
-        background-color: #e6e6e6;
-        transform: scale(1.02);
+
+    .circle {
+        width: 120px;
+        height: 120px;
     }
-    
-    /* Responsividad */
-    @media (max-width: 768px) {
-        .container {
-            padding: 10px;
-        }
-    
-        .btn {
-            width: 100%;
-            margin-bottom: 10px;
-        }
-    
-        .circle {
-            width: 120px;
-            height: 120px;
-        }
-    }
-    
-    /* Menu oculto */
-    #contenido_sub-contenedor {
-        display: none;
-    }
-    
-    /* Cambio de correo o contraseña */
-    #cambio, #datos-usuario, #actualizar, #cancelar {
-        display: none;
-    }
-    
+}
+
+/* Menu oculto */
+#contenido_sub-contenedor {
+    display: none;
+}
+
+/* Cambio de correo o contraseña */
+#cambio, #datos-usuario, #actualizar, #cancelar {
+    display: none;
 }
