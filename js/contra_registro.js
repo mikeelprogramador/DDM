@@ -30,8 +30,8 @@ document.getElementById('toggle-password').addEventListener('click', function ()
       window.location.replace('check-in.php?terminos')
     }else{
       if(password === confirmPassword){
-        event.preventDefault();
-        ajaxCorreo(correo,form);
+        //event.preventDefault();
+        //ajaxCorreo(correo,form);
       }else{
         event.preventDefault();
         error.textContent = "Las contraseñas no coinciden.";
