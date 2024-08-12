@@ -61,3 +61,7 @@ function editarRol(){
 
 
 }
+
+function cancelarRol(){
+    document.getElementById('rango').style.display = 'none';
+}

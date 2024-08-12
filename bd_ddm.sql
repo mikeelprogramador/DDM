@@ -389,12 +389,18 @@ UNLOCK TABLES;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 trigger crearProducto
-after insert on 
-tb_productos
-for each row begin 
-	 insert into tb_historial_productos()
-     value(null,concat("Se Creo el producto: ", new.producto_nombre),concat("Codigo: ",new.id_producto),DATE_FORMAT(NOW(), '%Y-%m-%d %h:%i:%s %p'));
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 trigger crearProducto
+
+after insert on 
+
+tb_productos
+
+for each row begin 
+
+	 insert into tb_historial_productos()
+
+     value(null,concat("Se Creo el producto: ", new.producto_nombre),concat("Codigo: ",new.id_producto),DATE_FORMAT(NOW(), '%Y-%m-%d %h:%i:%s %p'));
+
 end */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -410,12 +416,18 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 trigger eliminarProducto
-after delete on 
-tb_productos
-for each row begin 
-	 insert into tb_historial_productos()
-     value(null,concat("Se ilimino el producto: ", old.producto_nombre),concat("Codigo: ",old.id_producto),DATE_FORMAT(NOW(), '%Y-%m-%d %h:%i:%s %p'));
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 trigger eliminarProducto
+
+after delete on 
+
+tb_productos
+
+for each row begin 
+
+	 insert into tb_historial_productos()
+
+     value(null,concat("Se ilimino el producto: ", old.producto_nombre),concat("Codigo: ",old.id_producto),DATE_FORMAT(NOW(), '%Y-%m-%d %h:%i:%s %p'));
+
 end */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -532,18 +544,30 @@ UNLOCK TABLES;
 /*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` FUNCTION `EliminarProductos`(id VARCHAR(10)) RETURNS int(11)
-BEGIN
-    DECLARE id_pro VARCHAR(10);
-    SET id_pro = id;
-
-    DELETE FROM tb_comentarios WHERE id_producto = id_pro;
-    DELETE FROM tb_historial WHERE id_producto = id_pro;
-    DELETE FROM tb_categoriasProducto WHERE id_producto = id_pro;
-    DELETE FROM tb_valoracion WHERE id_producto = id_pro;
-    DELETE FROM tb_carypro WHERE id_producto = id_pro;
-    DELETE FROM tb_productos WHERE id_producto = id_pro;
-
-    RETURN 1;
+BEGIN
+
+    DECLARE id_pro VARCHAR(10);
+
+    SET id_pro = id;
+
+
+
+    DELETE FROM tb_comentarios WHERE id_producto = id_pro;
+
+    DELETE FROM tb_historial WHERE id_producto = id_pro;
+
+    DELETE FROM tb_categoriasProducto WHERE id_producto = id_pro;
+
+    DELETE FROM tb_valoracion WHERE id_producto = id_pro;
+
+    DELETE FROM tb_carypro WHERE id_producto = id_pro;
+
+    DELETE FROM tb_productos WHERE id_producto = id_pro;
+
+
+
+    RETURN 1;
+
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;

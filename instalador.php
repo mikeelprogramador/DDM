@@ -25,7 +25,7 @@ if($conexion->query($sql_create_bd) == true ){
 
     // Ejecutar múltiples consultas separadas por punto y coma
     if ($conexion2->multi_query($sql)) {
-        //unlink('instalador.php');
+        unlink('instalador.php');
         header("location: index.php");
         exit();
     } else {
@@ -38,4 +38,3 @@ if($conexion->query($sql_create_bd) == true ){
 }
 $conexion->close();
 $conexion2->close();
-
