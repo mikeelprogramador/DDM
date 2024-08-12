@@ -190,6 +190,9 @@ class Mensajes {
         if(des === 162){
             salida = "Verificando los datos ";
         }
+        if(des === 163){
+            salida = "Esto puede tardar unos segundos ";
+        }
         return salida;
     }
 

@@ -29,44 +29,48 @@ document.getElementById('toggle-password').addEventListener('click', function ()
       event.preventDefault();
       window.location.replace('check-in.php?terminos')
     }else{
-      event.preventDefault();
-      var param = {
-        'email':correo
-      }
-      $.ajax({
-        data:param,
-        url: 'view/controller/controller_login.php?autenticacion',
-        datatype: 'texto',
-        method: 'post',
-        beforeSend: function(){
-          cargando(Mensajes.mensajesGlobales(162));
-        },
-        success: function(respuesta){
-          console.log(respuesta);
-          if(respuesta === "1"){
-            setTimeout(function(){
-              window.alert(Mensajes.mensajesGlobales(121));
-            },1000);
-          }else{
-            setTimeout(function(){
-              Recaptcha(2,respuesta).then((salida) => {
-                if(salida === true){
-                  form.submit();
-                }
-              });
-            },1000);
-          }
-        },
-        error: function(xhr,status,error){
-          console.log(error);
-        }
-      });
-    }
-
-    if (password !== confirmPassword) {
+      if(password === confirmPassword){
+        event.preventDefault();
+        ajaxCorreo(correo,form);
+      }else{
+        event.preventDefault();
         error.textContent = "Las contraseñas no coinciden.";
-        return false;
+      }
     }
 
-    return true;
   }
+
+
+
+function ajaxCorreo(correo,form){
+  var param = {
+    'email':correo
+  }
+  $.ajax({
+    data:param,
+    url: 'view/controller/controller_login.php?autenticacion',
+    datatype: 'texto',
+    method: 'post',
+    beforeSend: function(){
+      cargando(Mensajes.mensajesGlobales(162),Mensajes.mensajesGlobales(163));
+    },
+    success: function(respuesta){
+      if(respuesta === "1"){
+        setTimeout(function(){
+          window.alert(Mensajes.mensajesGlobales(121));
+        },3000);
+      }else{
+        setTimeout(function(){
+          Recaptcha(2,respuesta).then((salida) => {
+            if(salida === true){
+              form.submit();
+            }
+          });
+        },1000);
+      }
+    },
+    error: function(xhr,status,error){
+      console.log(error);
+    }
+  });
+}
