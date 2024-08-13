@@ -1,0 +1,46 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Flexbox para centrar y alinear los contenedores */
+  .scrit, .contenedor-ingresosTomales, .contenedor-ingresos-por-meses {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    width: 100%;
+    overflow-x: auto; /* Permite el scroll horizontal si es necesario */
+  }
+  
+  /* Contenedor de la gráfica */
+  #chart-container {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    overflow-x: auto; /* Permite el scroll horizontal si la gráfica es más grande que la pantalla */
+  }
+  
+  /* Gráfica */
+  #columnchart_values {
+    width: 100%;
+    min-width: 300px; /* Asegura un ancho mínimo para la gráfica */
+    height: 400px;
+  }
+  
+  /* Responsive Adjustments */
+  @media screen and (max-width: 768px) {
+    #columnchart_values {
+      height: 300px;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    #columnchart_values {
+      height: 250px;
+    }
+  }
+  

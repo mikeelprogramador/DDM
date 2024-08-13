@@ -22,6 +22,7 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   transition: transform 0.3s, box-shadow 0.3s;
+  width: 100%; /* Añadir esto asegura que la card ocupe el 100% */
 }
 
 .card:hover {
@@ -51,10 +52,13 @@
 }
 
 .btn-primary {
-  margin-top: auto;
   background-color: #c29349;
-  border-color: #c29349;
-  transition: background-color 0.3s, border-color 0.3s;
+  border: none;
+  padding: 10px 20px;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
 }
 
 .btn-primary:hover {
@@ -96,5 +100,30 @@
 @media (max-width: 768px) {
   .col-sm-12 {
     max-width: 100%;  /* 1 columna en pantallas pequeñas */
+  }
+}
+
+/* Ajustes para pantallas muy pequeñas (móviles) */
+@media (max-width: 576px) {
+  .card-body {
+    padding: 10px;
+  }
+
+  .card-title {
+    font-size: 1.1rem;
+  }
+
+  .card-text {
+    margin-bottom: 8px;
+  }
+
+  .btn-primary {
+    padding: 8px 16px;
+  }
+
+  /* Asegurar que la card ocupe el 100% en pantallas pequeñas */
+  .col-sm-12, .col-md-6, .col-lg-3 {
+    flex: 0 0 100%;
+    max-width: 100%;
   }
 }
