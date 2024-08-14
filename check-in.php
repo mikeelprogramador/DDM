@@ -53,7 +53,7 @@ if(isset($_GET['terminos'])):?>
         <center><p>¿Ya te has registrado?
           Inicia sesión por favor
         </p></center>
-        <a href="terminos.php?verterminos" style="color: #9e7a40; text-decoration: none;"><input type="checkbox" id="terminos"> Terminos y condiciones</a>
+        <a href="terminos.php?verterminos" style="color: #9e7a40; text-decoration: none;"><input type="checkbox" id="terminos" required> Terminos y condiciones</a>
         <a href="login.php" style="color: #9e7a40; text-decoration: none;">Iniciar sesión</a>
     </div>
 

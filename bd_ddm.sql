@@ -389,18 +389,18 @@ UNLOCK TABLES;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 trigger crearProducto
-
-after insert on 
-
-tb_productos
-
-for each row begin 
-
-	 insert into tb_historial_productos()
-
-     value(null,concat("Se Creo el producto: ", new.producto_nombre),concat("Codigo: ",new.id_producto),DATE_FORMAT(NOW(), '%Y-%m-%d %h:%i:%s %p'));
-
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 trigger crearProducto
+
+after insert on 
+
+tb_productos
+
+for each row begin 
+
+	 insert into tb_historial_productos()
+
+     value(null,concat("Se Creo el producto: ", new.producto_nombre),concat("Codigo: ",new.id_producto),DATE_FORMAT(NOW(), '%Y-%m-%d %h:%i:%s %p'));
+
 end */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -416,18 +416,18 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 trigger eliminarProducto
-
-after delete on 
-
-tb_productos
-
-for each row begin 
-
-	 insert into tb_historial_productos()
-
-     value(null,concat("Se ilimino el producto: ", old.producto_nombre),concat("Codigo: ",old.id_producto),DATE_FORMAT(NOW(), '%Y-%m-%d %h:%i:%s %p'));
-
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 trigger eliminarProducto
+
+after delete on 
+
+tb_productos
+
+for each row begin 
+
+	 insert into tb_historial_productos()
+
+     value(null,concat("Se ilimino el producto: ", old.producto_nombre),concat("Codigo: ",old.id_producto),DATE_FORMAT(NOW(), '%Y-%m-%d %h:%i:%s %p'));
+
 end */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -450,10 +450,8 @@ CREATE TABLE `tb_respuestascomentarios` (
   `fech_repuesta` varchar(150) NOT NULL,
   `editado` varchar(150) DEFAULT NULL,
   PRIMARY KEY (`idRespuesta`),
-  KEY `idComentario` (`idComentario`),
   KEY `idUsuario` (`idUsuario`),
-  CONSTRAINT `tb_respuestascomentarios_ibfk_1` FOREIGN KEY (`idComentario`) REFERENCES `tb_comentarios` (`id_comentario`),
-  CONSTRAINT `tb_respuestascomentarios_ibfk_2` FOREIGN KEY (`idUsuario`) REFERENCES `tb_usuarios` (`id`)
+  CONSTRAINT `tb_respuestascomentarios_ibfk_1` FOREIGN KEY (`idUsuario`) REFERENCES `tb_usuarios` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -544,30 +542,30 @@ UNLOCK TABLES;
 /*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` FUNCTION `EliminarProductos`(id VARCHAR(10)) RETURNS int(11)
-BEGIN
-
-    DECLARE id_pro VARCHAR(10);
-
-    SET id_pro = id;
-
-
-
-    DELETE FROM tb_comentarios WHERE id_producto = id_pro;
-
-    DELETE FROM tb_historial WHERE id_producto = id_pro;
-
-    DELETE FROM tb_categoriasProducto WHERE id_producto = id_pro;
-
-    DELETE FROM tb_valoracion WHERE id_producto = id_pro;
-
-    DELETE FROM tb_carypro WHERE id_producto = id_pro;
-
-    DELETE FROM tb_productos WHERE id_producto = id_pro;
-
-
-
-    RETURN 1;
-
+BEGIN
+
+    DECLARE id_pro VARCHAR(10);
+
+    SET id_pro = id;
+
+
+
+    DELETE FROM tb_comentarios WHERE id_producto = id_pro;
+
+    DELETE FROM tb_historial WHERE id_producto = id_pro;
+
+    DELETE FROM tb_categoriasProducto WHERE id_producto = id_pro;
+
+    DELETE FROM tb_valoracion WHERE id_producto = id_pro;
+
+    DELETE FROM tb_carypro WHERE id_producto = id_pro;
+
+    DELETE FROM tb_productos WHERE id_producto = id_pro;
+
+
+
+    RETURN 1;
+
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -585,10 +583,10 @@ DELIMITER ;
 /*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SumarUnoMasUno`()
-BEGIN
-    DECLARE Resultado INT;
-    SET Resultado = 1 + 1;
-    SELECT Resultado AS Resultado;
+BEGIN
+    DECLARE Resultado INT;
+    SET Resultado = 1 + 1;
+    SELECT Resultado AS Resultado;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -605,4 +603,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-08-12 12:29:37
+-- Dump completed on 2024-08-14 10:00:43
